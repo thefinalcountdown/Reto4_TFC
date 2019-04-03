@@ -6,6 +6,7 @@ public class Vista
 {
 	public Ventana ventana = new Ventana();
 	public vistaPago pago = new vistaPago();
+	public vistaHoteles hotel= new vistaHoteles();
 	
 	public Vista() {
 		mostrarPanel(pago);
