@@ -17,7 +17,7 @@ public class Ventana extends JFrame
 	public Ventana() 
 	{
 		setLocationRelativeTo(null);
-		setTitle("Hola");
+		setTitle("Reserva de hoteles");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(200, 200, 900, 600);
 		

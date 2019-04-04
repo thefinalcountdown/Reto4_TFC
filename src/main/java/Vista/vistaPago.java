@@ -11,25 +11,25 @@ import javax.swing.SwingConstants;
 public class vistaPago extends JPanel
 {
 	public static JButton Cancelar_Pago = new JButton("Cancelar");
-	public static  JButton Continuar_Pago = new JButton("Continuar");
-	public static  JButton billete200 = new JButton();
-	public static  JButton billete100 = new JButton();
-	public static  JButton billete50 = new JButton();
-	public static  JButton billete20 = new JButton();
-	public static  JButton billete10 = new JButton();
-	public static  JButton billete5 = new JButton();
-	public static  JButton moneda2e = new JButton();
-	public static  JButton moneda1e = new JButton();
-	public static  JButton moneda50cent = new JButton();
-	public static  JButton moneda20cent = new JButton();
-	public static  JButton moneda10cent = new JButton();
-	public static  JButton moneda5cent = new JButton();
-	public static  JButton moneda2cent = new JButton();
-	public static  JButton moneda1cent = new JButton();
-	public static  JTextField DineroFaltante = new JTextField();
-	public static  JLabel lblDineroIntroducido = new JLabel("Dinero Introducido");
-	public static  JLabel lblDineroFaltante = new JLabel("Dinero A Pagar");
-	public static  JTextField DineroIntroducido = new JTextField();
+	public static JButton Continuar_Pago = new JButton("Continuar");
+	public static JButton billete200 = new JButton();
+	public static JButton billete100 = new JButton();
+	public static JButton billete50 = new JButton();
+	public static JButton billete20 = new JButton();
+	public static JButton billete10 = new JButton();
+	public static JButton billete5 = new JButton();
+	public static JButton moneda2e = new JButton();
+	public static JButton moneda1e = new JButton();
+	public static JButton moneda50cent = new JButton();
+	public static JButton moneda20cent = new JButton();
+	public static JButton moneda10cent = new JButton();
+	public static JButton moneda5cent = new JButton();
+	public static JButton moneda2cent = new JButton();
+	public static JButton moneda1cent = new JButton();
+	public static JTextField DineroFaltante = new JTextField();
+	private JLabel lblDineroIntroducido = new JLabel("Dinero Introducido");
+	private JLabel lblDineroFaltante = new JLabel("Dinero A Pagar");
+	public static JTextField DineroIntroducido = new JTextField();
 	
 	
 	
