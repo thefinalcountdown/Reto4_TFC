@@ -19,12 +19,7 @@ public class controladorRaiz {
 	public controladorRaiz(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
-		
-		vistaRaiz.btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+	
 		
 		
 		vistaRaiz.btnSum.addActionListener(new ActionListener() 
@@ -68,7 +63,7 @@ public class controladorRaiz {
 	
 		});*/
 		
-		vistaRaiz.btnBuscar.addActionListener(new ActionListener() 
+		/*vistaRaiz.btnBuscar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -78,7 +73,7 @@ public class controladorRaiz {
 				vH.setVisible(true);
 				
 			}
-		});
+		});*/
 		
 	}
 	
