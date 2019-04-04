@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.modelo;
 import Vista.Ventana;
+import metodos.GestorBD;
 
 public class Principal {
 
@@ -16,6 +17,9 @@ public class Principal {
 		Principal principal = new Principal();
 		
 		principal.iniciar();
+		GestorBD gestorDB = new GestorBD();
+		gestorDB.getConexion();
+		
 	}
 
 	public void iniciar()
