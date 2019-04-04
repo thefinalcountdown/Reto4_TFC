@@ -95,6 +95,7 @@ public class vistaPago extends JPanel
 		
 		Continuar_Pago.setBounds(686, 514, 198, 48);
 		add(Continuar_Pago);
+		Continuar_Pago.setEnabled(false);
 		
 		Cancelar_Pago.setBounds(6, 514, 198, 48);
 		add(Cancelar_Pago);

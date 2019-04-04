@@ -8,9 +8,10 @@ import javax.swing.border.EmptyBorder;
 
 public class Ventana extends JFrame
 {
-	private JPanel contentPane = new JPanel();
+	public JPanel contentPane = new JPanel();
 	
 	public vistaPago pago;
+	
 	
 	public Ventana() 
 	{
@@ -27,5 +28,12 @@ public class Ventana extends JFrame
 		
 		pago = new vistaPago();
 		contentPane.add(pago, "name_30846681032716");
+		pago.setLayout(null);
+	}
+	
+	public void cambio_panel(JPanel ocultar, JPanel mostrar)
+	{
+		ocultar.setVisible(false);
+		mostrar.setVisible(true);
 	}
 }
