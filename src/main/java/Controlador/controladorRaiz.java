@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 import Modelo.modelo;
 import Vista.Ventana;
@@ -11,6 +12,7 @@ import Vista.vistaHoteles;
 import Vista.vistaPago;
 import Vista.vistaRaiz;
 import Vista.vistaReserva;
+import metodos.GestorBD;
 
 
 public class controladorRaiz {
@@ -22,6 +24,14 @@ public class controladorRaiz {
 	public controladorRaiz(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
+		
+		
+		//llenar el comboBox de ubicaciones
+		try {
+			llenarUbicaciones(GestorBD.obtenerUbicaciones());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		
 		
 		vistaRaiz.btnSum.addActionListener(new ActionListener() 
@@ -40,9 +50,10 @@ public class controladorRaiz {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				
-				num_huespedes--;
-				vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
+				if(num_huespedes >0) {
+					num_huespedes--;
+					vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
+				}
 			}
 		});	
 		
@@ -76,6 +87,13 @@ public class controladorRaiz {
 			}
 		});
 		
+	}
+	
+	
+	public void llenarUbicaciones(ArrayList<String> ubicaciones){
+		for(int i=0; i< ubicaciones.size(); i++) {
+			vistaRaiz.comboBoxUbicacion.addItem(ubicaciones.get(i));
+		}
 	}
 	
 }
