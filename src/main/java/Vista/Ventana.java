@@ -12,6 +12,7 @@ public class Ventana extends JFrame
 	
 	public vistaReserva reserva;
 	public vistaPago pago;
+	public vistaHoteles hotel;
 	
 	
 	public Ventana() 
@@ -35,6 +36,10 @@ public class Ventana extends JFrame
 		pago = new vistaPago();
 		contentPane.add(pago, "Pago");
 		pago.setLayout(null);
+		
+		hotel= new vistaHoteles();
+		contentPane.add(hotel, "Lista Hoteles");
+		hotel.setLayout(null);
 	}
 	
 	public void cambio_panel(JPanel ocultar, JPanel mostrar)

@@ -29,7 +29,8 @@ public class controladorReserva
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				
+				ventana.cambio_panel(ventana.reserva, ventana.hotel);
+			
 			}
 		});
 	}
