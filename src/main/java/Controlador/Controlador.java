@@ -12,6 +12,7 @@ public class Controlador
 	public Ventana ventana;
 	
 	public controladorPago controladorPago;
+	public controladorReserva controladorReserva;
 	
 	public Controlador(Ventana ventana, modelo modelo)
 	{
@@ -19,6 +20,7 @@ public class Controlador
 		this.modelo = modelo;
 		
 		this.controladorPago = new controladorPago(ventana, modelo);
+		this.controladorReserva = new controladorReserva(ventana, modelo);
 	}
 
 	public controladorPago getControladorPago() {
@@ -28,5 +30,15 @@ public class Controlador
 	public void setControladorPago(controladorPago controladorPago) {
 		this.controladorPago = controladorPago;
 	}
+
+	public controladorReserva getControladorReserva() {
+		return controladorReserva;
+	}
+
+	public void setControladorReserva(controladorReserva controladorReserva) {
+		this.controladorReserva = controladorReserva;
+	}
+	
+	
 	
 }

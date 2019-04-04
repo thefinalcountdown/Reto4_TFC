@@ -10,6 +10,7 @@ public class Ventana extends JFrame
 {
 	public JPanel contentPane = new JPanel();
 	
+	public vistaReserva reserva;
 	public vistaPago pago;
 	
 	
@@ -26,8 +27,13 @@ public class Ventana extends JFrame
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
 		
+		reserva = new vistaReserva();
+		contentPane.add(reserva, "Reserva");
+		reserva.setLayout(null);
+		
+		
 		pago = new vistaPago();
-		contentPane.add(pago, "name_30846681032716");
+		contentPane.add(pago, "Pago");
 		pago.setLayout(null);
 	}
 	
