@@ -41,10 +41,7 @@ public class vistaHoteles extends JPanel {
 		setLayout(null);
 			setLayout(null);
 
-			btnSeleccionarParada = new JButton("Mostrar paradas");
-			btnSeleccionarParada.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-			btnSeleccionarParada.setBounds(518, 437, 138, 61);
-			add(btnSeleccionarParada);
+			
 
 			scrollPane.setBounds(200, 105, 300, 250);
 			add(scrollPane);
