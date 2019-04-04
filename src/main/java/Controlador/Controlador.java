@@ -21,7 +21,6 @@ public class Controlador
 		this.controladorRaiz = new controladorRaiz(ventana, modelo);
 		this.controladorPago = new controladorPago(ventana, modelo);
 		this.controladorReserva = new controladorReserva(ventana, modelo);
-		
 	}
 	
 	
@@ -30,13 +29,9 @@ public class Controlador
 		return controladorRaiz;
 	}
 
-
-
 	public void setControladorRaiz(controladorRaiz controladorRaiz) {
 		this.controladorRaiz = controladorRaiz;
 	}
-
-
 
 	public controladorPago getControladorPago() {
 		return controladorPago;

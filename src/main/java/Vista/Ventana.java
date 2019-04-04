@@ -31,12 +31,7 @@ public class Ventana extends JFrame
 		raiz = new vistaRaiz();
 		contentPane.add(raiz);
 		raiz.setLayout(null);
-		
-		raiz = new vistaRaiz();
-		contentPane.add(raiz, "Raiz");
-		raiz.setLayout(null);
-		
-		
+
 		
 		reserva = new vistaReserva();
 		contentPane.add(reserva, "Reserva");
