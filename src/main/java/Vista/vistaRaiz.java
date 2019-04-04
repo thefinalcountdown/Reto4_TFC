@@ -73,11 +73,6 @@ public class vistaRaiz extends JPanel {
 		
 	}
 	
-	public void comboboxUbicacion(ArrayList<Ubicacion> ubicaciones){
-		for(int i=0; i< ubicaciones.size(); i++) {
-			comboBoxUbicacion.addItem(ubicaciones.get(i).getUbicacion());
-		}
-	}
 	
-	}
+}
 
