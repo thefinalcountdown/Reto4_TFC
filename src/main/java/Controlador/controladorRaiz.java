@@ -10,15 +10,19 @@ import Vista.Ventana;
 import Vista.vistaHoteles;
 import Vista.vistaPago;
 import Vista.vistaRaiz;
+import Vista.vistaReserva;
 
 
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
 	
+	public static int num_huespedes = 0;
+	
 	public controladorRaiz(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
+		
 		
 		vistaRaiz.btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -32,10 +36,10 @@ public class controladorRaiz {
 			public void actionPerformed(ActionEvent e) 
 			{
 				
-				vistaRaiz.num++;
+				num_huespedes++;
 				//por si hay que borrar el jtextfield
 				//vistaRaiz.txthuesped.setText("");
-				vistaRaiz.txthuesped.setText(Integer.toString(vistaRaiz.num));
+				vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
 			}
 		});
 		
@@ -44,8 +48,8 @@ public class controladorRaiz {
 			public void actionPerformed(ActionEvent e) 
 			{
 				
-				vistaRaiz.num--;
-				vistaRaiz.txthuesped.setText(Integer.toString(vistaRaiz.num));
+				num_huespedes--;
+				vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
 			}
 		});	
 		
@@ -72,11 +76,10 @@ public class controladorRaiz {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
-				//vistaHoteles vH = new vistaHoteles(vistaRaiz.num, ubicacionSeleccionada);
-				vistaHoteles vH = new vistaHoteles();
-				vH.setVisible(true);
+//				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
 				
+				ventana.cambio_panel(ventana.raiz, ventana.reserva);
+				ventana.reserva.textField_numpersonas.setText(vistaRaiz.txthuesped.getText());
 			}
 		});
 		

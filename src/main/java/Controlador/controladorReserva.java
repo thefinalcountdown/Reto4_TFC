@@ -12,10 +12,12 @@ public class controladorReserva
 	private Ventana ventana;
 	private modelo modelo;
 	
+	
 	public controladorReserva(Ventana ventana, modelo modelo)
 	{
 		this.ventana = ventana;
 		this.modelo = modelo;
+		
 		
 		vistaReserva.Continuar_Reserva.addActionListener(new ActionListener() 
 		{

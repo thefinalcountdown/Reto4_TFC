@@ -10,12 +10,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import Modelo.ficheroReserva;
 import Modelo.modelo;
 
 public class controladorPago 
 {
 	private Ventana ventana;
 	private modelo modelo;
+	private ficheroReserva fichero;
 	
 	private double total_introducido=0;
 	private double total_faltante;

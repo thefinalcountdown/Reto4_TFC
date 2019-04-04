@@ -13,15 +13,11 @@ public class vistaReserva extends JPanel
 	private JLabel lblHotelSeleccionado;
 	private JLabel lblPrecio;
 	private JLabel lblNumeroHabitaciones;
-	private JLabel lblFechaEntrada;
-	private JLabel lblFechaSalida;
 	private JLabel lblUbicacion;
-	private JTextField textField_ubicacion;
-	private JTextField textField_fechasalida;
-	private JTextField textField_fechaentrada;
-	private JTextField textField_numpersonas;
-	private JTextField textField_precio;
-	private JTextField textField_hotelseleccionado;
+	public static JTextField textField_ubicacion;
+	public static JTextField textField_numpersonas;
+	public static JTextField textField_precio;
+	public static JTextField textField_hotelseleccionado;
 	
 	public vistaReserva()
 	{
@@ -45,38 +41,16 @@ public class vistaReserva extends JPanel
 		lblNumeroHabitaciones.setBounds(247, 240, 115, 16);
 		add(lblNumeroHabitaciones);
 		
-		lblFechaEntrada = new JLabel("Fecha entrada:");
-		lblFechaEntrada.setBounds(271, 290, 91, 16);
-		add(lblFechaEntrada);
-		
-		lblFechaSalida = new JLabel("Fecha salida:");
-		lblFechaSalida.setBounds(281, 335, 81, 16);
-		add(lblFechaSalida);
-		
 		lblUbicacion = new JLabel("Ubicacion:");
-		lblUbicacion.setBounds(296, 380, 66, 16);
+		lblUbicacion.setBounds(296, 298, 66, 16);
 		add(lblUbicacion);
 		
 		textField_ubicacion = new JTextField();
 		textField_ubicacion.setEditable(false);
 		textField_ubicacion.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField_ubicacion.setBounds(495, 375, 130, 26);
+		textField_ubicacion.setBounds(495, 293, 130, 26);
 		add(textField_ubicacion);
 		textField_ubicacion.setColumns(10);
-		
-		textField_fechasalida = new JTextField();
-		textField_fechasalida.setEditable(false);
-		textField_fechasalida.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField_fechasalida.setColumns(10);
-		textField_fechasalida.setBounds(495, 330, 130, 26);
-		add(textField_fechasalida);
-		
-		textField_fechaentrada = new JTextField();
-		textField_fechaentrada.setEditable(false);
-		textField_fechaentrada.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField_fechaentrada.setColumns(10);
-		textField_fechaentrada.setBounds(495, 285, 130, 26);
-		add(textField_fechaentrada);
 		
 		textField_numpersonas = new JTextField();
 		textField_numpersonas.setEditable(false);

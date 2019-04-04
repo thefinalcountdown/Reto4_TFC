@@ -22,12 +22,11 @@ public class vistaRaiz extends JPanel {
 	public JLabel lblNewLabel;
 	public JLabel lblDnde;
 	public JLabel lblHuspedes;
-	public static JComboBox comboBoxUbicacion = new JComboBox();
+	public static JComboBox comboBoxUbicacion;
 	public static JButton btnSum = new JButton("+");
 	public static JButton btnRest = new JButton("-");
 	public static JTextField txthuesped;
 	public static JButton btnBuscar;
-	public static int num = 0;
 	
 	/**
 	 * Create the panel.
