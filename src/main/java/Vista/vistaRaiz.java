@@ -12,7 +12,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
-import Modelo.Ubicacion;
 
 import java.awt.Dimension;
 import java.awt.Font;
