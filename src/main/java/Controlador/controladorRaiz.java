@@ -24,13 +24,6 @@ public class controladorRaiz {
 		this.modelo = modelo;
 		
 		
-		vistaRaiz.btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		
-		
 		vistaRaiz.btnSum.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 

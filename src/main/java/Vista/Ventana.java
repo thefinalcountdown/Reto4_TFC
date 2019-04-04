@@ -8,8 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 public class Ventana extends JFrame
 {
-	public JPanel contentPane = new JPanel();
-	
+	public JPanel contentPane;
+
 	public vistaRaiz raiz;
 	public vistaReserva reserva;
 	public vistaPago pago;
@@ -28,6 +28,9 @@ public class Ventana extends JFrame
 		setContentPane(contentPane);
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
+		raiz = new vistaRaiz();
+		contentPane.add(raiz);
+		raiz.setLayout(null);
 		
 		raiz = new vistaRaiz();
 		contentPane.add(raiz, "Raiz");
