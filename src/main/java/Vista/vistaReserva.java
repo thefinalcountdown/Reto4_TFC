@@ -14,10 +14,10 @@ public class vistaReserva extends JPanel
 	private JLabel lblPrecio;
 	private JLabel lblNumeroHabitaciones;
 	private JLabel lblUbicacion;
-	public static JTextField textField_ubicacion;
-	public static JTextField textField_numpersonas;
-	public static JTextField textField_precio;
-	public static JTextField textField_hotelseleccionado;
+	public JTextField textField_ubicacion;
+	public JTextField textField_numpersonas;
+	public JTextField textField_precio;
+	public JTextField textField_hotelseleccionado;
 	
 	public vistaReserva()
 	{

@@ -84,7 +84,7 @@ public class controladorRaiz {
 				
 				ventana.cambio_panel(ventana.raiz, ventana.reserva);
 				ventana.reserva.textField_numpersonas.setText(vistaRaiz.txthuesped.getText());
-				
+				ventana.reserva.textField_ubicacion.setText(vistaRaiz.comboBoxUbicacion.getSelectedItem().toString());
 			}
 		});
 		

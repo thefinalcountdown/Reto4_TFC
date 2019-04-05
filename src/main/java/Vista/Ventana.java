@@ -34,12 +34,12 @@ public class Ventana extends JFrame
 
 		
 		reserva = new vistaReserva();
-		contentPane.add(reserva, "Reserva");
+		contentPane.add(reserva);
 		reserva.setLayout(null);
 		
 		
 		pago = new vistaPago();
-		contentPane.add(pago, "Pago");
+		contentPane.add(pago);
 		pago.setLayout(null);
 	}
 	

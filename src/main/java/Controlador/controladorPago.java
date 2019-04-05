@@ -248,7 +248,15 @@ public class controladorPago
 				 panel.add(texto);
 				 if(JOptionPane.showOptionDialog(ventana, panel, "Devolución", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 				 {
-					 restablecer_datos();
+						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
+						String ubicacion = ventana.reserva.textField_ubicacion.getText();
+						ficheroReserva fichero = new ficheroReserva(numPersonas,"",ubicacion,0);
+						fichero.imprimirTicket();
+						
+						if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
+						{
+							System.exit(0);
+						}
 				 }
 			}
 		});

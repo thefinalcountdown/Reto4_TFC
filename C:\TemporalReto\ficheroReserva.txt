@@ -1,0 +1,4 @@
+Hotel: 
+ Numero de personas: 4
+ Ubicacion: Alicante
+ Precio: 0.0
