@@ -30,6 +30,7 @@ public class controladorHotel implements ListModel {
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.reserva);
+				ventana.reserva.textField_precio.setText("80");
 				ventana.reserva.textField_hotelseleccionado.setText(vistaHoteles.listaHoteles.getSelectedItem().toString());
 			}
 		});
@@ -37,7 +38,7 @@ public class controladorHotel implements ListModel {
 		ventana.hotel.btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
-				
+				vaciarComboBox();
 			}
 		});
 
@@ -61,10 +62,9 @@ public class controladorHotel implements ListModel {
 		}
 	}
 
-	public static void vaciarLista(ArrayList<String> hotel) {
-		for (int i = 0; i < hotel.size(); i++) {
-			vistaHoteles.listaHoteles.removeItem(hotel.get(i));
-		}
+	public static void vaciarComboBox() {
+		
+			vistaHoteles.listaHoteles.removeAllItems();
 	}
 	@Override
 	public int getSize() {
