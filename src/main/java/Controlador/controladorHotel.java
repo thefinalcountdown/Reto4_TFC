@@ -61,9 +61,6 @@ public class controladorHotel implements ListModel {
 			if (linea.charAt(contador) != ';')
 				campo += linea.charAt(contador);
 			if ((linea.charAt(contador) == ';') || (contador == linea.length() - 1)) {
-
-				System.out.println("paso2 " + campo);
-
 				if (uno == "") {
 					uno = campo;
 					campo = "";

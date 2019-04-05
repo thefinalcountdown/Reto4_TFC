@@ -245,8 +245,10 @@ public class controladorPago
 				 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devolución", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 				 {
 						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
+						String hotel=ventana.reserva.textField_hotelseleccionado.getText();
 						String ubicacion = ventana.reserva.textField_ubicacion.getText();
-						ficheroReserva fichero = new ficheroReserva(numPersonas,"",ubicacion,0);
+						int precio= Integer.parseInt(ventana.reserva.textField_precio.getText());
+						ficheroReserva fichero = new ficheroReserva(numPersonas,hotel,ubicacion,precio);
 						fichero.imprimirTicket();
 						
 						if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
