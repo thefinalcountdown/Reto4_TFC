@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -30,6 +31,8 @@ public class vistaPago extends JPanel
 	private JLabel lblDineroIntroducido = new JLabel("Dinero Introducido");
 	private JLabel lblDineroFaltante = new JLabel("Dinero A Pagar");
 	public JTextField DineroIntroducido = new JTextField();
+	public JPanel panel = new JPanel();
+	public JTextArea texto_panel = new JTextArea();
 	
 	
 	
@@ -121,6 +124,8 @@ public class vistaPago extends JPanel
 		lblDineroFaltante.setFont(new Font("Arial", Font.BOLD, 13));
 		lblDineroFaltante.setBounds(652, 410, 119, 16);
 		add(lblDineroFaltante);
+		
+		texto_panel.setEditable(false);
 	}
 	
 	

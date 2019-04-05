@@ -1,4 +1,4 @@
  Hotel: 
  Numero de personas: 2
- Ubicacion: Cantabria
+ Ubicacion: Alicante
  Precio: 0.0

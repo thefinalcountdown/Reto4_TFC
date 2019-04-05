@@ -235,18 +235,14 @@ public class controladorPago
 		ventana.pago.Continuar_Pago.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) 
-			{
-				 JPanel panel = new JPanel();
-				 JTextArea texto = new JTextArea();
-				 texto.setEditable(false);
-				 
+			{	 
 				 contar_monedas();
-				 texto.append("\n");
-				 texto = insertar_texto(texto);
+				 ventana.pago.texto_panel.append("\n");
+				 ventana.pago.texto_panel = insertar_texto(ventana.pago.texto_panel);
 				
 				
-				 panel.add(texto);
-				 if(JOptionPane.showOptionDialog(ventana, panel, "Devolución", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
+				 ventana.pago.panel.add(ventana.pago.texto_panel);
+				 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devolución", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 				 {
 						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
 						String ubicacion = ventana.reserva.textField_ubicacion.getText();
