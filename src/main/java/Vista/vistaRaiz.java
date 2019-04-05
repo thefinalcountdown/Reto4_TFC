@@ -53,7 +53,7 @@ public class vistaRaiz extends JPanel {
 		lblHuspedes.setBounds(25, 142, 109, 31);
 		add(lblHuspedes);
 		
-		txthuesped = new JTextField("0");
+		txthuesped = new JTextField("1");
 		txthuesped.setBounds(72, 185, 51, 26);
 		add(txthuesped);
 		txthuesped.setEditable(false);
