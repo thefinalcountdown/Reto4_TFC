@@ -23,7 +23,7 @@ public class controladorPago
 	private double total_faltante;
 	private double total_devolucion=0;
 	private double valorBoton=0;
-	private double precio = 300;
+	private double precio = 80;
 	private int contador_billete200 = 0;
 	private int contador_billete100 = 0;
 	private int contador_billete50 = 0;

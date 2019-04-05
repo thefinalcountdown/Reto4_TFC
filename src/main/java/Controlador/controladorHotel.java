@@ -3,7 +3,9 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
+import javax.swing.JComboBox;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
@@ -19,7 +21,7 @@ public class controladorHotel implements ListModel {
 
 	private Ventana ventana;
 	private modelo modelo;
-	
+
 	public controladorHotel() {
 	}
 
@@ -30,8 +32,9 @@ public class controladorHotel implements ListModel {
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.reserva);
-				ventana.reserva.textField_precio.setText("80");
-				ventana.reserva.textField_hotelseleccionado.setText(vistaHoteles.listaHoteles.getSelectedItem().toString());
+
+				ventana.reserva.textField_precio.setText(separarString(vistaHoteles.listaHoteles)[1]);
+				ventana.reserva.textField_hotelseleccionado.setText(separarString(vistaHoteles.listaHoteles)[0]);
 			}
 		});
 
@@ -43,29 +46,57 @@ public class controladorHotel implements ListModel {
 		});
 
 	}
-//  Metodo para La lista
-//	public void rellenarModel(ArrayList<String> hotel) {
-//		System.out.println("golla");
-//
-//		for (int index = 0; index < hotel.size(); index++) {
-//			vistaHoteles.listaHoteles.add(hotel.get(index), ventana);
-//		}
-//	}
-	
-	
-	
-	//Metodo para rellenar con el comboBox
-	
+
+	// Metodo para separar los String del Arraylist<String> para mostrar el nombre y
+	// el
+	// precio separados
+
+	public static String[] separarString(JComboBox hotel) {
+		String linea = hotel.getSelectedItem().toString();
+		int contador = 0;
+		String campo = "";
+		String uno = "";
+		String dos = "";
+		while (contador < linea.length()) {
+			if (linea.charAt(contador) != ';')
+				campo += linea.charAt(contador);
+			if ((linea.charAt(contador) == ';') || (contador == linea.length() - 1)) {
+
+				System.out.println("paso2 " + campo);
+
+				if (uno == "") {
+					uno = campo;
+					campo = "";
+				} else if (uno != "" && dos == "") {
+					dos = campo;
+					campo = "";
+					break;
+				}
+
+			}
+			contador++;
+		}
+
+		String[] nomPrecio = { uno, dos };
+		return nomPrecio;
+	}
+
+	// Metodo para rellenar con el comboBox:
+
 	public static void llenarLista(ArrayList<String> hotel) {
 		for (int i = 0; i < hotel.size(); i++) {
 			vistaHoteles.listaHoteles.addItem(hotel.get(i));
 		}
 	}
 
+	// Metodo para vaciar con el comboBox:
+
 	public static void vaciarComboBox() {
-		
-			vistaHoteles.listaHoteles.removeAllItems();
+
+		vistaHoteles.listaHoteles.removeAllItems();
 	}
+
+	// Metodos de la interfaz ListModel son necesarios:
 	@Override
 	public int getSize() {
 		// TODO Auto-generated method stub
