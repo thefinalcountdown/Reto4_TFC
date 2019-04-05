@@ -20,7 +20,7 @@ public class controladorReserva
 		this.modelo = modelo;
 		
 		
-		vistaReserva.Continuar_Reserva.addActionListener(new ActionListener() 
+		ventana.reserva.Continuar_Reserva.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -32,7 +32,7 @@ public class controladorReserva
 			}
 		});
 		
-		vistaReserva.Cancelar_Reserva.addActionListener(new ActionListener() 
+		ventana.reserva.Cancelar_Reserva.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{

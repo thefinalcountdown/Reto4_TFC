@@ -2,16 +2,11 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import Modelo.modelo;
 import Vista.Ventana;
-import Vista.vistaHoteles;
-import Vista.vistaPago;
 import Vista.vistaRaiz;
-import Vista.vistaReserva;
 import metodos.GestorBD;
 
 

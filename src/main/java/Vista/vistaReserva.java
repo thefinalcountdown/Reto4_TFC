@@ -8,8 +8,8 @@ import javax.swing.SwingConstants;
 
 public class vistaReserva extends JPanel
 {
-	public static JButton Cancelar_Reserva = new JButton("Cancelar");
-	public static  JButton Continuar_Reserva = new JButton("Continuar");
+	public JButton Cancelar_Reserva = new JButton("Cancelar");
+	public  JButton Continuar_Reserva = new JButton("Continuar");
 	private JLabel lblHotelSeleccionado;
 	private JLabel lblPrecio;
 	private JLabel lblNumeroHabitaciones;
