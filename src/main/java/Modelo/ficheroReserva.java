@@ -68,13 +68,13 @@ public class ficheroReserva {
 
 			// nos aseguramos de que existe el directorio, si no es asi
 			// lo creamos
-			Path path = Paths.get("c:\\TemporalReto");
+			Path path = Paths.get("Reto4_TFC");
 
 			if (!Files.exists(path))
 				Files.createDirectory(path);
 
 			// Para abrir el fichero sobreescribiendo
-			FileWriter fich = new FileWriter("C:\\TemporalReto\\ficheroReserva.txt");
+			FileWriter fich = new FileWriter("Reto4_TFC\\ficheroReserva.txt");
 
 			// Para abrir el fichero y anadir al final del mismo
 			// FileWriter fich = new FileWriter("C:\\temporal2\\log.txt",true);
