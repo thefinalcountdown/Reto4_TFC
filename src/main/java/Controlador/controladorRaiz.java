@@ -75,9 +75,16 @@ public class controladorRaiz {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-//				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
+				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
 				
-				ventana.cambio_panel(ventana.raiz, ventana.reserva);
+				
+				try {
+					controladorHotel.llenarLista(GestorBD.obtenerHoteles(ubicacionSeleccionada));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+				ventana.cambio_panel(ventana.raiz, ventana.hotel);
 				ventana.reserva.textField_numpersonas.setText(vistaRaiz.txthuesped.getText());
 				ventana.reserva.textField_ubicacion.setText(vistaRaiz.comboBoxUbicacion.getSelectedItem().toString());
 			}
