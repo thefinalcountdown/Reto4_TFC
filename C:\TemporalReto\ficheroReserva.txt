@@ -1,4 +1,4 @@
-Hotel: 
+ Hotel: 
  Numero de personas: 2
- Ubicacion: Barcelona
+ Ubicacion: Cantabria
  Precio: 0.0
