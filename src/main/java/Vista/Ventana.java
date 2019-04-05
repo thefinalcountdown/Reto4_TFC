@@ -44,7 +44,7 @@ public class Ventana extends JFrame
 		pago.setLayout(null);
 		
 		hotel= new vistaHoteles();
-		contentPane.add(hotel, "Lista Hoteles");
+		contentPane.add(hotel);
 		hotel.setLayout(null);
 	}
 	
