@@ -13,8 +13,9 @@ import metodos.GestorBD;
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
+	private Controlador Controlador;
 	
-	public static int num_huespedes = 0;
+	public static int num_huespedes = 1;
 	
 	public controladorRaiz(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
@@ -28,7 +29,7 @@ public class controladorRaiz {
 			e1.printStackTrace();
 		}
 		
-		
+		//boton sumar huesped
 		vistaRaiz.btnSum.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -41,36 +42,19 @@ public class controladorRaiz {
 			}
 		});
 		
+		//boton restar huesped
 		vistaRaiz.btnRest.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				if(num_huespedes >0) {
+				if(num_huespedes >1) {
 					num_huespedes--;
 					vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
 				}
 			}
 		});	
 		
-		/*
-		vistaRaiz.comboBoxUbicacion.addItemListener(new ItemListener() {
-	
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-	
-					try {
-						ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
-								
-					} catch (Exception e2) {
-	
-						e2.printStackTrace();
-					}
-				}
-	
-			}
-	
-		});*/
-		
+		//boton pasar siguiente ventana
 		vistaRaiz.btnBuscar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -87,6 +71,7 @@ public class controladorRaiz {
 				ventana.cambio_panel(ventana.raiz, ventana.hotel);
 				ventana.reserva.textField_numpersonas.setText(vistaRaiz.txthuesped.getText());
 				ventana.reserva.textField_ubicacion.setText(vistaRaiz.comboBoxUbicacion.getSelectedItem().toString());
+				
 			}
 		});
 		
