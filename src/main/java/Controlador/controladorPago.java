@@ -10,12 +10,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import Modelo.ficheroReserva;
 import Modelo.modelo;
 
 public class controladorPago 
 {
 	private Ventana ventana;
 	private modelo modelo;
+	private ficheroReserva fichero;
 	
 	private double total_introducido=0;
 	private double total_faltante;
@@ -46,181 +48,181 @@ public class controladorPago
 		
 		
 		
-		vistaPago.billete200.setActionCommand("200");
-		vistaPago.billete100.setActionCommand("100");
-		vistaPago.billete50.setActionCommand("50");
-		vistaPago.billete20.setActionCommand("20");
-		vistaPago.billete10.setActionCommand("10");
-		vistaPago.billete5.setActionCommand("5");
-		vistaPago.moneda2e.setActionCommand("2");
-		vistaPago.moneda1e.setActionCommand("1");
-		vistaPago.moneda50cent.setActionCommand("0.5");
-		vistaPago.moneda20cent.setActionCommand("0.2");
-		vistaPago.moneda10cent.setActionCommand("0.1");
-		vistaPago.moneda5cent.setActionCommand("0.05");
-		vistaPago.moneda2cent.setActionCommand("0.02");
-		vistaPago.moneda1cent.setActionCommand("0.01");
+		ventana.pago.billete200.setActionCommand("200");
+		ventana.pago.billete100.setActionCommand("100");
+		ventana.pago.billete50.setActionCommand("50");
+		ventana.pago.billete20.setActionCommand("20");
+		ventana.pago.billete10.setActionCommand("10");
+		ventana.pago.billete5.setActionCommand("5");
+		ventana.pago.moneda2e.setActionCommand("2");
+		ventana.pago.moneda1e.setActionCommand("1");
+		ventana.pago.moneda50cent.setActionCommand("0.5");
+		ventana.pago.moneda20cent.setActionCommand("0.2");
+		ventana.pago.moneda10cent.setActionCommand("0.1");
+		ventana.pago.moneda5cent.setActionCommand("0.05");
+		ventana.pago.moneda2cent.setActionCommand("0.02");
+		ventana.pago.moneda1cent.setActionCommand("0.01");
 		
 		total_faltante = precio;
-		vistaPago.DineroFaltante.setText(total_faltante+" \u20ac");
-		vistaPago.DineroIntroducido.setText("0.00 \u20ac");
+		ventana.pago.DineroFaltante.setText(total_faltante+" \u20ac");
+		ventana.pago.DineroIntroducido.setText("0.00 \u20ac");
 		
 		
-		vistaPago.billete200.addActionListener(new ActionListener() 
+		ventana.pago.billete200.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.billete200.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.billete200.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.billete100.addActionListener(new ActionListener() 
+		ventana.pago.billete100.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.billete100.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.billete100.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.billete50.addActionListener(new ActionListener() 
+		ventana.pago.billete50.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.billete50.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.billete50.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.billete20.addActionListener(new ActionListener() 
+		ventana.pago.billete20.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.billete20.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.billete20.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.billete10.addActionListener(new ActionListener() 
+		ventana.pago.billete10.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.billete10.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.billete10.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.billete5.addActionListener(new ActionListener() 
+		ventana.pago.billete5.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.billete5.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.billete5.getActionCommand());
 				actualizacion_pago();	
 			}
 		});
 		
 		
 		
-		vistaPago.moneda2e.addActionListener(new ActionListener() 
+		ventana.pago.moneda2e.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.moneda2e.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.moneda2e.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.moneda1e.addActionListener(new ActionListener() 
+		ventana.pago.moneda1e.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.moneda1e.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.moneda1e.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.moneda50cent.addActionListener(new ActionListener() 
+		ventana.pago.moneda50cent.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.moneda50cent.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.moneda50cent.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.moneda20cent.addActionListener(new ActionListener() 
+		ventana.pago.moneda20cent.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.moneda20cent.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.moneda20cent.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.moneda10cent.addActionListener(new ActionListener() 
+		ventana.pago.moneda10cent.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.moneda10cent.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.moneda10cent.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.moneda5cent.addActionListener(new ActionListener() 
+		ventana.pago.moneda5cent.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.moneda5cent.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.moneda5cent.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.moneda2cent.addActionListener(new ActionListener() 
+		ventana.pago.moneda2cent.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.moneda2cent.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.moneda2cent.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.moneda1cent.addActionListener(new ActionListener() 
+		ventana.pago.moneda1cent.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				valorBoton = Double.parseDouble(vistaPago.moneda1cent.getActionCommand());
+				valorBoton = Double.parseDouble(ventana.pago.moneda1cent.getActionCommand());
 				actualizacion_pago();
 			}
 		});
 		
 		
 		
-		vistaPago.Cancelar_Pago.addActionListener(new ActionListener() {
+		ventana.pago.Cancelar_Pago.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				ventana.cambio_panel(ventana.pago, ventana.reserva);
@@ -230,7 +232,7 @@ public class controladorPago
 		
 		
 		
-		vistaPago.Continuar_Pago.addActionListener(new ActionListener()
+		ventana.pago.Continuar_Pago.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -246,7 +248,15 @@ public class controladorPago
 				 panel.add(texto);
 				 if(JOptionPane.showOptionDialog(ventana, panel, "Devolución", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 				 {
-					 restablecer_datos();
+						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
+						String ubicacion = ventana.reserva.textField_ubicacion.getText();
+						ficheroReserva fichero = new ficheroReserva(numPersonas,"",ubicacion,0);
+						fichero.imprimirTicket();
+						
+						if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
+						{
+							System.exit(0);
+						}
 				 }
 			}
 		});
@@ -254,22 +264,22 @@ public class controladorPago
 	
 	public void DeshabilitarMonedas()
 	{
-		vistaPago.Continuar_Pago.setEnabled(true);
-		vistaPago.billete200.setEnabled(false);
-		vistaPago.billete100.setEnabled(false);
-		vistaPago.billete50.setEnabled(false);
-		vistaPago.billete20.setEnabled(false);
-		vistaPago.billete10.setEnabled(false);
-		vistaPago.billete5.setEnabled(false);
-		vistaPago.moneda2e.setEnabled(false);
-		vistaPago.moneda1e.setEnabled(false);
-		vistaPago.moneda50cent.setEnabled(false);
-		vistaPago.moneda20cent.setEnabled(false);
-		vistaPago.moneda10cent.setEnabled(false);
-		vistaPago.moneda5cent.setEnabled(false);
-		vistaPago.moneda2cent.setEnabled(false);
-		vistaPago.moneda1cent.setEnabled(false);
-		vistaPago.DineroFaltante.setText("0.00");
+		ventana.pago.Continuar_Pago.setEnabled(true);
+		ventana.pago.billete200.setEnabled(false);
+		ventana.pago.billete100.setEnabled(false);
+		ventana.pago.billete50.setEnabled(false);
+		ventana.pago.billete20.setEnabled(false);
+		ventana.pago.billete10.setEnabled(false);
+		ventana.pago.billete5.setEnabled(false);
+		ventana.pago.moneda2e.setEnabled(false);
+		ventana.pago.moneda1e.setEnabled(false);
+		ventana.pago.moneda50cent.setEnabled(false);
+		ventana.pago.moneda20cent.setEnabled(false);
+		ventana.pago.moneda10cent.setEnabled(false);
+		ventana.pago.moneda5cent.setEnabled(false);
+		ventana.pago.moneda2cent.setEnabled(false);
+		ventana.pago.moneda1cent.setEnabled(false);
+		ventana.pago.DineroFaltante.setText("0.00");
 	}
 	
 	public void restablecer_datos()
@@ -277,24 +287,24 @@ public class controladorPago
 		total_devolucion = 0;
 		total_faltante = 0;
 		total_introducido = 0;
-		vistaPago.DineroFaltante.setText("");
-		vistaPago.DineroIntroducido.setText("");
-		vistaPago.Continuar_Pago.setEnabled(false);
+		ventana.pago.DineroFaltante.setText("");
+		ventana.pago.DineroIntroducido.setText("");
+		ventana.pago.Continuar_Pago.setEnabled(false);
 		
-		vistaPago.billete200.setEnabled(true);
-		vistaPago.billete100.setEnabled(true);
-		vistaPago.billete50.setEnabled(true);
-		vistaPago.billete20.setEnabled(true);
-		vistaPago.billete10.setEnabled(true);
-		vistaPago.billete5.setEnabled(true);
-		vistaPago.moneda2e.setEnabled(true);
-		vistaPago.moneda1e.setEnabled(true);
-		vistaPago.moneda50cent.setEnabled(true);
-		vistaPago.moneda20cent.setEnabled(true);
-		vistaPago.moneda10cent.setEnabled(true);
-		vistaPago.moneda5cent.setEnabled(true);
-		vistaPago.moneda2cent.setEnabled(true);
-		vistaPago.moneda1cent.setEnabled(true);
+		ventana.pago.billete200.setEnabled(true);
+		ventana.pago.billete100.setEnabled(true);
+		ventana.pago.billete50.setEnabled(true);
+		ventana.pago.billete20.setEnabled(true);
+		ventana.pago.billete10.setEnabled(true);
+		ventana.pago.billete5.setEnabled(true);
+		ventana.pago.moneda2e.setEnabled(true);
+		ventana.pago.moneda1e.setEnabled(true);
+		ventana.pago.moneda50cent.setEnabled(true);
+		ventana.pago.moneda20cent.setEnabled(true);
+		ventana.pago.moneda10cent.setEnabled(true);
+		ventana.pago.moneda5cent.setEnabled(true);
+		ventana.pago.moneda2cent.setEnabled(true);
+		ventana.pago.moneda1cent.setEnabled(true);
 	}
 	
 	public JTextArea insertar_texto (JTextArea texto)
@@ -431,8 +441,8 @@ public class controladorPago
 	{
 		total_introducido=total_introducido+valorBoton;
 		total_faltante = total_faltante-valorBoton;
-		vistaPago.DineroFaltante.setText(String.format("%.2f",total_faltante));
-		vistaPago.DineroIntroducido.setText(String.format("%.2f", total_introducido));
+		ventana.pago.DineroFaltante.setText(String.format("%.2f",total_faltante));
+		ventana.pago.DineroIntroducido.setText(String.format("%.2f", total_introducido));
 		
 		if (total_faltante <= 0.01)
 		{
@@ -443,7 +453,7 @@ public class controladorPago
 			total_devolucion = total_introducido - precio;
 			BigDecimal decimal = new BigDecimal(total_devolucion);
 			total_devolucion = decimal.setScale(2, RoundingMode.HALF_UP).doubleValue();
-			vistaPago.Continuar_Pago.setEnabled(true);
+			ventana.pago.Continuar_Pago.setEnabled(true);
 		}
 	}
 }

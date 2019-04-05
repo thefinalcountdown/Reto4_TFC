@@ -1,0 +1,4 @@
+Hotel: 
+ Numero de personas: 2
+ Ubicacion: Barcelona
+ Precio: 0.0

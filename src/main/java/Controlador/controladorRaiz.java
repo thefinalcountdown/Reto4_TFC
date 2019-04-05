@@ -2,29 +2,31 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 import Modelo.modelo;
 import Vista.Ventana;
-import Vista.vistaHoteles;
-import Vista.vistaPago;
 import Vista.vistaRaiz;
+import metodos.GestorBD;
 
 
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
 	
+	public static int num_huespedes = 0;
+	
 	public controladorRaiz(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
 		
-		vistaRaiz.btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+		
+		//llenar el comboBox de ubicaciones
+		try {
+			llenarUbicaciones(GestorBD.obtenerUbicaciones());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		
 		
 		vistaRaiz.btnSum.addActionListener(new ActionListener() 
@@ -32,10 +34,10 @@ public class controladorRaiz {
 			public void actionPerformed(ActionEvent e) 
 			{
 				
-				vistaRaiz.num++;
+				num_huespedes++;
 				//por si hay que borrar el jtextfield
 				//vistaRaiz.txthuesped.setText("");
-				vistaRaiz.txthuesped.setText(Integer.toString(vistaRaiz.num));
+				vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
 			}
 		});
 		
@@ -43,9 +45,10 @@ public class controladorRaiz {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				
-				vistaRaiz.num--;
-				vistaRaiz.txthuesped.setText(Integer.toString(vistaRaiz.num));
+				if(num_huespedes >0) {
+					num_huespedes--;
+					vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
+				}
 			}
 		});	
 		
@@ -72,14 +75,21 @@ public class controladorRaiz {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
-				//vistaHoteles vH = new vistaHoteles(vistaRaiz.num, ubicacionSeleccionada);
-				vistaHoteles vH = new vistaHoteles();
-				vH.setVisible(true);
+//				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
 				
+				ventana.cambio_panel(ventana.raiz, ventana.reserva);
+				ventana.reserva.textField_numpersonas.setText(vistaRaiz.txthuesped.getText());
+				ventana.reserva.textField_ubicacion.setText(vistaRaiz.comboBoxUbicacion.getSelectedItem().toString());
 			}
 		});
 		
+	}
+	
+	
+	public void llenarUbicaciones(ArrayList<String> ubicaciones){
+		for(int i=0; i< ubicaciones.size(); i++) {
+			vistaRaiz.comboBoxUbicacion.addItem(ubicaciones.get(i));
+		}
 	}
 	
 }

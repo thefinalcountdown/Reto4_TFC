@@ -12,7 +12,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
-import Modelo.Ubicacion;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -22,12 +21,11 @@ public class vistaRaiz extends JPanel {
 	public JLabel lblNewLabel;
 	public JLabel lblDnde;
 	public JLabel lblHuspedes;
-	public static JComboBox comboBoxUbicacion = new JComboBox();
+	public static JComboBox comboBoxUbicacion;
 	public static JButton btnSum = new JButton("+");
 	public static JButton btnRest = new JButton("-");
 	public static JTextField txthuesped;
 	public static JButton btnBuscar;
-	public static int num = 0;
 	
 	/**
 	 * Create the panel.
@@ -74,11 +72,6 @@ public class vistaRaiz extends JPanel {
 		
 	}
 	
-	public void comboboxUbicacion(ArrayList<Ubicacion> ubicaciones){
-		for(int i=0; i< ubicaciones.size(); i++) {
-			comboBoxUbicacion.addItem(ubicaciones.get(i).getUbicacion());
-		}
-	}
 	
-	}
+}
 

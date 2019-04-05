@@ -60,13 +60,13 @@ public class ficheroReserva {
 
 	public void imprimirTicket() {
 		try {
-			// ruta relativa- buscar dónde deja el fichero
+			// ruta relativa- buscar donde deja el fichero
 			// FileWriter fich = new FileWriter(".\\log.txt");
 
-			// ruta absoluta - ¿qué pasa si no existe el directorio?
+			// ruta absoluta - que pasa si no existe el directorio?
 			// FileWriter fich = new FileWriter("C:\\temporal2\\log.txt");
 
-			// nos aseguramos de que existe el directorio, si no es así
+			// nos aseguramos de que existe el directorio, si no es asi
 			// lo creamos
 			Path path = Paths.get("c:\\TemporalReto");
 
@@ -76,16 +76,16 @@ public class ficheroReserva {
 			// Para abrir el fichero sobreescribiendo
 			FileWriter fich = new FileWriter("C:\\TemporalReto\\ficheroReserva.txt");
 
-			// Para abrir el fichero y añadir al final del mismo
+			// Para abrir el fichero y anadir al final del mismo
 			// FileWriter fich = new FileWriter("C:\\temporal2\\log.txt",true);
 
-			// ¿Qué pasa si ejecutamos dos veces seguida el mismo programa
-			// Esto es: ¿Se añaden nuevas líneas?
+			// Que pasa si ejecutamos dos veces seguida el mismo programa
+			// Esto es: Se anaden nuevas lineas?
 			// DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			// Calendar cal = Calendar.getInstance();
 
-			fich.write("Hotel: " + this.nombreHotel + "\r\n" + " NºPersonas: " + this.numPersonas + "\r\n"
-					+ " Ubicación: " + this.ubicacion + "\r\n" + " Precio: " + this.precio + "\r\n");
+			fich.write(" Hotel: " + this.nombreHotel + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
+					+ " Ubicacion: " + this.ubicacion + "\r\n" + " Precio: " + this.precio + "\r\n");
 
 			fich.close();
 
