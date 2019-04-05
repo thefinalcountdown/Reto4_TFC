@@ -84,7 +84,7 @@ public class ficheroReserva {
 			// DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			// Calendar cal = Calendar.getInstance();
 
-			fich.write("Hotel: " + this.nombreHotel + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
+			fich.write(" Hotel: " + this.nombreHotel + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
 					+ " Ubicacion: " + this.ubicacion + "\r\n" + " Precio: " + this.precio + "\r\n");
 
 			fich.close();
