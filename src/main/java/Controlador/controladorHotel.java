@@ -28,6 +28,7 @@ public class controladorHotel implements ListModel {
 	public controladorHotel(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
+		controladorPago cont = new controladorPago();
 
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -35,6 +36,13 @@ public class controladorHotel implements ListModel {
 
 				ventana.reserva.textField_precio.setText(separarString(vistaHoteles.listaHoteles)[1]);
 				ventana.reserva.textField_hotelseleccionado.setText(separarString(vistaHoteles.listaHoteles)[0]);
+		
+				cont.precio=Integer.parseInt(ventana.reserva.textField_precio.getText());
+				cont.numPersonas=Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
+				cont.total_faltante = cont.precio*cont.numPersonas;
+				ventana.pago.DineroFaltante.setText(cont.total_faltante+" \u20ac");
+				ventana.reserva.textField_precio.setText(""+cont.total_faltante);
+			
 			}
 		});
 

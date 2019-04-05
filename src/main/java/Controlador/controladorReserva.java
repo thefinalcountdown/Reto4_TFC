@@ -8,7 +8,8 @@ import Vista.Ventana;
 public class controladorReserva 
 {
 	private Ventana ventana;
-	private modelo modelo;
+	private modelo modelo; 
+	controladorPago cont = new controladorPago();
 	
 	
 	public controladorReserva(Ventana ventana, modelo modelo)

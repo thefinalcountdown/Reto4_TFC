@@ -20,10 +20,11 @@ public class controladorPago
 	private ficheroReserva fichero;
 	
 	private double total_introducido=0;
-	private double total_faltante;
+	static double total_faltante;
 	private double total_devolucion=0;
 	private double valorBoton=0;
-	private double precio = 80;
+	public static double precio;
+	public static int numPersonas;
 	private int contador_billete200 = 0;
 	private int contador_billete100 = 0;
 	private int contador_billete50 = 0;
@@ -41,6 +42,7 @@ public class controladorPago
 	private int contador_monedas [] = {contador_billete200,contador_billete100,contador_billete50,contador_billete20,contador_billete10,contador_billete5,contador_moneda2e,contador_moneda1e,contador_moneda50cent,contador_moneda20cent,contador_moneda10cent,contador_moneda5cent,contador_moneda2cent,contador_moneda1cent};
 	private String monedas[] = {"200 euros","100 euros","50 euros","20 euros","10 euros","5 euros", "2 euros", "1 euro", "50 centimos", "20 centimos", "10 centimos", "5 centimos", "2 centimos", "1 centimo"};
 	
+	public controladorPago() {}
 	public controladorPago(Ventana ventana, modelo modelo)
 	{
 		this.ventana = ventana;
@@ -62,9 +64,11 @@ public class controladorPago
 		ventana.pago.moneda5cent.setActionCommand("0.05");
 		ventana.pago.moneda2cent.setActionCommand("0.02");
 		ventana.pago.moneda1cent.setActionCommand("0.01");
-		
-		total_faltante = precio;
-		ventana.pago.DineroFaltante.setText(total_faltante+" \u20ac");
+//		
+//		precio=Integer.parseInt(ventana.reserva.textField_precio.getText());
+//		numPersonas=Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
+//		total_faltante = precio*numPersonas;
+//		ventana.pago.DineroFaltante.setText(total_faltante+" \u20ac");
 		ventana.pago.DineroIntroducido.setText("0.00 \u20ac");
 		
 		
@@ -247,7 +251,7 @@ public class controladorPago
 						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
 						String hotel=ventana.reserva.textField_hotelseleccionado.getText();
 						String ubicacion = ventana.reserva.textField_ubicacion.getText();
-						int precio= Integer.parseInt(ventana.reserva.textField_precio.getText());
+						float precio= Float.parseFloat(ventana.reserva.textField_precio.getText());
 						ficheroReserva fichero = new ficheroReserva(numPersonas,hotel,ubicacion,precio);
 						fichero.imprimirTicket();
 						
