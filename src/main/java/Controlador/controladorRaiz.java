@@ -59,11 +59,7 @@ public class controladorRaiz {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-<<<<<<< HEAD
 				
-=======
-				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
->>>>>>> 53cd3e258e74d6e03a5086525bd44af6c3d8f232
 				
 				
 				try {
