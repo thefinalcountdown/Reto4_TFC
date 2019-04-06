@@ -11,7 +11,7 @@ public class ModeloLista implements ListModel{
 	public void rellenarModel() {
 		System.out.println("golla");
 		ArrayList<Hotel> Hotel = new ArrayList<Hotel>();
-		Hotel.add(new Hotel("Villa de Bilbao","Bilbao",1,2,3));
+		Hotel.add(new Hotel("Villa de Bilbao","Bilbao",1,2,3));//falta añadir la lista que está en el constructor de la clase Hotel que hereda de Alojamiento
 		for (int index = 0; index < Hotel.size(); index++) {
 			misNombreHoteles.add(Hotel.get(index).getNombre());
 		}
