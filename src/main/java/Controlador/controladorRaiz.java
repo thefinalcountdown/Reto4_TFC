@@ -2,7 +2,10 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Modelo.modelo;
 import Vista.Ventana;
@@ -28,6 +31,41 @@ public class controladorRaiz {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+		
+		//Calendario entrada
+		vistaRaiz.fechaIn.getDateEditor().addPropertyChangeListener(
+			new PropertyChangeListener() {
+				
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					//Comprobar que se hayan seleccionado dos fechas, que el día de salida sea posterior al de entrada y que el dia de salida y entrada no sean el mismo
+					if(vistaRaiz.fechaIn.getDate() != null && vistaRaiz.fechaOut.getDate() != null && (vistaRaiz.fechaIn.getDate().before(vistaRaiz.fechaOut.getDate())) && !(vistaRaiz.fechaIn.getDate().equals(vistaRaiz.fechaOut.getDate()))){
+						vistaRaiz.btnBuscar.setEnabled(true);
+					}
+					/*
+					if(vistaRaiz.fechaIn.getDate() != null || vistaRaiz.fechaOut.getDate() != null || (vistaRaiz.fechaIn.getDate().after(vistaRaiz.fechaOut.getDate())) || (vistaRaiz.fechaIn.getDate().getDay()==vistaRaiz.fechaOut.getDate().getDay())){
+						vistaRaiz.btnBuscar.setEnabled(false);
+					}*/
+					
+				}
+				
+			});
+		
+		
+		//Calendario salida
+		vistaRaiz.fechaOut.getDateEditor().addPropertyChangeListener(
+			new PropertyChangeListener() {
+				
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					//Comprobar que se hayan seleccionado dos fechas, que el día de salida sea posterior al de entrada y que el dia de salida y entrada no sean el mismo
+					if(vistaRaiz.fechaIn.getDate() != null && vistaRaiz.fechaOut.getDate() != null && (vistaRaiz.fechaIn.getDate().before(vistaRaiz.fechaOut.getDate())) && !(vistaRaiz.fechaIn.getDate().getDay()==vistaRaiz.fechaOut.getDate().getDay())){
+						vistaRaiz.btnBuscar.setEnabled(true);
+					}
+					
+				}
+			});
+		
 		
 		//boton sumar huesped
 		vistaRaiz.btnSum.addActionListener(new ActionListener() 
@@ -61,6 +99,8 @@ public class controladorRaiz {
 			{
 				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
 				
+				Date fechaIn = vistaRaiz.fechaIn.getDate();
+				Date fechaOut = vistaRaiz.fechaOut.getDate();
 				
 				try {
 					controladorHotel.llenarLista(GestorBD.obtenerHoteles(ubicacionSeleccionada));
