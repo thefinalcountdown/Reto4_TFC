@@ -9,8 +9,6 @@ public class controladorReserva
 {
 	private Ventana ventana;
 	private modelo modelo; 
-	controladorPago cont = new controladorPago();
-	
 	
 	public controladorReserva(Ventana ventana, modelo modelo)
 	{
@@ -23,6 +21,10 @@ public class controladorReserva
 			public void actionPerformed(ActionEvent e) 
 			{
 				ventana.cambio_panel(ventana.reserva, ventana.pago);
+				int precio = Integer.parseInt(ventana.reserva.textField_precio.getText())*Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
+				ventana.pago.DineroFaltante.setText(Integer.toString(precio));
+				controladorPago.precio = precio;
+				controladorPago.total_faltante = precio;
 			}
 		});
 		
