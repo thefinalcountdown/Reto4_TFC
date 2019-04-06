@@ -36,47 +36,48 @@ public class vistaHoteles extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private JPanel contentPane;
-	public controladorHotel lista=new controladorHotel();
+//	private JPanel contentPane;
+
+
+//	public static JComboBox listaHoteles;
+	private ArrayList<String> al = new ArrayList<String>();
+	static ModeloLista lm = new ModeloLista();
+	public static JList listaHoteles= new JList(lm);
 	JScrollPane scrollPane = new JScrollPane(listaHoteles);
-	public static JComboBox listaHoteles;
-//	public static JList listaHoteles;
-	
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
 	
 
 	
-	public vistaHoteles() {
+	public vistaHoteles() throws Exception {
 		
 
 
 			
-			setBounds(100, 100, 450, 300);
-			contentPane = new JPanel();
-			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-			contentPane.setLayout(null);
+//			setBounds(100, 100, 450, 300);
+//			contentPane = new JPanel();
+//			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//			contentPane.setLayout(null);
 			
-//			setLayout(null);
-//			scrollPane.setBounds(200, 105, 300, 250);
-//			add(scrollPane);
-//			listaHoteles = new JList(lista);
-//			lista.rellenarModel();
-//			listaHoteles.setModel(lista);
+			setLayout(null);
+			scrollPane.setBounds(200, 105, 300, 250);
+			add(scrollPane);
+			//listaHoteles = new JList(lista);
+			lm.llenarLista();
+			//listaHoteles.setModel(lista);
 			
-			listaHoteles=new JComboBox();
-			add(listaHoteles);
+//			listaHoteles=new JComboBox();
+//			add(listaHoteles);
 			
 			listaHoteles.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 					"Seleccione un hotel:", TitledBorder.LEFT, TitledBorder.TOP, null,
 					new Color(235, 145, 168)));
 			listaHoteles.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 			listaHoteles.setBounds(200, 105, 300, 250);
-			
-//			listaHoteles.setSelectedIndex(0);
-//			listaHoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//			listaHoteles.setFixedCellHeight(50);
-//			listaHoteles.setFixedCellWidth(100);
+			listaHoteles.setSelectedIndex(0);
+			listaHoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			listaHoteles.setFixedCellHeight(50);
+			listaHoteles.setFixedCellWidth(100);
 
 			
 			btnCancelar.setFont(new Font("Lucida Grande", Font.BOLD, 15));
