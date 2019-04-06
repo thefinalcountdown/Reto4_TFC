@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
-import Vista.vistaRaiz;
-import metodos.GestorBD;
-
 public class Hotel extends Alojamiento implements ListModel{
 
 
@@ -36,12 +33,6 @@ public class Hotel extends Alojamiento implements ListModel{
 //		}
 //		
 //	}
-	
-	
-	
-
-
-
 
 	public int getEstrellas() {
 		return estrellas;

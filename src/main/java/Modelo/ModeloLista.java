@@ -5,29 +5,16 @@ import java.util.ArrayList;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
-import Vista.vistaRaiz;
-import metodos.GestorBD;
-
 public class ModeloLista implements ListModel{
-	private static  ArrayList<String> lista= new ArrayList<String>();
-	 static ArrayList<Hotel> hoteles = new ArrayList<Hotel>();
-
-	public static ArrayList<Hotel> llenarLista()throws Exception{
-	String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
-	 hoteles=GestorBD.obtenerHoteles1(ubicacionSeleccionada);
-	 for (int index = 0; index < hoteles.size(); index++) {
-			makeObj(hoteles.get(index).getNombre());
-			lista.add(hoteles.get(index).getNombre());
-		}
-		return hoteles;
+	private ArrayList<String> misNombreHoteles = new ArrayList<String>();
 	
-	}
-	public static Object makeObj(final String item) {
-		return new Object() {
-			public String toString() {
-				return item;
-			}
-		};
+	public void rellenarModel() {
+		System.out.println("golla");
+		ArrayList<Hotel> Hotel = new ArrayList<Hotel>();
+		Hotel.add(new Hotel("Villa de Bilbao","Bilbao",1,2,3));
+		for (int index = 0; index < Hotel.size(); index++) {
+			misNombreHoteles.add(Hotel.get(index).getNombre());
+		}
 	}
 	
 	@Override

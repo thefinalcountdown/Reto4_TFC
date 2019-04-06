@@ -88,17 +88,12 @@ public class controladorHotel implements ListModel {
 
 	// Metodo para rellenar con el comboBox:
 
-//	public static void llenarLista(ArrayList<String> hotel) {
-//		for (int i = 0; i < hotel.size(); i++) {
-//			vistaHoteles.listaHoteles.addItem(hotel.get(i));
-//		}
-//	}
+	public static void llenarLista(ArrayList<String> hotel) {
+		for (int i = 0; i < hotel.size(); i++) {
+			vistaHoteles.listaHoteles.addItem(hotel.get(i));
+		}
+	}
 
-	//Metodo para llenar la JList:
-	
-	
-	
-	
 	// Metodo para vaciar con el comboBox:
 
 	public static void vaciarComboBox() {

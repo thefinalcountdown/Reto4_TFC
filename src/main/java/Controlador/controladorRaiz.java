@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import Modelo.Hotel;
-import Modelo.ModeloLista;
 import Modelo.modelo;
 import Vista.Ventana;
 import Vista.vistaRaiz;
@@ -61,12 +59,11 @@ public class controladorRaiz {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				
+				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
 				
 				
 				try {
-//					controladorHotel.llenarLista(GestorBD.obtenerHoteles(ubicacionSeleccionada));
-					ModeloLista.llenarLista();
+					controladorHotel.llenarLista(GestorBD.obtenerHoteles(ubicacionSeleccionada));
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
