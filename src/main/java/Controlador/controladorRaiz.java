@@ -6,14 +6,12 @@ import java.util.ArrayList;
 
 import Modelo.modelo;
 import Vista.Ventana;
-import Vista.vistaRaiz;
 import metodos.GestorBD;
 
 
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
-	private Controlador Controlador;
 	
 	public static int num_huespedes = 1;
 	
@@ -30,7 +28,7 @@ public class controladorRaiz {
 		}
 		
 		//boton sumar huesped
-		vistaRaiz.btnSum.addActionListener(new ActionListener() 
+		ventana.raiz.btnSum.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -38,28 +36,28 @@ public class controladorRaiz {
 				num_huespedes++;
 				//por si hay que borrar el jtextfield
 				//vistaRaiz.txthuesped.setText("");
-				vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
+				ventana.raiz.txthuesped.setText(Integer.toString(num_huespedes));
 			}
 		});
 		
 		//boton restar huesped
-		vistaRaiz.btnRest.addActionListener(new ActionListener() 
+		ventana.raiz.btnRest.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
 				if(num_huespedes >1) {
 					num_huespedes--;
-					vistaRaiz.txthuesped.setText(Integer.toString(num_huespedes));
+					ventana.raiz.txthuesped.setText(Integer.toString(num_huespedes));
 				}
 			}
 		});	
 		
 		//boton pasar siguiente ventana
-		vistaRaiz.btnBuscar.addActionListener(new ActionListener() 
+		ventana.raiz.btnBuscar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				String ubicacionSeleccionada = vistaRaiz.comboBoxUbicacion.getSelectedItem().toString();
+				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
 				
 				
 				try {
@@ -69,8 +67,8 @@ public class controladorRaiz {
 				}
 				
 				ventana.cambio_panel(ventana.raiz, ventana.hotel);
-				ventana.reserva.textField_numpersonas.setText(vistaRaiz.txthuesped.getText());
-				ventana.reserva.textField_ubicacion.setText(vistaRaiz.comboBoxUbicacion.getSelectedItem().toString());
+				ventana.reserva.textField_numpersonas.setText(ventana.raiz.txthuesped.getText());
+				ventana.reserva.textField_ubicacion.setText(ventana.raiz.comboBoxUbicacion.getSelectedItem().toString());
 				
 			}
 		});
@@ -80,7 +78,7 @@ public class controladorRaiz {
 	
 	public void llenarUbicaciones(ArrayList<String> ubicaciones){
 		for(int i=0; i< ubicaciones.size(); i++) {
-			vistaRaiz.comboBoxUbicacion.addItem(ubicaciones.get(i));
+			ventana.raiz.comboBoxUbicacion.addItem(ubicaciones.get(i));
 		}
 	}
 	

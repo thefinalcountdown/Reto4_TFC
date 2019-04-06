@@ -48,7 +48,7 @@ public class vistaReserva extends JPanel
 		textField_ubicacion = new JTextField();
 		textField_ubicacion.setEditable(false);
 		textField_ubicacion.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField_ubicacion.setBounds(495, 293, 130, 26);
+		textField_ubicacion.setBounds(495, 293, 214, 26);
 		add(textField_ubicacion);
 		textField_ubicacion.setColumns(10);
 		
@@ -56,21 +56,21 @@ public class vistaReserva extends JPanel
 		textField_numpersonas.setEditable(false);
 		textField_numpersonas.setHorizontalAlignment(SwingConstants.RIGHT);
 		textField_numpersonas.setColumns(10);
-		textField_numpersonas.setBounds(495, 235, 130, 26);
+		textField_numpersonas.setBounds(495, 235, 214, 26);
 		add(textField_numpersonas);
 		
 		textField_precio = new JTextField();
 		textField_precio.setEditable(false);
 		textField_precio.setHorizontalAlignment(SwingConstants.RIGHT);
 		textField_precio.setColumns(10);
-		textField_precio.setBounds(495, 187, 130, 26);
+		textField_precio.setBounds(495, 187, 214, 26);
 		add(textField_precio);
 		
 		textField_hotelseleccionado = new JTextField();
 		textField_hotelseleccionado.setEditable(false);
 		textField_hotelseleccionado.setHorizontalAlignment(SwingConstants.RIGHT);
 		textField_hotelseleccionado.setColumns(10);
-		textField_hotelseleccionado.setBounds(495, 139, 130, 26);
+		textField_hotelseleccionado.setBounds(495, 139, 214, 26);
 		add(textField_hotelseleccionado);
 	}
 }
