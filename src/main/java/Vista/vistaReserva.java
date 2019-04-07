@@ -54,7 +54,7 @@ public class vistaReserva extends JPanel
 		textField_ubicacion = new JTextField();
 		textField_ubicacion.setEditable(false);
 		textField_ubicacion.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField_ubicacion.setBounds(495, 293, 130, 26);
+		textField_ubicacion.setBounds(495, 293, 214, 26);
 		add(textField_ubicacion);
 		textField_ubicacion.setColumns(10);
 		

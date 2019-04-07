@@ -28,14 +28,14 @@ public class vistaRaiz extends JPanel {
 	public JLabel lblNewLabel;
 	public JLabel lblDnde;
 	public JLabel lblHuspedes;
-	public static JComboBox comboBoxUbicacion;
-	public static JButton btnSum = new JButton("+");
-	public static JButton btnRest = new JButton("-");
-	public static JTextField txthuesped;
-	public static JButton btnBuscar;
+	public JComboBox comboBoxUbicacion;
+	public JButton btnSum = new JButton("+");
+	public JButton btnRest = new JButton("-");
+	public JTextField txthuesped;
+	public JButton btnBuscar;
 	private JLabel lblFecha;
-	public static JDateChooser fechaIn;
-	public static JDateChooser fechaOut;
+	public JDateChooser fechaIn;
+	public JDateChooser fechaOut;
 	//private JDateChooser fechaOut = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
 	/**
 	 * Create the panel.
