@@ -13,14 +13,14 @@ public class Hotel extends Alojamiento implements ListModel{
 	
 	
 
-	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento) {
-		super(nombre, ubicacion, precio, cod_alojamiento);
+	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> listaHabitaciones ) {
+		super(nombre, ubicacion, precio, cod_alojamiento, listaHabitaciones);
 		// TODO Auto-generated constructor stub
 	}
 	
 
-	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, int estrellas) {
-		super(nombre, ubicacion, precio, cod_alojamiento);
+	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> listaHabitaciones, int estrellas) {
+		super(nombre, ubicacion, precio, cod_alojamiento, listaHabitaciones);
 		this.estrellas=estrellas;
 	}
 	
@@ -45,7 +45,7 @@ public class Hotel extends Alojamiento implements ListModel{
 	@Override
 	public String toString() {
 		return "Hotel [estrellas=" + estrellas + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio="
-				+ precio + ", Cod_alojamiento=" + Cod_alojamiento + "]";
+				+ precio + ", Cod_alojamiento=" + Cod_alojamiento + ", Lista habitaciones=" +listaHabitaciones+"]";
 	}
 
 

@@ -14,7 +14,7 @@ public class Ventana extends JFrame
 	public vistaReserva reserva;
 	public vistaPago pago;
 	public vistaHoteles hotel;
-	
+	public vistaLogin login;
 	
 	
 	public Ventana() 
@@ -33,6 +33,9 @@ public class Ventana extends JFrame
 		contentPane.add(raiz);
 		raiz.setLayout(null);
 
+		login = new vistaLogin();
+		contentPane.add(login);
+		login.setLayout(null);
 		
 		reserva = new vistaReserva();
 		contentPane.add(reserva);

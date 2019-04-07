@@ -1,11 +1,13 @@
 package Controlador;
 
 import Vista.Ventana;
+import Vista.vistaPago;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import Modelo.ficheroReserva;
@@ -18,11 +20,11 @@ public class controladorPago
 	private ficheroReserva fichero;
 	
 	private double total_introducido=0;
-	public static double total_faltante;
+	static double total_faltante;
 	private double total_devolucion=0;
 	private double valorBoton=0;
 	public static double precio;
-	public int numPersonas;
+	public static int numPersonas;
 	private int contador_billete200 = 0;
 	private int contador_billete100 = 0;
 	private int contador_billete50 = 0;
@@ -62,8 +64,11 @@ public class controladorPago
 		ventana.pago.moneda5cent.setActionCommand("0.05");
 		ventana.pago.moneda2cent.setActionCommand("0.02");
 		ventana.pago.moneda1cent.setActionCommand("0.01");
-
-		
+//		
+//		precio=Integer.parseInt(ventana.reserva.textField_precio.getText());
+//		numPersonas=Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
+//		total_faltante = precio*numPersonas;
+//		ventana.pago.DineroFaltante.setText(total_faltante+" \u20ac");
 		ventana.pago.DineroIntroducido.setText("0.00 \u20ac");
 		
 		
