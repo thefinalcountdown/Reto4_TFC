@@ -12,7 +12,7 @@ public class Controlador
 	public controladorPago controladorPago;
 	public controladorReserva controladorReserva;
 	public controladorHotel controladorHotel;
-	
+	public controladorLogin controladorLogin;
 	
 	public Controlador(Ventana ventana, modelo modelo)
 	{
@@ -23,9 +23,16 @@ public class Controlador
 		this.controladorPago = new controladorPago(ventana, modelo);
 		this.controladorReserva = new controladorReserva(ventana, modelo);
 		this.controladorHotel= new controladorHotel(ventana, modelo);
+		this.controladorLogin = new controladorLogin(ventana, modelo);
 	}
 	
-	
+	public controladorLogin getControladorLogin() {
+		return controladorLogin;
+	}
+
+	public void setControladorLogin(controladorLogin controladorLogin) {
+		this.controladorLogin = controladorLogin;
+	}
 
 	public controladorRaiz getControladorRaiz() {
 		return controladorRaiz;
