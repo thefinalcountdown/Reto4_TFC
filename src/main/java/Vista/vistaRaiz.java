@@ -36,6 +36,7 @@ public class vistaRaiz extends JPanel {
 	private JLabel lblFecha;
 	public JDateChooser fechaIn;
 	public JDateChooser fechaOut;
+	public Date fechaEntrada = new Date();
 	//private JDateChooser fechaOut = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
 	/**
 	 * Create the panel.
@@ -106,6 +107,7 @@ public class vistaRaiz extends JPanel {
 		calendarOut.setMaxDayCharacters(3);
 		Date diaOut = new Date();
 		diaOut = new Date(diaOut.getTime() + (1000 * 60 * 60 * 24));
+		
 		calendarOut.setMinSelectableDate(diaOut);
 		calendarOut.setSundayForeground(Color.BLUE);
 		
