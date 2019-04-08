@@ -31,7 +31,7 @@ public class controladorHotel implements ListModel {
 
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.hotel, ventana.reserva);
+				ventana.cambio_panel(ventana.hotel, ventana.login);
 
 				float precio_reserva = Float.parseFloat(separarString(vistaHoteles.listaHoteles)[1]);
 				
