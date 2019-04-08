@@ -6,8 +6,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Date;
-import org.apache.commons.lang.time.DateUtils;
-
 import com.toedter.calendar.JDateChooser;
 
 import Modelo.modelo;
