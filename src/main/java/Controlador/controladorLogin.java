@@ -53,7 +53,7 @@ public class controladorLogin {
 				if (funcionesLogin
 						.login(GestorBD.consulta(funcionesLogin.sentenciaLogin(vistaLogin.textFieldDniLogin.getText(),
 								String.valueOf(vistaLogin.passwordFieldClaveLogin.getPassword())))) == false) {
-					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos...");
+					JOptionPane.showMessageDialog(null, "Usuario o contrase\u00f1a incorrectos...");
 				}
 				// Si la funcion login no es falsa, el login sera correcto, y cambiaremos a la
 				// siguiente ventana. Y guardaremos
@@ -81,10 +81,10 @@ public class controladorLogin {
 							funcionesLogin.sentenciaActualizar(vistaLogin.textFieldActualizarDNI.getText(),
 									String.valueOf(vistaLogin.passwordFieldActualizarClave.getPassword()),
 									String.valueOf(vistaLogin.passwordFieldNuevaClave.getPassword())));
-					JOptionPane.showMessageDialog(null, "Contraseña actualizada con exito...");
+					JOptionPane.showMessageDialog(null, "Contrase\u00f1a actualizada con exito...");
 				} else {
 					JOptionPane.showMessageDialog(null,
-							"Usuario o contraseña no válidos, No se pudo actualizar la contraseña...");
+							"Usuario o contrase\u00f1a no v\u00e1lidos, No se pudo actualizar la contrase\u00f1a...");
 				}
 			}
 		});
@@ -99,9 +99,9 @@ public class controladorLogin {
 							String.valueOf(vistaLogin.passwordFieldClaveLogin.getPassword())));
 					JOptionPane.showMessageDialog(null, "Usuario borrado con exito...");
 				}
-				// Si el usuario no existe o la contraseña no coincide sacara un panel
+				// Si el usuario no existe o la contraseï¿½a no coincide sacara un panel
 				else {
-					JOptionPane.showMessageDialog(null, "El usuario o la contraseña no son válidos...");
+					JOptionPane.showMessageDialog(null, "El usuario o la contrase\u00f1a no son v\u00e1lidos...");
 				}
 			}
 		});
