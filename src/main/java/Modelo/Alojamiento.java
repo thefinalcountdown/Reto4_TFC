@@ -8,15 +8,21 @@ public abstract class Alojamiento {
 	String ubicacion;
 	float precio;
 	int Cod_alojamiento;
-	ArrayList<Habitaciones> listaHabitaciones = new ArrayList<Habitaciones>();
+//	ArrayList<Habitaciones> listaHabitaciones = new ArrayList<Habitaciones>();
 	
 	
 	
-	public Alojamiento(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> ListaHabitaciones) {
+//	public Alojamiento(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> ListaHabitaciones) {
+//		this.nombre = nombre;
+//		this.ubicacion = ubicacion;
+//		this.precio = precio;
+//		this.listaHabitaciones = ListaHabitaciones;
+//		Cod_alojamiento = cod_alojamiento;
+//	}
+	public Alojamiento(String nombre, String ubicacion, float precio, int cod_alojamiento) {
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
 		this.precio = precio;
-		this.listaHabitaciones = ListaHabitaciones;
 		Cod_alojamiento = cod_alojamiento;
 	}
 	
@@ -45,20 +51,25 @@ public abstract class Alojamiento {
 	public void setCod_alojamiento(int cod_alojamiento) {
 		Cod_alojamiento = cod_alojamiento;
 	}
-	public ArrayList<Habitaciones> getListaHabitaciones() {
-		return listaHabitaciones;
-	}
-	
-	public void setListaHabitaciones(ArrayList<Habitaciones> ListaHabitaciones) {
-		listaHabitaciones = ListaHabitaciones;
-	}
-	
+//	public ArrayList<Habitaciones> getListaHabitaciones() {
+//		return listaHabitaciones;
+//	}
+//	
+//	public void setListaHabitaciones(ArrayList<Habitaciones> ListaHabitaciones) {
+//		listaHabitaciones = ListaHabitaciones;
+//	}
+//	
+//	@Override
+//	public String toString() {
+//		return "Alojamiento [nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio=" + precio
+//				+ ", Cod_alojamiento=" + Cod_alojamiento + ", Lista habitaciones=" +listaHabitaciones+"]";
+//	}
+//	
 	@Override
 	public String toString() {
 		return "Alojamiento [nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio=" + precio
-				+ ", Cod_alojamiento=" + Cod_alojamiento + ", Lista habitaciones=" +listaHabitaciones+"]";
+				+ ", Cod_alojamiento=" + Cod_alojamiento + "]";
 	}
-	
 	
 
 }

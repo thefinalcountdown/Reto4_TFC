@@ -5,6 +5,7 @@ import Controlador.Controlador;
 public class modelo 
 {
 	private Controlador controlador;
+	public ModeloLista modeloLista;
 	
 	public modelo()
 	{
