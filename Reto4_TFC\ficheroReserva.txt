@@ -1,4 +1,4 @@
- Hotel: Hotel Palacio de los Navas
+ Hotel: Hotel Ibis Granada
  Numero de personas: 3
  Ubicacion: Granada
- Precio: 80.0
+ Precio: 240.0

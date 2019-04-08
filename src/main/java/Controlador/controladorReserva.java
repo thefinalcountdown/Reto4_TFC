@@ -22,8 +22,8 @@ public class controladorReserva
 			public void actionPerformed(ActionEvent e) 
 			{
 				ventana.cambio_panel(ventana.reserva, ventana.pago);
-				int precio = Integer.parseInt(ventana.reserva.textField_precio.getText())*Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
-				ventana.pago.DineroFaltante.setText(Integer.toString(precio)+" \u20ac");
+				float precio = Float.parseFloat(ventana.reserva.textField_precio.getText());
+				ventana.pago.DineroFaltante.setText(Float.toString(precio)+" \u20ac");
 				controladorPago.precio = precio;
 				controladorPago.total_faltante = precio;
 			}

@@ -33,7 +33,9 @@ public class controladorHotel implements ListModel {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.reserva);
 
-				ventana.reserva.textField_precio.setText(separarString(vistaHoteles.listaHoteles)[1]);
+				float precio_reserva = Float.parseFloat(separarString(vistaHoteles.listaHoteles)[1]);
+				
+				ventana.reserva.textField_precio.setText(Float.toString(precio_reserva*Integer.parseInt(ventana.raiz.txthuesped.getText())));
 				ventana.reserva.textField_hotelseleccionado.setText(separarString(vistaHoteles.listaHoteles)[0]);
 			}
 		});
