@@ -6,9 +6,13 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Date;
+import org.apache.commons.lang.time.DateUtils;
+
+import com.toedter.calendar.JDateChooser;
 
 import Modelo.modelo;
 import Vista.Ventana;
+import Vista.vistaRaiz;
 import metodos.GestorBD;
 
 
@@ -41,10 +45,9 @@ public class controladorRaiz {
 							(ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate())) && !(ventana.raiz.fechaIn.getDate().equals(ventana.raiz.fechaOut.getDate()))){
 						ventana.raiz.btnBuscar.setEnabled(true);
 					}
-					/*
-					if(vistaRaiz.fechaIn.getDate() != null || vistaRaiz.fechaOut.getDate() != null || (vistaRaiz.fechaIn.getDate().after(vistaRaiz.fechaOut.getDate())) || (vistaRaiz.fechaIn.getDate().getDay()==vistaRaiz.fechaOut.getDate().getDay())){
-						vistaRaiz.btnBuscar.setEnabled(false);
-					}*/
+					if(ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null 
+							&& (ventana.raiz.fechaOut.getDate().before(ventana.raiz.fechaIn.getDate())))
+						ventana.raiz.btnBuscar.setEnabled(false);
 					
 				}
 				
