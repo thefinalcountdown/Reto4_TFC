@@ -1,6 +1,8 @@
 package Controlador;
 
 import Vista.Ventana;
+import metodos.GestorBD;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
@@ -252,6 +254,7 @@ public class controladorPago
 						
 						if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
 						{
+							GestorBD.introducir_reserva();
 							System.exit(0);
 						}
 				 }

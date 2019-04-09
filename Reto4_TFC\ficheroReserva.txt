@@ -1,4 +1,4 @@
- Hotel: Hotel Ibis Granada
- Numero de personas: 3
- Ubicacion: Granada
- Precio: 240.0
+ Hotel: Hotel Ibis Madrid
+ Numero de personas: 2
+ Ubicacion: Madrid
+ Precio: 160.0
