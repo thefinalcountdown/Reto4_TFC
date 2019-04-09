@@ -50,5 +50,9 @@ public class Usuario {
 		this.clave = clave;
 	}
 	
+	@Override
+	public String toString() {
+		return "DNI: " + this.dni + " Nombre: " + this.nombre + " Apellido: " + this.apellido;
+	}
 	
 }

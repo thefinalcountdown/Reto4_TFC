@@ -16,7 +16,7 @@ import Vista.vistaHoteles;
 import Vista.vistaRaiz;
 import metodos.GestorBD;
 
-public class controladorHotel implements ListModel {
+public class controladorHotel{
 	private ArrayList<String> misNombreHoteles = new ArrayList<String>();
 
 	private Ventana ventana;
@@ -31,19 +31,19 @@ public class controladorHotel implements ListModel {
 
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.hotel, ventana.reserva);
+				ventana.cambio_panel(ventana.hotel, ventana.login);
 
-				float precio_reserva = Float.parseFloat(separarString(vistaHoteles.listaHoteles)[1]);
+//				float precio_reserva = Float.parseFloat(separarString(vistaHoteles.listaHoteles)[1]);
 				
-				ventana.reserva.textField_precio.setText(Float.toString(precio_reserva*Integer.parseInt(ventana.raiz.txthuesped.getText())));
-				ventana.reserva.textField_hotelseleccionado.setText(separarString(vistaHoteles.listaHoteles)[0]);
+//				ventana.reserva.textField_precio.setText(Float.toString(precio_reserva*Integer.parseInt(ventana.raiz.txthuesped.getText())));
+//				ventana.reserva.textField_hotelseleccionado.setText(separarString(vistaHoteles.listaHoteles)[0]);
 			}
 		});
 
 		ventana.hotel.btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
-				vaciarComboBox();
+//				vaciarComboBox();
 			}
 		});
 
@@ -82,41 +82,18 @@ public class controladorHotel implements ListModel {
 
 	// Metodo para rellenar con el comboBox:
 
-	public static void llenarLista(ArrayList<String> hotel) {
-		for (int i = 0; i < hotel.size(); i++) {
-			vistaHoteles.listaHoteles.addItem(hotel.get(i));
-		}
-	}
+//	public static void llenarLista(ArrayList<String> hotel) {
+//		for (int i = 0; i < hotel.size(); i++) {
+//			vistaHoteles.listaHoteles.addItem(hotel.get(i));
+//		}
+//	}
+//
+//	// Metodo para vaciar con el comboBox:
+//
+//	public static void vaciarComboBox() {
+//
+//		vistaHoteles.listaHoteles.removeAllItems();
+//	}
 
-	// Metodo para vaciar con el comboBox:
 
-	public static void vaciarComboBox() {
-
-		vistaHoteles.listaHoteles.removeAllItems();
-	}
-
-	// Metodos de la interfaz ListModel son necesarios:
-	@Override
-	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Object getElementAt(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addListDataListener(ListDataListener l) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void removeListDataListener(ListDataListener l) {
-		// TODO Auto-generated method stub
-
-	}
 }

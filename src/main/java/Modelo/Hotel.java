@@ -10,19 +10,30 @@ public class Hotel extends Alojamiento implements ListModel{
 
 	int estrellas;
 	
-	
+//	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> listaHabitaciones ) {
+//	super(nombre, ubicacion, precio, cod_alojamiento, listaHabitaciones);
+//	// TODO Auto-generated constructor stub
+//}
+//
+//public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> listaHabitaciones, int estrellas) {
+//	super(nombre, ubicacion, precio, cod_alojamiento, listaHabitaciones);
+//	this.estrellas=estrellas;
+//}
 	
 
-	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> listaHabitaciones ) {
-		super(nombre, ubicacion, precio, cod_alojamiento, listaHabitaciones);
+	
+	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento) {
+		super(nombre, ubicacion, precio, cod_alojamiento);
 		// TODO Auto-generated constructor stub
 	}
 	
-
-	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> listaHabitaciones, int estrellas) {
-		super(nombre, ubicacion, precio, cod_alojamiento, listaHabitaciones);
+	
+	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, int estrellas) {
+		super(nombre, ubicacion, precio, cod_alojamiento);
 		this.estrellas=estrellas;
 	}
+	
+
 	
 //	public static void rellenarModel(String nombre, String ubicacion, float precio, int cod_alojamiento, int estrellas) {
 //		ArrayList<String> misNombreHoteles = new ArrayList<String>();
@@ -42,11 +53,18 @@ public class Hotel extends Alojamiento implements ListModel{
 		this.estrellas = estrellas;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Hotel [estrellas=" + estrellas + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio="
+//				+ precio + ", Cod_alojamiento=" + Cod_alojamiento + ", Lista habitaciones=" +listaHabitaciones+"]";
+//	}
+	
 	@Override
 	public String toString() {
 		return "Hotel [estrellas=" + estrellas + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio="
-				+ precio + ", Cod_alojamiento=" + Cod_alojamiento + ", Lista habitaciones=" +listaHabitaciones+"]";
+				+ precio + ", Cod_alojamiento=" + Cod_alojamiento + "]";
 	}
+
 
 
 	@Override
