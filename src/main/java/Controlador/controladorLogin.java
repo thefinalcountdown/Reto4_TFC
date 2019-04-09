@@ -21,51 +21,42 @@ public class controladorLogin {
 
 		vistaLogin.btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (funcionesLogin.comprobarLogin(GestorBD.consulta(
-						funcionesLogin.sentenciaComprobarLogin(vistaLogin.formattedTextFieldLoginDNI.getText(),
-								String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())))) == true) {
-					funcionesLogin.rellenarUsuario(GestorBD.consulta(
-							funcionesLogin.sentenciaComprobarLogin(vistaLogin.formattedTextFieldLoginDNI.getText(),
-									String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword()))));
-					JOptionPane.showMessageDialog(null, "Usuario Logueado con exito...");
-					ventana.cambio_panel(ventana.login, ventana.reserva);
-				} else {
+				if (GestorBD.comprobarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
+						String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())) == false) {
 					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos...");
+				} else {
+					funcionesLogin.rellenarUsuario(GestorBD
+							.consulta(funcionesLogin.sentenciaLogin(vistaLogin.formattedTextFieldLoginDNI.getText(),
+									String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword()))));
+					JOptionPane.showMessageDialog(null, "Usuario logueado correctamente...");
+					ventana.cambio_panel(ventana.login, ventana.reserva);
 				}
 			}
 		});
 
 		vistaLogin.btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (funcionesLogin.comprobarLogin(GestorBD.consulta(
-						funcionesLogin.sentenciaComprobarLogin(vistaLogin.formattedTextFieldLoginDNI.getText(),
-								String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())))) == true) {
-					GestorBD.insertarDatos(
-							funcionesLogin.sentenciaActualizar(vistaLogin.formattedTextFieldActualizarDNI.getText(),
-									String.valueOf(vistaLogin.passwordFieldActualizarClave.getPassword()),
-									String.valueOf(vistaLogin.passwordFieldNuevaClave.getPassword())));
-					JOptionPane.showMessageDialog(null, "Contraseña actualizada con exito...");
+				if (GestorBD.comprobarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
+						String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())) == false) {
+					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos...");
 				} else {
-					JOptionPane.showMessageDialog(null, "No se pudo actualizar la contraseña...");
+					GestorBD.actualizarUsuario(vistaLogin.formattedTextFieldActualizarDNI.getText(),
+							String.valueOf(vistaLogin.passwordFieldActualizarClave.getPassword()),
+							String.valueOf(vistaLogin.passwordFieldNuevaClave.getPassword()));
+					JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente...");
 				}
 			}
 		});
 
 		vistaLogin.btnBorrarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (funcionesLogin.comprobarLogin(GestorBD.consulta(
-						funcionesLogin.sentenciaComprobarLogin(vistaLogin.formattedTextFieldLoginDNI.getText(),
-								String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())))) == true) {
-					GestorBD.insertarDatos(
-							funcionesLogin.sentenciaBorrarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
-									String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())));
-					JOptionPane.showMessageDialog(null, "Usuario borrado con exito...");
-				} else if (funcionesLogin.comprobarLogin(GestorBD.consulta(
-						funcionesLogin.sentenciaComprobarLogin(vistaLogin.formattedTextFieldLoginDNI.getText(),
-								String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())))) == false) {
+				if (GestorBD.comprobarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
+						String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())) == false) {
 					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos...");
 				} else {
-					JOptionPane.showMessageDialog(null, "El usuario no existe...");
+					GestorBD.borrarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
+							String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword()));
+					JOptionPane.showMessageDialog(null, "Usuario borrado correctamente...");
 				}
 			}
 		});

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class funcionesLogin {
 	// Comprobar que los campos de la vistalogin no esten vacios.
 	public static boolean comprobarCampos(String dni, String nombre, String apellido, String clave) {
-		String sentencia = "insert into usuario(DNI, Nombre, Apellido, Clave)" + "values(\"" + dni + "\", \"" + nombre
+		String sentencia = "insert into Usuario(DNI, Nombre, Apellido, Clave)" + "values(\"" + dni + "\", \"" + nombre
 				+ "\", \"" + apellido + "\", \"" + clave + "\")";
 
 		if (dni.equals("") || nombre.equals("") || apellido.equals("") || clave.equals("")) {
@@ -18,49 +18,6 @@ public class funcionesLogin {
 			return false;
 		}
 
-	}
-
-	// Sentencia para comprobar que el usuario existe
-	public static String sentenciaComprobarUsuario(String dni) {
-		return "select * from Usuarios where DNI=\"" + dni + "\"";
-	}
-
-	// Si el usuario existe nos devolvera true, si no, sera false
-	public static boolean comprobarUsuario(ResultSet result) {
-		try {
-			if (result.next() == true) {
-				return true;
-			} else {
-				return false;
-			}
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "No se pudo hacer la consulta a la Base de Datos");
-		}
-		return false;
-	}
-
-	// Sentencia para comprobar usuario y clave para actualizar, existe
-	public static String sentenciaComprobarLogin(String dni, String clave) {
-		return "select * from Usuario where DNI=\"" + dni + "\" and Clave=\"" + clave + "\"";
-	}
-
-	// Nos devolvera true si el usuario existe, si no, sera false
-	public static boolean comprobarLogin(ResultSet result) {
-		try {
-			if (result.next()) {
-				return true;
-			}
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "No se pudo hacer la consulta a la base de datos");
-			return false;
-		}
-		return false;
-	}
-
-	// Sentencia para actualizar usuario
-	public static String sentenciaActualizar(String dniactualizar, String claveactualizar, String clavenueva) {
-		return "update Usuario set Clave=\"" + clavenueva + "\" where DNI=\"" + dniactualizar + "\" and Clave=\""
-				+ claveactualizar + "\"";
 	}
 
 	// sentencia para comprobar usuario login
@@ -86,14 +43,4 @@ public class funcionesLogin {
 
 	}
 
-	// Sentencia para rellenar el usuario
-	public static String sentenciaInsertarUsuario(String dni, String nombre, String apellido, String clave) {
-		return "insert into usuario(DNI, Nombre, Apellido, Clave) values(\"" + dni + "\", \"" + nombre + "\", \""
-				+ apellido + "\", \"" + clave + "\"";
-	}
-
-	// Sentencia para borrar el usuario
-	public static String sentenciaBorrarUsuario(String logindni, String loginclave) {
-		return "delete from Usuario where DNI=\"" + logindni + "\" and Clave=\"" + loginclave + "\"";
-	}
 }

@@ -27,7 +27,7 @@ public class vistaLogin extends JPanel {
 		setLayout(null);
 
 		btnLogin = new JButton("Login");
-		btnLogin.setBounds(91, 301, 89, 23);
+		btnLogin.setBounds(323, 150, 89, 23);
 		add(btnLogin);
 
 		btnActualizar = new JButton("Actualizar");
@@ -36,7 +36,7 @@ public class vistaLogin extends JPanel {
 		add(btnActualizar);
 
 		btnBorrarUsuario = new JButton("Borrar");
-		btnBorrarUsuario.setBounds(119, 184, 89, 23);
+		btnBorrarUsuario.setBounds(323, 186, 89, 23);
 		add(btnBorrarUsuario);
 
 		btnCancelar = new JButton("Cancelar");

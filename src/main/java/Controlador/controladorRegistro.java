@@ -24,27 +24,19 @@ public class controladorRegistro {
 
 		vistaRegistro.btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// comprueba que todos los campos han sido rellenados, si no es asi, mandara un
-				// panel con el mensaje
 				if (funcionesLogin.comprobarCampos(vistaRegistro.formattedTextFieldDNI.getText(),
 						vistaRegistro.formattedTextFieldNombre.getText(),
 						vistaRegistro.formattedTextFieldApellido.getText(),
 						String.valueOf(vistaRegistro.passwordFieldClave.getPassword())) == true) {
 					JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos...");
-					// Comprueba que el dni exista en la base de datos antes de insertar uno nuevo,
-					// si el usuario
-					// ya existe, nos mandara un panel
-				} else if (funcionesLogin.comprobarUsuario(GestorBD.consulta(funcionesLogin
-						.sentenciaComprobarUsuario(vistaRegistro.formattedTextFieldDNI.getText()))) == true) {
+				} else if (GestorBD.comprobarUsuario(vistaRegistro.formattedTextFieldDNI.getText(),
+						String.valueOf(vistaRegistro.passwordFieldClave.getPassword())) == true) {
 					JOptionPane.showMessageDialog(null, "El usuario ya existe...");
-					// Mandamos a insertar datos del gestor la sentencia que vamos a formar con los
-					// textfield
-					// que tengamos rellenados a la hora de pulsar el boton de registro
-				} else if (GestorBD.insertarDatos(funcionesLogin.sentenciaInsertarUsuario(
-						vistaRegistro.formattedTextFieldDNI.getText(), vistaRegistro.formattedTextFieldNombre.getText(),
+				} else if (GestorBD.insertarUsuario(vistaRegistro.formattedTextFieldDNI.getText(),
+						vistaRegistro.formattedTextFieldNombre.getText(),
 						vistaRegistro.formattedTextFieldApellido.getText(),
-						String.valueOf(vistaRegistro.passwordFieldClave.getPassword()))) == true) {
-					JOptionPane.showMessageDialog(null, "Usuario creado con exito, logueate...");
+						String.valueOf(vistaRegistro.passwordFieldClave.getPassword())) == true) {
+					JOptionPane.showMessageDialog(null, "Usuario creado con exito...");
 					ventana.cambio_panel(ventana.registro, ventana.seleccionar);
 				}
 			}
