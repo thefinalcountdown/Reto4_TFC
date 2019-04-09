@@ -40,12 +40,12 @@ public class funcionesLogin {
 	}
 
 	// Sentencia para comprobar usuario y clave para actualizar, existe
-	public static String sentenciaComprobarClave(String dniactualizar, String claveactualizar) {
-		return "select from Usuario where DNI=\"" + dniactualizar + "\" and Clave=\"" + claveactualizar + "\"";
+	public static String sentenciaComprobarLogin(String dni, String clave) {
+		return "select * from Usuario where DNI=\"" + dni + "\" and Clave=\"" + clave + "\"";
 	}
 
 	// Nos devolvera true si el usuario existe, si no, sera false
-	public static boolean comprobarClave(ResultSet result) {
+	public static boolean comprobarLogin(ResultSet result) {
 		try {
 			if (result.next()) {
 				return true;
@@ -66,19 +66,6 @@ public class funcionesLogin {
 	// sentencia para comprobar usuario login
 	public static String sentenciaLogin(String logindni, String loginclave) {
 		return "select * from Usuario where DNI=\"" + logindni + "\" and Clave=\"" + loginclave + "\"";
-	}
-
-	// si el usuario del login existe nos devolvera true, si no sera falso
-	public static boolean login(ResultSet result) {
-		try {
-			if (result.next()) {
-				return true;
-			}
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "No se pudo hacer la consulta a la base de datos");
-			return false;
-		}
-		return false;
 	}
 
 	// rellena el usuario con los datos de la BD

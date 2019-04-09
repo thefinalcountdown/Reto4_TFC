@@ -15,6 +15,8 @@ public class Ventana extends JFrame
 	public vistaPago pago;
 	public vistaHoteles hotel;
 	public vistaLogin login;
+	public vistaRegistro registro;
+	public vistaSeleccionar seleccionar;
 	
 	
 	public Ventana() 
@@ -32,6 +34,14 @@ public class Ventana extends JFrame
 		raiz = new vistaRaiz();
 		contentPane.add(raiz);
 		raiz.setLayout(null);
+		
+		registro = new vistaRegistro();
+		contentPane.add(registro);
+		registro.setLayout(null);
+		
+		seleccionar = new vistaSeleccionar();
+		contentPane.add(seleccionar);
+		seleccionar.setLayout(null);
 
 		login = new vistaLogin();
 		contentPane.add(login);
