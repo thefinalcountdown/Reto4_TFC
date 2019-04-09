@@ -1,10 +1,13 @@
 package Modelo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -94,7 +97,43 @@ public class ficheroReserva {
 					+ "no existe y no puede ser creado o no puede ser abierto o es un directorio");
 
 		}
-
+	}
+	
+	public static ArrayList<String> leerTicket()
+	{
+		ArrayList <String> fichero_texto = new ArrayList<String>();
+		ArrayList <String> palabra = new ArrayList<String>();
+		
+		try
+		{
+			String linea;
+			FileReader fichero = new FileReader("Reto4_TFC\\ficheroReserva.txt");
+			BufferedReader buf = new BufferedReader(fichero);
+			
+			
+			while ((linea = buf.readLine()) != null)
+			{
+				fichero_texto.add(linea);
+			}
+			
+			for(int cont=0; cont < fichero_texto.size(); cont++)
+			{
+				int posicion = fichero_texto.size() - cont - 1;
+				String [] partes = fichero_texto.get(cont).split(": ");
+				palabra.add(partes[1]);
+			}
+			
+			
+			buf.close();
+			fichero.close();
+		}
+		catch(IOException ex)
+		{
+			JOptionPane.showMessageDialog(null, "No se pudo leer el archivo");
+		   	 System.exit(-1);
+		}
+		
+		return palabra;
 	}
 
 }
