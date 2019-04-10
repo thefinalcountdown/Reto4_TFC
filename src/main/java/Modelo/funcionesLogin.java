@@ -36,6 +36,10 @@ public class funcionesLogin {
 				String apellido = result.getString("Apellido");
 				String clave = result.getString("Clave");
 				Usuario usuario = new Usuario(dni, nombre, apellido, clave);
+				usuario.setDni(dni);
+				usuario.setNombre(nombre);
+				usuario.setApellido(apellido);
+				usuario.setClave(clave);
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "No se pudo hacer la consulta a la base de datos");
