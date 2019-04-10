@@ -35,7 +35,7 @@ public class ModeloLista implements ListModel {
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			hoteles.add(new Hotel(result.getString("nombre"), result.getString("ubicacion"), result.getFloat("precio"),
-					result.getInt("Cod_Hotel"), result.getInt("estrellas")));
+					result.getInt("Cod_Alojamiento"), result.getInt("estrellas")));
 			System.out.println(hoteles.get(0) + "hey");
 		}
 
