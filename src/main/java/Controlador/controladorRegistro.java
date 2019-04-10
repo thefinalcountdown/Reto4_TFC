@@ -22,27 +22,27 @@ public class controladorRegistro {
 		this.ventana = ventana;
 		this.modelo = modelo;
 
-		vistaRegistro.btnRegistro.addActionListener(new ActionListener() {
+		ventana.registro.btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (funcionesLogin.comprobarCampos(vistaRegistro.formattedTextFieldDNI.getText(),
-						vistaRegistro.formattedTextFieldNombre.getText(),
-						vistaRegistro.formattedTextFieldApellido.getText(),
-						String.valueOf(vistaRegistro.passwordFieldClave.getPassword())) == true) {
+				if (funcionesLogin.comprobarCampos(ventana.registro.formattedTextFieldDNI.getText(),
+						ventana.registro.formattedTextFieldNombre.getText(),
+						ventana.registro.formattedTextFieldApellido.getText(),
+						String.valueOf(ventana.registro.passwordFieldClave.getPassword())) == true) {
 					JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos...");
-				} else if (GestorBD.comprobarUsuario(vistaRegistro.formattedTextFieldDNI.getText(),
-						String.valueOf(vistaRegistro.passwordFieldClave.getPassword())) == true) {
+				} else if (GestorBD.comprobarUsuario(ventana.registro.formattedTextFieldDNI.getText(),
+						String.valueOf(ventana.registro.passwordFieldClave.getPassword())) == true) {
 					JOptionPane.showMessageDialog(null, "El usuario ya existe...");
-				} else if (GestorBD.insertarUsuario(vistaRegistro.formattedTextFieldDNI.getText(),
-						vistaRegistro.formattedTextFieldNombre.getText(),
-						vistaRegistro.formattedTextFieldApellido.getText(),
-						String.valueOf(vistaRegistro.passwordFieldClave.getPassword())) == true) {
+				} else if (GestorBD.insertarUsuario(ventana.registro.formattedTextFieldDNI.getText(),
+						ventana.registro.formattedTextFieldNombre.getText(),
+						ventana.registro.formattedTextFieldApellido.getText(),
+						String.valueOf(ventana.registro.passwordFieldClave.getPassword())) == true) {
 					JOptionPane.showMessageDialog(null, "Usuario creado con exito...");
 					ventana.cambio_panel(ventana.registro, ventana.seleccionar);
 				}
 			}
 		});
 
-		vistaRegistro.btnCancelar.addActionListener(new ActionListener() {
+		ventana.registro.btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.registro, ventana.seleccionar);
 			}

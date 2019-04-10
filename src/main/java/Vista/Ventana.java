@@ -35,13 +35,13 @@ public class Ventana extends JFrame
 		contentPane.add(raiz);
 		raiz.setLayout(null);
 		
-		registro = new vistaRegistro();
-		contentPane.add(registro);
-		registro.setLayout(null);
-		
 		seleccionar = new vistaSeleccionar();
 		contentPane.add(seleccionar);
 		seleccionar.setLayout(null);
+		
+		registro = new vistaRegistro();
+		contentPane.add(registro);
+		registro.setLayout(null);
 
 		login = new vistaLogin();
 		contentPane.add(login);

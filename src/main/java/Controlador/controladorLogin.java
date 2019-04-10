@@ -19,49 +19,49 @@ public class controladorLogin {
 		this.ventana = ventana;
 		this.modelo = modelo;
 
-		vistaLogin.btnLogin.addActionListener(new ActionListener() {
+		ventana.login.btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (GestorBD.comprobarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
-						String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())) == false) {
-					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos...");
+				if (GestorBD.comprobarUsuario(ventana.login.formattedTextFieldLoginDNI.getText(),
+						String.valueOf(ventana.login.passwordFieldLoginClave.getPassword())) == false) {
+					JOptionPane.showMessageDialog(null, "Usuario o contraseï¿½a incorrectos...");
 				} else {
 					funcionesLogin.rellenarUsuario(GestorBD
-							.consulta(funcionesLogin.sentenciaLogin(vistaLogin.formattedTextFieldLoginDNI.getText(),
-									String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword()))));
+							.consulta(funcionesLogin.sentenciaLogin(ventana.login.formattedTextFieldLoginDNI.getText(),
+									String.valueOf(ventana.login.passwordFieldLoginClave.getPassword()))));
 					JOptionPane.showMessageDialog(null, "Usuario logueado correctamente...");
 					ventana.cambio_panel(ventana.login, ventana.reserva);
 				}
 			}
 		});
 
-		vistaLogin.btnActualizar.addActionListener(new ActionListener() {
+		ventana.login.btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (GestorBD.comprobarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
-						String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())) == false) {
-					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos...");
+				if (GestorBD.comprobarUsuario(ventana.login.formattedTextFieldLoginDNI.getText(),
+						String.valueOf(ventana.login.passwordFieldLoginClave.getPassword())) == false) {
+					JOptionPane.showMessageDialog(null, "Usuario o contraseï¿½a incorrectos...");
 				} else {
-					GestorBD.actualizarUsuario(vistaLogin.formattedTextFieldActualizarDNI.getText(),
-							String.valueOf(vistaLogin.passwordFieldActualizarClave.getPassword()),
-							String.valueOf(vistaLogin.passwordFieldNuevaClave.getPassword()));
-					JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente...");
+					GestorBD.actualizarUsuario(ventana.login.formattedTextFieldActualizarDNI.getText(),
+							String.valueOf(ventana.login.passwordFieldActualizarClave.getPassword()),
+							String.valueOf(ventana.login.passwordFieldNuevaClave.getPassword()));
+					JOptionPane.showMessageDialog(null, "Contraseï¿½a actualizada correctamente...");
 				}
 			}
 		});
 
-		vistaLogin.btnBorrarUsuario.addActionListener(new ActionListener() {
+		ventana.login.btnBorrarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (GestorBD.comprobarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
-						String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword())) == false) {
-					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos...");
+				if (GestorBD.comprobarUsuario(ventana.login.formattedTextFieldLoginDNI.getText(),
+						String.valueOf(ventana.login.passwordFieldLoginClave.getPassword())) == false) {
+					JOptionPane.showMessageDialog(null, "Usuario o contraseï¿½a incorrectos...");
 				} else {
-					GestorBD.borrarUsuario(vistaLogin.formattedTextFieldLoginDNI.getText(),
-							String.valueOf(vistaLogin.passwordFieldLoginClave.getPassword()));
+					GestorBD.borrarUsuario(ventana.login.formattedTextFieldLoginDNI.getText(),
+							String.valueOf(ventana.login.passwordFieldLoginClave.getPassword()));
 					JOptionPane.showMessageDialog(null, "Usuario borrado correctamente...");
 				}
 			}
 		});
 
-		vistaLogin.btnCancelar.addActionListener(new ActionListener() {
+		ventana.login.btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.login, ventana.seleccionar);
 			}

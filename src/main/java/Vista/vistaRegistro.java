@@ -13,12 +13,17 @@ import java.awt.event.ActionEvent;
 
 public class vistaRegistro extends JPanel {
 	
-	public static JButton btnCancelar;
-	public static JButton btnRegistro;
-	public static JPasswordField passwordFieldClave;
-	public static JFormattedTextField formattedTextFieldDNI;
-	public static JFormattedTextField formattedTextFieldNombre;
-	public static JFormattedTextField formattedTextFieldApellido;
+	public JButton btnCancelar;
+	public JButton btnRegistro;
+	public JPasswordField passwordFieldClave;
+	public JFormattedTextField formattedTextFieldDNI;
+	public JFormattedTextField formattedTextFieldNombre;
+	public JFormattedTextField formattedTextFieldApellido;
+	private JLabel lblDni;
+	private JLabel lblNombre;
+	private JLabel lblApellido;
+	private JLabel lblClave;
+	private JLabel lblNewLabel;
 
 	public vistaRegistro() {
 		setLayout(null);
@@ -48,23 +53,23 @@ public class vistaRegistro extends JPanel {
 		passwordFieldClave.setBounds(165, 189, 88, 23);
 		add(passwordFieldClave);
 		
-		JLabel lblDni = new JLabel("DNI:");
+		lblDni = new JLabel("DNI:");
 		lblDni.setBounds(57, 64, 46, 14);
 		add(lblDni);
 		
-		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(57, 105, 46, 14);
 		add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido = new JLabel("Apellido:");
 		lblApellido.setBounds(57, 149, 46, 14);
 		add(lblApellido);
 		
-		JLabel lblClave = new JLabel("Clave:");
+		lblClave = new JLabel("Clave:");
 		lblClave.setBounds(57, 193, 46, 14);
 		add(lblClave);
 		
-		JLabel lblNewLabel = new JLabel("REGISTRO");
+		lblNewLabel = new JLabel("REGISTRO");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel.setBounds(169, 11, 96, 23);
 		add(lblNewLabel);
