@@ -1,4 +1,0 @@
- Hotel: Hotel Ibis Granada
- Numero de personas: 3
- Ubicacion: Granada
- Precio: 240.0

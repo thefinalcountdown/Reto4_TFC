@@ -1,10 +1,17 @@
 package Controlador;
 
 import Vista.Ventana;
+import metodos.GestorBD;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -252,6 +259,15 @@ public class controladorPago
 						
 						if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
 						{
+							try
+							{
+								GestorBD.insertarReserva(ficheroReserva.leerTicket());
+							}
+							catch (Exception ex)
+							{
+								JOptionPane.showMessageDialog(null, "No se pudo conectar con la Base de Datos");	
+							}
+							
 							System.exit(0);
 						}
 				 }

@@ -6,17 +6,10 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Date;
-import com.toedter.calendar.JDateChooser;
-
-import Modelo.ModeloLista;
 import Modelo.modelo;
 import Vista.Ventana;
-<<<<<<< HEAD
-import Vista.vistaHoteles;
 
-=======
-import Vista.vistaRaiz;
->>>>>>> 23e05ea02125bf71733861cdcf505675709577ca
+import Vista.vistaHoteles;
 import metodos.GestorBD;
 
 
@@ -36,20 +29,6 @@ public class controladorRaiz {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-<<<<<<< HEAD
-
-		// Calendario entrada
-		ventana.raiz.fechaIn.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
-
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				// Comprobar que se hayan seleccionado dos fechas, que el día de salida sea
-				// posterior al de entrada y que el dia de salida y entrada no sean el mismo
-				if (ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null
-						&& (ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate()))
-						&& !(ventana.raiz.fechaIn.getDate().equals(ventana.raiz.fechaOut.getDate()))) {
-					ventana.raiz.btnBuscar.setEnabled(true);
-=======
 		
 		//Calendario entrada
 		ventana.raiz.fechaIn.getDateEditor().addPropertyChangeListener(
@@ -62,18 +41,10 @@ public class controladorRaiz {
 							(ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate())) && !(ventana.raiz.fechaIn.getDate().equals(ventana.raiz.fechaOut.getDate()))){
 						ventana.raiz.btnBuscar.setEnabled(true);
 					}
-					if(ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null 
-							&& (ventana.raiz.fechaOut.getDate().before(ventana.raiz.fechaIn.getDate())))
+					else
+					{
 						ventana.raiz.btnBuscar.setEnabled(false);
-					
->>>>>>> 23e05ea02125bf71733861cdcf505675709577ca
-				}
-				/*
-				 * if(vistaRaiz.fechaIn.getDate() != null || vistaRaiz.fechaOut.getDate() !=
-				 * null || (vistaRaiz.fechaIn.getDate().after(vistaRaiz.fechaOut.getDate())) ||
-				 * (vistaRaiz.fechaIn.getDate().getDay()==vistaRaiz.fechaOut.getDate().getDay())
-				 * ){ vistaRaiz.btnBuscar.setEnabled(false); }
-				 */
+					}
 
 			}
 
@@ -90,6 +61,10 @@ public class controladorRaiz {
 						&& (ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate()))
 						&& !(ventana.raiz.fechaIn.getDate().getDay() == ventana.raiz.fechaOut.getDate().getDay())) {
 					ventana.raiz.btnBuscar.setEnabled(true);
+				}
+				else
+				{
+					ventana.raiz.btnBuscar.setEnabled(false);
 				}
 
 			}
