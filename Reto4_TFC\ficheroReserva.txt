@@ -1,0 +1,4 @@
+ Hotel: Hotel Ibis Madrid
+ Numero de personas: 2
+ Ubicacion: Madrid
+ Precio: 160.0
