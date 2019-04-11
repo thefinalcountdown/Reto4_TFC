@@ -29,13 +29,14 @@ public class controladorRegistro {
 						ventana.registro.formattedTextFieldApellido.getText(),
 						String.valueOf(ventana.registro.passwordFieldClave.getPassword())) == true) {
 					JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos...");
-				} else if (GestorBD.comprobarUsuario(ventana.registro.formattedTextFieldDNI.getText(),
-						String.valueOf(ventana.registro.passwordFieldClave.getPassword())) == true) {
+				} else if (funcionesLogin.comprobarDni(GestorBD.consulta(funcionesLogin
+						.sentenciaCombrobarDni(ventana.registro.formattedTextFieldDNI.getText()))) == true) {
 					JOptionPane.showMessageDialog(null, "El usuario ya existe...");
-				} else if (GestorBD.insertarUsuario(ventana.registro.formattedTextFieldDNI.getText(),
-						ventana.registro.formattedTextFieldNombre.getText(),
-						ventana.registro.formattedTextFieldApellido.getText(),
-						String.valueOf(ventana.registro.passwordFieldClave.getPassword())) == true) {
+				} else if (GestorBD.insertarDatos(
+						funcionesLogin.sentenciaInsertarUsuario(ventana.registro.formattedTextFieldDNI.getText(),
+								ventana.registro.formattedTextFieldNombre.getText(),
+								ventana.registro.formattedTextFieldApellido.getText(),
+								String.valueOf(ventana.registro.passwordFieldClave.getPassword()))) == true) {
 					JOptionPane.showMessageDialog(null, "Usuario creado con exito...");
 					ventana.cambio_panel(ventana.registro, ventana.seleccionar);
 				}
