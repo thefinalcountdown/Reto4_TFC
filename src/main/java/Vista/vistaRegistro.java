@@ -31,12 +31,13 @@ public class vistaRegistro extends JPanel {
 		setLayout(null);
 
 		btnRegistro = new JButton("Registrar");
-		btnRegistro.setBounds(324, 266, 89, 23);
-		btnRegistro.setHorizontalAlignment(SwingConstants.LEADING);
+		btnRegistro.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnRegistro.setBounds(640, 455, 184, 62);
 		add(btnRegistro);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(41, 266, 89, 23);
+		btnCancelar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnCancelar.setBounds(80, 455, 184, 62);
 		add(btnCancelar);
 		
 		MaskFormatter formatterdni = null;
@@ -47,39 +48,45 @@ public class vistaRegistro extends JPanel {
 		}
 		formattedTextFieldDNI = new JFormattedTextField(formatterdni);
 		formattedTextFieldDNI.setBounds(165, 60, 88, 23);
+		formattedTextFieldDNI = new JFormattedTextField();
+		formattedTextFieldDNI.setBounds(450, 140, 130, 23);
 		add(formattedTextFieldDNI);
 		
 		formattedTextFieldNombre = new JFormattedTextField();
-		formattedTextFieldNombre.setBounds(165, 101, 88, 23);
+		formattedTextFieldNombre.setBounds(450, 198, 130, 23);
 		add(formattedTextFieldNombre);
 		
 		formattedTextFieldApellido = new JFormattedTextField();
-		formattedTextFieldApellido.setBounds(165, 145, 88, 23);
+		formattedTextFieldApellido.setBounds(450, 254, 130, 23);
 		add(formattedTextFieldApellido);
 		
 		passwordFieldClave = new JPasswordField();
-		passwordFieldClave.setBounds(165, 189, 88, 23);
+		passwordFieldClave.setBounds(450, 310, 130, 23);
 		add(passwordFieldClave);
 		
 		lblDni = new JLabel("DNI:");
-		lblDni.setBounds(57, 64, 46, 14);
+		lblDni.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblDni.setBounds(356, 142, 31, 19);
 		add(lblDni);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(57, 105, 46, 14);
+		lblNombre.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblNombre.setBounds(325, 200, 62, 19);
 		add(lblNombre);
 		
 		lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(57, 149, 46, 14);
+		lblApellido.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblApellido.setBounds(325, 256, 62, 19);
 		add(lblApellido);
 		
 		lblClave = new JLabel("Clave:");
-		lblClave.setBounds(57, 193, 46, 14);
+		lblClave.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblClave.setBounds(344, 312, 43, 19);
 		add(lblClave);
 		
 		lblNewLabel = new JLabel("REGISTRO");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel.setBounds(169, 11, 96, 23);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setBounds(396, 67, 107, 25);
 		add(lblNewLabel);
 	}
 }
