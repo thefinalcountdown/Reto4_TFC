@@ -28,7 +28,7 @@ public class controladorLogin {
 						.consulta(funcionesLogin.sentenciaLogin(ventana.login.formattedTextFieldLoginDNI.getText(),
 								String.valueOf(ventana.login.passwordFieldLoginClave.getPassword())))) == true) {
 					JOptionPane.showMessageDialog(null, "Usuario logueado con exito...");
-					ventana.cambio_panel(ventana.login, ventana.reserva);
+					ventana.cambio_panel(ventana.login, ventana.raiz);
 				} else {
 					JOptionPane.showMessageDialog(null, "Clave incorrecta...");
 				}

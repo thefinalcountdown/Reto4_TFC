@@ -7,23 +7,24 @@ public class Controlador {
 	public modelo modelo;
 	public Ventana ventana;
 
+	public controladorSeleccion controladorSeleccion;
+	public controladorLogin controladorLogin;
+	public controladorRegistro controladorRegistro;
 	public controladorRaiz controladorRaiz;
 	public controladorPago controladorPago;
 	public controladorReserva controladorReserva;
 	public controladorHotel controladorHotel;
-	public controladorLogin controladorLogin;
-	public controladorSeleccion controladorSeleccion;
-	public controladorRegistro controladorRegistro;
+	
 
 	public Controlador(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
 
+		this.controladorSeleccion = new controladorSeleccion(ventana, modelo);
+		this.controladorLogin = new controladorLogin(ventana, modelo);
+		this.controladorRegistro = new controladorRegistro(ventana, modelo);
 		this.controladorRaiz = new controladorRaiz(ventana, modelo);
 		this.controladorHotel = new controladorHotel(ventana, modelo);
-//		this.controladorSeleccion = new controladorSeleccion(ventana, modelo);
-//		this.controladorLogin = new controladorLogin(ventana, modelo);
-//		this.controladorRegistro = new controladorRegistro(ventana, modelo);
 		this.controladorReserva = new controladorReserva(ventana, modelo);
 		this.controladorPago = new controladorPago(ventana, modelo);
 		

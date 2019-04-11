@@ -10,14 +10,13 @@ public class Ventana extends JFrame
 {
 	public JPanel contentPane;
 
+	public vistaSeleccionar seleccionar;
+	public vistaLogin login;
+	public vistaRegistro registro;
 	public vistaRaiz raiz;
 	public vistaReserva reserva;
 	public vistaPago pago;
 	public vistaHoteles hotel;
-	public vistaLogin login;
-	public vistaRegistro registro;
-	public vistaSeleccionar seleccionar;
-	
 	
 	public Ventana() 
 	{
@@ -31,26 +30,25 @@ public class Ventana extends JFrame
 		setContentPane(contentPane);
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
+		seleccionar = new vistaSeleccionar();
+		contentPane.add(seleccionar);
+		seleccionar.setLayout(null);
+		
+		registro = new vistaRegistro();
+		contentPane.add(registro);
+		registro.setLayout(null);
+
+		login = new vistaLogin();
+		contentPane.add(login);
+		login.setLayout(null);
+		
 		raiz = new vistaRaiz();
 		contentPane.add(raiz);
 		raiz.setLayout(null);
 		
-//		seleccionar = new vistaSeleccionar();
-//		contentPane.add(seleccionar);
-//		seleccionar.setLayout(null);
-//		
-//		registro = new vistaRegistro();
-//		contentPane.add(registro);
-//		registro.setLayout(null);
-//
-//		login = new vistaLogin();
-//		contentPane.add(login);
-//		login.setLayout(null);
-		
 		reserva = new vistaReserva();
 		contentPane.add(reserva);
 		reserva.setLayout(null);
-		
 		
 		pago = new vistaPago();
 		contentPane.add(pago);
