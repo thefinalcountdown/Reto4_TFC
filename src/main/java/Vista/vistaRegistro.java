@@ -5,10 +5,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 
 public class vistaRegistro extends JPanel {
@@ -37,7 +39,13 @@ public class vistaRegistro extends JPanel {
 		btnCancelar.setBounds(41, 266, 89, 23);
 		add(btnCancelar);
 		
-		formattedTextFieldDNI = new JFormattedTextField();
+		MaskFormatter formatterdni = null;
+		try {
+			formatterdni = new MaskFormatter("########U");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		formattedTextFieldDNI = new JFormattedTextField(formatterdni);
 		formattedTextFieldDNI.setBounds(165, 60, 88, 23);
 		add(formattedTextFieldDNI);
 		

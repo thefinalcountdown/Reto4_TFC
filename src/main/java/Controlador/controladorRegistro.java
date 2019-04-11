@@ -38,14 +38,14 @@ public class controladorRegistro {
 								ventana.registro.formattedTextFieldApellido.getText(),
 								String.valueOf(ventana.registro.passwordFieldClave.getPassword()))) == true) {
 					JOptionPane.showMessageDialog(null, "Usuario creado con exito...");
-					ventana.cambio_panel(ventana.registro, ventana.seleccionar);
+					ventana.cambio_panel(ventana.registro, ventana.raiz);
 				}
 			}
 		});
 
 		ventana.registro.btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.registro, ventana.seleccionar);
+				ventana.cambio_panel(ventana.registro, ventana.login);
 			}
 		});
 	}

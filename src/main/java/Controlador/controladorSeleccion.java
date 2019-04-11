@@ -16,16 +16,6 @@ public class controladorSeleccion {
 		this.ventana = ventana;
 		this.modelo = modelo;
 
-		ventana.seleccionar.btnIrLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.seleccionar, ventana.login);
-			}
-		});
-
-		ventana.seleccionar.btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ventana.cambio_panel(ventana.seleccionar, ventana.registro);
-			}
-		});
+		
 	}
 }
