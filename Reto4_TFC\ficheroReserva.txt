@@ -1,7 +1,7 @@
  Hotel: Alfredo
  Precio: 3.14
- Numero de personas: 3
+ Numero de personas: 4
  Numero de habitaciones: 3
- Ubicacion: Granada
- Fecha de entrada: 2019/04/12
- Fecha de salida: 2019/04/27
+ Ubicacion: Bizkaia
+ Fecha de entrada: 2019/04/13
+ Fecha de salida: 2019/04/28
