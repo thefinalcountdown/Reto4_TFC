@@ -5,8 +5,8 @@ import javax.swing.JButton;
 
 public class vistaSeleccionar extends JPanel {
 
-	public static JButton btnRegistro;
-	public static JButton btnIrLogin;
+	public JButton btnRegistro;
+	public JButton btnIrLogin;
 
 	public vistaSeleccionar() {
 		setLayout(null);

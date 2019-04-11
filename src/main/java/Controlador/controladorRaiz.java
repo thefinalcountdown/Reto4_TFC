@@ -12,7 +12,6 @@ import Vista.Ventana;
 import Vista.vistaHoteles;
 import metodos.GestorBD;
 
-
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
@@ -29,22 +28,21 @@ public class controladorRaiz {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
-		//Calendario entrada
-		ventana.raiz.fechaIn.getDateEditor().addPropertyChangeListener(
-			new PropertyChangeListener() {
-				
-				@Override
-				public void propertyChange(PropertyChangeEvent evt) {
-					//Comprobar que se hayan seleccionado dos fechas, que el día de salida sea posterior al de entrada y que el dia de salida y entrada no sean el mismo
-					if(ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null && 
-							(ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate())) && !(ventana.raiz.fechaIn.getDate().equals(ventana.raiz.fechaOut.getDate()))){
-						ventana.raiz.btnBuscar.setEnabled(true);
-					}
-					else
-					{
-						ventana.raiz.btnBuscar.setEnabled(false);
-					}
+
+		// Calendario entrada
+		ventana.raiz.fechaIn.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
+
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				// Comprobar que se hayan seleccionado dos fechas, que el día de salida sea
+				// posterior al de entrada y que el dia de salida y entrada no sean el mismo
+				if (ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null
+						&& (ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate()))
+						&& !(ventana.raiz.fechaIn.getDate().equals(ventana.raiz.fechaOut.getDate()))) {
+					ventana.raiz.btnBuscar.setEnabled(true);
+				} else {
+					ventana.raiz.btnBuscar.setEnabled(false);
+				}
 
 			}
 
@@ -61,9 +59,7 @@ public class controladorRaiz {
 						&& (ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate()))
 						&& !(ventana.raiz.fechaIn.getDate().getDay() == ventana.raiz.fechaOut.getDate().getDay())) {
 					ventana.raiz.btnBuscar.setEnabled(true);
-				}
-				else
-				{
+				} else {
 					ventana.raiz.btnBuscar.setEnabled(false);
 				}
 
@@ -100,7 +96,7 @@ public class controladorRaiz {
 				Date fechaOut = ventana.raiz.fechaOut.getDate();
 
 				try {
-					
+
 					vistaHoteles.lm.llenarLista(ubicacionSeleccionada);
 //					ModeloLista.llenarLista(ubicacionSeleccionada);
 
