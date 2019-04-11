@@ -44,6 +44,7 @@ public class controladorLogin {
 		ventana.login.btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ventana.cambio_panel(ventana.login, ventana.modificar);
+
 			}
 		});
 	}

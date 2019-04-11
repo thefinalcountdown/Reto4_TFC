@@ -16,7 +16,6 @@ public class controladorRegistro {
 
 	private Ventana ventana;
 	private modelo modelo;
-	private Controlador Controlador;
 
 	public controladorRegistro(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
@@ -46,6 +45,7 @@ public class controladorRegistro {
 		ventana.registro.btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.registro, ventana.login);
+
 			}
 		});
 	}
