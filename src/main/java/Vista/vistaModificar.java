@@ -31,66 +31,74 @@ public class vistaModificar extends JPanel {
 		setLayout(null);
 
 		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnActualizar.setHorizontalAlignment(SwingConstants.LEADING);
-		btnActualizar.setBounds(175, 189, 89, 23);
+		btnActualizar.setBounds(227, 284, 123, 29);
 		add(btnActualizar);
 
 		btnBorrarUsuario = new JButton("Borrar");
-		btnBorrarUsuario.setBounds(405, 189, 89, 23);
+		btnBorrarUsuario.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnBorrarUsuario.setBounds(618, 284, 93, 29);
 		add(btnBorrarUsuario);
 
 		formattedTextFieldActualizarDNI = new JFormattedTextField();
-		formattedTextFieldActualizarDNI.setBounds(175, 46, 86, 20);
+		formattedTextFieldActualizarDNI.setBounds(309, 121, 115, 20);
 		add(formattedTextFieldActualizarDNI);
 
 		passwordFieldNuevaClave = new JPasswordField();
-		passwordFieldNuevaClave.setBounds(175, 143, 86, 20);
+		passwordFieldNuevaClave.setBounds(309, 211, 115, 20);
 		add(passwordFieldNuevaClave);
 
 		passwordFieldActualizarClave = new JPasswordField();
-		passwordFieldActualizarClave.setBounds(175, 97, 86, 20);
+		passwordFieldActualizarClave.setBounds(309, 163, 115, 20);
 		add(passwordFieldActualizarClave);
 
 		lblActualizarDNI = new JLabel("DNI:");
-		lblActualizarDNI.setBounds(22, 48, 28, 16);
+		lblActualizarDNI.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblActualizarDNI.setBounds(236, 121, 31, 19);
 		add(lblActualizarDNI);
 
-		lblActualizarClave = new JLabel("Contrase\u00F1a:");
-		lblActualizarClave.setBounds(22, 99, 75, 16);
+		lblActualizarClave = new JLabel("Antigua contraseña:");
+		lblActualizarClave.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblActualizarClave.setBounds(123, 163, 144, 19);
 		add(lblActualizarClave);
 
 		lblActualizarUsuario = new JLabel("Actualizar Usuario");
-		lblActualizarUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblActualizarUsuario.setBounds(79, 11, 118, 14);
+		lblActualizarUsuario.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblActualizarUsuario.setBounds(196, 57, 185, 25);
 		add(lblActualizarUsuario);
 
 		lblNuevaClave = new JLabel("Contrase\u00F1a Nueva:");
-		lblNuevaClave.setBounds(22, 145, 118, 16);
+		lblNuevaClave.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblNuevaClave.setBounds(132, 211, 135, 19);
 		add(lblNuevaClave);
 
 		formattedTextFieldBorrarDni = new JFormattedTextField();
-		formattedTextFieldBorrarDni.setBounds(408, 46, 86, 20);
+		formattedTextFieldBorrarDni.setBounds(685, 121, 115, 20);
 		add(formattedTextFieldBorrarDni);
 
 		passwordFieldBorrarDni = new JPasswordField();
-		passwordFieldBorrarDni.setBounds(408, 94, 86, 20);
+		passwordFieldBorrarDni.setBounds(685, 166, 115, 20);
 		add(passwordFieldBorrarDni);
 
 		lblBorrarDni = new JLabel("DNI:");
-		lblBorrarDni.setBounds(335, 49, 28, 16);
+		lblBorrarDni.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblBorrarDni.setBounds(612, 121, 31, 19);
 		add(lblBorrarDni);
 
 		lblBorrarClave = new JLabel("Contrase\u00F1a:");
-		lblBorrarClave.setBounds(323, 100, 75, 16);
+		lblBorrarClave.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblBorrarClave.setBounds(557, 166, 86, 19);
 		add(lblBorrarClave);
 
 		lblBorrarUsuario = new JLabel("Borrar Usuario");
-		lblBorrarUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblBorrarUsuario.setBounds(346, 12, 118, 14);
+		lblBorrarUsuario.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblBorrarUsuario.setBounds(597, 57, 148, 25);
 		add(lblBorrarUsuario);
 
 		btnVolver = new JButton("Volver");
-		btnVolver.setBounds(89, 277, 89, 23);
+		btnVolver.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnVolver.setBounds(65, 491, 144, 49);
 		add(btnVolver);
 	}
 }
