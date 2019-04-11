@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import Modelo.modelo;
@@ -113,7 +115,12 @@ public class controladorRaiz {
 				ventana.reserva.textField_numpersonas.setText(ventana.raiz.txthuesped.getText());
 				ventana.reserva.textField_ubicacion
 						.setText(ventana.raiz.comboBoxUbicacion.getSelectedItem().toString());
-
+				String patronFecha = "yyyy/MM/dd";
+				DateFormat formatoFecha = new SimpleDateFormat(patronFecha);
+				String fechaEntrada = formatoFecha.format(ventana.raiz.fechaIn.getDate());
+				String fechaSalida = formatoFecha.format(ventana.raiz.fechaOut.getDate());
+				ventana.reserva.textField_fechaDeEntrada.setText(fechaEntrada);
+				ventana.reserva.textField_fechaDeSalida.setText(fechaSalida);
 			}
 		});
 

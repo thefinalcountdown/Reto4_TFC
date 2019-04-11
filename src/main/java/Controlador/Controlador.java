@@ -20,12 +20,13 @@ public class Controlador {
 		this.modelo = modelo;
 
 		this.controladorRaiz = new controladorRaiz(ventana, modelo);
-		this.controladorPago = new controladorPago(ventana, modelo);
-		this.controladorReserva = new controladorReserva(ventana, modelo);
 		this.controladorHotel = new controladorHotel(ventana, modelo);
-		this.controladorLogin = new controladorLogin(ventana, modelo);
-		this.controladorSeleccion = new controladorSeleccion(ventana, modelo);
-		this.controladorRegistro = new controladorRegistro(ventana, modelo);
+//		this.controladorSeleccion = new controladorSeleccion(ventana, modelo);
+//		this.controladorLogin = new controladorLogin(ventana, modelo);
+//		this.controladorRegistro = new controladorRegistro(ventana, modelo);
+		this.controladorReserva = new controladorReserva(ventana, modelo);
+		this.controladorPago = new controladorPago(ventana, modelo);
+		
 	}
 
 	public controladorSeleccion getControladorSeleccion() {

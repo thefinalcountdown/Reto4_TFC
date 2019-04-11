@@ -250,11 +250,17 @@ public class controladorPago
 				 ventana.pago.panel.add(ventana.pago.texto_panel);
 				 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devolución", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 				 {
+					 	//String nombreHotel=ventana.reserva.textField_hotelseleccionado.getText();
+					 	String nombreHotel = "Alfredo";
+					 	//float precio= Float.parseFloat(ventana.reserva.textField_precio.getText());
+					 	float precio = 3.14f;
 						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
-						String hotel=ventana.reserva.textField_hotelseleccionado.getText();
+						int numHabitaciones = 3;
 						String ubicacion = ventana.reserva.textField_ubicacion.getText();
-						float precio= Float.parseFloat(ventana.reserva.textField_precio.getText());
-						ficheroReserva fichero = new ficheroReserva(numPersonas,hotel,ubicacion,precio);
+						String fecha_entrada = ventana.reserva.textField_fechaDeEntrada.getText();
+						String fecha_salida = ventana.reserva.textField_fechaDeSalida.getText();
+						
+						ficheroReserva fichero = new ficheroReserva(nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada, fecha_salida);
 						fichero.imprimirTicket();
 						
 						if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)

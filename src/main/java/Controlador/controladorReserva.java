@@ -22,10 +22,10 @@ public class controladorReserva
 			public void actionPerformed(ActionEvent e) 
 			{
 				ventana.cambio_panel(ventana.reserva, ventana.pago);
-				float precio = Float.parseFloat(ventana.reserva.textField_precio.getText());
-				ventana.pago.DineroFaltante.setText(Float.toString(precio)+" \u20ac");
-				controladorPago.precio = precio;
-				controladorPago.total_faltante = precio;
+//				float precio = Float.parseFloat(ventana.reserva.textField_precio.getText());
+//				ventana.pago.DineroFaltante.setText(Float.toString(precio)+" \u20ac");
+//				controladorPago.precio = precio;
+//				controladorPago.total_faltante = precio;
 			}
 		});
 		

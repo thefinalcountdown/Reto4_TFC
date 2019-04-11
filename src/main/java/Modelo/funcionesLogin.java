@@ -1,9 +1,6 @@
 package Modelo;
-
-import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class funcionesLogin {
@@ -36,10 +33,6 @@ public class funcionesLogin {
 				String apellido = result.getString("Apellido");
 				String clave = result.getString("Clave");
 				Usuario usuario = new Usuario(dni, nombre, apellido, clave);
-				usuario.setDni(dni);
-				usuario.setNombre(nombre);
-				usuario.setApellido(apellido);
-				usuario.setClave(clave);
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "No se pudo hacer la consulta a la base de datos");

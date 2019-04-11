@@ -31,7 +31,7 @@ public class controladorHotel{
 
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.hotel, ventana.seleccionar);
+				ventana.cambio_panel(ventana.hotel, ventana.reserva);
 
 //				float precio_reserva = Float.parseFloat(separarString(vistaHoteles.listaHoteles)[1]);
 				

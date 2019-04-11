@@ -13,16 +13,24 @@ import javax.swing.JOptionPane;
 
 public class ficheroReserva {
 
-	private int numPersonas;
 	private String nombreHotel;
-	private String ubicacion;
 	private float precio;
+	private int numPersonas;
+	private int numHabitaciones;
+	private String ubicacion;
+	private String fecha_entrada;
+	private String fecha_salida;
+	
 
-	public ficheroReserva(int numPersonas, String nombreHotel, String ubicacion, float precio) {
-		this.numPersonas = numPersonas;
+	public ficheroReserva(String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida) 
+	{
 		this.nombreHotel = nombreHotel;
-		this.ubicacion = ubicacion;
 		this.precio = precio;
+		this.numPersonas = numPersonas;
+		this.numHabitaciones = numHabitaciones;
+		this.ubicacion = ubicacion;
+		this.fecha_entrada = fecha_entrada;
+		this.fecha_salida = fecha_salida;
 	}
 
 	public ficheroReserva() {
@@ -87,9 +95,9 @@ public class ficheroReserva {
 			// DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			// Calendar cal = Calendar.getInstance();
 
-			fich.write(" Hotel: " + this.nombreHotel + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
-					+ " Ubicacion: " + this.ubicacion + "\r\n" + " Precio: " + this.precio + "\r\n");
-
+			fich.write(" Hotel: " + this.nombreHotel + "\r\n" + " Precio: " + this.precio + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
+					+ " Numero de habitaciones: " + this.numHabitaciones + "\r\n" + " Ubicacion: " + this.ubicacion + "\r\n" + " Fecha de entrada: "
+					+ this.fecha_entrada + "\r\n" + " Fecha de salida: " + this.fecha_salida);
 			fich.close();
 
 		} catch (IOException ex) {
