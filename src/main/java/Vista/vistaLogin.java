@@ -27,36 +27,41 @@ public class vistaLogin extends JPanel {
 		setLayout(null);
 
 		btnLogin = new JButton("Login");
-		btnLogin.setBounds(235, 128, 86, 32);
+		btnLogin.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnLogin.setBounds(380, 276, 125, 37);
 		add(btnLogin);
 		
 		btnRegistro = new JButton("Nuevo Registro");
-		btnRegistro.setBounds(105, 265, 129, 51);
+		btnRegistro.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnRegistro.setBounds(246, 384, 163, 29);
 		add(btnRegistro);
 		
 		btnModificar = new JButton("Modificar Usuario");
-		btnModificar.setBounds(323, 265, 129, 51);
+		btnModificar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		btnModificar.setBounds(472, 384, 183, 29);
 		add(btnModificar);
 
 		formattedTextFieldLoginDNI = new JFormattedTextField();
-		formattedTextFieldLoginDNI.setBounds(235, 56, 86, 20);
+		formattedTextFieldLoginDNI.setBounds(474, 150, 125, 29);
 		add(formattedTextFieldLoginDNI);
 
 		passwordFieldLoginClave = new JPasswordField();
-		passwordFieldLoginClave.setBounds(235, 87, 86, 20);
+		passwordFieldLoginClave.setBounds(474, 199, 125, 29);
 		add(passwordFieldLoginClave);
 
 		lblLoginDni = new JLabel("DNI:");
-		lblLoginDni.setBounds(119, 58, 28, 16);
+		lblLoginDni.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblLoginDni.setBounds(380, 150, 31, 19);
 		add(lblLoginDni);
 
 		lblLoginClave = new JLabel("Contrase\u00F1a:");
-		lblLoginClave.setBounds(119, 89, 75, 16);
+		lblLoginClave.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblLoginClave.setBounds(325, 203, 86, 19);
 		add(lblLoginClave);
 
 		lblLoginUsuario = new JLabel("Login");
-		lblLoginUsuario.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblLoginUsuario.setBounds(258, 11, 46, 14);
+		lblLoginUsuario.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblLoginUsuario.setBounds(422, 65, 55, 25);
 		add(lblLoginUsuario);
 
 	}
