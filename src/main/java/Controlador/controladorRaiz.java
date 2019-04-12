@@ -83,25 +83,7 @@ public class controladorRaiz {
 					ventana.raiz.btnSumKids.setEnabled(false);
 					ventana.raiz.btnRestKids.setEnabled(false);
 					ventana.raiz.txtKids.setText("0");
-				}
-					
-				}/*else if(num_huespedes == 8 || num_huespedes ==7) {
-					if(num_kids >3){
-						 ventana.raiz.btnSumKids.setEnabled(false);}
-					
-				}else if(num_huespedes == 6 || num_huespedes ==5 || num_huespedes ==4) {
-					if(num_kids >5){
-						 ventana.raiz.btnSumKids.setEnabled(false);}
-					
-				}else if(num_huespedes == 3 || num_huespedes ==2) {
-					if(num_kids >3){
-						 ventana.raiz.btnSumKids.setEnabled(false);}
-					
-				}else if(num_huespedes == 1) {
-					if(num_kids >1){
-						 ventana.raiz.btnSumKids.setEnabled(false);}
-				}*/
-				
+				}}
 			
 		});
 		
