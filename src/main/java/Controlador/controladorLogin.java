@@ -24,18 +24,20 @@ public class controladorLogin {
 				if (funcionesLogin.comprobarDni(GestorBD.consulta(funcionesLogin
 						.sentenciaCombrobarDni(ventana.login.formattedTextFieldLoginDNI.getText()))) == false) 
 				{
-					JOptionPane.showMessageDialog(null, "El usuario no existe...");
+					JOptionPane.showMessageDialog(null, "El usuario no existe.");
 				} 
 				else if (funcionesLogin.comprobarLogin(GestorBD
 						.consulta(funcionesLogin.sentenciaLogin(ventana.login.formattedTextFieldLoginDNI.getText(),
 								String.valueOf(ventana.login.passwordFieldLoginClave.getPassword())))) == true) 
 				{
-					JOptionPane.showMessageDialog(null, "Usuario logueado con exito...");
+					JOptionPane.showMessageDialog(null, "Usuario logueado con exito.");
+					ventana.reserva.textField_DNIUsuario.setText(ventana.login.formattedTextFieldLoginDNI.getText());
+					
 					ventana.cambio_panel(ventana.login, ventana.raiz);
 				} 
 				else 
 				{
-					JOptionPane.showMessageDialog(null, "Clave incorrecta...");
+					JOptionPane.showMessageDialog(null, "Clave incorrecta.");
 				}
 			}
 		});
@@ -45,6 +47,7 @@ public class controladorLogin {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				ventana.cambio_panel(ventana.login, ventana.registro);
+				restablecer_datos();
 			}
 		});
 
@@ -53,8 +56,14 @@ public class controladorLogin {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				ventana.cambio_panel(ventana.login, ventana.modificar);
-
+				restablecer_datos();
 			}
 		});
+	}
+	
+	public void restablecer_datos()
+	{
+		ventana.login.formattedTextFieldLoginDNI.setText("");
+		ventana.login.passwordFieldLoginClave.setText("");
 	}
 }

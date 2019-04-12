@@ -47,7 +47,10 @@ public class controladorPago
 	private int contador_monedas [] = {contador_billete200,contador_billete100,contador_billete50,contador_billete20,contador_billete10,contador_billete5,contador_moneda2e,contador_moneda1e,contador_moneda50cent,contador_moneda20cent,contador_moneda10cent,contador_moneda5cent,contador_moneda2cent,contador_moneda1cent};
 	private String monedas[] = {"200 euros","100 euros","50 euros","20 euros","10 euros","5 euros", "2 euros", "1 euro", "50 centimos", "20 centimos", "10 centimos", "5 centimos", "2 centimos", "1 centimo"};
 	
-	public controladorPago() {}
+	public controladorPago() 
+	{
+		
+	}
 	public controladorPago(Ventana ventana, modelo modelo)
 	{
 		this.ventana = ventana;
@@ -250,32 +253,35 @@ public class controladorPago
 				 ventana.pago.panel.add(ventana.pago.texto_panel);
 				 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devolución", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 				 {
-					 	//String nombreHotel=ventana.reserva.textField_hotelseleccionado.getText();
-					 	String nombreHotel = "Alfredo";
-					 	//float precio= Float.parseFloat(ventana.reserva.textField_precio.getText());
-					 	float precio = 3.14f;
-						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
-						int numHabitaciones = 3;
-						String ubicacion = ventana.reserva.textField_ubicacion.getText();
-						String fecha_entrada = ventana.reserva.textField_fechaDeEntrada.getText();
-						String fecha_salida = ventana.reserva.textField_fechaDeSalida.getText();
-						
-						ficheroReserva fichero = new ficheroReserva(nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada, fecha_salida);
-						fichero.imprimirTicket();
-						
-						if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
+				 	String DNIusuario = ventana.reserva.textField_DNIUsuario.getText();
+				 	String nombreUsuario = ventana.reserva.textField_NombreUsuario.getText();
+				 	//String nombreHotel=ventana.reserva.textField_hotelseleccionado.getText();
+				 	String nombreHotel = "Alfredo";
+				 	//float precio= Float.parseFloat(ventana.reserva.textField_precio.getText());
+				 	float precio = 3.14f;
+					int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
+					int numHabitaciones = 3;
+					String ubicacion = ventana.reserva.textField_ubicacion.getText();
+					String fecha_entrada = ventana.reserva.textField_fechaDeEntrada.getText();
+					String fecha_salida = ventana.reserva.textField_fechaDeSalida.getText();
+					
+					ficheroReserva fichero = new ficheroReserva(DNIusuario, nombreUsuario, nombreHotel, precio, 
+							numPersonas, numHabitaciones, ubicacion, fecha_entrada, fecha_salida);
+					fichero.imprimirTicket();
+					
+					if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
+					{
+						try
 						{
-							try
-							{
-								GestorBD.insertarReserva(ficheroReserva.leerTicket());
-							}
-							catch (Exception ex)
-							{
-								JOptionPane.showMessageDialog(null, "No se pudo conectar con la Base de Datos");	
-							}
-							
-							System.exit(0);
+							GestorBD.insertarReserva(ficheroReserva.leerTicket());
 						}
+						catch (Exception ex)
+						{
+							JOptionPane.showMessageDialog(null, "No se pudo conectar con la Base de Datos");	
+						}
+						
+						System.exit(0);
+					}
 				 }
 			}
 		});
