@@ -90,9 +90,9 @@ public class controladorHotel{
 //
 //	// Metodo para vaciar con el comboBox:
 //
-//	public static void vaciarComboBox() {
-//
-//		vistaHoteles.listaHoteles.removeAllItems();
+//	public static void vaciarComboBox() 
+//	{
+//		
 //	}
 
 
