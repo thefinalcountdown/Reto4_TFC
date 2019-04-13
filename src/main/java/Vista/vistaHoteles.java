@@ -35,9 +35,8 @@ import javax.swing.border.EtchedBorder;
 public class vistaHoteles extends JPanel {
 
 	private JPanel contentPane;
-	private ArrayList<String> al = new ArrayList<String>();
 	public static ModeloLista lm = new ModeloLista();
-	JList listaHoteles = new JList(lm);
+	public static JList listaHoteles = new JList(lm);
 	JScrollPane scrollPane = new JScrollPane(listaHoteles);
 
 	public JButton btnCancelar = new JButton("Cancelar");

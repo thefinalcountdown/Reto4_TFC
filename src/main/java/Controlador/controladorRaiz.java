@@ -243,14 +243,11 @@ public class controladorRaiz {
 
 				try 
 				{
-
 					vistaHoteles.lm.llenarLista(ubicacionSeleccionada);
-//					ModeloLista.llenarLista(ubicacionSeleccionada);
-
 				} 
 				catch (Exception e1) 
 				{
-					System.out.println("el ArrayList de parada no ha sido rellenado");
+					System.out.println("El ArrayList de parada no ha sido rellenado");
 					e1.printStackTrace();
 				}
 

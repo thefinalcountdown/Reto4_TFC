@@ -43,7 +43,7 @@ public class controladorHotel{
 		ventana.hotel.btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
-//				vaciarComboBox();
+				vistaHoteles.lm.vaciarLista();
 			}
 		});
 
@@ -79,21 +79,5 @@ public class controladorHotel{
 		String[] nomPrecio = { uno, dos };
 		return nomPrecio;
 	}
-
-	// Metodo para rellenar con el comboBox:
-
-//	public static void llenarLista(ArrayList<String> hotel) {
-//		for (int i = 0; i < hotel.size(); i++) {
-//			vistaHoteles.listaHoteles.addItem(hotel.get(i));
-//		}
-//	}
-//
-//	// Metodo para vaciar con el comboBox:
-//
-//	public static void vaciarComboBox() 
-//	{
-//		
-//	}
-
 
 }

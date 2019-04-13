@@ -3,7 +3,6 @@ package Modelo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
@@ -11,18 +10,37 @@ import Vista.Ventana;
 import metodos.GestorBD;
 
 public class ModeloLista implements ListModel {
+	
 	Ventana ventana;
+	
+	
 	private ArrayList<String> arrayString = new ArrayList<String>();
 	public static ArrayList<Hotel> hoteles = new ArrayList<Hotel>();
 
-	public ArrayList<Hotel> llenarLista(String ubicacion) throws Exception {
+	public ArrayList<String> llenarLista(String ubicacion) throws Exception {
 		hoteles = obtenerHoteles(ubicacion);
 
-		for (int index = 0; index < hoteles.size(); index++) {
+		for (int index = 0; index < hoteles.size(); index++) 
+		{
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getPrecio(), hoteles.get(index).getEstrellas());
-			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio:" + hoteles.get(index).getPrecio()+"\u20ac  Estrellas: "+hoteles.get(index).getEstrellas());
+			
+			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio:" + hoteles.get(index).getPrecio()
+					+"\u20ac  Estrellas: "+hoteles.get(index).getEstrellas());
+			
+			
 		}
-		return hoteles;
+		return arrayString;
+	}
+	
+	public ArrayList<String> vaciarLista() 
+	{
+		for (int index = hoteles.size()-1; index >= 0; index--)
+		{
+			hoteles.remove(index);
+			arrayString.remove(index);
+		}
+		
+		return arrayString;
 	}
 
 	public static ArrayList<Hotel> obtenerHoteles(String ubicacion) throws Exception {
@@ -38,10 +56,13 @@ public class ModeloLista implements ListModel {
 
 	}
 
-	public static Object makeObj(final String item, float item2, int item3) {
-		return new Object() {
-			public String toString() {
-				return item + item2+item3;
+	public static Object makeObj(String item, float item2, int item3) 
+	{
+		return new Object() 
+		{
+			public String toString() 
+			{
+				return item + item2 + item3;
 			}
 		};
 	}
