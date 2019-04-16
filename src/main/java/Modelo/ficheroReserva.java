@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 
 public class ficheroReserva {
 
+	private String DNIusuario;
+	private String nombreUsuario;
 	private String nombreHotel;
 	private float precio;
 	private int numPersonas;
@@ -22,8 +24,11 @@ public class ficheroReserva {
 	private String fecha_salida;
 	
 
-	public ficheroReserva(String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida) 
+	public ficheroReserva(String DNIusuario, String nombreUsuario, String nombreHotel, float precio, int numPersonas, 
+			int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida) 
 	{
+		this.DNIusuario = DNIusuario;
+		this.nombreUsuario = nombreUsuario;
 		this.nombreHotel = nombreHotel;
 		this.precio = precio;
 		this.numPersonas = numPersonas;
@@ -35,6 +40,46 @@ public class ficheroReserva {
 
 	public ficheroReserva() {
 
+	}
+	
+	public String getDNIusuario() {
+		return DNIusuario;
+	}
+
+	public void setDNIusuario(String dNIusuario) {
+		DNIusuario = dNIusuario;
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public int getNumHabitaciones() {
+		return numHabitaciones;
+	}
+
+	public void setNumHabitaciones(int numHabitaciones) {
+		this.numHabitaciones = numHabitaciones;
+	}
+
+	public String getFecha_entrada() {
+		return fecha_entrada;
+	}
+
+	public void setFecha_entrada(String fecha_entrada) {
+		this.fecha_entrada = fecha_entrada;
+	}
+
+	public String getFecha_salida() {
+		return fecha_salida;
+	}
+
+	public void setFecha_salida(String fecha_salida) {
+		this.fecha_salida = fecha_salida;
 	}
 
 	public int getNumPersonas() {
@@ -95,8 +140,9 @@ public class ficheroReserva {
 			// DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			// Calendar cal = Calendar.getInstance();
 
-			fich.write(" Hotel: " + this.nombreHotel + "\r\n" + " Precio: " + this.precio + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
-					+ " Numero de habitaciones: " + this.numHabitaciones + "\r\n" + " Ubicacion: " + this.ubicacion + "\r\n" + " Fecha de entrada: "
+			fich.write(" DNI usuario: " + this.DNIusuario + "\r\n" + " Nombre de usuario: "+ this.nombreUsuario + "\r\n" + " Hotel: " + this.nombreHotel 
+					+ "\r\n" + " Precio: " + this.precio + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n" + " Numero de habitaciones: " 
+					+ this.numHabitaciones + "\r\n" + " Ubicacion: " + this.ubicacion + "\r\n" + " Fecha de entrada: "
 					+ this.fecha_entrada + "\r\n" + " Fecha de salida: " + this.fecha_salida);
 			fich.close();
 

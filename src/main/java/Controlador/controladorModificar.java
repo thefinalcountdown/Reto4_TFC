@@ -54,13 +54,13 @@ public class controladorModificar {
 				if (funcionesLogin.comprobarDni(GestorBD.consulta(funcionesLogin
 						.sentenciaCombrobarDni(ventana.modificar.formattedTextFieldBorrarDni.getText()))) == false) 
 				{
-					JOptionPane.showMessageDialog(null, "El usuario no existe...");
-				} 
+					JOptionPane.showMessageDialog(null, "El usuario no existe.");
+				}
 				else if (funcionesLogin.comprobarLogin(GestorBD
 						.consulta(funcionesLogin.sentenciaLogin(ventana.modificar.formattedTextFieldBorrarDni.getText(),
 								String.valueOf(ventana.modificar.passwordFieldBorrarDni.getPassword())))) == false) 
 				{
-					JOptionPane.showMessageDialog(null, "Clave incorrecta...");
+					JOptionPane.showMessageDialog(null, "Clave incorrecta.");
 				} 
 				else if (GestorBD.insertarDatos(
 						funcionesLogin.sentenciaBorrarUsuario(ventana.modificar.formattedTextFieldBorrarDni.getText(),
