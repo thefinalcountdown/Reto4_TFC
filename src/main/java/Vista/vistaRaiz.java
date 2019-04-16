@@ -28,25 +28,15 @@ public class vistaRaiz extends JPanel {
 	public JLabel lblNewLabel;
 	public JLabel lblDnde;
 	public JLabel lblHuspedes;
-	public JLabel lblKids;
-	public JLabel lblHabitaciones;
 	public JComboBox comboBoxUbicacion;
-	public JButton btnSumAdult = new JButton("+");
-	public JButton btnRestAdult = new JButton("-");
-	public JButton btnSumKids = new JButton("+");
-	public JButton btnRestKids = new JButton("-");
-	public JButton btnRestHab = new JButton("-");
-	public JButton btnSumHab = new JButton("+");
+	public JButton btnSum = new JButton("+");
+	public JButton btnRest = new JButton("-");
 	public JTextField txthuesped;
-	public JTextField txtKids;
-	public JTextField txtHab;
 	public JButton btnBuscar;
 	private JLabel lblFecha;
 	public JDateChooser fechaIn;
 	public JDateChooser fechaOut;
 	public Date fechaEntrada = new Date();
-	private JTextField textField;
-	private JTextField textField_1;
 	//private JDateChooser fechaOut = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
 	/**
 	 * Create the panel.
@@ -65,15 +55,30 @@ public class vistaRaiz extends JPanel {
 		lblDnde.setBounds(33, 103, 69, 31);
 		add(lblDnde);
 		
-		//ComboBox ubicaciones
 		comboBoxUbicacion = new JComboBox();
 		comboBoxUbicacion.setBounds(24, 129, 402, 29);
 		add(comboBoxUbicacion);
+		
+		lblHuspedes = new JLabel("HUESPEDES");
+		lblHuspedes.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblHuspedes.setBounds(33, 188, 109, 31);
+		add(lblHuspedes);
+		
+		txthuesped = new JTextField("1");
+		txthuesped.setBounds(75, 231, 51, 26);
+		add(txthuesped);
+		txthuesped.setEditable(false);
+		
+		btnSum.setBounds(128, 231, 43, 29);
+		add(btnSum);
+		
+		btnRest.setBounds(33, 231, 43, 29);
+		add(btnRest);
 
-		//Fecha Entrada
+		//Entrada
 		lblFecha = new JLabel("FECHA ENTRADA");
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblFecha.setBounds(33, 368, 138, 31);
+		lblFecha.setBounds(33, 290, 138, 31);
 		add(lblFecha);
 		
 		JCalendar calendarIn = new JCalendar();
@@ -85,14 +90,14 @@ public class vistaRaiz extends JPanel {
 		calendarIn.setSundayForeground(Color.BLUE);
 		
 		fechaIn = new JDateChooser(calendarIn, null, null, null);
-		fechaIn.setBounds(33, 408, 130, 30);
+		fechaIn.setBounds(33, 330, 130, 30);
 		add(fechaIn);
 		
 		
-		//Fecha Salida
+		//Salida
 		lblFecha = new JLabel("FECHA SALIDA");
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblFecha.setBounds(200, 368, 130, 31);
+		lblFecha.setBounds(200, 290, 130, 31);
 		add(lblFecha);
 		
 		JCalendar calendarOut = new JCalendar();
@@ -107,70 +112,23 @@ public class vistaRaiz extends JPanel {
 		calendarOut.setSundayForeground(Color.BLUE);
 		
 		fechaOut = new JDateChooser(calendarOut, null, null, null);
-		fechaOut.setBounds(200, 408, 130, 30);
+		fechaOut.setBounds(200, 330, 130, 30);
 		add(fechaOut);
 		
-		
-		//NUMERO ADULTOS
-		lblHuspedes = new JLabel("ADULTOS");
-		lblHuspedes.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblHuspedes.setBounds(33, 188, 109, 31);
-		add(lblHuspedes);
-		
-		txthuesped = new JTextField("1");
-		txthuesped.setBounds(75, 231, 51, 26);
-		add(txthuesped);
-		txthuesped.setEditable(false);
-		
-		btnSumAdult.setBounds(128, 231, 43, 29);
-		add(btnSumAdult);
-		
-		btnRestAdult.setBounds(33, 231, 43, 29);
-		add(btnRestAdult);
-		
-		
-		//NUMERO NIÑOS
-		lblKids = new JLabel("NIÑOS");
-		lblKids.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblKids.setBounds(234, 188, 109, 31);
-		add(lblKids);
-		
-		btnRestKids.setBounds(234, 231, 43, 29);
-		add(btnRestKids);
-		
-		txtKids = new JTextField("0");
-		txtKids.setEditable(false);
-		
-		txtKids.setBounds(276, 231, 51, 26);
-		add(txtKids);
-		
-		btnSumKids.setBounds(329, 231, 43, 29);
-		add(btnSumKids);
-		
-		
-		//NUMERO HABITACIONES
-		lblHabitaciones = new JLabel("HABITACIONES");
-		lblHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblHabitaciones.setBounds(33, 301, 109, 31);
-		add(lblHabitaciones);
-		
-		btnRestHab.setBounds(159, 301, 43, 29);
-		add(btnRestHab);
-		
-		txtHab = new JTextField("1");
-		txtHab.setEditable(false);
-		txtHab.setBounds(201, 301, 51, 26);
-		add(txtHab);
-		
-		btnSumHab.setBounds(254, 301, 43, 29);
-		add(btnSumHab);
 		
 		btnBuscar = new JButton("BUSCAR");
 		btnBuscar.setBounds(686, 514, 198, 48);
 		add(btnBuscar);
 		btnBuscar.setEnabled(false);
-			
+		
+	
+		
+		
+		
+		
 		
 	}
+	
+	
 }
 
