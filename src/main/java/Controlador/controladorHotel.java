@@ -5,14 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
-import javax.swing.JList;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
 import Modelo.Hotel;
-import Modelo.ModeloLista;
 import Modelo.modelo;
 import Vista.Ventana;
 import Vista.vistaHoteles;
@@ -24,8 +21,6 @@ public class controladorHotel{
 
 	private Ventana ventana;
 	private modelo modelo;
-	
-	private ModeloLista lm= new ModeloLista();
 
 	public controladorHotel() {
 	}
@@ -48,15 +43,7 @@ public class controladorHotel{
 		ventana.hotel.btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
-				try {
-					controladorRaiz.lm.vaciarLista();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				ventana.hotel.listaHoteles.setModel(lm);
-
-				
+//				vaciarComboBox();
 			}
 		});
 
@@ -93,16 +80,14 @@ public class controladorHotel{
 		return nomPrecio;
 	}
 
-	// Metodo para vaciar la Lista:
+	// Metodo para rellenar con el comboBox:
 
-//	public static void vaciarLista(JList lista) {
-//		DefaultListModel model=new DefaultListModel();
-//        model.clear();
-//        lista.setModel(model);
-//			
-//		
+//	public static void llenarLista(ArrayList<String> hotel) {
+//		for (int i = 0; i < hotel.size(); i++) {
+//			vistaHoteles.listaHoteles.addItem(hotel.get(i));
+//		}
 //	}
-
+//
 //	// Metodo para vaciar con el comboBox:
 //
 //	public static void vaciarComboBox() {

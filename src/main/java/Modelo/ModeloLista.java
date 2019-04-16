@@ -12,31 +12,19 @@ import metodos.GestorBD;
 
 public class ModeloLista implements ListModel {
 	Ventana ventana;
-	public ArrayList<String> arrayString = new ArrayList<String>();
+	private ArrayList<String> arrayString = new ArrayList<String>();
 	public static ArrayList<Hotel> hoteles = new ArrayList<Hotel>();
 
-	public void llenarLista(String ubicacion) throws Exception {
+	public ArrayList<Hotel> llenarLista(String ubicacion) throws Exception {
 		hoteles = obtenerHoteles(ubicacion);
 
-		for (int index = 0; index < hoteles.size(); index++) 
-		{
+		for (int index = 0; index < hoteles.size(); index++) {
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getPrecio(), hoteles.get(index).getEstrellas());
-			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio:" + hoteles.get(index).getPrecio()
-					+"\u20ac  Estrellas: "+hoteles.get(index).getEstrellas());
+			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio:" + hoteles.get(index).getPrecio()+"\u20ac  Estrellas: "+hoteles.get(index).getEstrellas());
 		}
-	}
-	
-	public void vaciarLista(){
-		
-		for(int index = 0; index < arrayString.size(); index++)
-		{
-			hoteles.remove(index);
-			arrayString.remove(index);
-		}
-		
+		return hoteles;
 	}
 
-	
 	public static ArrayList<Hotel> obtenerHoteles(String ubicacion) throws Exception {
 
 		String sentencia = "select * from hoteles where ubicacion='%s'";
@@ -53,7 +41,7 @@ public class ModeloLista implements ListModel {
 	public static Object makeObj(final String item, float item2, int item3) {
 		return new Object() {
 			public String toString() {
-				return item+item2+item3;
+				return item + item2+item3;
 			}
 		};
 	}
@@ -81,7 +69,5 @@ public class ModeloLista implements ListModel {
 		// TODO Auto-generated method stub
 
 	}
-	
-
 
 }

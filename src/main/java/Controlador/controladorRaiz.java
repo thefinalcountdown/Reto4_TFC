@@ -8,8 +8,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import Modelo.ModeloLista;
 import Modelo.modelo;
 import Vista.Ventana;
 
@@ -19,8 +17,6 @@ import metodos.GestorBD;
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
-	static ModeloLista lm= new ModeloLista();
-//	String ubicacionSeleccionada;
 
 	public static int num_huespedes = 1;
 
@@ -96,15 +92,15 @@ public class controladorRaiz {
 		// boton pasar siguiente ventana
 		ventana.raiz.btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.raiz.ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
+				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
 
 				Date fechaIn = ventana.raiz.fechaIn.getDate();
 				Date fechaOut = ventana.raiz.fechaOut.getDate();
 
-				
 				try {
-					lm.llenarLista(ventana.raiz.ubicacionSeleccionada);
-					ventana.hotel.listaHoteles.setModel(lm);
+
+					vistaHoteles.lm.llenarLista(ubicacionSeleccionada);
+//					ModeloLista.llenarLista(ubicacionSeleccionada);
 
 				} catch (Exception e1) {
 					System.out.println("el ArrayList de parada no ha sido rellenado");
