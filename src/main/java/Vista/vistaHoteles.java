@@ -56,13 +56,13 @@ public class vistaHoteles extends JPanel {
 				scrollPane.setViewportView(listaHoteles);
 		
 		
-				listaHoteles.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-						"Seleccione un hotel:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));
-				listaHoteles.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-				listaHoteles.setSelectedIndex(0);
-				listaHoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				listaHoteles.setFixedCellHeight(50);
-				listaHoteles.setFixedCellWidth(100);
+		listaHoteles.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+				"Seleccione un hotel:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));
+		listaHoteles.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		listaHoteles.setSelectedIndex(0);
+		listaHoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaHoteles.setFixedCellHeight(50);
+		listaHoteles.setFixedCellWidth(100);
 
 		btnCancelar.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		btnCancelar.setBounds(72, 437, 138, 61);

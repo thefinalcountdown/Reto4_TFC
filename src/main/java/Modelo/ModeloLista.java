@@ -28,7 +28,7 @@ public class ModeloLista implements ListModel {
 	
 	public void vaciarLista(){
 		
-		for(int index = 0; index < arrayString.size(); index++)
+		for(int index = arrayString.size()-1; index >= 0; index--)
 		{
 			hoteles.remove(index);
 			arrayString.remove(index);
