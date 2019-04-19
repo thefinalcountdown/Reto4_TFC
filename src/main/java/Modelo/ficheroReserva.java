@@ -20,9 +20,12 @@ public class ficheroReserva {
 	private String ubicacion;
 	private String fecha_entrada;
 	private String fecha_salida;
+	private String DNI;
+	private String usuario;
 	
 
-	public ficheroReserva(String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida) 
+	public ficheroReserva(String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida,
+			String DNI, String usuario) 
 	{
 		this.nombreHotel = nombreHotel;
 		this.precio = precio;
@@ -31,6 +34,8 @@ public class ficheroReserva {
 		this.ubicacion = ubicacion;
 		this.fecha_entrada = fecha_entrada;
 		this.fecha_salida = fecha_salida;
+		this.DNI = DNI;
+		this.usuario = usuario;
 	}
 
 	public ficheroReserva() {
@@ -97,7 +102,8 @@ public class ficheroReserva {
 
 			fich.write(" Hotel: " + this.nombreHotel + "\r\n" + " Precio: " + this.precio + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
 					+ " Numero de habitaciones: " + this.numHabitaciones + "\r\n" + " Ubicacion: " + this.ubicacion + "\r\n" + " Fecha de entrada: "
-					+ this.fecha_entrada + "\r\n" + " Fecha de salida: " + this.fecha_salida);
+					+ this.fecha_entrada + "\r\n" + " Fecha de salida: " + this.fecha_salida + "\r\n" + " DNI del usuario: " + this.DNI + "\r\n"
+					+ " Nombre del usuario: " + this.usuario);
 			fich.close();
 
 		} catch (IOException ex) {
@@ -107,7 +113,7 @@ public class ficheroReserva {
 		}
 	}
 	
-	public static ArrayList<String> leerTicket()
+	public ArrayList<String> leerTicket()
 	{
 		ArrayList <String> fichero_texto = new ArrayList<String>();
 		ArrayList <String> palabra = new ArrayList<String>();
@@ -138,8 +144,9 @@ public class ficheroReserva {
 		catch(IOException ex)
 		{
 			JOptionPane.showMessageDialog(null, "No se pudo leer el archivo");
-		   	 System.exit(-1);
+		   	System.exit(-1);
 		}
+		
 		
 		return palabra;
 	}

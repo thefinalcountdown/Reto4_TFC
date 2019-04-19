@@ -4,7 +4,7 @@ public class Dormitorio extends Habitaciones {
 	
 	String relacionMobiliario;
 	int camasDisponibles;
-
+	
 	public Dormitorio(float metrosCuadrados, String RelacionMobiliario, int CamasDisponibles) {
 		super(metrosCuadrados);
 		this.relacionMobiliario = RelacionMobiliario;

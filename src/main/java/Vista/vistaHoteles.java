@@ -34,9 +34,6 @@ import javax.swing.border.EtchedBorder;
 
 public class vistaHoteles extends JPanel {
 
-
-	private ArrayList<String> al = new ArrayList<String>();
-	public  ModeloLista lm = new ModeloLista();
 	public  JList<Hotel> listaHoteles = new JList<Hotel>();
 	JScrollPane scrollPane = new JScrollPane();
 	JScrollPane scrollPane_1 = new JScrollPane();
@@ -59,7 +56,6 @@ public class vistaHoteles extends JPanel {
 		listaHoteles.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 				"Seleccione un hotel:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));
 		listaHoteles.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		listaHoteles.setSelectedIndex(0);
 		listaHoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaHoteles.setFixedCellHeight(50);
 		listaHoteles.setFixedCellWidth(100);

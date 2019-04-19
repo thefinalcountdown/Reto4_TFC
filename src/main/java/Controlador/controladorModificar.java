@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import Modelo.funcionesLogin;
 import Modelo.modelo;
 import Vista.Ventana;
 import metodos.GestorBD;
@@ -24,18 +23,18 @@ public class controladorModificar {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				if (funcionesLogin.comprobarDni(GestorBD.consulta(funcionesLogin.sentenciaCombrobarDni(
+				if (modelo.modeloLogin.comprobarDni(GestorBD.consulta(modelo.modeloLogin.sentenciaCombrobarDni(
 						ventana.modificar.formattedTextFieldActualizarDNI.getText()))) == false) 
 				{
 					JOptionPane.showMessageDialog(null, "El usuario no existe.");
 				}
-				else if (funcionesLogin.comprobarLogin(GestorBD.consulta(funcionesLogin.sentenciaLogin(
+				else if (modelo.modeloLogin.comprobarLogin(GestorBD.consulta(modelo.modeloLogin.sentenciaLogin(
 						ventana.modificar.formattedTextFieldActualizarDNI.getText(),
 						String.valueOf(ventana.modificar.passwordFieldActualizarClave.getPassword())))) == false) 
 				{
 					JOptionPane.showMessageDialog(null, "Clave incorrecta.");
 				} 
-				else if (GestorBD.insertarDatos(funcionesLogin.sentenciaActualizarUsuario(
+				else if (GestorBD.insertarDatos(modelo.modeloLogin.sentenciaActualizarUsuario(
 						ventana.modificar.formattedTextFieldActualizarDNI.getText(),
 						String.valueOf(ventana.modificar.passwordFieldActualizarClave.getPassword()),
 						String.valueOf(ventana.modificar.passwordFieldNuevaClave.getPassword()))) == true) 
@@ -51,19 +50,19 @@ public class controladorModificar {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				if (funcionesLogin.comprobarDni(GestorBD.consulta(funcionesLogin
+				if (modelo.modeloLogin.comprobarDni(GestorBD.consulta(modelo.modeloLogin
 						.sentenciaCombrobarDni(ventana.modificar.formattedTextFieldBorrarDni.getText()))) == false) 
 				{
 					JOptionPane.showMessageDialog(null, "El usuario no existe...");
 				} 
-				else if (funcionesLogin.comprobarLogin(GestorBD
-						.consulta(funcionesLogin.sentenciaLogin(ventana.modificar.formattedTextFieldBorrarDni.getText(),
+				else if (modelo.modeloLogin.comprobarLogin(GestorBD
+						.consulta(modelo.modeloLogin.sentenciaLogin(ventana.modificar.formattedTextFieldBorrarDni.getText(),
 								String.valueOf(ventana.modificar.passwordFieldBorrarDni.getPassword())))) == false) 
 				{
 					JOptionPane.showMessageDialog(null, "Clave incorrecta...");
 				} 
 				else if (GestorBD.insertarDatos(
-						funcionesLogin.sentenciaBorrarUsuario(ventana.modificar.formattedTextFieldBorrarDni.getText(),
+						modelo.modeloLogin.sentenciaBorrarUsuario(ventana.modificar.formattedTextFieldBorrarDni.getText(),
 								String.valueOf(ventana.modificar.passwordFieldBorrarDni.getPassword()))) == true) 
 				{
 					JOptionPane.showMessageDialog(null, "Usuario borrado correctamente.");

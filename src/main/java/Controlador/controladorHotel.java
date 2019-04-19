@@ -3,21 +3,13 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
+import javax.swing.JOptionPane;
 
-import Modelo.Hotel;
-import Modelo.ModeloLista;
 import Modelo.modelo;
 import Vista.Ventana;
-import Vista.vistaHoteles;
-import Vista.vistaRaiz;
-import metodos.GestorBD;
+
 
 public class controladorHotel{
 	private ArrayList<String> misNombreHoteles = new ArrayList<String>();
@@ -25,7 +17,6 @@ public class controladorHotel{
 	private Ventana ventana;
 	private modelo modelo;
 	
-	private ModeloLista lm= new ModeloLista();
 
 	public controladorHotel() {
 	}
@@ -33,15 +24,31 @@ public class controladorHotel{
 	public controladorHotel(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
-
+		
+		
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.hotel, ventana.reserva);
+				
 
 //				float precio_reserva = Float.parseFloat(separarString(vistaHoteles.listaHoteles)[1]);
 				
 //				ventana.reserva.textField_precio.setText(Float.toString(precio_reserva*Integer.parseInt(ventana.raiz.txthuesped.getText())));
 //				ventana.reserva.textField_hotelseleccionado.setText(separarString(vistaHoteles.listaHoteles)[0]);
+				int index = 0;
+				index = ventana.hotel.listaHoteles.getSelectedIndex();
+				
+				
+				if (index == -1)
+				{
+					JOptionPane.showMessageDialog(null, "Seleccione algun hotel.");
+				}
+				else
+				{
+					ventana.reserva.textField_hotelseleccionado.setText(modelo.modeloLista.hoteles.get(index).getNombre());
+					ventana.reserva.textField_precio.setText(Float.toString(modelo.modeloLista.hoteles.get(index).getPrecio()));
+					ventana.cambio_panel(ventana.hotel, ventana.reserva);
+				}
+				
 			}
 		});
 
@@ -49,12 +56,12 @@ public class controladorHotel{
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
 				try {
-					controladorRaiz.lm.vaciarLista();
+					modelo.modeloLista.vaciarLista();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				ventana.hotel.listaHoteles.setModel(lm);
+				ventana.hotel.listaHoteles.setModel(modelo.modeloLista);
 
 				
 			}
@@ -92,23 +99,6 @@ public class controladorHotel{
 		String[] nomPrecio = { uno, dos };
 		return nomPrecio;
 	}
-
-	// Metodo para vaciar la Lista:
-
-//	public static void vaciarLista(JList lista) {
-//		DefaultListModel model=new DefaultListModel();
-//        model.clear();
-//        lista.setModel(model);
-//			
-//		
-//	}
-
-//	// Metodo para vaciar con el comboBox:
-//
-//	public static void vaciarComboBox() {
-//
-//		vistaHoteles.listaHoteles.removeAllItems();
-//	}
 
 
 }

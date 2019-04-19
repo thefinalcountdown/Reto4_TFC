@@ -10,16 +10,8 @@ public abstract class Alojamiento {
 	int Cod_alojamiento;
 //	ArrayList<Habitaciones> listaHabitaciones = new ArrayList<Habitaciones>();
 	
-	
-	
-//	public Alojamiento(String nombre, String ubicacion, float precio, int cod_alojamiento, ArrayList<Habitaciones> ListaHabitaciones) {
-//		this.nombre = nombre;
-//		this.ubicacion = ubicacion;
-//		this.precio = precio;
-//		this.listaHabitaciones = ListaHabitaciones;
-//		Cod_alojamiento = cod_alojamiento;
-//	}
-	public Alojamiento(String nombre, String ubicacion, float precio, int cod_alojamiento) {
+	public Alojamiento(String nombre, String ubicacion, float precio, int cod_alojamiento) 
+	{
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
 		this.precio = precio;

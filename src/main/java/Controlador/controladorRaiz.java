@@ -9,17 +9,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Modelo.ModeloLista;
 import Modelo.modelo;
 import Vista.Ventana;
 
-import Vista.vistaHoteles;
 import metodos.GestorBD;
 
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
-	static ModeloLista lm= new ModeloLista();
 //	String ubicacionSeleccionada;
 
 	public static int num_huespedes = 1;
@@ -103,8 +100,8 @@ public class controladorRaiz {
 
 				
 				try {
-					lm.llenarLista(ventana.raiz.ubicacionSeleccionada);
-					ventana.hotel.listaHoteles.setModel(lm);
+					modelo.modeloLista.llenarLista(ventana.raiz.ubicacionSeleccionada);
+					ventana.hotel.listaHoteles.setModel(modelo.modeloLista);
 
 				} catch (Exception e1) {
 					System.out.println("el ArrayList de parada no ha sido rellenado");

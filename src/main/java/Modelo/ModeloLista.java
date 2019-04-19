@@ -14,6 +14,7 @@ public class ModeloLista implements ListModel {
 	Ventana ventana;
 	public ArrayList<String> arrayString = new ArrayList<String>();
 	public static ArrayList<Hotel> hoteles = new ArrayList<Hotel>();
+	
 
 	public void llenarLista(String ubicacion) throws Exception {
 		hoteles = obtenerHoteles(ubicacion);
