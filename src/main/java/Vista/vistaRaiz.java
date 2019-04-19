@@ -24,7 +24,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 public class vistaRaiz extends JPanel {
-	
+	public String ubicacionSeleccionada;
 	public JLabel lblNewLabel;
 	public JLabel lblDnde;
 	public JLabel lblHuspedes;
