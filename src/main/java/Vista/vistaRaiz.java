@@ -24,7 +24,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 public class vistaRaiz extends JPanel {
-	public String ubicacionSeleccionada;
+	
 	public JLabel lblNewLabel;
 	public JLabel lblDnde;
 	public JLabel lblHuspedes;
@@ -127,6 +127,7 @@ public class vistaRaiz extends JPanel {
 		
 		btnRestAdult.setBounds(33, 231, 43, 29);
 		add(btnRestAdult);
+		btnRestAdult.setEnabled(false);
 		
 		
 		//NUMERO NIÑOS
@@ -137,6 +138,7 @@ public class vistaRaiz extends JPanel {
 		
 		btnRestKids.setBounds(234, 231, 43, 29);
 		add(btnRestKids);
+		btnRestKids.setEnabled(false);
 		
 		txtKids = new JTextField("0");
 		txtKids.setEditable(false);
@@ -156,6 +158,7 @@ public class vistaRaiz extends JPanel {
 		
 		btnRestHab.setBounds(159, 301, 43, 29);
 		add(btnRestHab);
+		btnRestHab.setEnabled(false);
 		
 		txtHab = new JTextField("1");
 		txtHab.setEditable(false);
@@ -173,4 +176,3 @@ public class vistaRaiz extends JPanel {
 		
 	}
 }
-
