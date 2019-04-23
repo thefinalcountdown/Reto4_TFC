@@ -2,32 +2,16 @@ package Vista;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListDataListener;
 
-import Controlador.controladorHotel;
 import Modelo.Hotel;
-import Modelo.ModeloLista;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JList;
 
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;

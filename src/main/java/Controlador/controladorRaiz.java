@@ -9,16 +9,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import Modelo.modelo;
-import Modelo.ModeloLista;
 import Vista.Ventana;
 
-import Vista.vistaHoteles;
 import metodos.GestorBD;
 
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
-	static ModeloLista lm= new ModeloLista();
 
 	public static int num_huespedes = 1;
 	public static int num_kids = 0;
@@ -345,8 +342,8 @@ public class controladorRaiz {
 				Date fechaOut = ventana.raiz.fechaOut.getDate();
 
 				try {
-					lm.llenarLista(ubicacionSeleccionada);
-					ventana.hotel.listaHoteles.setModel(lm);
+					modelo.modeloLista.llenarLista(ubicacionSeleccionada);
+					ventana.hotel.listaHoteles.setModel(modelo.modeloLista);
 					
 					//vistaHoteles.lm.llenarLista(ubicacionSeleccionada);
 					//ModeloLista.llenarLista(ubicacionSeleccionada);a
