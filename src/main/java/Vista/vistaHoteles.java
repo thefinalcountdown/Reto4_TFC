@@ -41,6 +41,7 @@ public class vistaHoteles extends JPanel {
 
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
+	public JButton btnHabitaciones = new JButton("Seleccion");
 
 	public vistaHoteles() {
 
@@ -66,6 +67,9 @@ public class vistaHoteles extends JPanel {
 
 		btnContinuar.setBounds(512, 456, 97, 25);
 		add(btnContinuar);
+		
+		btnHabitaciones.setBounds(512, 200, 97, 25);
+		add(btnHabitaciones);
 		
 
 		
