@@ -2,29 +2,19 @@ package Vista;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 
 public class vistaRaiz extends JPanel {
-	public String ubicacionSeleccionada;
+	
 	public JLabel lblNewLabel;
 	public JLabel lblDnde;
 	public JLabel lblHuspedes;
@@ -127,6 +117,7 @@ public class vistaRaiz extends JPanel {
 		
 		btnRestAdult.setBounds(33, 231, 43, 29);
 		add(btnRestAdult);
+		btnRestAdult.setEnabled(false);
 		
 		
 		//NUMERO NIÑOS
@@ -137,6 +128,7 @@ public class vistaRaiz extends JPanel {
 		
 		btnRestKids.setBounds(234, 231, 43, 29);
 		add(btnRestKids);
+		btnRestKids.setEnabled(false);
 		
 		txtKids = new JTextField("0");
 		txtKids.setEditable(false);
@@ -156,6 +148,7 @@ public class vistaRaiz extends JPanel {
 		
 		btnRestHab.setBounds(159, 301, 43, 29);
 		add(btnRestHab);
+		btnRestHab.setEnabled(false);
 		
 		txtHab = new JTextField("1");
 		txtHab.setEditable(false);
@@ -173,4 +166,3 @@ public class vistaRaiz extends JPanel {
 		
 	}
 }
-

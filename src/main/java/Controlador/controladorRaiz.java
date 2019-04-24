@@ -8,7 +8,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import Modelo.modelo;
 import Vista.Ventana;
 
@@ -17,9 +16,10 @@ import metodos.GestorBD;
 public class controladorRaiz {
 	private Ventana ventana;
 	private modelo modelo;
-//	String ubicacionSeleccionada;
 
 	public static int num_huespedes = 1;
+	public static int num_kids = 0;
+	public static int num_Hab = 1;
 
 	public controladorRaiz(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
@@ -69,39 +69,284 @@ public class controladorRaiz {
 			}
 		});
 
-		// boton sumar huesped
-		ventana.raiz.btnSum.addActionListener(new ActionListener() {
+		// boton sumar Adulto
+		ventana.raiz.btnSumAdult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				int maxKids = Integer.parseInt(ventana.raiz.txtKids.getText());
 				num_huespedes++;
-				// por si hay que borrar el jtextfield
-				// vistaRaiz.txthuesped.setText("");
 				ventana.raiz.txthuesped.setText(Integer.toString(num_huespedes));
+				if(num_huespedes == 12){
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if(num_huespedes == 11){
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 10 || num_huespedes == 9 || num_huespedes == 1) && num_kids == 2) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 8 || num_huespedes == 7 || num_huespedes == 3 || num_huespedes == 2) && num_kids == 4) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 6 || num_huespedes == 5 || num_huespedes == 4) && num_kids == 6) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else {
+					ventana.raiz.btnSumAdult.setEnabled(true);
+					ventana.raiz.btnSumKids.setEnabled(true);
+					ventana.raiz.btnRestAdult.setEnabled(true);
+					ventana.raiz.btnRestKids.setEnabled(true);
+				}
+				
+				if(num_huespedes == 0){
+					ventana.raiz.btnRestAdult.setEnabled(false);
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}
+				if (num_kids == 0){
+					ventana.raiz.btnRestKids.setEnabled(false);
+				}
+				if((num_kids > 2) && (num_huespedes == 2)) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				
+				if((num_kids > 4) && (num_huespedes == 4)) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				if(num_huespedes == 8 && num_kids > 2) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				if(num_huespedes == 10 && num_kids > 0) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				if (num_huespedes == 1) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				
+				if((num_huespedes == 10) && num_kids == 2) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if(num_huespedes == 8 && num_kids == 4) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if((num_huespedes == 6) && num_kids == 6) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				
+			}
+			
+		});
+		
+
+		// boton restar Adulto
+		ventana.raiz.btnRestAdult.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				num_huespedes--;
+				ventana.raiz.txthuesped.setText(Integer.toString(num_huespedes));
+				if(num_huespedes == 12){
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if(num_huespedes == 11){
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 10 || num_huespedes == 9 || num_huespedes == 1) && num_kids == 2) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 8 || num_huespedes == 7 || num_huespedes == 3 || num_huespedes == 2) && num_kids == 4) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 6 || num_huespedes == 5 || num_huespedes == 4) && num_kids == 6) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else {
+					ventana.raiz.btnSumAdult.setEnabled(true);
+					ventana.raiz.btnSumKids.setEnabled(true);
+					ventana.raiz.btnRestAdult.setEnabled(true);
+					ventana.raiz.btnRestKids.setEnabled(true);
+				}
+				
+				if(num_huespedes == 0){
+					ventana.raiz.btnRestAdult.setEnabled(false);
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}
+				if (num_kids == 0){
+					ventana.raiz.btnRestKids.setEnabled(false);
+				}
+				if((num_kids > 2) && (num_huespedes == 2)) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				if((num_kids > 4) && (num_huespedes == 4)) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				if(num_huespedes == 8 && num_kids > 2) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				if(num_huespedes == 10 && num_kids > 0) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				if (num_huespedes == 1) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				
+				if((num_huespedes == 10) && num_kids == 2) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if(num_huespedes == 8 && num_kids == 4) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if((num_huespedes == 6) && num_kids == 6) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				
+			}
+		});
+		
+		// boton sumar Niño
+		ventana.raiz.btnSumKids.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				num_kids++;
+				ventana.raiz.txtKids.setText(Integer.toString(num_kids));
+				if(num_huespedes == 12){
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if(num_huespedes == 11){
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 10 || num_huespedes == 9 || num_huespedes == 1) && num_kids == 2) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 8 || num_huespedes == 7 || num_huespedes == 3 || num_huespedes == 2) && num_kids == 4) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 6 || num_huespedes == 5 || num_huespedes == 4) && num_kids == 6) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else {
+					ventana.raiz.btnSumAdult.setEnabled(true);
+					ventana.raiz.btnSumKids.setEnabled(true);
+					ventana.raiz.btnRestAdult.setEnabled(true);
+					ventana.raiz.btnRestKids.setEnabled(true);
+				}
+				
+				if(num_huespedes == 0){
+					ventana.raiz.btnRestAdult.setEnabled(false);
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}
+				if (num_kids == 0){
+					ventana.raiz.btnRestKids.setEnabled(false);
+				}
+				if((num_kids > 2) && (num_huespedes == 2)) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				if((num_kids > 4) && (num_huespedes == 4)) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				if(num_huespedes == 8 && num_kids > 2) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				if(num_huespedes == 10 && num_kids > 0) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				if (num_huespedes == 1) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				
+				if((num_huespedes == 10) && num_kids == 2) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if(num_huespedes == 8 && num_kids == 4) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if((num_huespedes == 6) && num_kids == 6) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				
+				
 			}
 		});
 
-		// boton restar huesped
-		ventana.raiz.btnRest.addActionListener(new ActionListener() {
+		// boton restar Niño
+		ventana.raiz.btnRestKids.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		
+				num_kids--;
+				ventana.raiz.txtKids.setText(Integer.toString(num_kids));
+				if(num_huespedes == 12){
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if(num_huespedes == 11){
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 10 || num_huespedes == 9 || num_huespedes == 1) && num_kids == 2) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 8 || num_huespedes == 7 || num_huespedes == 3 || num_huespedes == 2) && num_kids == 4) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else if((num_huespedes == 6 || num_huespedes == 5 || num_huespedes == 4) && num_kids == 6) {
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}else {
+					ventana.raiz.btnSumAdult.setEnabled(true);
+					ventana.raiz.btnSumKids.setEnabled(true);
+					ventana.raiz.btnRestAdult.setEnabled(true);
+					ventana.raiz.btnRestKids.setEnabled(true);
+				}
+				
+				if(num_huespedes == 0){
+					ventana.raiz.btnRestAdult.setEnabled(false);
+					ventana.raiz.btnSumKids.setEnabled(false);
+				}
+				if (num_kids == 0){
+					ventana.raiz.btnRestKids.setEnabled(false);
+				}
+				if((num_kids > 2) && (num_huespedes == 2)) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				if((num_kids > 4) && (num_huespedes == 4)) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				if(num_huespedes == 8 && num_kids > 2) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				if(num_huespedes == 10 && num_kids > 0) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				if (num_huespedes == 1) {
+					ventana.raiz.btnRestAdult.setEnabled(false);
+				}
+				
+				if((num_huespedes == 10) && num_kids == 2) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if(num_huespedes == 8 && num_kids == 4) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}else if((num_huespedes == 6) && num_kids == 6) {
+					ventana.raiz.btnSumAdult.setEnabled(false);
+				}
+				
+			}
+		});
+
+		// boton sumar Habitacion
+		ventana.raiz.btnSumHab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (num_huespedes > 1) {
-					num_huespedes--;
-					ventana.raiz.txthuesped.setText(Integer.toString(num_huespedes));
+				num_Hab++;
+				ventana.raiz.txtHab.setText(Integer.toString(num_Hab));
+				if(num_Hab < 3) {
+					ventana.raiz.btnSumHab.setEnabled(true);
+				}else{
+					ventana.raiz.btnSumHab.setEnabled(false);
+				}
+				if(!ventana.raiz.btnRestHab.isEnabled()) {
+					ventana.raiz.btnRestHab.setEnabled(true);
+				}
+				if(num_Hab == 1) {
+					ventana.raiz.btnRestHab.setEnabled(false);
 				}
 			}
 		});
 
+		// boton restar Habitacion
+		ventana.raiz.btnRestHab.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (num_Hab > 1 || num_Hab <3) {
+					num_Hab--;
+					ventana.raiz.txtHab.setText(Integer.toString(num_Hab));
+					ventana.raiz.btnSumHab.setEnabled(true);
+				}
+				if(num_Hab == 1) {
+					ventana.raiz.btnRestHab.setEnabled(false);
+				}
+			}
+		});
+		
 		// boton pasar siguiente ventana
 		ventana.raiz.btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.raiz.ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
+				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
+				
 
 				Date fechaIn = ventana.raiz.fechaIn.getDate();
 				Date fechaOut = ventana.raiz.fechaOut.getDate();
 
-				
 				try {
-					modelo.modeloLista.llenarLista(ventana.raiz.ubicacionSeleccionada);
+					modelo.modeloLista.llenarLista(ubicacionSeleccionada);
 					ventana.hotel.listaHoteles.setModel(modelo.modeloLista);
+					
+					//vistaHoteles.lm.llenarLista(ubicacionSeleccionada);
+					//ModeloLista.llenarLista(ubicacionSeleccionada);a
 
 				} catch (Exception e1) {
 					System.out.println("el ArrayList de parada no ha sido rellenado");
