@@ -18,7 +18,7 @@ public class controladorHotel {
 
 	private Ventana ventana;
 	private modelo modelo;
-	public Hotel_habitacion Hotel1;
+	public static Hotel_habitacion Hotel1;
 
 	public controladorHotel() {
 	}
@@ -55,7 +55,7 @@ public class controladorHotel {
 
 				System.out.println(modelo.modeloLista.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex())
 						.getCod_alojamiento());
-				
+				Hotel1= new Hotel_habitacion();
 				//aqui va lo de las habitaciones, en teoria tiene que rellenar un objeto que ya esta arriba que es el Hotel1???
 				//no lo consigo
 				try {
@@ -65,7 +65,7 @@ public class controladorHotel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.println(Hotel1.getCod_hotel()+"heyyyy");
+				System.out.println(Hotel1.toString()+"heyyyy");
 
 			}
 		});
@@ -88,7 +88,7 @@ public class controladorHotel {
 	
 	//metodo para rellenar el objeto (lo del %s era para llenar la frase en ese espacio con i que seria el cod del hotel que es lo que tengo que usar
 	//para que pille la sentencia bien), la sentencia funciona bien en el mysql
-	public Hotel_habitacion obtenerHabitaciones(int i)throws Exception {
+	public static Hotel_habitacion obtenerHabitaciones(int i)throws Exception {
 
 		String sentencia = "select * from Hotel_habitacion where Cod_Hotel='%s'";
 		sentencia = String.format(sentencia, i);

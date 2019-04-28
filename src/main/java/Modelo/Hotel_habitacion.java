@@ -37,21 +37,6 @@ public class Hotel_habitacion{
 		this.Habitacion9 = habitacion9;
 		this.Habitacion10 = habitacion10;
 	}
-	
-//	public Hotel_habitacion obtenerHabitaciones(int i, Hotel_habitacion hotelSeleccionado)throws Exception {
-//
-//		String sentencia = "select * from Hotel_habitacion where Cod_Hotel='%s'";
-//		sentencia = String.format(sentencia, i);
-//		ResultSet result = GestorBD.consulta(sentencia);
-//		while (result.next()) {
-//			hotelSeleccionado=new Hotel_habitacion(result.getInt("Cod_Hotel"), result.getString("Habitacion1"), result.getString("Habitacion2"),
-//					result.getString("Habitacion3"), result.getString("Habitacion4"), result.getString("Habitacion5"), 
-//					result.getString("Habitacion6"), result.getString("Habitacion7"), result.getString("Habitacion8"), 
-//					result.getString("Habitacion9"), result.getString("Habitacion10"));
-//System.out.println("holi"+result.getInt("Cod_Hotel"));
-//		}
-//return hotelSeleccionado;
-//	}
 
 	public int getCod_hotel() {
 		return Cod_hotel;
