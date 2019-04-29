@@ -20,10 +20,12 @@ public class controladorRaiz {
 	public static int num_huespedes = 1;
 	public static int num_kids = 0;
 	public static int num_Hab = 1;
+	
 
 	public controladorRaiz(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
+		
 
 		// llenar el comboBox de ubicaciones
 		try {
@@ -115,6 +117,20 @@ public class controladorRaiz {
 				if (num_huespedes == 1) {
 					ventana.raiz.btnRestAdult.setEnabled(false);
 				}
+				if(num_huespedes <=4) {
+					ventana.raiz.txtHab.setText(Integer.toString(1));
+				}
+				if (num_huespedes >= 5) {
+					ventana.raiz.txtHab.setText(Integer.toString(2));
+					
+				}
+				if (num_huespedes > 8) {
+					ventana.raiz.txtHab.setText(Integer.toString(3));
+					ventana.raiz.btnSumHab.setEnabled(false);
+				}
+				if(num_huespedes <8) {
+					ventana.raiz.btnSumHab.setEnabled(true);
+				}
 				
 				if((num_huespedes == 10) && num_kids == 2) {
 					ventana.raiz.btnSumAdult.setEnabled(false);
@@ -174,6 +190,17 @@ public class controladorRaiz {
 				if (num_huespedes == 1) {
 					ventana.raiz.btnRestAdult.setEnabled(false);
 				}
+				if (num_huespedes >= 5) {
+					ventana.raiz.txtHab.setText(Integer.toString(2));
+				}
+				if (num_huespedes > 8) {
+					ventana.raiz.txtHab.setText(Integer.toString(3));
+					ventana.raiz.btnSumHab.setEnabled(false);
+				}
+				if(num_huespedes <8) {
+					ventana.raiz.btnSumHab.setEnabled(true);
+				}
+				
 				
 				if((num_huespedes == 10) && num_kids == 2) {
 					ventana.raiz.btnSumAdult.setEnabled(false);
