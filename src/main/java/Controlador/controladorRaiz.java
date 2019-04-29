@@ -342,14 +342,11 @@ public class controladorRaiz {
 				Date fechaOut = ventana.raiz.fechaOut.getDate();
 
 				try {
-					modelo.modeloLista.llenarLista(ubicacionSeleccionada);
-					ventana.hotel.listaHoteles.setModel(modelo.modeloLista);
+					modelo.modeloListaHotel.llenarLista(ubicacionSeleccionada);
+					ventana.hotel.listaHoteles.setModel(modelo.modeloListaHotel);
 					
-					//vistaHoteles.lm.llenarLista(ubicacionSeleccionada);
-					//ModeloLista.llenarLista(ubicacionSeleccionada);a
-
 				} catch (Exception e1) {
-					System.out.println("el ArrayList de parada no ha sido rellenado");
+					System.out.println("el ArrayList de hotel no ha sido rellenado");
 					e1.printStackTrace();
 				}
 

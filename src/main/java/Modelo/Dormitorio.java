@@ -2,14 +2,14 @@ package Modelo;
 
 public class Dormitorio extends Habitaciones {
 	
-	String relacionMobiliario;
+	String cod_Dormi;
 	int camaIndividual;
 	int camaInfantil;
 	int camaMatrimonio;
 	
 	public Dormitorio(float metrosCuadrados, String RelacionMobiliario, int CamaIndividual, int CamaInfantil, int CamaMatrimonio) {
 		super(metrosCuadrados);
-		this.relacionMobiliario = RelacionMobiliario;
+		this.cod_Dormi = RelacionMobiliario;
 		this.camaIndividual = CamaIndividual;
 		this.camaInfantil = CamaInfantil;
 		this.camaMatrimonio = CamaMatrimonio;
@@ -24,11 +24,11 @@ public class Dormitorio extends Habitaciones {
 	}
 
 	public String getRelacionMobiliario() {
-		return relacionMobiliario;
+		return cod_Dormi;
 	}
 
 	public void setRelacionMobiliario(String relacionMobiliario) {
-		this.relacionMobiliario = relacionMobiliario;
+		this.cod_Dormi = relacionMobiliario;
 	}
 
 	public int getCamaIndividual() {
@@ -55,7 +55,7 @@ public class Dormitorio extends Habitaciones {
 	
 	@Override
 	public String toString() {
-		return super.toString()+" "+this.relacionMobiliario+" "+this.camaIndividual+" "+this.camaInfantil+" "+this.camaMatrimonio;
+		return super.toString()+" "+this.cod_Dormi+" "+this.camaIndividual+" "+this.camaInfantil+" "+this.camaMatrimonio;
 		//return "Dormitorio [metros cuadrados=" + metrosCuadrados+ ", relacione mobiliario=" + relacionMobiliario + ", camas disponibles=" + camasDisponibles+"]";
 	}
 }

@@ -33,7 +33,7 @@ public class vistaHoteles extends JPanel {
 		setLayout(null);
 		scrollPane.setBounds(43, 35, 550, 350);
 		add(scrollPane);
-		scrollPane_1.setBounds(650, 60, 203, 289);
+		scrollPane_1.setBounds(650, 60, 500, 289);
 		add(scrollPane_1);
 				scrollPane.setViewportView(listaHoteles);
 		
@@ -52,7 +52,7 @@ public class vistaHoteles extends JPanel {
 		btnContinuar.setBounds(512, 456, 97, 25);
 		add(btnContinuar);
 		
-		btnHabitaciones.setBounds(512, 200, 97, 25);
+		btnHabitaciones.setBounds(602, 198, 36, 25);
 		add(btnHabitaciones);
 		
 
@@ -62,7 +62,6 @@ public class vistaHoteles extends JPanel {
 		listaHabitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		listaHabitaciones.setSelectedIndex(0);
 		listaHabitaciones.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		listaHabitaciones.setFixedCellWidth(100);
 		listaHabitaciones.setFixedCellHeight(50);
 		listaHabitaciones.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 								"Seleccione habitacion/es:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));

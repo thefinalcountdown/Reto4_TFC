@@ -16,7 +16,7 @@ public class ModeloListaHabitaciones implements ListModel{
 	
 
 	public void llenarDormitorios(String ubicacion) throws Exception {
-		dormitorios = obtenerHoteles(ubicacion);
+		dormitorios = obtenerDormitorios(ubicacion);
 
 		for (int index = 0; index < dormitorios.size(); index++) 
 		{
@@ -37,14 +37,14 @@ public class ModeloListaHabitaciones implements ListModel{
 	}
 
 	
-	public static ArrayList<Dormitorio> obtenerHoteles(String ubicacion) throws Exception {
+	public static ArrayList<Dormitorio> obtenerDormitorios(String cod_hab) throws Exception {
 
-		String sentencia = "select * from hoteles where ubicacion='%s'";
-		sentencia = String.format(sentencia, ubicacion);
+		String sentencia = "select * from Hab_Dormitorio where Cod_Habitacion='%s'";
+		sentencia = String.format(sentencia, cod_hab);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
-			dormitorios.add(new Hotel(result.getString("nombre"), result.getString("ubicacion"), result.getFloat("precio"),
-					result.getInt("Cod_Hotel"), result.getInt("estrellas")));
+			dormitorios.add(new Dormitorio(result.getFloat("Superficie"), result.getString("Cod_Habitacion"), result.getInt("Cama_individual"),
+					result.getInt("Cama_infantil"), result.getInt("Cama_matrimonio")));
 		}
 		return dormitorios;
 

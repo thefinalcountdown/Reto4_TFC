@@ -21,7 +21,7 @@ public class Ventana extends JFrame {
 		setLocationRelativeTo(null);
 		setTitle("Reserva de hoteles");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 200, 900, 600);
+		setBounds(200, 200, 1200, 600);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

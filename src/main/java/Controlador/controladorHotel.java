@@ -41,9 +41,9 @@ public class controladorHotel {
 					JOptionPane.showMessageDialog(null, "Seleccione algun hotel.");
 				} else {
 					ventana.reserva.textField_hotelseleccionado
-							.setText(modelo.modeloLista.hoteles.get(index).getNombre());
+							.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
 					ventana.reserva.textField_precio
-							.setText(Float.toString(modelo.modeloLista.hoteles.get(index).getPrecio()));
+							.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
 					ventana.cambio_panel(ventana.hotel, ventana.reserva);
 				}
 
@@ -53,18 +53,35 @@ public class controladorHotel {
 		ventana.hotel.btnHabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println(modelo.modeloLista.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex())
+				//vaciamos la lista cada vez que se le da al boton para que no conserve lo de otros hoteles seleccionados
+				try {
+					modelo.modeloListaHabitacion.vaciarLista();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//Este sysout era para ver que cogia el codHotel, podemos borrarlo
+				System.out.println(modelo.modeloListaHotel.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex())
 						.getCod_alojamiento());
 				Hotel1= new Hotel_habitacion();
-				//aqui va lo de las habitaciones, en teoria tiene que rellenar un objeto que ya esta arriba que es el Hotel1???
-				//no lo consigo
+				//el Hotel1 que es el objeto Hotel_Habitacion se rellena 
 				try {
-					obtenerHabitaciones(modelo.modeloLista.hoteles
+					obtenerHabitaciones(modelo.modeloListaHotel.hoteles
 							.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento());
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				//usamos el metodo para rellenar el modelo lista con los dormitorios, ahora mismo solo coge la Habitacion1 con el getter
+				try {
+					modelo.modeloListaHabitacion.llenarDormitorios(Hotel1.getHabitacion1());
+					ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
+					
+				} catch (Exception e1) {
+					System.out.println("el ArrayList de dormitorios no ha sido rellenado");
+					e1.printStackTrace();
+				}
+				//Sysout para ver que se rellena el objeto correctamente
 				System.out.println(Hotel1.toString()+"heyyyy");
 
 			}
@@ -74,20 +91,20 @@ public class controladorHotel {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
 				try {
-					modelo.modeloLista.vaciarLista();
+					modelo.modeloListaHotel.vaciarLista();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				ventana.hotel.listaHoteles.setModel(modelo.modeloLista);
+				ventana.hotel.listaHoteles.setModel(modelo.modeloListaHotel);
 
 			}
 		});
 
 	}
 	
-	//metodo para rellenar el objeto (lo del %s era para llenar la frase en ese espacio con i que seria el cod del hotel que es lo que tengo que usar
-	//para que pille la sentencia bien), la sentencia funciona bien en el mysql
+	//metodo para rellenar el objeto 
+
 	public static Hotel_habitacion obtenerHabitaciones(int i)throws Exception {
 
 		String sentencia = "select * from Hotel_habitacion where Cod_Hotel='%s'";
