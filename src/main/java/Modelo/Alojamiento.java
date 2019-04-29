@@ -43,20 +43,7 @@ public abstract class Alojamiento {
 	public void setCod_alojamiento(int cod_alojamiento) {
 		Cod_alojamiento = cod_alojamiento;
 	}
-//	public ArrayList<Habitaciones> getListaHabitaciones() {
-//		return listaHabitaciones;
-//	}
-//	
-//	public void setListaHabitaciones(ArrayList<Habitaciones> ListaHabitaciones) {
-//		listaHabitaciones = ListaHabitaciones;
-//	}
-//	
-//	@Override
-//	public String toString() {
-//		return "Alojamiento [nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio=" + precio
-//				+ ", Cod_alojamiento=" + Cod_alojamiento + ", Lista habitaciones=" +listaHabitaciones+"]";
-//	}
-//	
+
 	@Override
 	public String toString() {
 		return "Alojamiento [nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio=" + precio
