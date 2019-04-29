@@ -21,8 +21,7 @@ public class ModeloListaHabitaciones implements ListModel {
 		
 		for (int index = 0; index < dormitorios.size(); index++) 
 		{
-			makeObj(dormitorios.get(index).getCamaIndividual(), dormitorios.get(index).getCamaInfantil(), 
-					dormitorios.get(index).getCamaMatrimonio());
+			makeObj(dormitorios.get(index).getCamaIndividual(), dormitorios.get(index).getCamaInfantil(), dormitorios.get(index).getCamaMatrimonio());
 			arrayString.add("Cama individual: "+dormitorios.get(index).getCamaIndividual()+ "  Cama infantil: " + dormitorios.get(index).getCamaInfantil()
 					+" Cama de matrimonio: "+dormitorios.get(index).getCamaMatrimonio());
 		}
