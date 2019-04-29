@@ -25,7 +25,7 @@ public class vistaHoteles extends JPanel {
 
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
-	public JButton btnHabitaciones = new JButton("Seleccion");
+	public JButton btnHabitaciones = new JButton("->");
 
 	public vistaHoteles() {
 

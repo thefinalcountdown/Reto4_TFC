@@ -344,7 +344,7 @@ public class controladorRaiz {
 				try {
 					modelo.modeloListaHotel.llenarLista(ubicacionSeleccionada);
 					ventana.hotel.listaHoteles.setModel(modelo.modeloListaHotel);
-					
+
 				} catch (Exception e1) {
 					System.out.println("el ArrayList de hotel no ha sido rellenado");
 					e1.printStackTrace();
@@ -360,6 +360,7 @@ public class controladorRaiz {
 				String fechaSalida = formatoFecha.format(ventana.raiz.fechaOut.getDate());
 				ventana.reserva.textField_fechaDeEntrada.setText(fechaEntrada);
 				ventana.reserva.textField_fechaDeSalida.setText(fechaSalida);
+				ventana.reserva.textField_NumeroHabitaciones.setText(ventana.raiz.txtHab.getText());
 			}
 		});
 

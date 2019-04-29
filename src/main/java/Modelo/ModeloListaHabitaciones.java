@@ -43,47 +43,47 @@ public class ModeloListaHabitaciones implements ListModel {
 			String cod_hab10) throws Exception {
 
 		String sentencia = "select * from Hab_Dormitorio where Cod_Habitacion='%s'";
-		if (cod_hab1!=null) {
-		String sentencia1 = String.format(sentencia, cod_hab1);
-		dormitorios.add(codigosHab(sentencia1));
+		if (cod_hab1 != null) {
+			String sentencia1 = String.format(sentencia, cod_hab1);
+			dormitorios.add(codigosHab(sentencia1));
 		}
-		if (cod_hab2!=null) {
-		String sentencia2 = String.format(sentencia, cod_hab2);
-		dormitorios.add(codigosHab(sentencia2));
+		if (cod_hab2 != null) {
+			String sentencia2 = String.format(sentencia, cod_hab2);
+			dormitorios.add(codigosHab(sentencia2));
 		}
-		if (cod_hab3!=null) {
-		String sentencia3 = String.format(sentencia, cod_hab3);
-		dormitorios.add(codigosHab(sentencia3));
+		if (cod_hab3 != null) {
+			String sentencia3 = String.format(sentencia, cod_hab3);
+			dormitorios.add(codigosHab(sentencia3));
 		}
-		if (cod_hab4!=null) {
-		String sentencia4 = String.format(sentencia, cod_hab4);
-		dormitorios.add(codigosHab(sentencia4));
+		if (cod_hab4 != null) {
+			String sentencia4 = String.format(sentencia, cod_hab4);
+			dormitorios.add(codigosHab(sentencia4));
 		}
-		if (cod_hab5!=null) {
-		String sentencia5 = String.format(sentencia, cod_hab5);
-		dormitorios.add(codigosHab(sentencia5));
+		if (cod_hab5 != null) {
+			String sentencia5 = String.format(sentencia, cod_hab5);
+			dormitorios.add(codigosHab(sentencia5));
 		}
-		if (cod_hab6!=null) {
-		String sentencia6 = String.format(sentencia, cod_hab6);
-		dormitorios.add(codigosHab(sentencia6));
+		if (cod_hab6 != null) {
+			String sentencia6 = String.format(sentencia, cod_hab6);
+			dormitorios.add(codigosHab(sentencia6));
 		}
-		if (cod_hab7!=null) {
-		String sentencia7 = String.format(sentencia, cod_hab7);
-		dormitorios.add(codigosHab(sentencia7));
+		if (cod_hab7 != null) {
+			String sentencia7 = String.format(sentencia, cod_hab7);
+			dormitorios.add(codigosHab(sentencia7));
 		}
-		if (cod_hab8!=null) {
-		String sentencia8 = String.format(sentencia, cod_hab8);
-		dormitorios.add(codigosHab(sentencia8));
+		if (cod_hab8 != null) {
+			String sentencia8 = String.format(sentencia, cod_hab8);
+			dormitorios.add(codigosHab(sentencia8));
 		}
-		if (cod_hab9!=null) {
-		String sentencia9 = String.format(sentencia, cod_hab9);
-		dormitorios.add(codigosHab(sentencia9));
+		if (cod_hab9 != null) {
+			String sentencia9 = String.format(sentencia, cod_hab9);
+			dormitorios.add(codigosHab(sentencia9));
 		}
-		if (cod_hab10!=null) {
-		String sentencia10 = String.format(sentencia, cod_hab10);
-		dormitorios.add(codigosHab(sentencia10));
-		
-		System.out.println(sentencia10);
+		if (cod_hab10 != null) {
+			String sentencia10 = String.format(sentencia, cod_hab10);
+			dormitorios.add(codigosHab(sentencia10));
+
+			System.out.println(sentencia10);
 		}
 
 		return dormitorios;
