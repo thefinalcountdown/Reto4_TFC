@@ -43,7 +43,8 @@ public class ModeloListaHoteles implements ListModel {
 		String sentencia = "select * from hoteles where ubicacion='%s'";
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
-		while (result.next()) {
+		while (result.next()) 
+		{
 			hoteles.add(new Hotel(result.getString("nombre"), result.getString("ubicacion"), result.getFloat("precio"),
 					result.getInt("Cod_Hotel"), result.getInt("estrellas")));
 		}

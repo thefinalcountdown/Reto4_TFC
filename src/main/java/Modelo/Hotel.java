@@ -1,10 +1,5 @@
 package Modelo;
 
-import java.util.ArrayList;
-
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
-
 public class Hotel extends Alojamiento {
 
 	int estrellas;

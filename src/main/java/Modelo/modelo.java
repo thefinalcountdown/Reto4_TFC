@@ -10,7 +10,6 @@ public class modelo
 	public funcionesLogin modeloLogin;
 	public ModeloListaHoteles modeloListaHotel;
 	public ModeloListaHabitaciones modeloListaHabitacion;
-	public Hotel_habitacion hotel_habitacion;
 	
 	public modelo()
 	{
@@ -18,7 +17,6 @@ public class modelo
 		this.modeloLogin = new funcionesLogin();
 		this.modeloListaHotel = new ModeloListaHoteles();
 		this.modeloListaHabitacion= new ModeloListaHabitaciones();
-		this.hotel_habitacion= new Hotel_habitacion();
 	}
 
 	public Controlador getControlador() 
