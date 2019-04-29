@@ -50,8 +50,9 @@ public class ModeloListaHabitaciones implements ListModel {
 	
 	public static ArrayList<Dormitorio> obtenerHabitaciones(int cod_hotel) throws Exception {
 
-		String sentencia = "SELECT * FROM bidaion.Hab_Dormitorio inner join bidaion.Habitacion_hotel on bidaion.Hab_Dormitorio.Cod_Habitacion\n" + 
-				"= bidaion.Habitacion_hotel.Tipo_Habitacion where Cod_Hotel = "+cod_hotel;
+		String sentencia = "select * from Hab_Dormitorio inner join Habitacion_hotel on Hab_Dormitorio.Cod_Habitacion\n" + 
+				"= Habitacion_hotel.Tipo_Habitacion where Cod_Hotel = %s";
+		sentencia= String.format(sentencia, cod_hotel);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) 
 		{
