@@ -56,7 +56,9 @@ public class controladorHotel {
 
 				try {
 					modelo.modeloListaHabitacion.vaciarLista();
-				} catch (Exception e1) {
+				}
+				catch (Exception e1) 
+				{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -79,7 +81,7 @@ public class controladorHotel {
 					ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
 
 				} catch (Exception e1) {
-					System.out.println("el ArrayList de dormitorios no ha sido rellenado");
+					System.out.println("El ArrayList de dormitorios no ha sido rellenado");
 					e1.printStackTrace();
 				}
 				}
