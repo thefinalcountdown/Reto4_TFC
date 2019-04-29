@@ -3,12 +3,16 @@ package Modelo;
 public class Dormitorio extends Habitaciones {
 	
 	String relacionMobiliario;
-	int camasDisponibles;
+	int camaIndividual;
+	int camaInfantil;
+	int camaMatrimonio;
 	
-	public Dormitorio(float metrosCuadrados, String RelacionMobiliario, int CamasDisponibles) {
+	public Dormitorio(float metrosCuadrados, String RelacionMobiliario, int CamaIndividual, int CamaInfantil, int CamaMatrimonio) {
 		super(metrosCuadrados);
 		this.relacionMobiliario = RelacionMobiliario;
-		this.camasDisponibles = CamasDisponibles;
+		this.camaIndividual = CamaIndividual;
+		this.camaInfantil = CamaInfantil;
+		this.camaMatrimonio = CamaMatrimonio;
 	}
 
 	public float getMetrosCuadrados() {
@@ -19,25 +23,39 @@ public class Dormitorio extends Habitaciones {
 		this.metrosCuadrados = metrosCuadrados;
 	}
 
-	public String getRealcionMobiliario() {
+	public String getRelacionMobiliario() {
 		return relacionMobiliario;
 	}
 
-	public void setRealcionMobiliario(String realcionMobiliario) {
-		this.relacionMobiliario = realcionMobiliario;
+	public void setRelacionMobiliario(String relacionMobiliario) {
+		this.relacionMobiliario = relacionMobiliario;
 	}
 
-	public int getCamasDisponibles() {
-		return camasDisponibles;
+	public int getCamaIndividual() {
+		return camaIndividual;
 	}
 
-	public void setCamasDisponibles(int camasDisponibles) {
-		this.camasDisponibles = camasDisponibles;
+	public void setCamaIndividual(int camaIndividual) {
+		this.camaIndividual = camaIndividual;
+	}
+	public int getCamaInfantil() {
+		return camaInfantil;
+	}
+
+	public void setCamaInfantil(int camaInfantil) {
+		this.camaInfantil = camaInfantil;
+	}
+	public int getCamaMatrimonio() {
+		return camaMatrimonio;
+	}
+
+	public void setCamaMatrimonio(int camaMatrimonio) {
+		this.camaMatrimonio = camaMatrimonio;
 	}
 	
 	@Override
 	public String toString() {
-		return super.toString()+" "+this.relacionMobiliario+" "+this.camasDisponibles;
+		return super.toString()+" "+this.relacionMobiliario+" "+this.camaIndividual+" "+this.camaInfantil+" "+this.camaMatrimonio;
 		//return "Dormitorio [metros cuadrados=" + metrosCuadrados+ ", relacione mobiliario=" + relacionMobiliario + ", camas disponibles=" + camasDisponibles+"]";
 	}
 }

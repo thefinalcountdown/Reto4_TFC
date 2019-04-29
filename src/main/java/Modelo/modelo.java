@@ -8,14 +8,14 @@ public class modelo
 
 	public ficheroReserva modeloFichero;
 	public funcionesLogin modeloLogin;
-	public ModeloLista modeloLista;
+	public ModeloListaHoteles modeloLista;
 	public Hotel_habitacion hotel_habitacion;
 	
 	public modelo()
 	{
 		this.modeloFichero = new ficheroReserva();
 		this.modeloLogin = new funcionesLogin();
-		this.modeloLista = new ModeloLista();
+		this.modeloLista = new ModeloListaHoteles();
 		this.hotel_habitacion= new Hotel_habitacion();
 	}
 
