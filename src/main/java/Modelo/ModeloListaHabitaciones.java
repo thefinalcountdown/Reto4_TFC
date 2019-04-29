@@ -13,52 +13,46 @@ public class ModeloListaHabitaciones implements ListModel {
 	Ventana ventana;
 	public ArrayList<String> arrayString = new ArrayList<String>();
 	public static ArrayList<Dormitorio> dormitorios = new ArrayList<Dormitorio>();
-	
 
 	public void llenarLista(int cod_hotel) throws Exception {
 		dormitorios = obtenerHabitaciones(cod_hotel);
 
-		
-		for (int index = 0; index < dormitorios.size(); index++) 
-		{
-			makeObj(dormitorios.get(index).getCamaIndividual(), dormitorios.get(index).getCamaInfantil(), dormitorios.get(index).getCamaMatrimonio());
-			arrayString.add("Cama individual: "+dormitorios.get(index).getCamaIndividual()+ "  Cama infantil: " + dormitorios.get(index).getCamaInfantil()
-					+" Cama de matrimonio: "+dormitorios.get(index).getCamaMatrimonio());
+		for (int index = 0; index < dormitorios.size(); index++) {
+			makeObj(dormitorios.get(index).getCamaIndividual(), dormitorios.get(index).getCamaInfantil(),
+					dormitorios.get(index).getCamaMatrimonio());
+			arrayString.add("Cama individual: " + dormitorios.get(index).getCamaIndividual() + "  Cama infantil: "
+					+ dormitorios.get(index).getCamaInfantil() + " Cama de matrimonio: "
+					+ dormitorios.get(index).getCamaMatrimonio());
 		}
 	}
-	
-	public void vaciarLista(){
-		
-		for(int index = arrayString.size()-1; index >= 0; index--)
-		{
+
+	public void vaciarLista() {
+
+		for (int index = arrayString.size() - 1; index >= 0; index--) {
 			dormitorios.remove(index);
 			arrayString.remove(index);
 		}
 	}
-	
+
 	public static Object makeObj(int item2, int item3, int item4) {
 		return new Object() {
-			public String toString() 
-			{
-				return ""+item2+item3+item4;
+			public String toString() {
+				return "" + item2 + item3 + item4;
 			}
 		};
 	}
-	
-	
-	
+
 	public static ArrayList<Dormitorio> obtenerHabitaciones(int cod_hotel) throws Exception {
 
-		String sentencia = "select * from Hab_Dormitorio HD inner join Hotel_habitacion HH on HD.Cod_Habitacion\n" + 
-				"= HH.Tipo_Habitacion where Cod_Hotel = %s";
-		sentencia= String.format(sentencia, cod_hotel);
+		String sentencia = "select * from Hab_Dormitorio HD inner join Hotel_habitacion HH on HD.Cod_Habitacion= HH.Tipo_Habitacion where Cod_Hotel = %s";
+		sentencia = String.format(sentencia, cod_hotel);
 		ResultSet result = GestorBD.consulta(sentencia);
-		while (result.next()) 
-		{
+		while (result.next()) {
 			dormitorios.add(new Dormitorio(result.getString("Cod_Habitacion"), result.getFloat("Superficie"),
-					result.getInt("Cama_individual"), result.getInt("Cama_infantil"), result.getInt("Cama_matrimonio")));
+					result.getInt("Cama_individual"), result.getInt("Cama_infantil"),
+					result.getInt("Cama_matrimonio")));
 		}
-		
+
 		return dormitorios;
 
 	}
@@ -78,13 +72,13 @@ public class ModeloListaHabitaciones implements ListModel {
 	@Override
 	public void addListDataListener(ListDataListener l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void removeListDataListener(ListDataListener l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

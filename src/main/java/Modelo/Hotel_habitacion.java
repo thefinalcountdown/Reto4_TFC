@@ -4,38 +4,20 @@ import java.sql.ResultSet;
 
 import metodos.GestorBD;
 
-public class Hotel_habitacion{
+public class Hotel_habitacion {
 
 	int Cod_hotel;
-	String Habitacion1;
-	String Habitacion2;
-	String Habitacion3;
-	String Habitacion4;
-	String Habitacion5;
-	String Habitacion6;
-	String Habitacion7;
-	String Habitacion8;
-	String Habitacion9;
-	String Habitacion10;
-	
+	int Num_Habitacion;
+	String Tipo_Habitacion;
+
 	public Hotel_habitacion() {
-		
+
 	}
 
-	public Hotel_habitacion(int cod_hotel, String habitacion1, String habitacion2, String habitacion3,
-			String habitacion4, String habitacion5, String habitacion6, String habitacion7, String habitacion8,
-			String habitacion9, String habitacion10) {
+	public Hotel_habitacion(int cod_hotel, int num_habitacion, String tipo_habitacion) {
 		this.Cod_hotel = cod_hotel;
-		this.Habitacion1 = habitacion1;
-		this.Habitacion2 = habitacion2;
-		this.Habitacion3 = habitacion3;
-		this.Habitacion4 = habitacion4;
-		this.Habitacion5 = habitacion5;
-		this.Habitacion6 = habitacion6;
-		this.Habitacion7 = habitacion7;
-		this.Habitacion8 = habitacion8;
-		this.Habitacion9 = habitacion9;
-		this.Habitacion10 = habitacion10;
+		this.Num_Habitacion = num_habitacion;
+		this.Tipo_Habitacion = tipo_habitacion;
 	}
 
 	public int getCod_hotel() {
@@ -46,93 +28,26 @@ public class Hotel_habitacion{
 		Cod_hotel = cod_hotel;
 	}
 
-	public String getHabitacion1() {
-		return Habitacion1;
+	public int getNum_Habitacion() {
+		return Num_Habitacion;
 	}
 
-	public void setHabitacion1(String habitacion1) {
-		Habitacion1 = habitacion1;
+	public void setNum_Habitacion(int num_Habitacion) {
+		Num_Habitacion = num_Habitacion;
 	}
 
-	public String getHabitacion2() {
-		return Habitacion2;
+	public String getTipo_Habitacion() {
+		return Tipo_Habitacion;
 	}
 
-	public void setHabitacion2(String habitacion2) {
-		Habitacion2 = habitacion2;
-	}
-
-	public String getHabitacion3() {
-		return Habitacion3;
-	}
-
-	public void setHabitacion3(String habitacion3) {
-		Habitacion3 = habitacion3;
-	}
-
-	public String getHabitacion4() {
-		return Habitacion4;
-	}
-
-	public void setHabitacion4(String habitacion4) {
-		Habitacion4 = habitacion4;
-	}
-
-	public String getHabitacion5() {
-		return Habitacion5;
-	}
-
-	public void setHabitacion5(String habitacion5) {
-		Habitacion5 = habitacion5;
-	}
-
-	public String getHabitacion6() {
-		return Habitacion6;
-	}
-
-	public void setHabitacion6(String habitacion6) {
-		Habitacion6 = habitacion6;
-	}
-
-	public String getHabitacion7() {
-		return Habitacion7;
-	}
-
-	public void setHabitacion7(String habitacion7) {
-		Habitacion7 = habitacion7;
-	}
-
-	public String getHabitacion8() {
-		return Habitacion8;
-	}
-
-	public void setHabitacion8(String habitacion8) {
-		Habitacion8 = habitacion8;
-	}
-
-	public String getHabitacion9() {
-		return Habitacion9;
-	}
-
-	public void setHabitacion9(String habitacion9) {
-		Habitacion9 = habitacion9;
-	}
-
-	public String getHabitacion10() {
-		return Habitacion10;
-	}
-
-	public void setHabitacion10(String habitacion10) {
-		Habitacion10 = habitacion10;
+	public void setTipo_Habitacion(String tipo_Habitacion) {
+		Tipo_Habitacion = tipo_Habitacion;
 	}
 
 	@Override
 	public String toString() {
-		return "Hotel_habitacion [Cod_hotel=" + Cod_hotel + ", Habitacion1=" + Habitacion1 + ", Habitacion2="
-				+ Habitacion2 + ", Habitacion3=" + Habitacion3 + ", Habitacion4=" + Habitacion4 + ", Habitacion5="
-				+ Habitacion5 + ", Habitacion6=" + Habitacion6 + ", Habitacion7=" + Habitacion7 + ", Habitacion8="
-				+ Habitacion8 + ", Habitacion9=" + Habitacion9 + ", Habitacion10=" + Habitacion10 + "]";
+		return "Hotel_habitacion [Cod_hotel=" + Cod_hotel + ", Num_Habitacion=" + Num_Habitacion + ", Tipo_Habitacion="
+				+ Tipo_Habitacion + "]";
 	}
-	
-	
+
 }
