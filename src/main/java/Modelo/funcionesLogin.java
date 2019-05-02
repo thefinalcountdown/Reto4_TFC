@@ -7,8 +7,8 @@ public class funcionesLogin {
 	// Comprobar que los campos de la vistalogin no esten vacios.
 	public boolean comprobarCampos(String dni, String nombre, String apellido, String clave) 
 	{
-		String sentencia = "insert into Usuario(DNI, Nombre, Apellido, Clave)" + "values(\"" + dni + "\", \"" + nombre
-				+ "\", \"" + apellido + "\", \"" + clave + "\")";
+		//String sentencia = "insert into Usuario(DNI, Nombre, Apellido, Clave)" + "values(\"" + dni + "\", \"" + nombre
+				//+ "\", \"" + apellido + "\", \"" + clave + "\")";
 
 		if (dni.equals("") || nombre.equals("") || apellido.equals("") || clave.equals("")) 
 		{
@@ -47,13 +47,13 @@ public class funcionesLogin {
 	public String sentenciaInsertarUsuario(String dni, String nombre, String apellido, String clave) 
 	{
 		return "insert into Usuario(DNI, Nombre, Apellido, Clave) values(\"" + dni.toUpperCase() + "\", \"" + nombre.toUpperCase() + "\", \""
-				+ apellido.toUpperCase() + "\", \"" + clave + "\")";
+				+ apellido.toUpperCase() + "\", \"" + AES.encrypt(clave, "llave") + "\")";
 	}
 
 	// sentencia para comprobar usuario login, si es falso, clave mala
 	public String sentenciaLogin(String dni, String clave) 
 	{
-		return "select * from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\"" + clave + "\"";
+		return "select * from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\"" + AES.encrypt(clave, "llave") + "\"";
 	}
 
 	public boolean comprobarLogin(ResultSet result) 

@@ -1,4 +1,0 @@
- Hotel: 
- Numero de personas: 2
- Ubicacion: Malaga
- Precio: 0.0
