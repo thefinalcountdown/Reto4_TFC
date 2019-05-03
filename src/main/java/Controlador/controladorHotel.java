@@ -72,7 +72,8 @@ public class controladorHotel {
 
 					
 					modelo.modeloListaHabitacion.llenarLista(modelo.modeloListaHotel.hoteles
-							.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento());
+							.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento(),
+							ventana.reserva.textField_fechaDeEntrada.getText(),ventana.reserva.textField_fechaDeSalida.getText());
 
 					// indica que el ListModel de la listaHabitaciones es el de listahabitacion que
 					// rellenamos arriba (por alguna razon

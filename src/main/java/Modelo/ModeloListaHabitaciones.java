@@ -14,8 +14,8 @@ public class ModeloListaHabitaciones implements ListModel {
 	public ArrayList<String> arrayString = new ArrayList<String>();
 	public static ArrayList<Dormitorio> dormitorios = new ArrayList<Dormitorio>();
 
-	public void llenarLista(int cod_hotel) throws Exception {
-		dormitorios = obtenerHabitaciones(cod_hotel);
+	public void llenarLista(int cod_hotel, String fecha_entrada, String fecha_salida) throws Exception {
+		dormitorios = obtenerHabitaciones(cod_hotel, fecha_entrada, fecha_salida);
 
 		for (int index = 0; index < dormitorios.size(); index++) {
 			makeObj(dormitorios.get(index).getCamaIndividual(), dormitorios.get(index).getCamaInfantil(),
@@ -42,9 +42,16 @@ public class ModeloListaHabitaciones implements ListModel {
 		};
 	}
 
-	public static ArrayList<Dormitorio> obtenerHabitaciones(int cod_hotel) throws Exception {
+	public static ArrayList<Dormitorio> obtenerHabitaciones(int cod_hotel, String fecha_entrada, String fecha_salida) throws Exception {
 
-		String sentencia = "select * from Hab_Dormitorio HD inner join Habitacion_hotel HH on HD.Cod_Habitacion= HH.Tipo_Habitacion where Cod_Hotel = %s";
+		String sentencia = "select * from Hab_Dormitorio HD inner join Hotel_habitacion HH "
+				+ "on HD.Cod_Habitacion = HH.Tipo_Habitacion"
+				+ "where Cod_Hotel = "+cod_hotel+" and Num_Habitacion != (select rh.Num_Habitacion"
+				+ "from Reserva_habitacion rh "
+				+ "inner join Hotel_habitacion hh"
+				+ "on hh.Num_Habitacion=rh.Num_Habitacion"
+				+ "where Fecha_Inicio >= '"+fecha_entrada+"' and Fecha_Salida <= '"+fecha_salida+"')";
+		
 		sentencia = String.format(sentencia, cod_hotel);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
