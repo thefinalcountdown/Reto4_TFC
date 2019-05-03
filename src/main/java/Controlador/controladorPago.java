@@ -260,7 +260,7 @@ public class controladorPago
 						String DNI = ventana.reserva.textField_DNI.getText();
 						String usuario = ventana.reserva.textField_usuario.getText();
 						
-						modelo.modeloFichero = new ficheroReserva( codhotel,nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
+						modelo.modeloFichero = new ficheroReserva(codhotel,nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
 								fecha_salida, DNI, usuario);
 						
 						modelo.modeloFichero.imprimirTicket();
