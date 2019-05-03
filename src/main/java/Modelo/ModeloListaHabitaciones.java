@@ -45,21 +45,22 @@ public class ModeloListaHabitaciones implements ListModel {
 	public static ArrayList<Dormitorio> obtenerHabitaciones(int cod_hotel, String fecha_entrada, String fecha_salida) throws Exception {
 
 		String sentencia = "select * from Hab_Dormitorio HD inner join Hotel_habitacion HH "
-				+ "on HD.Cod_Habitacion = HH.Tipo_Habitacion"
-				+ " where Cod_Hotel = '%s' and Num_Habitacion not in (select rh.Num_Habitacion"
-				+ " from Reserva_habitacion rh "
-				+ " inner join Hotel_habitacion hh"
-				+ " on hh.Num_Habitacion=rh.Num_Habitacion"
-				+ " where Fecha_Inicio >= '%s' and Fecha_Salida <= '%s')";
-		
-		sentencia = String.format(sentencia, cod_hotel, fecha_entrada, fecha_salida);
+				+ "on HD.Cod_Habitacion = HH.Tipo_Habitacion "
+				+ "where Cod_Hotel = "+cod_hotel+" and Num_Habitacion not in (select rh.Num_Habitacion "
+				+ "from Reserva_habitacion rh "
+				+ "inner join Hotel_habitacion hh "
+				+ "on hh.Num_Habitacion=rh.Num_Habitacion "
+				+ "where Fecha_Inicio >= '"+fecha_entrada+"' and Fecha_Salida <= '"+fecha_salida+"') ";
+
 		ResultSet result = GestorBD.consulta(sentencia);
-		while (result.next()) {
+		
+		while (result.next()) 
+		{
 			dormitorios.add(new Dormitorio(result.getString("Cod_Habitacion"), result.getFloat("Superficie"),
 					result.getInt("Cama_individual"), result.getInt("Cama_infantil"),
 					result.getInt("Cama_matrimonio")));
 		}
-
+		
 		return dormitorios;
 
 	}
