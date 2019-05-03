@@ -1,9 +1,0 @@
- Hotel: Suitopia
- Precio: 80.0
- Numero de personas: 1
- Numero de habitaciones: 3
- Ubicacion: Alicante
- Fecha de entrada: 2019/04/20
- Fecha de salida: 2019/04/28
- DNI del usuario: 12345678M
- Nombre del usuario: June Gomez

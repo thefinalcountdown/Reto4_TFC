@@ -44,7 +44,7 @@ public class ModeloListaHabitaciones implements ListModel {
 
 	public static ArrayList<Dormitorio> obtenerHabitaciones(int cod_hotel) throws Exception {
 
-		String sentencia = "select * from Hab_Dormitorio HD inner join Hotel_habitacion HH on HD.Cod_Habitacion= HH.Tipo_Habitacion where Cod_Hotel = %s";
+		String sentencia = "select * from Hab_Dormitorio HD inner join Habitacion_hotel HH on HD.Cod_Habitacion= HH.Tipo_Habitacion where Cod_Hotel = %s";
 		sentencia = String.format(sentencia, cod_hotel);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {

@@ -1,9 +1,5 @@
 package Modelo;
 
-import java.sql.ResultSet;
-
-import metodos.GestorBD;
-
 public class Hotel_habitacion {
 
 	int Cod_hotel;
