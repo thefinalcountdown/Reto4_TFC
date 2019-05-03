@@ -9,6 +9,7 @@ public class funcionesRegistro {
 		// String sentencia = "insert into Usuario(DNI, Nombre, Apellido, Clave)" +
 		// "values(\"" + dni + "\", \"" + nombre
 		// + "\", \"" + apellido + "\", \"" + clave + "\")";
+		
 
 		if (dni.equals("") || nombre.equals("") || apellido.equals("") || clave.equals("")) {
 			return true;
