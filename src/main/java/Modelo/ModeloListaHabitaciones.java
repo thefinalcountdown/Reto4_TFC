@@ -46,13 +46,13 @@ public class ModeloListaHabitaciones implements ListModel {
 
 		String sentencia = "select * from Hab_Dormitorio HD inner join Hotel_habitacion HH "
 				+ "on HD.Cod_Habitacion = HH.Tipo_Habitacion"
-				+ "where Cod_Hotel = "+cod_hotel+" and Num_Habitacion != (select rh.Num_Habitacion"
-				+ "from Reserva_habitacion rh "
-				+ "inner join Hotel_habitacion hh"
-				+ "on hh.Num_Habitacion=rh.Num_Habitacion"
-				+ "where Fecha_Inicio >= '"+fecha_entrada+"' and Fecha_Salida <= '"+fecha_salida+"')";
+				+ " where Cod_Hotel = '%s' and Num_Habitacion not in (select rh.Num_Habitacion"
+				+ " from Reserva_habitacion rh "
+				+ " inner join Hotel_habitacion hh"
+				+ " on hh.Num_Habitacion=rh.Num_Habitacion"
+				+ " where Fecha_Inicio >= '%s' and Fecha_Salida <= '%s')";
 		
-		sentencia = String.format(sentencia, cod_hotel);
+		sentencia = String.format(sentencia, cod_hotel, fecha_entrada, fecha_salida);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			dormitorios.add(new Dormitorio(result.getString("Cod_Habitacion"), result.getFloat("Superficie"),

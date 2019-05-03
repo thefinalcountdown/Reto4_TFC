@@ -253,14 +253,14 @@ public class controladorPago
 					 	String nombreHotel = ventana.reserva.textField_hotelseleccionado.getText();
 					 	float precio = Float.parseFloat(ventana.reserva.textField_precio.getText());
 						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
-						int numHabitaciones = 3;
+						int numHabitaciones = Integer.parseInt(ventana.raiz.txtHab.getText());
 						String ubicacion = ventana.reserva.textField_ubicacion.getText();
 						String fecha_entrada = ventana.reserva.textField_fechaDeEntrada.getText();
 						String fecha_salida = ventana.reserva.textField_fechaDeSalida.getText();
 						String DNI = ventana.reserva.textField_DNI.getText();
 						String usuario = ventana.reserva.textField_usuario.getText();
 						
-						modelo.modeloFichero = new ficheroReserva( codhotel,codhabitacion,nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
+						modelo.modeloFichero = new ficheroReserva( codhotel,nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
 								fecha_salida, DNI, usuario);
 						
 						modelo.modeloFichero.imprimirTicket();

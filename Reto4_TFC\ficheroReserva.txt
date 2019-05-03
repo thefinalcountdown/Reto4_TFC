@@ -1,0 +1,10 @@
+ Codigo Hotel: 119
+ Hotel: Hotel Gran Sol
+ Precio: 80.0
+ Numero de personas: 1
+ Numero de habitaciones: 1
+ Ubicacion: Alicante
+ Fecha de entrada: 2019/05/14
+ Fecha de salida: 2019/05/25
+ DNI del usuario: 12345678z
+ Nombre del usuario: HOLI CARACOLI

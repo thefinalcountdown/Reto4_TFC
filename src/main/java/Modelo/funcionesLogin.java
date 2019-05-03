@@ -9,7 +9,7 @@ public class funcionesLogin {
 	// sentencia para comprobar usuario login, si es falso, clave mala
 	public String sentenciaLogin(String dni, String clave) {
 		return "select * from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""
-				+ AES.encrypt(clave, "llave") + "\"";
+				+ clave + "\"";
 	}
 
 	public boolean comprobarLogin(ResultSet result) {
@@ -42,14 +42,14 @@ public class funcionesLogin {
 
 	// sentencia para borrar usuario
 	public String sentenciaBorrarUsuario(String dni, String clave) {
-		return "delete from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\"" + AES.encrypt(clave, "llave")
+		return "delete from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""+clave
 				+ "\"";
 	}
 
 	// sentencia actualizar usuario
 	public String sentenciaActualizarUsuario(String dni, String clave, String nuevaclave) {
 		return "update Usuario set Clave=\"" + AES.encrypt(nuevaclave, "llave") + "\" where DNI=\"" + dni.toUpperCase()
-				+ "\" and Clave=\"" + AES.encrypt(clave, "llave") + "\"";
+				+ "\" and Clave=\"" + clave + "\"";
 
 	}
 

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class ficheroReserva {
 
 	private int Cod_Hotel;
-	private int Cod_hab;
+
 	private String nombreHotel;
 	private float precio;
 	private int numPersonas;
@@ -26,11 +26,11 @@ public class ficheroReserva {
 	private String usuario;
 	
 
-	public ficheroReserva(int Cod_Hotel,int Cod_hab,  String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida,
+	public ficheroReserva(int Cod_Hotel,  String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida,
 			String DNI, String usuario) 
 	{
 		this.Cod_Hotel= Cod_Hotel;
-		this.Cod_hab= Cod_hab;
+
 		this.nombreHotel = nombreHotel;
 		this.precio = precio;
 		this.numPersonas = numPersonas;
