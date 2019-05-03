@@ -27,10 +27,10 @@ public class controladorRegistro {
 						ventana.registro.formattedTextFieldApellido.getText(),
 						String.valueOf(ventana.registro.passwordFieldClave.getPassword())) == true) {
 					JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos.");
-				//comprueba que el dni sea válido a la hora de registrar usuario
+				//comprueba que el dni sea valido a la hora de registrar usuario
 				} else if (modelo.modeloRegistro
 						.validarNIF(ventana.registro.formattedTextFieldDNI.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "El DNI introducido no es válido...");
+					JOptionPane.showMessageDialog(null, "El DNI introducido no es v\u00e1lido...");
 				//comprueba si el usuario ya existe en la base de datos
 				} else if (modelo.modeloLogin.comprobarDni(GestorBD.consulta(modelo.modeloLogin
 						.sentenciaCombrobarDni(ventana.registro.formattedTextFieldDNI.getText()))) == true) {

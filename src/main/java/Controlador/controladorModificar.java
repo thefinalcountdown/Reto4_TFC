@@ -25,7 +25,7 @@ public class controladorModificar {
 					JOptionPane.showMessageDialog(null, "El usuario no existe.");
 				} else if (modelo.modeloRegistro
 						.validarNIF(ventana.modificar.formattedTextFieldActualizarDNI.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "El DNI introducido no es válido...");
+					JOptionPane.showMessageDialog(null, "El DNI introducido no es v\u00e1lido...");
 				} else if (modelo.modeloLogin.comprobarLogin(GestorBD.consulta(modelo.modeloLogin.sentenciaLogin(
 						ventana.modificar.formattedTextFieldActualizarDNI.getText(),
 						String.valueOf(ventana.modificar.passwordFieldActualizarClave.getPassword())))) == false) {
@@ -48,7 +48,7 @@ public class controladorModificar {
 					JOptionPane.showMessageDialog(null, "El usuario no existe...");
 				} else if (modelo.modeloRegistro
 						.validarNIF(ventana.modificar.formattedTextFieldBorrarDni.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "El DNI introducido no es válido...");
+					JOptionPane.showMessageDialog(null, "El DNI introducido no es v\u00e1lido...");
 				} else if (modelo.modeloLogin.comprobarLogin(GestorBD.consulta(
 						modelo.modeloLogin.sentenciaLogin(ventana.modificar.formattedTextFieldBorrarDni.getText(),
 								String.valueOf(ventana.modificar.passwordFieldBorrarDni.getPassword())))) == false) {
