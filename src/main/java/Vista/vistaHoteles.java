@@ -47,7 +47,7 @@ public class vistaHoteles extends JPanel {
 		btnCancelar.setBounds(72, 437, 138, 61);
 		add(btnCancelar);
 
-		btnContinuar.setBounds(512, 456, 97, 25);
+		btnContinuar.setBounds(612, 437, 138, 61);
 		add(btnContinuar);
 
 		btnHabitaciones.setBounds(602, 198, 36, 25);

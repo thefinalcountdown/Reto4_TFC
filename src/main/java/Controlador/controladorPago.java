@@ -246,6 +246,10 @@ public class controladorPago
 				 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devolución", JOptionPane.PLAIN_MESSAGE,
 						 JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 				 {
+					 	int codhotel= modelo.modeloListaHotel.hoteles
+								.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento();
+					 	int codhabitacion= modelo.modeloListaHotel.hoteles
+								.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento();
 					 	String nombreHotel = ventana.reserva.textField_hotelseleccionado.getText();
 					 	float precio = Float.parseFloat(ventana.reserva.textField_precio.getText());
 						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
@@ -256,7 +260,7 @@ public class controladorPago
 						String DNI = ventana.reserva.textField_DNI.getText();
 						String usuario = ventana.reserva.textField_usuario.getText();
 						
-						modelo.modeloFichero = new ficheroReserva(nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
+						modelo.modeloFichero = new ficheroReserva( codhotel,codhabitacion,nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
 								fecha_salida, DNI, usuario);
 						
 						modelo.modeloFichero.imprimirTicket();
