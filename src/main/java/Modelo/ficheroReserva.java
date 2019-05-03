@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 
 public class ficheroReserva {
 
+	private int Cod_Hotel;
+	private int Cod_hab;
 	private String nombreHotel;
 	private float precio;
 	private int numPersonas;
@@ -24,9 +26,11 @@ public class ficheroReserva {
 	private String usuario;
 	
 
-	public ficheroReserva(String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida,
+	public ficheroReserva(int Cod_Hotel,int Cod_hab,  String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida,
 			String DNI, String usuario) 
 	{
+		this.Cod_Hotel= Cod_Hotel;
+		this.Cod_hab= Cod_hab;
 		this.nombreHotel = nombreHotel;
 		this.precio = precio;
 		this.numPersonas = numPersonas;
@@ -100,7 +104,7 @@ public class ficheroReserva {
 			// DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			// Calendar cal = Calendar.getInstance();
 
-			fich.write(" Hotel: " + this.nombreHotel + "\r\n" + " Precio: " + this.precio + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
+			fich.write(" Codigo Hotel: "+this.Cod_Hotel+"\r\n"+" Hotel: " + this.nombreHotel + "\r\n" + " Precio: " + this.precio + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
 					+ " Numero de habitaciones: " + this.numHabitaciones + "\r\n" + " Ubicacion: " + this.ubicacion + "\r\n" + " Fecha de entrada: "
 					+ this.fecha_entrada + "\r\n" + " Fecha de salida: " + this.fecha_salida + "\r\n" + " DNI del usuario: " + this.DNI + "\r\n"
 					+ " Nombre del usuario: " + this.usuario);
