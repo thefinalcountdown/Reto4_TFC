@@ -83,10 +83,10 @@ public class controladorHotel {
 
 						
 						//pasa parametros a reserva
-						ventana.reserva.textField_alojamientoseleccionado
-								.setText(modelo.modeloListaAlojamiento.hoteles.get(index).getNombre());
-						ventana.reserva.textField_precio
-								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
+//						ventana.reserva.textField_alojamientoseleccionado
+//								.setText(modelo.modeloListaAlojamiento.hoteles.get(index).getNombre());
+//						ventana.reserva.textField_precio
+//								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
 
 
 						
