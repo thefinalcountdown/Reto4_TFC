@@ -22,7 +22,7 @@ public class ModeloListaHoteles implements ListModel {
 		for (int index = 0; index < hoteles.size(); index++) 
 		{
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getPrecio(), hoteles.get(index).getEstrellas());
-			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio:" + hoteles.get(index).getPrecio()
+			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio: " + hoteles.get(index).getPrecio()
 					+"\u20ac  Estrellas: "+hoteles.get(index).getEstrellas());
 		}
 	}
