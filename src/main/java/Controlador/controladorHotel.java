@@ -33,14 +33,16 @@ public class controladorHotel {
 					if (ventana.hotel.listaHabitaciones.getSelectedIndex() < controladorRaiz.num_Hab) {
 						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion.");
 					} else {
+						System.out.println("Hola"+modelo.modeloListaAlojamiento.getElementAt(index));
 
 						// añade en la vista de reserva los parametros del nombre del hotel y el precio
-						ventana.reserva.textField_hotelseleccionado
-								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
+						ventana.reserva.textField_alojamientoseleccionado
+								.setText(modelo.modeloListaAlojamiento.hoteles.get(index).getNombre());
 						ventana.reserva.textField_precio
-								.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
+								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
 						ventana.cambio_panel(ventana.hotel, ventana.reserva);
-					}
+						
+//					}
 
 				}
 			}
@@ -71,7 +73,7 @@ public class controladorHotel {
 					// llena la lista usando el cod_hotel del hotel seleccionado en la listaHoteles
 
 					
-					modelo.modeloListaHabitacion.llenarLista(modelo.modeloListaHotel.hoteles
+					modelo.modeloListaHabitacion.llenarLista(modelo.modeloListaAlojamiento.hoteles
 							.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento(),
 							ventana.reserva.textField_fechaDeEntrada.getText(),ventana.reserva.textField_fechaDeSalida.getText());
 					System.out.println(ventana.reserva.textField_fechaDeEntrada.getText());
@@ -99,15 +101,46 @@ public class controladorHotel {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
 				try {
 					modelo.modeloListaHabitacion.vaciarLista();
-					modelo.modeloListaHotel.vaciarLista();
+					modelo.modeloListaAlojamiento.vaciarLista();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				ventana.hotel.listaHoteles.setModel(modelo.modeloListaHotel);
+				ventana.hotel.listaHoteles.setModel(modelo.modeloListaAlojamiento);
 			}
 		});
+		
+		
 
+	}
+	public static String[] separarString(String alojamiento) {
+		String linea = alojamiento;
+		int contador = 0;
+		String campo = "";
+		String uno = "";
+		String dos = "";
+		while (contador < linea.length()) {
+			if (linea.charAt(contador) != ';')
+				campo += linea.charAt(contador);
+			if ((linea.charAt(contador) == ';') || (contador == linea.length() - 1)) {
+
+				System.out.println("paso2 " + campo);
+
+				if (uno == "") {
+					uno = campo;
+					campo = "";
+				} else if (uno != "" && dos == "") {
+					dos = campo;
+					campo = "";
+					break;
+				}
+
+			}
+			contador++;
+		}
+
+		String[] nomPrecio = { uno, dos };
+		return nomPrecio;
 	}
 
 }
