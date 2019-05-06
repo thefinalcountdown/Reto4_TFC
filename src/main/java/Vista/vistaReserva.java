@@ -24,7 +24,7 @@ public class vistaReserva extends JPanel
 	public JTextField textField_ubicacion;
 	public JTextField textField_numpersonas;
 	public JTextField textField_precio;
-	public JTextField textField_hotelseleccionado;
+	public JTextField textField_alojamientoseleccionado;
 	public JTextField textField_fechaDeEntrada;
 	public JTextField textField_fechaDeSalida;
 	public JTextField textField_NumeroHabitaciones;
@@ -77,12 +77,12 @@ public class vistaReserva extends JPanel
 		textField_precio.setBounds(498, 199, 214, 26);
 		add(textField_precio);
 		
-		textField_hotelseleccionado = new JTextField();
-		textField_hotelseleccionado.setEditable(false);
-		textField_hotelseleccionado.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField_hotelseleccionado.setColumns(10);
-		textField_hotelseleccionado.setBounds(498, 151, 214, 26);
-		add(textField_hotelseleccionado);
+		textField_alojamientoseleccionado = new JTextField();
+		textField_alojamientoseleccionado.setEditable(false);
+		textField_alojamientoseleccionado.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField_alojamientoseleccionado.setColumns(10);
+		textField_alojamientoseleccionado.setBounds(498, 151, 214, 26);
+		add(textField_alojamientoseleccionado);
 		
 		lblFechaDeEntrada = new JLabel("Fecha de entrada:");
 		lblFechaDeEntrada.setBounds(255, 408, 110, 16);

@@ -250,7 +250,7 @@ public class controladorPago
 								.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento();
 					 	int codhabitacion= modelo.modeloListaHotel.hoteles
 								.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento();
-					 	String nombreHotel = ventana.reserva.textField_hotelseleccionado.getText();
+					 	String nombreHotel = ventana.reserva.textField_alojamientoseleccionado.getText();
 					 	float precio = Float.parseFloat(ventana.reserva.textField_precio.getText());
 						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());
 						int numHabitaciones = Integer.parseInt(ventana.raiz.txtHab.getText());
