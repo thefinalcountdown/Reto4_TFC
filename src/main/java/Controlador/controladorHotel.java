@@ -48,7 +48,6 @@ public class controladorHotel {
 						ventana.reserva.textField_precio
 								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
 						ventana.cambio_panel(ventana.hotel, ventana.reserva);
-
 						
 						for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++)
 						{
@@ -56,8 +55,6 @@ public class controladorHotel {
 							{
 								reserva_habitacion.add(new Reserva_habitacion(modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
 										ventana.reserva.textField_fechaDeEntrada.getText(), ventana.reserva.textField_fechaDeSalida.getText()));
-
-
 							}
 						}
 
