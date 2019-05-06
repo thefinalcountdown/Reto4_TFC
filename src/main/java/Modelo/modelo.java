@@ -11,6 +11,7 @@ public class modelo {
 	public ModeloListaHoteles modeloListaHotel;
 	public ModeloListaHabitaciones modeloListaHabitacion;
 	public ModeloListaAlojamiento modeloListaAlojamiento;
+	public insercionReserva insercionReserva;
 
 	public modelo() {
 		this.modeloFichero = new ficheroReserva();
@@ -19,6 +20,8 @@ public class modelo {
 		this.modeloListaHotel = new ModeloListaHoteles();
 		this.modeloListaHabitacion = new ModeloListaHabitaciones();
 		this.modeloListaAlojamiento= new ModeloListaAlojamiento();
+		this.insercionReserva = new insercionReserva();
+
 	}
 
 	public Controlador getControlador() {
