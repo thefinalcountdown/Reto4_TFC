@@ -53,11 +53,6 @@ public class controladorHotel {
 							{
 								reserva_habitacion.add(new Reserva_habitacion(modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
 										ventana.reserva.textField_fechaDeEntrada.getText(), ventana.reserva.textField_fechaDeSalida.getText()));
-								System.out.println(cont + "\t" + modelo.modeloListaHabitacion.dormitorios.size());
-								System.out.println(modelo.modeloListaHabitacion.dormitorios.get(cont));
-								System.out.println("-  "+ventana.reserva.textField_fechaDeEntrada.getText());
-								System.out.println("*  "+ventana.reserva.textField_fechaDeSalida.getText());
-								System.out.println(modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion());
 							}
 						}
 //					}
