@@ -3,13 +3,18 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
+import Modelo.Reserva_habitacion;
 import Modelo.modelo;
 import Vista.Ventana;
 
 public class controladorHotel {
 	private Ventana ventana;
 	private modelo modelo;
+	public static ArrayList <Reserva_habitacion> reserva_habitacion = new ArrayList<Reserva_habitacion>();
 
 	public controladorHotel() {
 	}
@@ -19,6 +24,7 @@ public class controladorHotel {
 		this.modelo = modelo;
 
 		// boton continuar
+		
 
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -30,9 +36,9 @@ public class controladorHotel {
 				} else {
 					// una vez un hotel ha sido seleccionado, coge el num de habitaciones y
 					// comprueba que se hayan seleccionado
-					if (ventana.hotel.listaHabitaciones.getSelectedIndex() < controladorRaiz.num_Hab) {
-						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion.");
-					} else {
+//					if (ventana.hotel.listaHabitaciones.getSelectedIndex() < controladorRaiz.num_Hab) {
+//						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion.");
+//					} else {
 
 						// añade en la vista de reserva los parametros del nombre del hotel y el precio
 						ventana.reserva.textField_hotelseleccionado
@@ -40,7 +46,21 @@ public class controladorHotel {
 						ventana.reserva.textField_precio
 								.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
 						ventana.cambio_panel(ventana.hotel, ventana.reserva);
-					}
+						
+						for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++)
+						{
+							if (ventana.hotel.listaHabitaciones.isSelectedIndex(cont))
+							{
+								reserva_habitacion.add(new Reserva_habitacion(modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
+										ventana.reserva.textField_fechaDeEntrada.getText(), ventana.reserva.textField_fechaDeSalida.getText()));
+								System.out.println(cont + "\t" + modelo.modeloListaHabitacion.dormitorios.size());
+								System.out.println(modelo.modeloListaHabitacion.dormitorios.get(cont));
+								System.out.println("-  "+ventana.reserva.textField_fechaDeEntrada.getText());
+								System.out.println("*  "+ventana.reserva.textField_fechaDeSalida.getText());
+								System.out.println(modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion());
+							}
+						}
+//					}
 
 				}
 			}
@@ -74,7 +94,6 @@ public class controladorHotel {
 					modelo.modeloListaHabitacion.llenarLista(modelo.modeloListaHotel.hoteles
 							.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento(),
 							ventana.reserva.textField_fechaDeEntrada.getText(),ventana.reserva.textField_fechaDeSalida.getText());
-					System.out.println(ventana.reserva.textField_fechaDeEntrada.getText());
 
 					// indica que el ListModel de la listaHabitaciones es el de listahabitacion que
 					// rellenamos arriba (por alguna razon

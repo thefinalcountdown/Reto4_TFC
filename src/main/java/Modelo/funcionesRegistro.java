@@ -21,7 +21,7 @@ public class funcionesRegistro {
 
 	public String sentenciaInsertarUsuario(String dni, String nombre, String apellido, String clave) {
 		return "insert into Usuario(DNI, Nombre, Apellido, Clave) values(\"" + dni.toUpperCase() + "\", \""
-				+ nombre.toUpperCase() + "\", \"" + apellido.toUpperCase() + "\", \"" + AES.encrypt(clave, "llave")
+				+ nombre.toUpperCase() + "\", \"" + apellido.toUpperCase() + "\", \"" + clave
 				+ "\")";
 	}
 

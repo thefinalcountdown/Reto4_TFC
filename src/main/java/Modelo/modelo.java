@@ -10,6 +10,7 @@ public class modelo {
 	public funcionesRegistro modeloRegistro;
 	public ModeloListaHoteles modeloListaHotel;
 	public ModeloListaHabitaciones modeloListaHabitacion;
+	public insercionReserva insercionReserva;
 
 	public modelo() {
 		this.modeloFichero = new ficheroReserva();
@@ -17,6 +18,7 @@ public class modelo {
 		this.modeloRegistro = new funcionesRegistro();
 		this.modeloListaHotel = new ModeloListaHoteles();
 		this.modeloListaHabitacion = new ModeloListaHabitaciones();
+		this.insercionReserva = new insercionReserva();
 	}
 
 	public Controlador getControlador() {

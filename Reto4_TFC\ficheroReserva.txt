@@ -1,10 +1,10 @@
- Codigo Hotel: 119
- Hotel: Hotel Gran Sol
+ Codigo Hotel: 104
+ Hotel: Hotel Ibis Alicante
  Precio: 80.0
  Numero de personas: 1
  Numero de habitaciones: 1
  Ubicacion: Alicante
- Fecha de entrada: 2019/05/14
- Fecha de salida: 2019/05/25
- DNI del usuario: 12345678z
- Nombre del usuario: HOLI CARACOLI
+ Fecha de entrada: 2019/05/10
+ Fecha de salida: 2019/05/12
+ DNI del usuario: 12345678Z
+ Nombre del usuario: MANUEL GARCIA

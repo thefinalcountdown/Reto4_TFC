@@ -18,9 +18,9 @@ public class ModeloListaHabitaciones implements ListModel {
 		dormitorios = obtenerHabitaciones(cod_hotel, fecha_entrada, fecha_salida);
 
 		for (int index = 0; index < dormitorios.size(); index++) {
-			makeObj(dormitorios.get(index).getCamaIndividual(), dormitorios.get(index).getCamaInfantil(),
+			makeObj(dormitorios.get(index).getNum_habitacion(), dormitorios.get(index).getCamaIndividual(), dormitorios.get(index).getCamaInfantil(),
 					dormitorios.get(index).getCamaMatrimonio());
-			arrayString.add("Cama individual: " + dormitorios.get(index).getCamaIndividual() + "  Cama infantil: "
+			arrayString.add("Habitacion: "+dormitorios.get(index).getNum_habitacion()+" Cama individual: " + dormitorios.get(index).getCamaIndividual() + "  Cama infantil: "
 					+ dormitorios.get(index).getCamaInfantil() + " Cama de matrimonio: "
 					+ dormitorios.get(index).getCamaMatrimonio());
 		}
@@ -34,10 +34,10 @@ public class ModeloListaHabitaciones implements ListModel {
 		}
 	}
 
-	public static Object makeObj(int item2, int item3, int item4) {
+	public static Object makeObj(int item1, int item2, int item3, int item4) {
 		return new Object() {
 			public String toString() {
-				return "" + item2 + item3 + item4;
+				return "" + item1 + item2 + item3 + item4;
 			}
 		};
 	}
@@ -56,9 +56,8 @@ public class ModeloListaHabitaciones implements ListModel {
 		
 		while (result.next()) 
 		{
-			dormitorios.add(new Dormitorio(result.getString("Cod_Habitacion"), result.getFloat("Superficie"),
-					result.getInt("Cama_individual"), result.getInt("Cama_infantil"),
-					result.getInt("Cama_matrimonio")));
+			dormitorios.add(new Dormitorio(result.getInt("Num_Habitacion"), result.getString("Cod_Habitacion"), result.getFloat("Superficie"),
+					result.getInt("Cama_individual"), result.getInt("Cama_infantil"), result.getInt("Cama_matrimonio")));
 		}
 		
 		return dormitorios;

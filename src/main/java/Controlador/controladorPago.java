@@ -270,7 +270,7 @@ public class controladorPago
 						{
 							try
 							{
-								GestorBD.insertarReserva(modelo.modeloFichero.leerTicket());
+								modelo.insercionReserva.insertarReserva(controladorHotel.reserva_habitacion, modelo.modeloFichero.leerTicket());;
 							}
 							catch (Exception ex)
 							{
