@@ -21,15 +21,19 @@ public class controladorLogin {
 			public void actionPerformed(ActionEvent e) {
 				// comprueba si el usuario existe en la base de datos
 				if (modelo.modeloLogin.comprobarDni(GestorBD.consulta(modelo.modeloLogin
-						.sentenciaCombrobarDni(ventana.login.formattedTextFieldLoginDNI.getText()))) == false) {
+						.sentenciaCombrobarDni(ventana.login.formattedTextFieldLoginDNI.getText()))) == false)
+				{
 					JOptionPane.showMessageDialog(null, "El usuario no existe.");
-					// comprueba que el dni sea válido a la hora de registrar usuario
-				} else if (modelo.modeloRegistro
-						.validarNIF(ventana.login.formattedTextFieldLoginDNI.getText()) == false) {
-					JOptionPane.showMessageDialog(null, "El DNI introducido no es válido...");
-					// intenta loguear con el usuario, si dni y contraseña son correctos manda el
+					// comprueba que el dni sea valido a la hora de registrar usuario
+				} 
+				else if (modelo.modeloRegistro
+						.validarNIF(ventana.login.formattedTextFieldLoginDNI.getText()) == false) 
+				{
+					JOptionPane.showMessageDialog(null, "El DNI introducido no es v\u00e1lido...");
+					// intenta loguear con el usuario, si dni y contraseï¿½a son correctos manda el
 					// usuario a la reserva y cambia de panel
-				} else if (modelo.modeloLogin.comprobarLogin(GestorBD
+				} 
+				else if (modelo.modeloLogin.comprobarLogin(GestorBD
 						.consulta(modelo.modeloLogin.sentenciaLogin(ventana.login.formattedTextFieldLoginDNI.getText(),
 								String.valueOf(ventana.login.passwordFieldLoginClave.getPassword())))) == true) {
 					JOptionPane.showMessageDialog(null, "Usuario logueado con exito.");
