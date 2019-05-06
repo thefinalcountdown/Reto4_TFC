@@ -3,6 +3,8 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 import Modelo.modelo;
 import Vista.Ventana;
@@ -37,8 +39,36 @@ public class controladorHotel {
 						// añade en la vista de reserva los parametros del nombre del hotel y el precio
 						ventana.reserva.textField_hotelseleccionado
 								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
-						ventana.reserva.textField_precio
-								.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
+						Date fechaIn = ventana.raiz.fechaIn.getDate();
+						Date fechaOut = ventana.raiz.fechaOut.getDate();
+						
+						double precioBase = modelo.modeloListaHotel.hoteles.get(index).getPrecio();
+						
+						//multimplica el precioBase * numero de noche elegidas
+						long dias = fechaOut.getTime() - fechaIn.getTime();
+						long difdias = dias / (1000*60*60*24);
+						double precio = precioBase *difdias;
+						//incrementa el precio al elegir en temporada alta
+						if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
+								|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
+										&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
+							 precio = precio + (precio * 0.20);
+						}
+						//incrementa el precio al elegir festivo en el fechaIn
+						if(fechaIn.equals(ventana.raiz.Enero1) || fechaIn.equals(ventana.raiz.Enero6) || fechaIn.equals(ventana.raiz.Abril19) || fechaIn.equals(ventana.raiz.Abril21)
+								|| fechaIn.equals(ventana.raiz.Mayo1) || fechaIn.equals(ventana.raiz.Octubre12) || fechaIn.equals(ventana.raiz.Noviembre1) || fechaIn.equals(ventana.raiz.Diciembre6)
+								|| fechaIn.equals(ventana.raiz.Diciembre8) || fechaIn.equals(ventana.raiz.Diciembre25)) {
+							precio = precio + (precio * 0.10);
+						}
+						//incrementa el precio al elegir festivo en el fechaOut
+						if(fechaOut.equals(ventana.raiz.Enero1) || fechaOut.equals(ventana.raiz.Enero6) || fechaOut.equals(ventana.raiz.Abril19) || fechaOut.equals(ventana.raiz.Abril21)
+								|| fechaOut.equals(ventana.raiz.Mayo1) || fechaOut.equals(ventana.raiz.Octubre12) || fechaOut.equals(ventana.raiz.Noviembre1)
+								|| fechaOut.equals(ventana.raiz.Diciembre6) || fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
+							precio = precio + (precio * 0.10);
+						}
+						
+						ventana.reserva.textField_precio.setText(Double.toString(precio));
+						//ventana.reserva.textField_precio.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
 						ventana.cambio_panel(ventana.hotel, ventana.reserva);
 					}
 

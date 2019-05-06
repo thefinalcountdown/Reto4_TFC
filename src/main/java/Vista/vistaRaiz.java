@@ -3,7 +3,11 @@ package Vista;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -12,6 +16,7 @@ import com.toedter.calendar.JDateChooser;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.SimpleDateFormat;
 
 public class vistaRaiz extends JPanel {
 	
@@ -37,7 +42,19 @@ public class vistaRaiz extends JPanel {
 	public Date fechaEntrada = new Date();
 	private JTextField textField;
 	private JTextField textField_1;
-	//private JDateChooser fechaOut = new JDateChooser("dd/MM/yyyy", "##/##/####", '_');
+	public Date temporadaAltaInicio = new GregorianCalendar(2019, Calendar.JUNE, 22).getTime();
+	public Date temporadaAltaFin = new GregorianCalendar(2019, Calendar.AUGUST, 30).getTime();
+	
+	public Date Enero1 = new GregorianCalendar(2019, Calendar.JANUARY, 1).getTime();
+	public Date Enero6 = new GregorianCalendar(2019, Calendar.JANUARY, 6).getTime();
+	public Date Abril19 = new GregorianCalendar(2019, Calendar.APRIL, 19).getTime();
+	public Date Abril21 = new GregorianCalendar(2019, Calendar.APRIL, 21).getTime();
+	public Date Mayo1 = new GregorianCalendar(2019, Calendar.MAY, 1).getTime();
+	public Date Octubre12 = new GregorianCalendar(2019, Calendar.OCTOBER, 12).getTime();
+	public Date Noviembre1 = new GregorianCalendar(2019, Calendar.NOVEMBER, 1).getTime();
+	public Date Diciembre6 = new GregorianCalendar(2019, Calendar.DECEMBER, 6).getTime();
+	public Date Diciembre8 = new GregorianCalendar(2019, Calendar.DECEMBER, 8).getTime();
+	public Date Diciembre25 = new GregorianCalendar(2019, Calendar.DECEMBER, 25).getTime();
 	/**
 	 * Create the panel.
 	 */
@@ -59,7 +76,7 @@ public class vistaRaiz extends JPanel {
 		comboBoxUbicacion = new JComboBox();
 		comboBoxUbicacion.setBounds(24, 129, 402, 29);
 		add(comboBoxUbicacion);
-
+		
 		//Fecha Entrada
 		lblFecha = new JLabel("FECHA ENTRADA");
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -73,11 +90,11 @@ public class vistaRaiz extends JPanel {
 		calendarIn.setMaxDayCharacters(3);
 		calendarIn.setMinSelectableDate(new Date());
 		calendarIn.setSundayForeground(Color.BLUE);
-		
+
 		fechaIn = new JDateChooser(calendarIn, null, null, null);
 		fechaIn.setBounds(33, 408, 130, 30);
+				
 		add(fechaIn);
-		
 		
 		//Fecha Salida
 		lblFecha = new JLabel("FECHA SALIDA");
