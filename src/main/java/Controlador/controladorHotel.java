@@ -3,15 +3,22 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.Date;
 
+import java.util.ArrayList;
+
+
 import javax.swing.JOptionPane;
+
+import Modelo.Reserva_habitacion;
 import Modelo.modelo;
 import Vista.Ventana;
 
 public class controladorHotel {
 	private Ventana ventana;
 	private modelo modelo;
+	public static ArrayList<Reserva_habitacion> reserva_habitacion = new ArrayList<Reserva_habitacion>();
 
 	public controladorHotel() {
 	}
@@ -30,14 +37,18 @@ public class controladorHotel {
 				if (index == -1) {
 					JOptionPane.showMessageDialog(null, "Seleccione algun hotel.");
 				} else {
-					// una vez un hotel ha sido seleccionado, coge el num de habitaciones y
-					// comprueba que se hayan seleccionado
-					if (ventana.hotel.listaHabitaciones.getSelectedIndex() < controladorRaiz.num_Hab) {
-						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion.");
-					} else {
+//					// una vez un hotel ha sido seleccionado, coge el num de habitaciones y
+//					// comprueba que se hayan seleccionado
+//
+//					if (ventana.hotel.listaHabitaciones.getSelectedIndex() < controladorRaiz.num_Hab) {
+//						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion.");
+//					} else {
+						System.out.println("Hola" + modelo.modeloListaAlojamiento.getElementAt(index));
+
 
 						// añade en la vista de reserva los parametros del nombre del hotel y el precio
-						ventana.reserva.textField_hotelseleccionado
+
+						ventana.reserva.textField_alojamientoseleccionado
 								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
 						Date fechaIn = ventana.raiz.fechaIn.getDate();
 						Date fechaOut = ventana.raiz.fechaOut.getDate();
@@ -69,9 +80,29 @@ public class controladorHotel {
 						
 						ventana.reserva.textField_precio.setText(Double.toString(precio));
 						//ventana.reserva.textField_precio.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
-						ventana.cambio_panel(ventana.hotel, ventana.reserva);
-					}
 
+						
+						//pasa parametros a reserva
+						ventana.reserva.textField_alojamientoseleccionado
+								.setText(modelo.modeloListaAlojamiento.hoteles.get(index).getNombre());
+						ventana.reserva.textField_precio
+								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
+
+
+						
+						ventana.cambio_panel(ventana.hotel, ventana.reserva);
+
+						for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++) {
+							if (ventana.hotel.listaHabitaciones.isSelectedIndex(cont)) {
+								reserva_habitacion.add(new Reserva_habitacion(
+										modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
+										ventana.reserva.textField_fechaDeEntrada.getText(),
+										ventana.reserva.textField_fechaDeSalida.getText()));
+							}
+						}
+
+
+//					}
 				}
 			}
 		});
@@ -86,36 +117,35 @@ public class controladorHotel {
 
 				try {
 					modelo.modeloListaHabitacion.vaciarLista();
-				}
-				catch (Exception e1) 
-				{
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				//comprobar que hay un hotel seleccionado antes de que cargue la lista pero despues de limpiarla
+
+				// comprobar que hay un hotel seleccionado antes de que cargue la lista pero
+				// despues de limpiarla
 				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
 					JOptionPane.showMessageDialog(null, "Seleccione algun hotel.");
 				} else {
-				try {
-					// llena la lista usando el cod_hotel del hotel seleccionado en la listaHoteles
+					try {
+						// llena la lista usando el cod_hotel del hotel seleccionado en la listaHoteles
 
-					
-					modelo.modeloListaHabitacion.llenarLista(modelo.modeloListaHotel.hoteles
-							.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento(),
-							ventana.reserva.textField_fechaDeEntrada.getText(),ventana.reserva.textField_fechaDeSalida.getText());
-					System.out.println(ventana.reserva.textField_fechaDeEntrada.getText());
+						modelo.modeloListaHabitacion.llenarLista(
+								modelo.modeloListaAlojamiento.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex())
+										.getCod_alojamiento(),
+								ventana.reserva.textField_fechaDeEntrada.getText(),
+								ventana.reserva.textField_fechaDeSalida.getText());
 
-					// indica que el ListModel de la listaHabitaciones es el de listahabitacion que
-					// rellenamos arriba (por alguna razon
-					// creo que si lo pones directamente el scrollPane no funciona bien)
+						// indica que el ListModel de la listaHabitaciones es el de listahabitacion que
+						// rellenamos arriba (por alguna razon
+						// creo que si lo pones directamente el scrollPane no funciona bien)
 
-					ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
+						ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
 
-				} catch (Exception e1) {
-					System.out.println("El ArrayList de dormitorios no ha sido rellenado");
-					e1.printStackTrace();
-				}
+					} catch (Exception e1) {
+						System.out.println("El ArrayList de dormitorios no ha sido rellenado");
+						e1.printStackTrace();
+					}
 				}
 
 			}
@@ -129,15 +159,45 @@ public class controladorHotel {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
 				try {
 					modelo.modeloListaHabitacion.vaciarLista();
-					modelo.modeloListaHotel.vaciarLista();
+					modelo.modeloListaAlojamiento.vaciarLista();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				ventana.hotel.listaHoteles.setModel(modelo.modeloListaHotel);
+				ventana.hotel.listaHoteles.setModel(modelo.modeloListaAlojamiento);
 			}
 		});
 
+	}
+
+	public static String[] separarString(String alojamiento) {
+		String linea = alojamiento;
+		int contador = 0;
+		String campo = "";
+		String uno = "";
+		String dos = "";
+		while (contador < linea.length()) {
+			if (linea.charAt(contador) != ';')
+				campo += linea.charAt(contador);
+			if ((linea.charAt(contador) == ';') || (contador == linea.length() - 1)) {
+
+				System.out.println("paso2 " + campo);
+
+				if (uno == "") {
+					uno = campo;
+					campo = "";
+				} else if (uno != "" && dos == "") {
+					dos = campo;
+					campo = "";
+					break;
+				}
+
+			}
+			contador++;
+		}
+
+		String[] nomPrecio = { uno, dos };
+		return nomPrecio;
 	}
 
 }
