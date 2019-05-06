@@ -48,12 +48,13 @@ public class controladorHotel {
 
 						// añade en la vista de reserva los parametros del nombre del hotel y el precio
 
-						ventana.reserva.textField_alojamientoseleccionado
-								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
+//						ventana.reserva.textField_alojamientoseleccionado
+//								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
 						Date fechaIn = ventana.raiz.fechaIn.getDate();
 						Date fechaOut = ventana.raiz.fechaOut.getDate();
 						
-						double precioBase = modelo.modeloListaHotel.hoteles.get(index).getPrecio();
+						
+						double precioBase = modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio();
 						
 						//multimplica el precioBase * numero de noche elegidas
 						long dias = fechaOut.getTime() - fechaIn.getTime();
@@ -83,10 +84,10 @@ public class controladorHotel {
 
 						
 						//pasa parametros a reserva
-						ventana.reserva.textField_alojamientoseleccionado
-								.setText(modelo.modeloListaAlojamiento.hoteles.get(index).getNombre());
-						ventana.reserva.textField_precio
-								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
+//						ventana.reserva.textField_alojamientoseleccionado
+//								.setText(modelo.modeloListaAlojamiento.hoteles.get(index).getNombre());
+//						ventana.reserva.textField_precio
+//								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
 
 
 						
