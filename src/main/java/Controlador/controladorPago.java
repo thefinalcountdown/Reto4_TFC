@@ -42,6 +42,11 @@ public class controladorPago
 	private int contador_monedas [] = {contador_billete200,contador_billete100,contador_billete50,contador_billete20,contador_billete10,contador_billete5,contador_moneda2e,contador_moneda1e,contador_moneda50cent,contador_moneda20cent,contador_moneda10cent,contador_moneda5cent,contador_moneda2cent,contador_moneda1cent};
 	private String monedas[] = {"200 euros","100 euros","50 euros","20 euros","10 euros","5 euros", "2 euros", "1 euro", "50 centimos", "20 centimos", "10 centimos", "5 centimos", "2 centimos", "1 centimo"};
 	
+	
+	//he metido aqui las variables de hotel que voy a pasar desde el controlador
+	static int codhotel;
+ 	int codhabitacion;
+	
 	public controladorPago() {}
 	public controladorPago(Ventana ventana, modelo modelo)
 	{
@@ -246,10 +251,11 @@ public class controladorPago
 				 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devolución", JOptionPane.PLAIN_MESSAGE,
 						 JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 				 {
-					 	int codhotel= modelo.modeloListaHotel.hoteles
-								.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento();
-					 	int codhabitacion= modelo.modeloListaHotel.hoteles
-								.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento();
+					 
+//					 	int codhotel= modelo.modeloListaHotel.hoteles
+//								.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento();
+//					 	int codhabitacion= modelo.modeloListaHotel.hoteles
+//								.get(ventana.hotel.listaHoteles.getSelectedIndex()).getCod_alojamiento();
 					 	String nombreHotel = ventana.reserva.textField_alojamientoseleccionado.getText();
 					 	float precio = Float.parseFloat(ventana.reserva.textField_precio.getText());
 						int numPersonas = Integer.parseInt(ventana.reserva.textField_numpersonas.getText());

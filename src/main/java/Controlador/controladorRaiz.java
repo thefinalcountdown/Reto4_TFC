@@ -372,8 +372,8 @@ public class controladorRaiz {
 		ventana.raiz.btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JOptionPane.showMessageDialog(null,"Aloha chicos \r\n Estamos en periodo de construccion :( \r\n para que no os de error seleccionad SOLAMENTE la primera opcion de alojamiento\r\n y no seleccioneis niguna habitacion\r\n sentimos las molestias, gracias! :)");
-				
+//				JOptionPane.showMessageDialog(null,"Aloha chicos \r\n Estamos en periodo de construccion :( \r\n para que no os de error seleccionad SOLAMENTE la primera opcion de alojamiento\r\n y no seleccioneis niguna habitacion\r\n sentimos las molestias, gracias! :)");
+//				
 				
 				
 				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();

@@ -42,10 +42,21 @@ public class ModeloListaAlojamiento implements ListModel {
 		
 		for(int index = arrayString.size()-1; index >= 0; index--)
 		{
-			casas.remove(index);
-			hoteles.remove(index);
+
 			arrayString.remove(index);
 		}
+		for(int index = hoteles.size()-1; index >= 0; index--)
+		{
+
+			hoteles.remove(index);
+		}
+		
+		for(int index = casas.size()-1; index >= 0; index--)
+		{
+
+			casas.remove(index);
+		}
+		
 		
 	}
 

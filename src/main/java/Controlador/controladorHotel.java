@@ -32,9 +32,10 @@ public class controladorHotel {
 			public void actionPerformed(ActionEvent e) {
 
 				int index = ventana.hotel.listaHoteles.getSelectedIndex();
+
 				// if para comprobar que algun hotel ha sido seleccionado
 				if (index == -1) {
-					JOptionPane.showMessageDialog(null, "Seleccione algun hotel.");
+					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
 //					// una vez un hotel ha sido seleccionado, coge el num de habitaciones y
 //					// comprueba que se hayan seleccionado
@@ -44,14 +45,12 @@ public class controladorHotel {
 //					} else {
 					System.out.println("Hola" + modelo.modeloListaAlojamiento.getElementAt(index));
 
-					// añade en la vista de reserva los parametros del nombre del hotel y el precio
+					
 
-//						ventana.reserva.textField_alojamientoseleccionado
-//								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
 					Date fechaIn = ventana.raiz.fechaIn.getDate();
 					Date fechaOut = ventana.raiz.fechaOut.getDate();
 
-					double precioBase = modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio();
+					double precioBase = Double.parseDouble(separarString(index)[1]);
 
 					// multimplica el precioBase * numero de noche elegidas
 					long dias = fechaOut.getTime() - fechaIn.getTime();
@@ -79,13 +78,9 @@ public class controladorHotel {
 							|| fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
 						precio = precio + (precio * 0.10);
 					}
-
-					ventana.reserva.textField_precio.setText(Double.toString(precio));
-					// ventana.reserva.textField_precio.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
-
 					// pasa parametros a reserva
 					ventana.reserva.textField_alojamientoseleccionado.setText(separarString(index)[0]);
-					ventana.reserva.textField_precio.setText(separarString(index)[1]);
+					ventana.reserva.textField_precio.setText(Double.toString(precio));
 
 					ventana.cambio_panel(ventana.hotel, ventana.reserva);
 
@@ -121,13 +116,16 @@ public class controladorHotel {
 				// comprobar que hay un hotel seleccionado antes de que cargue la lista pero
 				// despues de limpiarla
 				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
-					JOptionPane.showMessageDialog(null, "Seleccione algun hotel.");
+					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
+					//if para comprobar si se ha seleccionado una casa o un hotel dentro del if es si se selecciona hotel
+					if(ventana.hotel.listaHoteles.getSelectedIndex()>modelo.modeloListaAlojamiento.casas.size()-1) {
+						
 					try {
 						// llena la lista usando el cod_hotel del hotel seleccionado en la listaHoteles
 
-						modelo.modeloListaHabitacion.llenarLista(
-								modelo.modeloListaAlojamiento.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex())
+						modelo.modeloListaHabitacion.llenarListaDorm(
+								modelo.modeloListaAlojamiento.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size())
 										.getCod_alojamiento(),
 								ventana.reserva.textField_fechaDeEntrada.getText(),
 								ventana.reserva.textField_fechaDeSalida.getText());
@@ -137,10 +135,18 @@ public class controladorHotel {
 						// creo que si lo pones directamente el scrollPane no funciona bien)
 
 						ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
+						controladorPago.codhotel= modelo.modeloListaAlojamiento.hoteles
+							.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size()).getCod_alojamiento();
 
 					} catch (Exception e1) {
 						System.out.println("El ArrayList de dormitorios no ha sido rellenado");
 						e1.printStackTrace();
+					}
+					}
+					//si se trata de una casa/aptmn...
+					//aqui hay que  meter el metodo para que rellene la lista de dormitorios con las habitaciones que tiene la casa
+					else {
+						System.out.println("holi, he funcionado");
 					}
 				}
 
