@@ -104,7 +104,6 @@ public class ficheroReserva {
 			fecha_entrada = conversion_slash_a_guion(fecha_entrada);
 			fecha_salida = conversion_slash_a_guion(fecha_salida);
 			nombre_fichero = "Ficheros/"+DNI + "_" + alojamiento + "_" + fecha_entrada + "_" + fecha_salida+".txt";
-			System.out.println(nombre_fichero);
 			File archivo = new File(nombre_fichero);
 			
 			// Para abrir el fichero sobreescribiendo
