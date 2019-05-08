@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -88,13 +89,14 @@ public class ficheroReserva {
 
 			// nos aseguramos de que existe el directorio, si no es asi
 			// lo creamos
-			Path path = Paths.get("Reto4_TFC");
+			Path path = Paths.get("Ficheros");
 
 			if (!Files.exists(path))
 				Files.createDirectory(path);
-
+			File archivo = new File("Ficheros/ficheroReserva.txt");
+			
 			// Para abrir el fichero sobreescribiendo
-			FileWriter fich = new FileWriter("Reto4_TFC\\ficheroReserva.txt");
+			FileWriter fich = new FileWriter(archivo);
 
 			// Para abrir el fichero y anadir al final del mismo
 			// FileWriter fich = new FileWriter("C:\\temporal2\\log.txt",true);
@@ -104,15 +106,16 @@ public class ficheroReserva {
 			// DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			// Calendar cal = Calendar.getInstance();
 
-			fich.write(" Codigo Hotel: "+this.Cod_Hotel+"\r\n"+" Hotel: " + this.nombreHotel + "\r\n" + " Precio: " + this.precio + "\r\n" + " Numero de personas: " + this.numPersonas + "\r\n"
-					+ " Numero de habitaciones: " + this.numHabitaciones + "\r\n" + " Ubicacion: " + this.ubicacion + "\r\n" + " Fecha de entrada: "
-					+ this.fecha_entrada + "\r\n" + " Fecha de salida: " + this.fecha_salida + "\r\n" + " DNI del usuario: " + this.DNI + "\r\n"
-					+ " Nombre del usuario: " + this.usuario);
+			fich.write(" Codigo Hotel: "+this.Cod_Hotel+"\r\n"+" Hotel: " + this.nombreHotel + "\r\n" + " Precio: " + this.precio + "\r\n" 
+					+ " Numero de personas: " + this.numPersonas + "\r\n" + " Numero de habitaciones: " + this.numHabitaciones + "\r\n" 
+					+ " Ubicacion: " + this.ubicacion + "\r\n" + " Fecha de entrada: " + this.fecha_entrada + "\r\n" + " Fecha de salida: " 
+					+ this.fecha_salida + "\r\n" + " DNI del usuario: " + this.DNI + "\r\n" + " Nombre del usuario: " + this.usuario);
 			fich.close();
 
 		} catch (IOException ex) {
 			JOptionPane.showMessageDialog(null, "No se puede escribir en el archivo porque  "
 					+ "no existe y no puede ser creado o no puede ser abierto o es un directorio");
+			System.exit(0);
 
 		}
 	}
@@ -125,7 +128,7 @@ public class ficheroReserva {
 		try
 		{
 			String linea;
-			FileReader fichero = new FileReader("Reto4_TFC\\ficheroReserva.txt");
+			FileReader fichero = new FileReader("Ficheros/ficheroReserva.txt");
 			BufferedReader buf = new BufferedReader(fichero);
 			
 			

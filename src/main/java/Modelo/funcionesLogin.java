@@ -6,48 +6,58 @@ import javax.swing.JOptionPane;
 
 public class funcionesLogin {
 
-	// sentencia para comprobar usuario login, si es falso, clave mala
+	// Sentencia para comprobar usuario login, si es falso, clave incorrecta
 	public String sentenciaLogin(String dni, String clave) {
-		return "select * from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""
-				+ clave + "\"";
+		return "select * from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""+ clave + "\"";
 	}
 
 	public boolean comprobarLogin(ResultSet result) {
-		try {
-			if (result.next() == true) {
+		try 
+		{
+			if (result.next() == true) 
+			{
 				return true;
-			} else {
+			} 
+			else 
+			{
 				return false;
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
 		return false;
 	}
 
-	// Comprobar si el DNI existe a la hora de loguearse, borrar, o actualizar el
-	// usuario.
-	public String sentenciaCombrobarDni(String dni) {
+	// Comprobar si el DNI existe a la hora de loguearse, borrar, o actualizar el usuario.
+	public String sentenciaCombrobarDni(String dni) 
+	{
 		return "select DNI from Usuario where DNI=\"" + dni + "\"";
 	}
 
-	public boolean comprobarDni(ResultSet result) {
-		try {
+	public boolean comprobarDni(ResultSet result) 
+	{
+		try
+		{
 			return result.first();
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e)
+		{
 			e.printStackTrace();
 		}
 		return false;
 	}
 
 	// sentencia para borrar usuario
-	public String sentenciaBorrarUsuario(String dni, String clave) {
-		return "delete from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""+clave
-				+ "\"";
+	public String sentenciaBorrarUsuario(String dni, String clave) 
+	{
+		return "delete from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""+clave+ "\"";
 	}
 
 	// sentencia actualizar usuario
-	public String sentenciaActualizarUsuario(String dni, String clave, String nuevaclave) {
+	public String sentenciaActualizarUsuario(String dni, String clave, String nuevaclave) 
+	{
 		return "update Usuario set Clave=\"" + AES.encrypt(nuevaclave, "llave") + "\" where DNI=\"" + dni.toUpperCase()
 				+ "\" and Clave=\"" + clave + "\"";
 
