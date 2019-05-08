@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import Vista.Ventana;
+
 public class ficheroReserva {
 
 	private int Cod_Hotel;
@@ -25,7 +27,11 @@ public class ficheroReserva {
 	private String fecha_salida;
 	private String DNI;
 	private String usuario;
+	private static String nombre_fichero;
 	
+	
+	private Ventana ventana;
+	private modelo modelo;
 
 	public ficheroReserva(int Cod_Hotel,  String nombreHotel, float precio, int numPersonas, int numHabitaciones, String ubicacion, String fecha_entrada, String fecha_salida,
 			String DNI, String usuario) 
@@ -79,7 +85,7 @@ public class ficheroReserva {
 		this.precio = precio;
 	}
 
-	public void imprimirTicket() {
+	public void imprimirTicket(String DNI, String alojamiento, String fecha_entrada, String fecha_salida) {
 		try {
 			// ruta relativa- buscar donde deja el fichero
 			// FileWriter fich = new FileWriter(".\\log.txt");
@@ -93,7 +99,13 @@ public class ficheroReserva {
 
 			if (!Files.exists(path))
 				Files.createDirectory(path);
-			File archivo = new File("Ficheros/ficheroReserva.txt");
+			
+			alojamiento = conversion_espacio_a_guion(alojamiento);
+			fecha_entrada = conversion_slash_a_guion(fecha_entrada);
+			fecha_salida = conversion_slash_a_guion(fecha_salida);
+			nombre_fichero = "Ficheros/"+DNI + "_" + alojamiento + "_" + fecha_entrada + "_" + fecha_salida+".txt";
+			System.out.println(nombre_fichero);
+			File archivo = new File(nombre_fichero);
 			
 			// Para abrir el fichero sobreescribiendo
 			FileWriter fich = new FileWriter(archivo);
@@ -128,7 +140,7 @@ public class ficheroReserva {
 		try
 		{
 			String linea;
-			FileReader fichero = new FileReader("Ficheros/ficheroReserva.txt");
+			FileReader fichero = new FileReader(nombre_fichero);
 			BufferedReader buf = new BufferedReader(fichero);
 			
 			
@@ -156,6 +168,18 @@ public class ficheroReserva {
 		
 		
 		return palabra;
+	}
+	
+	public String conversion_espacio_a_guion (String texto)
+	{
+		texto.replace(' ', '-');
+		return texto;
+	}
+	
+	public String conversion_slash_a_guion (String texto)
+	{
+		texto = texto.replace("/","-");
+		return texto;
 	}
 
 }

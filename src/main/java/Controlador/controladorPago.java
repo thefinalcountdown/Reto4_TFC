@@ -245,7 +245,7 @@ public class controladorPago
 				 contar_monedas();
 				 ventana.pago.texto_panel.append("\n");
 				 ventana.pago.texto_panel = insertar_texto(ventana.pago.texto_panel);
-				
+				 
 				
 				 ventana.pago.panel.add(ventana.pago.texto_panel);
 				 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devolución", JOptionPane.PLAIN_MESSAGE,
@@ -266,10 +266,11 @@ public class controladorPago
 						String DNI = ventana.reserva.textField_DNI.getText();
 						String usuario = ventana.reserva.textField_usuario.getText();
 						
+						
 						modelo.modeloFichero = new ficheroReserva(codhotel,nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
 								fecha_salida, DNI, usuario);
 						
-						modelo.modeloFichero.imprimirTicket();
+						modelo.modeloFichero.imprimirTicket(DNI, nombreHotel, fecha_entrada, fecha_salida);
 						
 						if(JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, 
 								JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
@@ -286,6 +287,7 @@ public class controladorPago
 							System.exit(0);
 						}
 				 }
+				
 			}
 		});
 	}

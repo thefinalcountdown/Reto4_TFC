@@ -3,7 +3,6 @@ package Modelo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
