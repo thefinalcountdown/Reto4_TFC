@@ -5,13 +5,22 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
+
 
 import javax.swing.JOptionPane;
+
+import com.toedter.calendar.DateUtil;
 
 import Modelo.modelo;
 import Vista.Ventana;
@@ -28,6 +37,7 @@ public class controladorRaiz {
 	Calendar calendar = Calendar.getInstance();
 	private int i = 0;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+	
 
 	public controladorRaiz(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
@@ -41,44 +51,57 @@ public class controladorRaiz {
 		}
 
 		// Calendario entrada
-		ventana.raiz.fechaIn.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
+				ventana.raiz.fechaIn.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
 
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				// Comprobar que se hayan seleccionado dos fechas, que el día de salida sea
-				// posterior al de entrada y que el dia de salida y entrada no sean el mismo
-				if (ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null
-						&& (ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate()))
-						&& !(ventana.raiz.fechaIn.getDate().equals(ventana.raiz.fechaOut.getDate()))) {
-					ventana.raiz.btnBuscar.setEnabled(true);
-				} else {
-					ventana.raiz.btnBuscar.setEnabled(false);
-				}
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						// Comprobar que se hayan seleccionado dos fechas, que el día de salida sea
+						// posterior al de entrada y que el dia de salida y entrada no sean el mismo
+						if (ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null
+								&& (ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate()))
+								&& !(ventana.raiz.fechaIn.getDate().equals(ventana.raiz.fechaOut.getDate()))) {
+							ventana.raiz.btnBuscar.setEnabled(true);
+						} else {
+							ventana.raiz.btnBuscar.setEnabled(false);
+						}
 
-				
-			}
+						
+					}
 
-		});
+				});
 
-		// Calendario salida
-		ventana.raiz.fechaOut.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
+				ventana.raiz.fechaIn.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						
+						Date fechaInicio = ventana.raiz.fechaIn.getDate();
+						ventana.raiz.fechaOut.setDate(fechaInicio);
+						
+					}
+				});
 
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				// Comprobar que se hayan seleccionado dos fechas, que el día de salida sea
-				// posterior al de entrada y que el dia de salida y entrada no sean el mismo
-				if (ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null
-						&& (ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate()))
-						&& !(ventana.raiz.fechaIn.getDate().getDay() == ventana.raiz.fechaOut.getDate().getDay())) {
-					ventana.raiz.btnBuscar.setEnabled(true);
-				} else {
-					ventana.raiz.btnBuscar.setEnabled(false);
-				}
-				
-				
-			}
-		});
+				// Calendario salida
+				ventana.raiz.fechaOut.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
 
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						// Comprobar que se hayan seleccionado dos fechas, que el día de salida sea
+						// posterior al de entrada y que el dia de salida y entrada no sean el mismo
+						if (ventana.raiz.fechaIn.getDate() != null && ventana.raiz.fechaOut.getDate() != null
+								&& (ventana.raiz.fechaIn.getDate().before(ventana.raiz.fechaOut.getDate()))
+								&& !(ventana.raiz.fechaIn.getDate().getDay() == ventana.raiz.fechaOut.getDate().getDay())) {
+							ventana.raiz.btnBuscar.setEnabled(true);
+						} else {
+							ventana.raiz.btnBuscar.setEnabled(false);
+						}
+						
+						
+					}
+				});
+		
+
+		
+		
 		// boton sumar Adulto
 		ventana.raiz.btnSumAdult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -372,32 +395,54 @@ public class controladorRaiz {
 		ventana.raiz.btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JOptionPane.showMessageDialog(null,"Aloha chicos \r\n Estamos en periodo de construccion :( \r\n para que no os de error seleccionad SOLAMENTE la primera opcion de alojamiento\r\n y no seleccioneis niguna habitacion\r\n sentimos las molestias, gracias! :)");
-				
-				
-				
 				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
-
+				
 				Date fechaIn = ventana.raiz.fechaIn.getDate();
 				Date fechaOut = ventana.raiz.fechaOut.getDate();
-
+				
+				long Enero_1_I = ventana.raiz.Enero1.getTime()-fechaIn.getTime();
+				long Enero_6_I = ventana.raiz.Enero6.getTime()-fechaIn.getTime();
+				long Abril_19_I = ventana.raiz.Abril19.getTime()-fechaIn.getTime();
+				long Abril_21_I = ventana.raiz.Abril21.getTime()-fechaIn.getTime();
+				long Mayo_1_I = ventana.raiz.Mayo1.getTime()-fechaIn.getTime();
+				long Octubre_12_I = ventana.raiz.Octubre12.getTime()-fechaIn.getTime();
+				long Noviembre_1_I = ventana.raiz.Noviembre1.getTime()-fechaIn.getTime();
+				long Diciembre_6_I = ventana.raiz.Diciembre6.getTime()-fechaIn.getTime();
+				long Diciembre_8_I = ventana.raiz.Diciembre8.getTime()-fechaIn.getTime();
+				long Diciembre_25_I = ventana.raiz.Diciembre25.getTime()-fechaIn.getTime();
+				
+				long Enero_1_O = ventana.raiz.Enero1.getTime()-fechaOut.getTime();
+				long Enero_6_O = ventana.raiz.Enero6.getTime()-fechaOut.getTime();
+				long Abril_19_O = ventana.raiz.Abril19.getTime()-fechaOut.getTime();
+				long Abril_21_O = ventana.raiz.Abril21.getTime()-fechaOut.getTime();
+				long Mayo_1_O = ventana.raiz.Mayo1.getTime()-fechaOut.getTime();
+				long Octubre_12_O = ventana.raiz.Octubre12.getTime()-fechaOut.getTime();
+				long Noviembre_1_O = ventana.raiz.Noviembre1.getTime()-fechaOut.getTime();
+				long Diciembre_6_O = ventana.raiz.Diciembre6.getTime()-fechaOut.getTime();
+				long Diciembre_8_O = ventana.raiz.Diciembre8.getTime()-fechaOut.getTime();
+				long Diciembre_25_O = ventana.raiz.Diciembre25.getTime()-fechaOut.getTime();
+				
+				
 				if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
 						|| fechaOut.after(ventana.raiz.temporadaAltaInicio) && fechaOut.before(ventana.raiz.temporadaAltaFin)) {
 					JOptionPane.showMessageDialog(null,
 							"Las fechas seleccionadas suponen un incremento del 20% en el precio al ser temporada alta");
 				}
-				if (fechaIn.equals(ventana.raiz.Enero1)  || fechaIn.equals(ventana.raiz.Enero6) || fechaIn.equals(ventana.raiz.Abril19) || fechaIn.equals(ventana.raiz.Abril21)
-						|| fechaIn.equals(ventana.raiz.Mayo1) || fechaIn.equals(ventana.raiz.Octubre12) || fechaIn.equals(ventana.raiz.Noviembre1) || fechaIn.equals(ventana.raiz.Diciembre6)
-						|| fechaIn.equals(ventana.raiz.Diciembre8) || fechaIn.equals(ventana.raiz.Diciembre25)) {
-					JOptionPane.showMessageDialog(null,"la fecha: " +fechaIn+ "es un dia festivo y supone un incremento en el precio del 10%");
-				}
-				if (fechaOut.equals(ventana.raiz.Enero1) || fechaOut.equals(ventana.raiz.Enero6) || fechaOut.equals(ventana.raiz.Abril19) || fechaOut.equals(ventana.raiz.Abril21)
-						|| fechaOut.equals(ventana.raiz.Mayo1) || fechaOut.equals(ventana.raiz.Octubre12) || fechaOut.equals(ventana.raiz.Noviembre1)
-						|| fechaOut.equals(ventana.raiz.Diciembre6) || fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
-					JOptionPane.showMessageDialog(null,"la fecha: " +fechaOut+ "es un dia festivo y supone un incremento en el precio del 10%");
+				if((Enero_1_I<=0 && Enero_1_I>=-24*60*60*1000) || (Enero_6_I<=0 && Enero_6_I>=-24*60*60*1000) || (Abril_19_I<=0 && Abril_19_I>=-24*60*60*1000) || (Abril_21_I<=0 && Abril_21_I>=-24*60*60*1000) 
+						|| (Mayo_1_I<=0 && Mayo_1_I>=-24*60*60*1000) || (Octubre_12_I<=0 && Octubre_12_I>=-24*60*60*1000) || (Noviembre_1_I<=0 && Noviembre_1_I>=-24*60*60*1000) || (Diciembre_6_I<=0 && Diciembre_6_I>=-24*60*60*1000)
+						|| (Diciembre_8_I<=0 && Diciembre_8_I>=-24*60*60*1000) || (Diciembre_25_I<=0 && Diciembre_25_I>=-24*60*60*1000)) {
+					JOptionPane.showMessageDialog(null,"la fecha elegida es un dia festivo y supone un incremento en el precio del 10%");
 				}
 				
-
+				if((Enero_1_O<=0 && Enero_1_O>=-24*60*60*1000) || (Enero_6_O<=0 && Enero_6_O>=-24*60*60*1000) || (Abril_19_O<=0 && Abril_19_O>=-24*60*60*1000) || (Abril_21_O<=0 && Abril_21_O>=-24*60*60*1000) 
+						|| (Mayo_1_O<=0 && Mayo_1_O>=-24*60*60*1000) || (Octubre_12_O<=0 && Octubre_12_O>=-24*60*60*1000) || (Noviembre_1_O<=0 && Noviembre_1_O>=-24*60*60*1000) || (Diciembre_6_O<=0 && Diciembre_6_O>=-24*60*60*1000)
+						|| (Diciembre_8_O<=0 && Diciembre_8_O>=-24*60*60*1000) || (Diciembre_25_O<=0 && Diciembre_25_O>=-24*60*60*1000)) {
+					JOptionPane.showMessageDialog(null,"la fecha elegida es un dia festivo y supone un incremento en el precio del 10%");
+				}
+				
+			
+				
+				JOptionPane.showMessageDialog(null,"Aloha chicos \r\n Estamos en periodo de construccion :( \r\n para que no os de error seleccionad SOLAMENTE la primera opcion de alojamiento\r\n y no seleccioneis niguna habitacion\r\n sentimos las molestias, gracias! :)");
 				try {
 					modelo.modeloListaAlojamiento.llenarLista(ubicacionSeleccionada);
 					ventana.hotel.listaHoteles.setModel(modelo.modeloListaAlojamiento);
