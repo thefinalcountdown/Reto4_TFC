@@ -50,8 +50,30 @@ public class controladorHotel {
 
 //						ventana.reserva.textField_alojamientoseleccionado
 //								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
+						
 						Date fechaIn = ventana.raiz.fechaIn.getDate();
 						Date fechaOut = ventana.raiz.fechaOut.getDate();
+						long Enero_1_I = ventana.raiz.Enero1.getTime()-fechaIn.getTime();
+						long Enero_6_I = ventana.raiz.Enero6.getTime()-fechaIn.getTime();
+						long Abril_19_I = ventana.raiz.Abril19.getTime()-fechaIn.getTime();
+						long Abril_21_I = ventana.raiz.Abril21.getTime()-fechaIn.getTime();
+						long Mayo_1_I = ventana.raiz.Mayo1.getTime()-fechaIn.getTime();
+						long Octubre_12_I = ventana.raiz.Octubre12.getTime()-fechaIn.getTime();
+						long Noviembre_1_I = ventana.raiz.Noviembre1.getTime()-fechaIn.getTime();
+						long Diciembre_6_I = ventana.raiz.Diciembre6.getTime()-fechaIn.getTime();
+						long Diciembre_8_I = ventana.raiz.Diciembre8.getTime()-fechaIn.getTime();
+						long Diciembre_25_I = ventana.raiz.Diciembre25.getTime()-fechaIn.getTime();
+						
+						long Enero_1_O = ventana.raiz.Enero1.getTime()-fechaOut.getTime();
+						long Enero_6_O = ventana.raiz.Enero6.getTime()-fechaOut.getTime();
+						long Abril_19_O = ventana.raiz.Abril19.getTime()-fechaOut.getTime();
+						long Abril_21_O = ventana.raiz.Abril21.getTime()-fechaOut.getTime();
+						long Mayo_1_O = ventana.raiz.Mayo1.getTime()-fechaOut.getTime();
+						long Octubre_12_O = ventana.raiz.Octubre12.getTime()-fechaOut.getTime();
+						long Noviembre_1_O = ventana.raiz.Noviembre1.getTime()-fechaOut.getTime();
+						long Diciembre_6_O = ventana.raiz.Diciembre6.getTime()-fechaOut.getTime();
+						long Diciembre_8_O = ventana.raiz.Diciembre8.getTime()-fechaOut.getTime();
+						long Diciembre_25_O = ventana.raiz.Diciembre25.getTime()-fechaOut.getTime();
 						
 						
 						double precioBase = modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio();
@@ -67,15 +89,15 @@ public class controladorHotel {
 							 precio = precio + (precio * 0.20);
 						}
 						//incrementa el precio al elegir festivo en el fechaIn
-						if(fechaIn.equals(ventana.raiz.Enero1) || fechaIn.equals(ventana.raiz.Enero6) || fechaIn.equals(ventana.raiz.Abril19) || fechaIn.equals(ventana.raiz.Abril21)
-								|| fechaIn.equals(ventana.raiz.Mayo1) || fechaIn.equals(ventana.raiz.Octubre12) || fechaIn.equals(ventana.raiz.Noviembre1) || fechaIn.equals(ventana.raiz.Diciembre6)
-								|| fechaIn.equals(ventana.raiz.Diciembre8) || fechaIn.equals(ventana.raiz.Diciembre25)) {
+						if((Enero_1_I<=0 && Enero_1_I>=-24*60*60*1000) || (Enero_6_I<=0 && Enero_6_I>=-24*60*60*1000) || (Abril_19_I<=0 && Abril_19_I>=-24*60*60*1000) || (Abril_21_I<=0 && Abril_21_I>=-24*60*60*1000) 
+								|| (Mayo_1_I<=0 && Mayo_1_I>=-24*60*60*1000) || (Octubre_12_I<=0 && Octubre_12_I>=-24*60*60*1000) || (Noviembre_1_I<=0 && Noviembre_1_I>=-24*60*60*1000) || (Diciembre_6_I<=0 && Diciembre_6_I>=-24*60*60*1000)
+								|| (Diciembre_8_I<=0 && Diciembre_8_I>=-24*60*60*1000) || (Diciembre_25_I<=0 && Diciembre_25_I>=-24*60*60*1000)) {
 							precio = precio + (precio * 0.10);
 						}
 						//incrementa el precio al elegir festivo en el fechaOut
-						if(fechaOut.equals(ventana.raiz.Enero1) || fechaOut.equals(ventana.raiz.Enero6) || fechaOut.equals(ventana.raiz.Abril19) || fechaOut.equals(ventana.raiz.Abril21)
-								|| fechaOut.equals(ventana.raiz.Mayo1) || fechaOut.equals(ventana.raiz.Octubre12) || fechaOut.equals(ventana.raiz.Noviembre1)
-								|| fechaOut.equals(ventana.raiz.Diciembre6) || fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
+						if((Enero_1_O<=0 && Enero_1_O>=-24*60*60*1000) || (Enero_6_O<=0 && Enero_6_O>=-24*60*60*1000) || (Abril_19_O<=0 && Abril_19_O>=-24*60*60*1000) || (Abril_21_O<=0 && Abril_21_O>=-24*60*60*1000) 
+								|| (Mayo_1_O<=0 && Mayo_1_O>=-24*60*60*1000) || (Octubre_12_O<=0 && Octubre_12_O>=-24*60*60*1000) || (Noviembre_1_O<=0 && Noviembre_1_O>=-24*60*60*1000) || (Diciembre_6_O<=0 && Diciembre_6_O>=-24*60*60*1000)
+								|| (Diciembre_8_O<=0 && Diciembre_8_O>=-24*60*60*1000) || (Diciembre_25_O<=0 && Diciembre_25_O>=-24*60*60*1000)) {
 							precio = precio + (precio * 0.10);
 						}
 						
