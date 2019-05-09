@@ -8,7 +8,6 @@ import java.util.Date;
 
 import java.util.ArrayList;
 
-
 import javax.swing.JOptionPane;
 
 import Modelo.Reserva_habitacion;
@@ -33,9 +32,10 @@ public class controladorHotel {
 			public void actionPerformed(ActionEvent e) {
 
 				int index = ventana.hotel.listaHoteles.getSelectedIndex();
+
 				// if para comprobar que algun hotel ha sido seleccionado
 				if (index == -1) {
-					JOptionPane.showMessageDialog(null, "Seleccione algun hotel.");
+					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
 //					// una vez un hotel ha sido seleccionado, coge el num de habitaciones y
 //					// comprueba que se hayan seleccionado
@@ -43,7 +43,9 @@ public class controladorHotel {
 //					if (ventana.hotel.listaHabitaciones.getSelectedIndex() < controladorRaiz.num_Hab) {
 //						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion.");
 //					} else {
-						System.out.println("Hola" + modelo.modeloListaAlojamiento.getElementAt(index));
+					System.out.println("Hola" + modelo.modeloListaAlojamiento.getElementAt(index));
+
+					
 
 
 						// añade en la vista de reserva los parametros del nombre del hotel y el precio
@@ -112,18 +114,48 @@ public class controladorHotel {
 //								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
 
 
-						
-						ventana.cambio_panel(ventana.hotel, ventana.reserva);
-						
-						for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++)
-						{
-							if (ventana.hotel.listaHabitaciones.isSelectedIndex(cont))
-							{
-								reserva_habitacion.add(new Reserva_habitacion(modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
-										ventana.reserva.textField_fechaDeEntrada.getText(), ventana.reserva.textField_fechaDeSalida.getText()));
-							}
-						}
+					double precioBase = Double.parseDouble(separarString(index)[1]);
 
+					// multimplica el precioBase * numero de noche elegidas
+					long dias = fechaOut.getTime() - fechaIn.getTime();
+					long difdias = dias / (1000 * 60 * 60 * 24);
+					double precio = precioBase * difdias;
+					// incrementa el precio al elegir en temporada alta
+					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
+							|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
+									&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
+						precio = precio + (precio * 0.20);
+					}
+					// incrementa el precio al elegir festivo en el fechaIn
+					if (fechaIn.equals(ventana.raiz.Enero1) || fechaIn.equals(ventana.raiz.Enero6)
+							|| fechaIn.equals(ventana.raiz.Abril19) || fechaIn.equals(ventana.raiz.Abril21)
+							|| fechaIn.equals(ventana.raiz.Mayo1) || fechaIn.equals(ventana.raiz.Octubre12)
+							|| fechaIn.equals(ventana.raiz.Noviembre1) || fechaIn.equals(ventana.raiz.Diciembre6)
+							|| fechaIn.equals(ventana.raiz.Diciembre8) || fechaIn.equals(ventana.raiz.Diciembre25)) {
+						precio = precio + (precio * 0.10);
+					}
+					// incrementa el precio al elegir festivo en el fechaOut
+					if (fechaOut.equals(ventana.raiz.Enero1) || fechaOut.equals(ventana.raiz.Enero6)
+							|| fechaOut.equals(ventana.raiz.Abril19) || fechaOut.equals(ventana.raiz.Abril21)
+							|| fechaOut.equals(ventana.raiz.Mayo1) || fechaOut.equals(ventana.raiz.Octubre12)
+							|| fechaOut.equals(ventana.raiz.Noviembre1) || fechaOut.equals(ventana.raiz.Diciembre6)
+							|| fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
+						precio = precio + (precio * 0.10);
+					}
+					// pasa parametros a reserva
+					ventana.reserva.textField_alojamientoseleccionado.setText(separarString(index)[0]);
+					ventana.reserva.textField_precio.setText(Double.toString(precio));
+
+					ventana.cambio_panel(ventana.hotel, ventana.reserva);
+
+					for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++) {
+						if (ventana.hotel.listaHabitaciones.isSelectedIndex(cont)) {
+							reserva_habitacion.add(new Reserva_habitacion(
+									modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
+									ventana.reserva.textField_fechaDeEntrada.getText(),
+									ventana.reserva.textField_fechaDeSalida.getText()));
+						}
+					}
 
 //					}
 				}
@@ -148,13 +180,16 @@ public class controladorHotel {
 				// comprobar que hay un hotel seleccionado antes de que cargue la lista pero
 				// despues de limpiarla
 				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
-					JOptionPane.showMessageDialog(null, "Seleccione algun hotel.");
+					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
+					//if para comprobar si se ha seleccionado una casa o un hotel dentro del if es si se selecciona hotel
+					if(ventana.hotel.listaHoteles.getSelectedIndex()>modelo.modeloListaAlojamiento.casas.size()-1) {
+						
 					try {
 						// llena la lista usando el cod_hotel del hotel seleccionado en la listaHoteles
 
-						modelo.modeloListaHabitacion.llenarLista(
-								modelo.modeloListaAlojamiento.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex())
+						modelo.modeloListaHabitacion.llenarListaDorm(
+								modelo.modeloListaAlojamiento.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size())
 										.getCod_alojamiento(),
 								ventana.reserva.textField_fechaDeEntrada.getText(),
 								ventana.reserva.textField_fechaDeSalida.getText());
@@ -164,10 +199,18 @@ public class controladorHotel {
 						// creo que si lo pones directamente el scrollPane no funciona bien)
 
 						ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
+						controladorPago.codhotel= modelo.modeloListaAlojamiento.hoteles
+							.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size()).getCod_alojamiento();
 
 					} catch (Exception e1) {
 						System.out.println("El ArrayList de dormitorios no ha sido rellenado");
 						e1.printStackTrace();
+					}
+					}
+					//si se trata de una casa/aptmn...
+					//aqui hay que  meter el metodo para que rellene la lista de dormitorios con las habitaciones que tiene la casa
+					else {
+						System.out.println("holi, he funcionado");
 					}
 				}
 
@@ -193,33 +236,32 @@ public class controladorHotel {
 
 	}
 
-	public static String[] separarString(String alojamiento) {
-		String linea = alojamiento;
+	public String[] separarString(int index) {
+		String linea = (modelo.modeloListaAlojamiento.getElementAt(index)).toString();
 		int contador = 0;
+		int contador2 = 0;
 		String campo = "";
-		String uno = "";
-		String dos = "";
-		while (contador < linea.length()) {
-			if (linea.charAt(contador) != ';')
-				campo += linea.charAt(contador);
-			if ((linea.charAt(contador) == ';') || (contador == linea.length() - 1)) {
+		String[] nomPrecio = new String[2];
 
-				System.out.println("paso2 " + campo);
+		while (contador < linea.length() - 1) {
+			if (linea.charAt(contador) == ':' && linea.charAt(contador + 1) == ' ' && contador2 < 2) {
+				contador++;
 
-				if (uno == "") {
-					uno = campo;
-					campo = "";
-				} else if (uno != "" && dos == "") {
-					dos = campo;
-					campo = "";
-					break;
+				while (linea.charAt(contador + 1) != ' ' && (contador + 1) < linea.length() - 1) {
+					campo += linea.charAt(contador + 1);
+					contador++;
+//					System.out.println(contador);
 				}
+				nomPrecio[contador2] = campo;
+				campo = "";
+				contador2++;
+//				System.out.println("paso1 " + campo);
 
 			}
+
 			contador++;
 		}
 
-		String[] nomPrecio = { uno, dos };
 		return nomPrecio;
 	}
 

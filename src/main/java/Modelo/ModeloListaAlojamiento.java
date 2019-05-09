@@ -3,7 +3,6 @@ package Modelo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
@@ -25,15 +24,15 @@ public class ModeloListaAlojamiento implements ListModel {
 		for (int index = 0; index < casas.size(); index++) 
 		{
 			makeObj(casas.get(index).getNombre(), casas.get(index).getPrecio(), casas.get(index).getNum_banos());
-			arrayString.add("Nombre: "+casas.get(index).getNombre() + "  Precio:" + casas.get(index).getPrecio()
-					+"\u20ac  Numero de ba\u00f1os: "+casas.get(index).getNum_banos());
+			arrayString.add("Nombre: "+casas.get(index).getNombre() + "  Precio: " + casas.get(index).getPrecio()
+					+" \u20ac  Numero de ba\u00f1os: "+casas.get(index).getNum_banos());
 		}
 		hoteles= obtenerHoteles(ubicacion);
 		for (int index = 0; index < hoteles.size(); index++) 
 		{
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getPrecio(), hoteles.get(index).getEstrellas());
-			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio:" + hoteles.get(index).getPrecio()
-					+"\u20ac  Estrellas: "+hoteles.get(index).getEstrellas());
+			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio: " + hoteles.get(index).getPrecio()
+					+" \u20ac  Estrellas: "+hoteles.get(index).getEstrellas());
 		}
 		
 	}
@@ -42,10 +41,21 @@ public class ModeloListaAlojamiento implements ListModel {
 		
 		for(int index = arrayString.size()-1; index >= 0; index--)
 		{
-			casas.remove(index);
-			hoteles.remove(index);
+
 			arrayString.remove(index);
 		}
+		for(int index = hoteles.size()-1; index >= 0; index--)
+		{
+
+			hoteles.remove(index);
+		}
+		
+		for(int index = casas.size()-1; index >= 0; index--)
+		{
+
+			casas.remove(index);
+		}
+		
 		
 	}
 

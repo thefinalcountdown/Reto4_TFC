@@ -395,6 +395,7 @@ public class controladorRaiz {
 		ventana.raiz.btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+
 				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
 				
 				Date fechaIn = ventana.raiz.fechaIn.getDate();

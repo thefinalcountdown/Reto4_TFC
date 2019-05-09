@@ -1,0 +1,10 @@
+ Codigo Hotel: 109
+ Hotel: Suitopia
+ Precio: 80.0
+ Numero de personas: 1
+ Numero de habitaciones: 1
+ Ubicacion: Alicante
+ Fecha de entrada: 2019/05/15
+ Fecha de salida: 2019/05/16
+ DNI del usuario: 12345678Z
+ Nombre del usuario: GODOFREDO GARCIA
