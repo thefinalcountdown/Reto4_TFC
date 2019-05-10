@@ -26,7 +26,6 @@ public class controladorRaiz {
 	public static int num_kids = 0;
 	public static int num_Hab = 1;
 	Calendar calendar = Calendar.getInstance();
-	private int i = 0;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 	
 
@@ -101,7 +100,6 @@ public class controladorRaiz {
 		// boton sumar Adulto
 		ventana.raiz.btnSumAdult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int maxKids = Integer.parseInt(ventana.raiz.txtKids.getText());
 				num_huespedes++;
 				ventana.raiz.txthuesped.setText(Integer.toString(num_huespedes));
 				if (num_huespedes == 12) {
@@ -389,6 +387,7 @@ public class controladorRaiz {
 
 		// boton pasar siguiente ventana
 		ventana.raiz.btnBuscar.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent e) {
 				
 

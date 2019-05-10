@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 
 public class vistaPago extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	public JButton Cancelar_Pago = new JButton("Cancelar");
 	public JButton Continuar_Pago = new JButton("Continuar");
 	public JButton billete200 = new JButton();

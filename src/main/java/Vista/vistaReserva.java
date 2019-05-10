@@ -8,6 +8,7 @@ import javax.swing.SwingConstants;
 
 public class vistaReserva extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	public JButton Cancelar_Reserva = new JButton("Cancelar");
 	public  JButton Continuar_Reserva = new JButton("Continuar");
 	private JLabel lblDni;

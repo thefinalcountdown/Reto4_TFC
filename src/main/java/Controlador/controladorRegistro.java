@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import Modelo.funcionesRegistro;
 import Modelo.modelo;
 import Vista.Ventana;
 import metodos.GestorBD;

@@ -10,6 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 
 public class vistaModificar extends JPanel {
+	private static final long serialVersionUID = 1L;
 	public JButton btnBorrarUsuario;
 	public JButton btnActualizar;
 	public JFormattedTextField formattedTextFieldActualizarDNI;

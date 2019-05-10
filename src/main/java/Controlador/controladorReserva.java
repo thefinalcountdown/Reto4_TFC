@@ -2,11 +2,6 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
-import javax.swing.JOptionPane;
 
 import Modelo.modelo;
 import Vista.Ventana;

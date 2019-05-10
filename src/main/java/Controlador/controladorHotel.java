@@ -165,10 +165,10 @@ public class controladorHotel {
 		// boton que muestra la lista de habitaciones
 
 		ventana.hotel.btnHabitaciones.addActionListener(new ActionListener() {
+			@SuppressWarnings("unchecked")
 			public void actionPerformed(ActionEvent e) {
 
-				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de
-				// otros hoteles seleccionados
+				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de otros hoteles seleccionados
 
 				try {
 					modelo.modeloListaHabitacion.vaciarLista();
@@ -177,8 +177,7 @@ public class controladorHotel {
 					e1.printStackTrace();
 				}
 
-				// comprobar que hay un hotel seleccionado antes de que cargue la lista pero
-				// despues de limpiarla
+				// comprobar que hay un hotel seleccionado antes de que cargue la lista pero despues de limpiarla
 				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
 					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
@@ -194,9 +193,8 @@ public class controladorHotel {
 								ventana.reserva.textField_fechaDeEntrada.getText(),
 								ventana.reserva.textField_fechaDeSalida.getText());
 
-						// indica que el ListModel de la listaHabitaciones es el de listahabitacion que
-						// rellenamos arriba (por alguna razon
-						// creo que si lo pones directamente el scrollPane no funciona bien)
+						// indica que el ListModel de la listaHabitaciones es el de listahabitacion que rellenamos arriba 
+						// (por alguna razon creo que si lo pones directamente el scrollPane no funciona bien)
 
 						ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
 						controladorPago.codhotel= modelo.modeloListaAlojamiento.hoteles
@@ -207,7 +205,7 @@ public class controladorHotel {
 						e1.printStackTrace();
 					}
 					}
-					//si se trata de una casa/aptmn...
+					//si se trata de una casa/apartamento...
 					//aqui hay que  meter el metodo para que rellene la lista de dormitorios con las habitaciones que tiene la casa
 					else {
 						System.out.println("holi, he funcionado");
