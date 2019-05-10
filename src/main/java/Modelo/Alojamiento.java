@@ -1,7 +1,5 @@
 package Modelo;
 
-import java.util.ArrayList;
-
 public abstract class Alojamiento {
 
 	String nombre;
