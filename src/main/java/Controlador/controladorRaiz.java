@@ -5,22 +5,13 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
 
 
 import javax.swing.JOptionPane;
-
-import com.toedter.calendar.DateUtil;
 
 import Modelo.modelo;
 import Vista.Ventana;
@@ -64,21 +55,27 @@ public class controladorRaiz {
 						} else {
 							ventana.raiz.btnBuscar.setEnabled(false);
 						}
-
 						
+						try
+						{
+							Calendar calendario = ventana.raiz.fechaIn.getCalendar();
+							calendario.add(Calendar.DATE, 1);
+							ventana.raiz.fechaOut.setMinSelectableDate(calendario.getTime());
+							
+							if (ventana.raiz.fechaOut.getDate() == null || ventana.raiz.fechaOut.getDate().before(ventana.raiz.fechaIn.getDate()))
+							{
+								ventana.raiz.fechaOut.setDate(calendario.getTime());
+							}
+							
+						}
+						catch(NullPointerException e)
+						{
+							
+						}
 					}
 
 				});
 
-				ventana.raiz.fechaIn.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
-					@Override
-					public void propertyChange(PropertyChangeEvent evt) {
-						
-						Date fechaInicio = ventana.raiz.fechaIn.getDate();
-						ventana.raiz.fechaOut.setDate(fechaInicio);
-						
-					}
-				});
 
 				// Calendario salida
 				ventana.raiz.fechaOut.getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
@@ -99,7 +96,6 @@ public class controladorRaiz {
 					}
 				});
 		
-
 		
 		
 		// boton sumar Adulto

@@ -114,12 +114,12 @@ public class controladorHotel {
 //								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
 
 
-					double precioBase = Double.parseDouble(separarString(index)[1]);
+					precioBase = Double.parseDouble(separarString(index)[1]);
 
 					// multimplica el precioBase * numero de noche elegidas
-					long dias = fechaOut.getTime() - fechaIn.getTime();
-					long difdias = dias / (1000 * 60 * 60 * 24);
-					double precio = precioBase * difdias;
+					dias = fechaOut.getTime() - fechaIn.getTime();
+					difdias = dias / (1000 * 60 * 60 * 24);
+					precio = precioBase * difdias;
 					// incrementa el precio al elegir en temporada alta
 					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
 							|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
