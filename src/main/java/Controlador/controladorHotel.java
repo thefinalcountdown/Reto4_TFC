@@ -78,7 +78,8 @@ public class controladorHotel {
 						long Diciembre_25_O = ventana.raiz.Diciembre25.getTime()-fechaOut.getTime();
 						
 						
-						double precioBase = modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio();
+						double precioBase =32; //<- esto es para que no de error 
+						// esto lo que hay que poner->modelo.modeloListaAlojamiento.alojamiento.get(index).getPrecio();
 						
 						//multimplica el precioBase * numero de noche elegidas
 						long dias = fechaOut.getTime() - fechaIn.getTime();
@@ -148,73 +149,77 @@ public class controladorHotel {
 
 					ventana.cambio_panel(ventana.hotel, ventana.reserva);
 
-					for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++) {
-						if (ventana.hotel.listaHabitaciones.isSelectedIndex(cont)) {
-							reserva_habitacion.add(new Reserva_habitacion(
-									modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
-									ventana.reserva.textField_fechaDeEntrada.getText(),
-									ventana.reserva.textField_fechaDeSalida.getText()));
-						}
-					}
+//					for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++) {
+//						if (ventana.hotel.listaHabitaciones.isSelectedIndex(cont)) {
+//							reserva_habitacion.add(new Reserva_habitacion(
+//									modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
+//									ventana.reserva.textField_fechaDeEntrada.getText(),
+//									ventana.reserva.textField_fechaDeSalida.getText()));
+//						}
+//					}
 
 //					}
 				}
 			}
 		});
 
-		// boton que muestra la lista de habitaciones
 
-		ventana.hotel.btnHabitaciones.addActionListener(new ActionListener() {
-			@SuppressWarnings("unchecked")
-			public void actionPerformed(ActionEvent e) {
+//		// boton que muestra la lista de habitaciones
+//
+//		ventana.hotel.btnHabitaciones.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//
+//				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de
+//				// otros hoteles seleccionados
+//
+//				try {
+//					modelo.modeloListaHabitacion.vaciarLista();
+//				} catch (Exception e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//
+//				// comprobar que hay un hotel seleccionado antes de que cargue la lista pero
+//				// despues de limpiarla
+//				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
+//					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
+//				} else {
+//					//if para comprobar si se ha seleccionado una casa o un hotel dentro del if es si se selecciona hotel
+//					if(ventana.hotel.listaHoteles.getSelectedIndex()>modelo.modeloListaAlojamiento.casas.size()-1) {
+//						
+//					try {
+//						// llena la lista usando el cod_hotel del hotel seleccionado en la listaHoteles
+//
+//						modelo.modeloListaHabitacion.llenarListaDorm(
+//								modelo.modeloListaAlojamiento.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size())
+//										.getCod_alojamiento(),
+//								ventana.reserva.textField_fechaDeEntrada.getText(),
+//								ventana.reserva.textField_fechaDeSalida.getText());
+//
+//						// indica que el ListModel de la listaHabitaciones es el de listahabitacion que
+//						// rellenamos arriba (por alguna razon
+//						// creo que si lo pones directamente el scrollPane no funciona bien)
+//
+//						ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
+//						controladorPago.codhotel= modelo.modeloListaAlojamiento.hoteles
+//							.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size()).getCod_alojamiento();
+//
+//					} catch (Exception e1) {
+//						System.out.println("El ArrayList de dormitorios no ha sido rellenado");
+//						e1.printStackTrace();
+//					}
+//					}
+//					//si se trata de una casa/aptmn...
+//					//aqui hay que  meter el metodo para que rellene la lista de dormitorios con las habitaciones que tiene la casa
+//					else {
+//						System.out.println("holi, he funcionado");
+//					}
+//				}
+//
+//			}
+//
+//		});
 
-				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de otros hoteles seleccionados
-
-				try {
-					modelo.modeloListaHabitacion.vaciarLista();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				// comprobar que hay un hotel seleccionado antes de que cargue la lista pero despues de limpiarla
-				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
-					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
-				} else {
-					//if para comprobar si se ha seleccionado una casa o un hotel dentro del if es si se selecciona hotel
-					if(ventana.hotel.listaHoteles.getSelectedIndex()>modelo.modeloListaAlojamiento.casas.size()-1) {
-						
-					try {
-						// llena la lista usando el cod_hotel del hotel seleccionado en la listaHoteles
-
-						modelo.modeloListaHabitacion.llenarListaDorm(
-								modelo.modeloListaAlojamiento.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size())
-										.getCod_alojamiento(),
-								ventana.reserva.textField_fechaDeEntrada.getText(),
-								ventana.reserva.textField_fechaDeSalida.getText());
-
-						// indica que el ListModel de la listaHabitaciones es el de listahabitacion que rellenamos arriba 
-						// (por alguna razon creo que si lo pones directamente el scrollPane no funciona bien)
-
-						ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
-						controladorPago.codhotel= modelo.modeloListaAlojamiento.hoteles
-							.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size()).getCod_alojamiento();
-
-					} catch (Exception e1) {
-						System.out.println("El ArrayList de dormitorios no ha sido rellenado");
-						e1.printStackTrace();
-					}
-					}
-					//si se trata de una casa/apartamento...
-					//aqui hay que  meter el metodo para que rellene la lista de dormitorios con las habitaciones que tiene la casa
-					else {
-						System.out.println("holi, he funcionado");
-					}
-				}
-
-			}
-
-		});
 
 		// boton de cancelar, vacia las dos listas
 
@@ -222,7 +227,7 @@ public class controladorHotel {
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
 				try {
-					modelo.modeloListaHabitacion.vaciarLista();
+//					modelo.modeloListaHabitacion.vaciarLista();
 					modelo.modeloListaAlojamiento.vaciarLista();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block

@@ -6,16 +6,12 @@ public class Casa extends Alojamiento {
 	private int Superficie;
 	private int Piso;
 
-	public Casa()
-	{
-		super();
-	}
-	
 	public Casa(String nombre, String ubicacion, int cod_alojamiento, int num_banos, int superficie, int piso) {
+
 		super(nombre, ubicacion, cod_alojamiento);
-		Num_banos = num_banos;
-		Superficie = superficie;
-		Piso = piso;
+		this.Num_banos = num_banos;
+		this.Superficie = superficie;
+		this.Piso = piso;
 	}
 
 	public int getNum_banos() {
@@ -44,7 +40,8 @@ public class Casa extends Alojamiento {
 
 	@Override
 	public String toString() {
-		return super.toString()+" Numero de ba\u00f1os=" + Num_banos + " Superficie casa=" + Superficie + " N\u00famero de piso=" + Piso;
+		return super.toString() + " Numero de ba\u00f1os=" + Num_banos + " Superficie casa=" + Superficie
+				+ " N\u00famero de piso=" + Piso;
 	}
 
 }
