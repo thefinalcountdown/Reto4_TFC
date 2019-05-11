@@ -4,7 +4,10 @@ public class Hotel extends Alojamiento {
 
 	private int estrellas;
 
-
+	public Hotel()
+	{
+		
+	}
 
 	public Hotel(String nombre, String ubicacion, int cod_alojamiento, int estrellas) {
 		super(nombre, ubicacion, cod_alojamiento);

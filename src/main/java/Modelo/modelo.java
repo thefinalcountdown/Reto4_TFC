@@ -54,14 +54,6 @@ public class modelo {
 		this.modeloRegistro = modeloRegistro;
 	}
 
-	public ModeloListaHabitaciones getModeloListaHabitacion() {
-		return modeloListaHabitacion;
-	}
-
-	public void setModeloListaHabitacion(ModeloListaHabitaciones modeloListaHabitacion) {
-		this.modeloListaHabitacion = modeloListaHabitacion;
-	}
-
 	public ModeloListaAlojamiento getModeloListaAlojamiento() {
 		return modeloListaAlojamiento;
 	}
