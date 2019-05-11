@@ -30,4 +30,54 @@ public class modelo {
 		this.controlador = controlador;
 	}
 
+	public ficheroReserva getModeloFichero() {
+		return modeloFichero;
+	}
+
+	public void setModeloFichero(ficheroReserva modeloFichero) {
+		this.modeloFichero = modeloFichero;
+	}
+
+	public funcionesLogin getModeloLogin() {
+		return modeloLogin;
+	}
+
+	public void setModeloLogin(funcionesLogin modeloLogin) {
+		this.modeloLogin = modeloLogin;
+	}
+
+	public funcionesRegistro getModeloRegistro() {
+		return modeloRegistro;
+	}
+
+	public void setModeloRegistro(funcionesRegistro modeloRegistro) {
+		this.modeloRegistro = modeloRegistro;
+	}
+
+	public ModeloListaHabitaciones getModeloListaHabitacion() {
+		return modeloListaHabitacion;
+	}
+
+	public void setModeloListaHabitacion(ModeloListaHabitaciones modeloListaHabitacion) {
+		this.modeloListaHabitacion = modeloListaHabitacion;
+	}
+
+	public ModeloListaAlojamiento getModeloListaAlojamiento() {
+		return modeloListaAlojamiento;
+	}
+
+	public void setModeloListaAlojamiento(ModeloListaAlojamiento modeloListaAlojamiento) {
+		this.modeloListaAlojamiento = modeloListaAlojamiento;
+	}
+
+	public insercionReserva getInsercionReserva() {
+		return insercionReserva;
+	}
+
+	public void setInsercionReserva(insercionReserva insercionReserva) {
+		this.insercionReserva = insercionReserva;
+	}
+	
+	
+
 }
