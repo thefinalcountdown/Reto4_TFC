@@ -23,15 +23,15 @@ public class ModeloListaAlojamiento implements ListModel {
 
 		for (int index = 0; index < casas.size(); index++) 
 		{
-			makeObj(casas.get(index).getNombre(), casas.get(index).getPrecio(), casas.get(index).getNum_banos());
-			arrayString.add("Nombre: "+casas.get(index).getNombre() + "  Precio: " + casas.get(index).getPrecio()
+			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
+			arrayString.add("Nombre: "+casas.get(index).getNombre() + "  Precio: " 
 					+" \u20ac  Numero de ba\u00f1os: "+casas.get(index).getNum_banos());
 		}
 		hoteles= obtenerHoteles(ubicacion);
 		for (int index = 0; index < hoteles.size(); index++) 
 		{
-			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getPrecio(), hoteles.get(index).getEstrellas());
-			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio: " + hoteles.get(index).getPrecio()
+			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getEstrellas());
+			arrayString.add("Nombre: "+hoteles.get(index).getNombre() + "  Precio: " 
 					+" \u20ac  Estrellas: "+hoteles.get(index).getEstrellas());
 		}
 		
@@ -88,10 +88,10 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	}
 
-	public static Object makeObj(final String item, float item2, int item3) {
+	public static Object makeObj(final String item, float item2) {
 		return new Object() {
 			public String toString() {
-				return item+item2+item3;
+				return item+item2;
 			}
 		};
 	}
