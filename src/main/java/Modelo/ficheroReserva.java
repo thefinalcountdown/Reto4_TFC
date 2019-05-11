@@ -84,6 +84,80 @@ public class ficheroReserva {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
+	
+	
+
+	public int getCod_Hotel() {
+		return Cod_Hotel;
+	}
+
+	public void setCod_Hotel(int cod_Hotel) {
+		Cod_Hotel = cod_Hotel;
+	}
+
+	public int getNumHabitaciones() {
+		return numHabitaciones;
+	}
+
+	public void setNumHabitaciones(int numHabitaciones) {
+		this.numHabitaciones = numHabitaciones;
+	}
+
+	public String getFecha_entrada() {
+		return fecha_entrada;
+	}
+
+	public void setFecha_entrada(String fecha_entrada) {
+		this.fecha_entrada = fecha_entrada;
+	}
+
+	public String getFecha_salida() {
+		return fecha_salida;
+	}
+
+	public void setFecha_salida(String fecha_salida) {
+		this.fecha_salida = fecha_salida;
+	}
+
+	public String getDNI() {
+		return DNI;
+	}
+
+	public void setDNI(String dNI) {
+		DNI = dNI;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public static String getNombre_fichero() {
+		return nombre_fichero;
+	}
+
+	public static void setNombre_fichero(String nombre_fichero) {
+		ficheroReserva.nombre_fichero = nombre_fichero;
+	}
+
+	public Ventana getVentana() {
+		return ventana;
+	}
+
+	public void setVentana(Ventana ventana) {
+		this.ventana = ventana;
+	}
+
+	public modelo getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(modelo modelo) {
+		this.modelo = modelo;
+	}
 
 	public void imprimirTicket(String DNI, String alojamiento, String fecha_entrada, String fecha_salida) {
 		try {
