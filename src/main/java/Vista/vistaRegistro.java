@@ -10,7 +10,7 @@ import java.awt.Font;
 import java.text.ParseException;
 
 public class vistaRegistro extends JPanel {
-
+	private static final long serialVersionUID = 1L;
 	public JButton btnCancelar;
 	public JButton btnRegistro;
 	public JPasswordField passwordFieldClave;

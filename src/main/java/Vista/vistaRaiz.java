@@ -16,10 +16,9 @@ import com.toedter.calendar.JDateChooser;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.text.SimpleDateFormat;
 
 public class vistaRaiz extends JPanel {
-	
+	private static final long serialVersionUID = 1L;
 	public JLabel lblNewLabel;
 	public JLabel lblDnde;
 	public JLabel lblHuspedes;
@@ -40,8 +39,6 @@ public class vistaRaiz extends JPanel {
 	public JDateChooser fechaIn;
 	public JDateChooser fechaOut;
 	public Date fechaEntrada = new Date();
-	private JTextField textField;
-	private JTextField textField_1;
 	public Date temporadaAltaInicio = new GregorianCalendar(2019, Calendar.JUNE, 22).getTime();
 	public Date temporadaAltaFin = new GregorianCalendar(2019, Calendar.AUGUST, 30).getTime();
 	

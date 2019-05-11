@@ -17,17 +17,19 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public void llenarLista(String ubicacion) throws Exception {
 		casas = obtenerCasas(ubicacion);
+		hoteles = obtenerHoteles(ubicacion);
 
 		for (int index = 0; index < casas.size(); index++) {
 			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
 			arrayString.add("Nombre: " + casas.get(index).getNombre() + " \u20ac  Numero de ba\u00f1os: "
 					+ casas.get(index).getNum_banos());
 		}
-		hoteles = obtenerHoteles(ubicacion);
+
 		for (int index = 0; index < hoteles.size(); index++) {
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getEstrellas());
 			arrayString.add("Nombre: " + hoteles.get(index).getNombre() + " \u20ac  Estrellas: "
 					+ hoteles.get(index).getEstrellas());
+
 		}
 
 	}
@@ -57,8 +59,9 @@ public class ModeloListaAlojamiento implements ListModel {
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
-			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"), result.getInt("Cod_Alojamiento"),
-					result.getInt("Num_banos"), result.getInt("Superficie"), result.getInt("Piso")));
+			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
+					result.getInt("Cod_Alojamiento"), result.getInt("Num_banos"), result.getInt("Superficie"),
+					result.getInt("Piso")));
 		}
 		return casas;
 
@@ -71,8 +74,8 @@ public class ModeloListaAlojamiento implements ListModel {
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
-			hoteles.add(new Hotel(result.getString("nombre"), result.getString("ubicacion"), result.getInt("Cod_Alojamiento"),
-					result.getInt("estrellas")));
+			hoteles.add(new Hotel(result.getString("nombre"), result.getString("ubicacion"),
+					result.getInt("Cod_Alojamiento"), result.getInt("estrellas")));
 		}
 		return hoteles;
 
@@ -84,6 +87,7 @@ public class ModeloListaAlojamiento implements ListModel {
 				return item + item2;
 			}
 		};
+
 	}
 
 	@Override

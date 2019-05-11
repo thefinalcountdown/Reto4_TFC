@@ -2,16 +2,16 @@ package Modelo;
 
 public class Casa extends Alojamiento {
 
-	int Num_banos;
-	int Superficie;
-	int Piso;
+	private int Num_banos;
+	private int Superficie;
+	private int Piso;
 
-	public Casa(String nombre, String ubicacion, int cod_alojamiento, int num_banos, int superficie,
-			int piso) {
+	public Casa(String nombre, String ubicacion, int cod_alojamiento, int num_banos, int superficie, int piso) {
+
 		super(nombre, ubicacion, cod_alojamiento);
-		Num_banos = num_banos;
-		Superficie = superficie;
-		Piso = piso;
+		this.Num_banos = num_banos;
+		this.Superficie = superficie;
+		this.Piso = piso;
 	}
 
 	public int getNum_banos() {
@@ -38,12 +38,10 @@ public class Casa extends Alojamiento {
 		Piso = piso;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Casa [Num_banos=" + Num_banos + ", Superficie=" + Superficie + ","+( Piso!=null ? "Piso=" + Piso + ", ":"")
-//				+ (nombre != null ? "nombre=" + nombre + ", " : "")
-//				+ (ubicacion != null ? "ubicacion=" + ubicacion + ", " : "") + "precio=" + precio + ", Cod_alojamiento="
-//				+ Cod_alojamiento + "]";
-//	}
+	@Override
+	public String toString() {
+		return super.toString() + " Numero de ba\u00f1os=" + Num_banos + " Superficie casa=" + Superficie
+				+ " N\u00famero de piso=" + Piso;
+	}
 
 }

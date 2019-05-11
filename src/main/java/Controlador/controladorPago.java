@@ -1,7 +1,6 @@
 package Controlador;
 
 import Vista.Ventana;
-import metodos.GestorBD;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

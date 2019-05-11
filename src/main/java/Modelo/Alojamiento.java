@@ -1,17 +1,22 @@
 package Modelo;
 
-import java.util.ArrayList;
-
 public abstract class Alojamiento {
 
-	String nombre;
-	String ubicacion;
-	int Cod_alojamiento;
 
+	protected String nombre;
+	protected String ubicacion;
+	protected int Cod_alojamiento;
+
+	public Alojamiento()
+	{
+		
+	}
+	
 	public Alojamiento(String nombre, String ubicacion, int cod_alojamiento) {
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
-		Cod_alojamiento = cod_alojamiento;
+		this.Cod_alojamiento = cod_alojamiento;
+
 	}
 
 	public String getNombre() {
@@ -40,8 +45,10 @@ public abstract class Alojamiento {
 
 	@Override
 	public String toString() {
+
 		return "Alojamiento [nombre=" + nombre + ", ubicacion=" + ubicacion + ", Cod_alojamiento=" + Cod_alojamiento
 				+ "]";
+
 	}
 
 }

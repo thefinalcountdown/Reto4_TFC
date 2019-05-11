@@ -9,6 +9,7 @@ import javax.swing.JFormattedTextField;
 
 public class vistaLogin extends JPanel {
 
+	private static final long serialVersionUID = 1L;
 	public JButton btnLogin;
 	public JButton btnRegistro;
 	public JButton btnModificar;

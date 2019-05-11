@@ -20,6 +20,7 @@ import javax.swing.border.EtchedBorder;
 
 public class vistaHoteles extends JPanel {
 
+	private static final long serialVersionUID = 1L;
 	public JList<Hotel> listaHoteles = new JList<Hotel>();
 	JScrollPane scrollPane = new JScrollPane();
 	JScrollPane scrollPane_1 = new JScrollPane();
