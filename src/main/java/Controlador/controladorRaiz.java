@@ -55,7 +55,6 @@ public class controladorRaiz {
 					ventana.raiz.btnBuscar.setEnabled(false);
 				}
 
-				
 			}
 
 		});
@@ -74,8 +73,7 @@ public class controladorRaiz {
 				} else {
 					ventana.raiz.btnBuscar.setEnabled(false);
 				}
-				
-				
+
 			}
 		});
 
@@ -371,32 +369,33 @@ public class controladorRaiz {
 		// boton pasar siguiente ventana
 		ventana.raiz.btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-//				JOptionPane.showMessageDialog(null,"Aloha chicos \r\n Estamos en periodo de construccion :( \r\n para que no os de error seleccionad SOLAMENTE la primera opcion de alojamiento\r\n y no seleccioneis niguna habitacion\r\n sentimos las molestias, gracias! :)");
-//				
-				
-				
 				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
 
 				Date fechaIn = ventana.raiz.fechaIn.getDate();
 				Date fechaOut = ventana.raiz.fechaOut.getDate();
 
 				if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
-						|| fechaOut.after(ventana.raiz.temporadaAltaInicio) && fechaOut.before(ventana.raiz.temporadaAltaFin)) {
+						|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
+								&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
 					JOptionPane.showMessageDialog(null,
 							"Las fechas seleccionadas suponen un incremento del 20% en el precio al ser temporada alta");
 				}
-				if (fechaIn.equals(ventana.raiz.Enero1)  || fechaIn.equals(ventana.raiz.Enero6) || fechaIn.equals(ventana.raiz.Abril19) || fechaIn.equals(ventana.raiz.Abril21)
-						|| fechaIn.equals(ventana.raiz.Mayo1) || fechaIn.equals(ventana.raiz.Octubre12) || fechaIn.equals(ventana.raiz.Noviembre1) || fechaIn.equals(ventana.raiz.Diciembre6)
+				if (fechaIn.equals(ventana.raiz.Enero1) || fechaIn.equals(ventana.raiz.Enero6)
+						|| fechaIn.equals(ventana.raiz.Abril19) || fechaIn.equals(ventana.raiz.Abril21)
+						|| fechaIn.equals(ventana.raiz.Mayo1) || fechaIn.equals(ventana.raiz.Octubre12)
+						|| fechaIn.equals(ventana.raiz.Noviembre1) || fechaIn.equals(ventana.raiz.Diciembre6)
 						|| fechaIn.equals(ventana.raiz.Diciembre8) || fechaIn.equals(ventana.raiz.Diciembre25)) {
-					JOptionPane.showMessageDialog(null,"la fecha: " +fechaIn+ "es un dia festivo y supone un incremento en el precio del 10%");
+					JOptionPane.showMessageDialog(null,
+							"la fecha: " + fechaIn + "es un dia festivo y supone un incremento en el precio del 10%");
 				}
-				if (fechaOut.equals(ventana.raiz.Enero1) || fechaOut.equals(ventana.raiz.Enero6) || fechaOut.equals(ventana.raiz.Abril19) || fechaOut.equals(ventana.raiz.Abril21)
-						|| fechaOut.equals(ventana.raiz.Mayo1) || fechaOut.equals(ventana.raiz.Octubre12) || fechaOut.equals(ventana.raiz.Noviembre1)
-						|| fechaOut.equals(ventana.raiz.Diciembre6) || fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
-					JOptionPane.showMessageDialog(null,"la fecha: " +fechaOut+ "es un dia festivo y supone un incremento en el precio del 10%");
+				if (fechaOut.equals(ventana.raiz.Enero1) || fechaOut.equals(ventana.raiz.Enero6)
+						|| fechaOut.equals(ventana.raiz.Abril19) || fechaOut.equals(ventana.raiz.Abril21)
+						|| fechaOut.equals(ventana.raiz.Mayo1) || fechaOut.equals(ventana.raiz.Octubre12)
+						|| fechaOut.equals(ventana.raiz.Noviembre1) || fechaOut.equals(ventana.raiz.Diciembre6)
+						|| fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
+					JOptionPane.showMessageDialog(null,
+							"la fecha: " + fechaOut + "es un dia festivo y supone un incremento en el precio del 10%");
 				}
-				
 
 				try {
 					modelo.modeloListaAlojamiento.llenarLista(ubicacionSeleccionada);
@@ -408,7 +407,7 @@ public class controladorRaiz {
 				}
 
 				ventana.cambio_panel(ventana.raiz, ventana.hotel);
-				
+
 				ventana.reserva.textField_numpersonas.setText(ventana.raiz.txthuesped.getText());
 				ventana.reserva.textField_ubicacion
 						.setText(ventana.raiz.comboBoxUbicacion.getSelectedItem().toString());

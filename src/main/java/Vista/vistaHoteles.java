@@ -2,6 +2,7 @@ package Vista;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import Modelo.Hotel;
@@ -14,6 +15,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.border.EtchedBorder;
 
 public class vistaHoteles extends JPanel {
@@ -21,7 +23,8 @@ public class vistaHoteles extends JPanel {
 	public JList<Hotel> listaHoteles = new JList<Hotel>();
 	JScrollPane scrollPane = new JScrollPane();
 	JScrollPane scrollPane_1 = new JScrollPane();
-	public JList listaHabitaciones = new JList();
+	
+	JTable habitaciones = new JTable();
 
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
@@ -53,12 +56,10 @@ public class vistaHoteles extends JPanel {
 		btnHabitaciones.setBounds(602, 198, 36, 25);
 		add(btnHabitaciones);
 
-		scrollPane_1.setViewportView(listaHabitaciones);
-		listaHabitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		listaHabitaciones.setSelectedIndex(0);
-		listaHabitaciones.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		listaHabitaciones.setFixedCellHeight(50);
-		listaHabitaciones.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+		scrollPane_1.setViewportView(habitaciones);
+		habitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		habitaciones.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		habitaciones.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 				"Seleccione habitacion/es:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));
 		
 	

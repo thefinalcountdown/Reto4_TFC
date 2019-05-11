@@ -6,9 +6,9 @@ public class Casa extends Alojamiento {
 	int Superficie;
 	int Piso;
 
-	public Casa(String nombre, String ubicacion, float precio, int cod_alojamiento, int num_banos, int superficie,
+	public Casa(String nombre, String ubicacion, int cod_alojamiento, int num_banos, int superficie,
 			int piso) {
-		super(nombre, ubicacion, precio, cod_alojamiento);
+		super(nombre, ubicacion, cod_alojamiento);
 		Num_banos = num_banos;
 		Superficie = superficie;
 		Piso = piso;
