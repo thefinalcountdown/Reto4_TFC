@@ -44,8 +44,7 @@ public class Reserva_habitacion
 
 	@Override
 	public String toString() {
-		return "Reserva_habitacion [num_habitacion=" + num_habitacion + ", fecha_entrada=" + fecha_entrada
-				+ ", fecha_salida=" + fecha_salida + "]";
+		return "N\u00famero de habitaci\u00f3n=" + num_habitacion + " Fecha de entrada=" + fecha_entrada + " Fecha de salida=" + fecha_salida;
 	}
 
 }

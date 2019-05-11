@@ -46,8 +46,7 @@ public abstract class Alojamiento {
 	@Override
 	public String toString() {
 
-		return "Alojamiento [nombre=" + nombre + ", ubicacion=" + ubicacion + ", Cod_alojamiento=" + Cod_alojamiento
-				+ "]";
+		return "Nombre alojamiento=" + nombre + " Ubicacion alojamiento=" + ubicacion + " Cod_alojamiento=" + Cod_alojamiento;
 
 	}
 

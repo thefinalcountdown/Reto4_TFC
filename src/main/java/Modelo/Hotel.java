@@ -25,8 +25,7 @@ public class Hotel extends Alojamiento {
 	@Override
 	public String toString() {
 
-		return "Hotel [estrellas=" + estrellas + ", nombre=" + nombre + ", ubicacion=" + ubicacion
-				+ ", Cod_alojamiento=" + Cod_alojamiento + "]";
+		return super.toString() +" Estrellas hotel=" + estrellas;
 
 	}
 

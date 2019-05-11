@@ -45,8 +45,7 @@ public class Casa extends Alojamiento {
 
 	@Override
 	public String toString() {
-		return super.toString() + " Numero de ba\u00f1os=" + Num_banos + " Superficie casa=" + Superficie
-				+ " N\u00famero de piso=" + Piso;
+		return super.toString() + " Numero de ba\u00f1os=" + Num_banos + " Superficie casa=" + Superficie + " N\u00famero de piso=" + Piso;
 	}
 
 }
