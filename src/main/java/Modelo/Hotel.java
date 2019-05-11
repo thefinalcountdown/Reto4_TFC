@@ -2,15 +2,21 @@ package Modelo;
 
 public class Hotel extends Alojamiento {
 
-	int estrellas;
+	private int estrellas;
 
-	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento) {
-		super(nombre, ubicacion, precio, cod_alojamiento);
+	public Hotel()
+	{
+		super();
+	}
+	
+	public Hotel(String nombre, String ubicacion, int cod_alojamiento) 
+	{
+		super(nombre, ubicacion, cod_alojamiento);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Hotel(String nombre, String ubicacion, float precio, int cod_alojamiento, int estrellas) {
-		super(nombre, ubicacion, precio, cod_alojamiento);
+	public Hotel(String nombre, String ubicacion, int cod_alojamiento, int estrellas) {
+		super(nombre, ubicacion, cod_alojamiento);
 		this.estrellas = estrellas;
 	}
 
@@ -24,8 +30,7 @@ public class Hotel extends Alojamiento {
 
 	@Override
 	public String toString() {
-		return "Hotel [estrellas=" + estrellas + ", nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio="
-				+ precio + ", Cod_alojamiento=" + Cod_alojamiento + "]";
+		return super.toString()+" Estrellas hotel=" + estrellas;
 	}
 
 }
