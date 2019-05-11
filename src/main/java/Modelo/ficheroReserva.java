@@ -245,7 +245,7 @@ public class ficheroReserva {
 	
 	public String conversion_espacio_a_guion (String texto)
 	{
-		texto.replace(' ', '-');
+		texto = texto.replace(' ', '-');
 		return texto;
 	}
 	
