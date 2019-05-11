@@ -2,16 +2,19 @@ package Modelo;
 
 public abstract class Alojamiento {
 
-	String nombre;
-	String ubicacion;
-	float precio;
-	int Cod_alojamiento;
+	private String nombre;
+	private String ubicacion;
+	private int Cod_alojamiento;
 
-	public Alojamiento(String nombre, String ubicacion, float precio, int cod_alojamiento) {
+	public Alojamiento()
+	{
+		
+	}
+	
+	public Alojamiento(String nombre, String ubicacion, int cod_alojamiento) {
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
-		this.precio = precio;
-		Cod_alojamiento = cod_alojamiento;
+		this.Cod_alojamiento = cod_alojamiento;
 	}
 
 	public String getNombre() {
@@ -30,14 +33,6 @@ public abstract class Alojamiento {
 		this.ubicacion = ubicacion;
 	}
 
-	public float getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(float precio) {
-		this.precio = precio;
-	}
-
 	public int getCod_alojamiento() {
 		return Cod_alojamiento;
 	}
@@ -48,8 +43,7 @@ public abstract class Alojamiento {
 
 	@Override
 	public String toString() {
-		return "Alojamiento [nombre=" + nombre + ", ubicacion=" + ubicacion + ", precio=" + precio
-				+ ", Cod_alojamiento=" + Cod_alojamiento + "]";
+		return "Nombre alojamiento=" + nombre + " Ubicacion alojamiento=" + ubicacion + " Cod_alojamiento=" + Cod_alojamiento;
 	}
 
 }
