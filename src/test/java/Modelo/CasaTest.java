@@ -29,8 +29,8 @@ public class CasaTest {
 	
 	@Test
 	public void testNum_banos() {
-		casaTest.setNombre(nombre);
-		assertEquals(casaTest.getNombre(), nombre);
+		casaTest.setNum_banos(Num_banos);
+		assertEquals(casaTest.getNum_banos(), Num_banos);
 	}
 
 	@Test
@@ -43,6 +43,16 @@ public class CasaTest {
 	public void testPiso() {
 		casaTest.setPiso(Piso);
 		assertEquals(casaTest.getPiso(), Piso);
+	}
+	
+	@Test
+	public void testToString()
+	{
+		Casa casaTest = new Casa(nombre, ubicacion, cod_alojamiento, Num_banos, Superficie, Piso);
+		String resultado_esperado = "Nombre alojamiento=" + nombre + " Ubicacion alojamiento=" + ubicacion 
+				+ " Cod_alojamiento=" + cod_alojamiento + " Numero de ba\u00f1os=" + Num_banos + " Superficie casa=" 
+				+ Superficie + " N\u00famero de piso=" + Piso;
+		assertEquals(casaTest.toString(), resultado_esperado);
 	}
 
 }

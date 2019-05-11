@@ -34,4 +34,13 @@ public class HotelTest {
 		hotelTest.setEstrellas(estrellas);
 		assertEquals(hotelTest.getEstrellas(), estrellas);
 	}
+	
+	@Test
+	public void testToString()
+	{
+		Hotel hotelTest = new Hotel(nombre, ubicacion, Cod_alojamiento, estrellas);
+		String resultado_esperado = "Nombre alojamiento=" + nombre + " Ubicacion alojamiento=" + ubicacion 
+				+ " Cod_alojamiento=" + Cod_alojamiento +" Estrellas hotel=" + estrellas;
+		assertEquals(hotelTest.toString(), resultado_esperado);
+	}
 }
