@@ -2,12 +2,18 @@ package Modelo;
 
 public class Habitacion {
 
-	String Cod_habitacion;
-	float metrosCuadrados;
-	String tipo;
-	String descripcion;
-	float precio;
+	private String Cod_habitacion;
+	private float metrosCuadrados;
+	private String tipo;
+	private String descripcion;
+	private float precio;
 
+	
+	public Habitacion()
+	{
+		
+	}
+	
 	public Habitacion(String cod_habitacion, float metrosCuadrados, String tipo, String descripcion, float precio) {
 		Cod_habitacion = cod_habitacion;
 		this.metrosCuadrados = metrosCuadrados;
@@ -58,7 +64,9 @@ public class Habitacion {
 
 	@Override
 	public String toString() {
-		return toString() + " " + this.metrosCuadrados;
-		// return "Habitaciones [metrosCuadrados=" + metrosCuadrados + "]";
+		return "C\u00f3digo de habitaci\u00f3n=" + Cod_habitacion + " Metros cuadrados=" + metrosCuadrados + " Tipo="
+				+ tipo + " Descripci\u00f3n=" + descripcion + " Precio=" + precio;
 	}
+
+	
 }
