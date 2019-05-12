@@ -21,5 +21,8 @@ public class AESTest {
 		String texto = "12345678xD";
 		String texto_encriptado = AESTest.encrypt(texto, "llave");
 		assertEquals(AESTest.decrypt(texto_encriptado, "llave"), texto);
+		
+		assertNotEquals(AESTest.decrypt(texto, "llave"), texto);
+		assertNotEquals(AESTest.decrypt(texto, "llave"), texto_encriptado);
 	}
 }
