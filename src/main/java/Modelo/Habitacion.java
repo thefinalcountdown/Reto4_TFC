@@ -16,6 +16,10 @@ public class Habitacion {
 		this.precio = precio;
 	}
 
+	public Habitacion() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getCod_habitacion() {
 		return Cod_habitacion;
 	}

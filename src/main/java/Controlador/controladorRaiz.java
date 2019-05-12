@@ -402,7 +402,7 @@ public class controladorRaiz {
 					ventana.hotel.listaHoteles.setModel(modelo.modeloListaAlojamiento);
 
 				} catch (Exception e1) {
-					System.out.println("el ArrayList de hotel no ha sido rellenado");
+					System.out.println("los ArrayList de alojamiento no han sido rellenados");
 					e1.printStackTrace();
 				}
 

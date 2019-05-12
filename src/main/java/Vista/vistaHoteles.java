@@ -22,10 +22,12 @@ public class vistaHoteles extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public JList<Hotel> listaHoteles = new JList<Hotel>();
+
 	JScrollPane scrollPane = new JScrollPane();
 	JScrollPane scrollPane_1 = new JScrollPane();
 	
-	JTable habitaciones = new JTable();
+	public JTable habitaciones = new JTable();
+	public DefaultTableModel modeloTabla;
 
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
@@ -57,6 +59,9 @@ public class vistaHoteles extends JPanel {
 		btnHabitaciones.setBounds(602, 198, 36, 25);
 		add(btnHabitaciones);
 
+		String col[] = {"Descripci\u00f3n","C.Individual","C.Matrimonio","C.Infantil","Precio"};
+		modeloTabla = new DefaultTableModel(col, 0);
+		
 		scrollPane_1.setViewportView(habitaciones);
 		habitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		habitaciones.setFont(new Font("Lucida Grande", Font.BOLD, 15));

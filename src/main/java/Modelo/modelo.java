@@ -11,6 +11,7 @@ public class modelo {
 	public ModeloTablaHabitacion modeloTabla;
 	public ModeloListaAlojamiento modeloListaAlojamiento;
 	public insercionReserva insercionReserva;
+	public Dormitorio dormitorio;
 
 	public modelo() {
 		this.modeloFichero = new ficheroReserva();
@@ -19,6 +20,7 @@ public class modelo {
 		this.modeloTabla = new ModeloTablaHabitacion();
 		this.modeloListaAlojamiento= new ModeloListaAlojamiento();
 		this.insercionReserva = new insercionReserva();
+		this.dormitorio= new Dormitorio();
 
 	}
 

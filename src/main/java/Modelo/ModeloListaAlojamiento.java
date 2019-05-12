@@ -17,18 +17,19 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public void llenarLista(String ubicacion) throws Exception {
 		casas = obtenerCasas(ubicacion);
-		hoteles = obtenerHoteles(ubicacion);
 
 		for (int index = 0; index < casas.size(); index++) {
 			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
-			arrayString.add("Nombre: " + casas.get(index).getNombre() + " \u20ac  Numero de ba\u00f1os: "
+			arrayString.add("Nombre: " + casas.get(index).getNombre() + " Numero de ba\u00f1os: "
 					+ casas.get(index).getNum_banos());
 		}
 
+		hoteles = obtenerHoteles(ubicacion);
+
 		for (int index = 0; index < hoteles.size(); index++) {
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getEstrellas());
-			arrayString.add("Nombre: " + hoteles.get(index).getNombre() + " \u20ac  Estrellas: "
-					+ hoteles.get(index).getEstrellas());
+			arrayString.add(
+					"Nombre: " + hoteles.get(index).getNombre() + " Estrellas: " + hoteles.get(index).getEstrellas());
 
 		}
 
@@ -54,14 +55,15 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public static ArrayList<Casa> obtenerCasas(String ubicacion) throws Exception {
 
-		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos,superficie, piso from Alojamiento A "
-				+ "inner join Casa_apartamento CA on A.Cod_alojamiento=CA.Cod_Casa where ubicacion='%s'";
+		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos,count(*)as superficie, piso from Alojamiento A "
+				+ "inner join Casa_apartamento CA on A.Cod_alojamiento=CA.Cod_Casa where ubicacion='%s'group by nombre,ubicacion, Cod_Alojamiento, num_banos";
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
 					result.getInt("Cod_Alojamiento"), result.getInt("Num_banos"), result.getInt("Superficie"),
 					result.getInt("Piso")));
+			System.out.println(casas.get(0));
 		}
 		return casas;
 

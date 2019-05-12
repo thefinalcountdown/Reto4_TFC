@@ -45,77 +45,88 @@ public class controladorHotel {
 //					} else {
 					System.out.println("Hola" + modelo.modeloListaAlojamiento.getElementAt(index));
 
-					
-
-
-						// añade en la vista de reserva los parametros del nombre del hotel y el precio
+					// añade en la vista de reserva los parametros del nombre del hotel y el precio
 
 //						ventana.reserva.textField_alojamientoseleccionado
 //								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
-						
-						Date fechaIn = ventana.raiz.fechaIn.getDate();
-						Date fechaOut = ventana.raiz.fechaOut.getDate();
-						long Enero_1_I = ventana.raiz.Enero1.getTime()-fechaIn.getTime();
-						long Enero_6_I = ventana.raiz.Enero6.getTime()-fechaIn.getTime();
-						long Abril_19_I = ventana.raiz.Abril19.getTime()-fechaIn.getTime();
-						long Abril_21_I = ventana.raiz.Abril21.getTime()-fechaIn.getTime();
-						long Mayo_1_I = ventana.raiz.Mayo1.getTime()-fechaIn.getTime();
-						long Octubre_12_I = ventana.raiz.Octubre12.getTime()-fechaIn.getTime();
-						long Noviembre_1_I = ventana.raiz.Noviembre1.getTime()-fechaIn.getTime();
-						long Diciembre_6_I = ventana.raiz.Diciembre6.getTime()-fechaIn.getTime();
-						long Diciembre_8_I = ventana.raiz.Diciembre8.getTime()-fechaIn.getTime();
-						long Diciembre_25_I = ventana.raiz.Diciembre25.getTime()-fechaIn.getTime();
-						
-						long Enero_1_O = ventana.raiz.Enero1.getTime()-fechaOut.getTime();
-						long Enero_6_O = ventana.raiz.Enero6.getTime()-fechaOut.getTime();
-						long Abril_19_O = ventana.raiz.Abril19.getTime()-fechaOut.getTime();
-						long Abril_21_O = ventana.raiz.Abril21.getTime()-fechaOut.getTime();
-						long Mayo_1_O = ventana.raiz.Mayo1.getTime()-fechaOut.getTime();
-						long Octubre_12_O = ventana.raiz.Octubre12.getTime()-fechaOut.getTime();
-						long Noviembre_1_O = ventana.raiz.Noviembre1.getTime()-fechaOut.getTime();
-						long Diciembre_6_O = ventana.raiz.Diciembre6.getTime()-fechaOut.getTime();
-						long Diciembre_8_O = ventana.raiz.Diciembre8.getTime()-fechaOut.getTime();
-						long Diciembre_25_O = ventana.raiz.Diciembre25.getTime()-fechaOut.getTime();
-						
-						
-						double precioBase =32; //<- esto es para que no de error 
-						// esto lo que hay que poner->modelo.modeloListaAlojamiento.alojamiento.get(index).getPrecio();
-						
-						//multimplica el precioBase * numero de noche elegidas
-						long dias = fechaOut.getTime() - fechaIn.getTime();
-						long difdias = dias / (1000*60*60*24);
-						double precio = precioBase *difdias;
-						//incrementa el precio al elegir en temporada alta
-						if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
-								|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
-										&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
-							 precio = precio + (precio * 0.20);
-						}
-						//incrementa el precio al elegir festivo en el fechaIn
-						if((Enero_1_I<=0 && Enero_1_I>=-24*60*60*1000) || (Enero_6_I<=0 && Enero_6_I>=-24*60*60*1000) || (Abril_19_I<=0 && Abril_19_I>=-24*60*60*1000) || (Abril_21_I<=0 && Abril_21_I>=-24*60*60*1000) 
-								|| (Mayo_1_I<=0 && Mayo_1_I>=-24*60*60*1000) || (Octubre_12_I<=0 && Octubre_12_I>=-24*60*60*1000) || (Noviembre_1_I<=0 && Noviembre_1_I>=-24*60*60*1000) || (Diciembre_6_I<=0 && Diciembre_6_I>=-24*60*60*1000)
-								|| (Diciembre_8_I<=0 && Diciembre_8_I>=-24*60*60*1000) || (Diciembre_25_I<=0 && Diciembre_25_I>=-24*60*60*1000)) {
-							precio = precio + (precio * 0.10);
-						}
-						//incrementa el precio al elegir festivo en el fechaOut
-						if((Enero_1_O<=0 && Enero_1_O>=-24*60*60*1000) || (Enero_6_O<=0 && Enero_6_O>=-24*60*60*1000) || (Abril_19_O<=0 && Abril_19_O>=-24*60*60*1000) || (Abril_21_O<=0 && Abril_21_O>=-24*60*60*1000) 
-								|| (Mayo_1_O<=0 && Mayo_1_O>=-24*60*60*1000) || (Octubre_12_O<=0 && Octubre_12_O>=-24*60*60*1000) || (Noviembre_1_O<=0 && Noviembre_1_O>=-24*60*60*1000) || (Diciembre_6_O<=0 && Diciembre_6_O>=-24*60*60*1000)
-								|| (Diciembre_8_O<=0 && Diciembre_8_O>=-24*60*60*1000) || (Diciembre_25_O<=0 && Diciembre_25_O>=-24*60*60*1000)) {
-							precio = precio + (precio * 0.10);
-						}
-						
-						ventana.reserva.textField_precio.setText(Double.toString(precio));
-						//ventana.reserva.textField_precio.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
 
-						
-						//pasa parametros a reserva
+					Date fechaIn = ventana.raiz.fechaIn.getDate();
+					Date fechaOut = ventana.raiz.fechaOut.getDate();
+					long Enero_1_I = ventana.raiz.Enero1.getTime() - fechaIn.getTime();
+					long Enero_6_I = ventana.raiz.Enero6.getTime() - fechaIn.getTime();
+					long Abril_19_I = ventana.raiz.Abril19.getTime() - fechaIn.getTime();
+					long Abril_21_I = ventana.raiz.Abril21.getTime() - fechaIn.getTime();
+					long Mayo_1_I = ventana.raiz.Mayo1.getTime() - fechaIn.getTime();
+					long Octubre_12_I = ventana.raiz.Octubre12.getTime() - fechaIn.getTime();
+					long Noviembre_1_I = ventana.raiz.Noviembre1.getTime() - fechaIn.getTime();
+					long Diciembre_6_I = ventana.raiz.Diciembre6.getTime() - fechaIn.getTime();
+					long Diciembre_8_I = ventana.raiz.Diciembre8.getTime() - fechaIn.getTime();
+					long Diciembre_25_I = ventana.raiz.Diciembre25.getTime() - fechaIn.getTime();
+
+					long Enero_1_O = ventana.raiz.Enero1.getTime() - fechaOut.getTime();
+					long Enero_6_O = ventana.raiz.Enero6.getTime() - fechaOut.getTime();
+					long Abril_19_O = ventana.raiz.Abril19.getTime() - fechaOut.getTime();
+					long Abril_21_O = ventana.raiz.Abril21.getTime() - fechaOut.getTime();
+					long Mayo_1_O = ventana.raiz.Mayo1.getTime() - fechaOut.getTime();
+					long Octubre_12_O = ventana.raiz.Octubre12.getTime() - fechaOut.getTime();
+					long Noviembre_1_O = ventana.raiz.Noviembre1.getTime() - fechaOut.getTime();
+					long Diciembre_6_O = ventana.raiz.Diciembre6.getTime() - fechaOut.getTime();
+					long Diciembre_8_O = ventana.raiz.Diciembre8.getTime() - fechaOut.getTime();
+					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
+
+					double precioBase = 32; // <- esto es para que no de error
+					// esto lo que hay que
+					// poner->modelo.modeloListaAlojamiento.alojamiento.get(index).getPrecio();--
+					// no! habitaciones, precio de la hab selecc
+
+					// multimplica el precioBase * numero de noche elegidas
+					long dias = fechaOut.getTime() - fechaIn.getTime();
+					long difdias = dias / (1000 * 60 * 60 * 24);
+					double precio = precioBase * difdias;
+					// incrementa el precio al elegir en temporada alta
+					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
+							|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
+									&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
+						precio = precio + (precio * 0.20);
+					}
+					// incrementa el precio al elegir festivo en el fechaIn
+					if ((Enero_1_I <= 0 && Enero_1_I >= -24 * 60 * 60 * 1000)
+							|| (Enero_6_I <= 0 && Enero_6_I >= -24 * 60 * 60 * 1000)
+							|| (Abril_19_I <= 0 && Abril_19_I >= -24 * 60 * 60 * 1000)
+							|| (Abril_21_I <= 0 && Abril_21_I >= -24 * 60 * 60 * 1000)
+							|| (Mayo_1_I <= 0 && Mayo_1_I >= -24 * 60 * 60 * 1000)
+							|| (Octubre_12_I <= 0 && Octubre_12_I >= -24 * 60 * 60 * 1000)
+							|| (Noviembre_1_I <= 0 && Noviembre_1_I >= -24 * 60 * 60 * 1000)
+							|| (Diciembre_6_I <= 0 && Diciembre_6_I >= -24 * 60 * 60 * 1000)
+							|| (Diciembre_8_I <= 0 && Diciembre_8_I >= -24 * 60 * 60 * 1000)
+							|| (Diciembre_25_I <= 0 && Diciembre_25_I >= -24 * 60 * 60 * 1000)) {
+						precio = precio + (precio * 0.10);
+					}
+					// incrementa el precio al elegir festivo en el fechaOut
+					if ((Enero_1_O <= 0 && Enero_1_O >= -24 * 60 * 60 * 1000)
+							|| (Enero_6_O <= 0 && Enero_6_O >= -24 * 60 * 60 * 1000)
+							|| (Abril_19_O <= 0 && Abril_19_O >= -24 * 60 * 60 * 1000)
+							|| (Abril_21_O <= 0 && Abril_21_O >= -24 * 60 * 60 * 1000)
+							|| (Mayo_1_O <= 0 && Mayo_1_O >= -24 * 60 * 60 * 1000)
+							|| (Octubre_12_O <= 0 && Octubre_12_O >= -24 * 60 * 60 * 1000)
+							|| (Noviembre_1_O <= 0 && Noviembre_1_O >= -24 * 60 * 60 * 1000)
+							|| (Diciembre_6_O <= 0 && Diciembre_6_O >= -24 * 60 * 60 * 1000)
+							|| (Diciembre_8_O <= 0 && Diciembre_8_O >= -24 * 60 * 60 * 1000)
+							|| (Diciembre_25_O <= 0 && Diciembre_25_O >= -24 * 60 * 60 * 1000)) {
+						precio = precio + (precio * 0.10);
+					}
+
+					ventana.reserva.textField_precio.setText(Double.toString(precio));
+					// ventana.reserva.textField_precio.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
+
+					// pasa parametros a reserva
 //						ventana.reserva.textField_alojamientoseleccionado
 //								.setText(modelo.modeloListaAlojamiento.hoteles.get(index).getNombre());
 //						ventana.reserva.textField_precio
 //								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
 
-
-					precioBase = Double.parseDouble(separarString(index)[1]);
+					precioBase = 30;// aqui tendra que ir lo que coja de
+									// habitacionDouble.parseDouble(separarString(index)[1]);
 
 					// multimplica el precioBase * numero de noche elegidas
 					dias = fechaOut.getTime() - fechaIn.getTime();
@@ -163,12 +174,11 @@ public class controladorHotel {
 			}
 		});
 
-
 //		// boton que muestra la lista de habitaciones
 //
-//		ventana.hotel.btnHabitaciones.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//
+		ventana.hotel.btnHabitaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
 //				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de
 //				// otros hoteles seleccionados
 //
@@ -178,48 +188,62 @@ public class controladorHotel {
 //					// TODO Auto-generated catch block
 //					e1.printStackTrace();
 //				}
-//
-//				// comprobar que hay un hotel seleccionado antes de que cargue la lista pero
-//				// despues de limpiarla
-//				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
-//					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
-//				} else {
-//					//if para comprobar si se ha seleccionado una casa o un hotel dentro del if es si se selecciona hotel
-//					if(ventana.hotel.listaHoteles.getSelectedIndex()>modelo.modeloListaAlojamiento.casas.size()-1) {
-//						
-//					try {
-//						// llena la lista usando el cod_hotel del hotel seleccionado en la listaHoteles
-//
-//						modelo.modeloListaHabitacion.llenarListaDorm(
-//								modelo.modeloListaAlojamiento.hoteles.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size())
-//										.getCod_alojamiento(),
-//								ventana.reserva.textField_fechaDeEntrada.getText(),
-//								ventana.reserva.textField_fechaDeSalida.getText());
-//
-//						// indica que el ListModel de la listaHabitaciones es el de listahabitacion que
-//						// rellenamos arriba (por alguna razon
-//						// creo que si lo pones directamente el scrollPane no funciona bien)
-//
-//						ventana.hotel.listaHabitaciones.setModel(modelo.modeloListaHabitacion);
-//						controladorPago.codhotel= modelo.modeloListaAlojamiento.hoteles
-//							.get(ventana.hotel.listaHoteles.getSelectedIndex()-modelo.modeloListaAlojamiento.casas.size()).getCod_alojamiento();
-//
-//					} catch (Exception e1) {
-//						System.out.println("El ArrayList de dormitorios no ha sido rellenado");
-//						e1.printStackTrace();
-//					}
-//					}
-//					//si se trata de una casa/aptmn...
-//					//aqui hay que  meter el metodo para que rellene la lista de dormitorios con las habitaciones que tiene la casa
-//					else {
-//						System.out.println("holi, he funcionado");
-//					}
-//				}
-//
-//			}
-//
-//		});
 
+				// comprobar que hay un hotel seleccionado antes de que cargue la lista
+				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
+					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
+				} else {
+					// if para comprobar si se ha seleccionado una casa o un hotel; dentro del if es
+					// si se selecciona hotel
+					if (ventana.hotel.listaHoteles.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size()
+							- 1) {
+
+						try {
+							// llena la tabla usando el cod_hotel del hotel seleccionado en la listaHoteles
+
+							modelo.dormitorio
+									.obtenerDormitorios(
+											modelo.modeloListaAlojamiento.hoteles
+													.get(ventana.hotel.listaHoteles.getSelectedIndex()
+															- modelo.modeloListaAlojamiento.casas.size())
+													.getCod_alojamiento(),
+											ventana.reserva.textField_fechaDeEntrada.getText(),
+											ventana.reserva.textField_fechaDeSalida.getText());
+
+							// rellenamos la tabla con un Array de objeto
+							// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la fecha de entrada y salida
+
+							for (int i = 0; i < modelo.dormitorio.dormitorios.size(); i++) {
+								Object[] dormi = { modelo.dormitorio.dormitorios.get(i).getDescripcion(),
+										modelo.dormitorio.dormitorios.get(i).getCamaIndividual(),
+										modelo.dormitorio.dormitorios.get(i).getCamaMatrimonio(),
+										modelo.dormitorio.dormitorios.get(i).getCamaInfantil(),
+										modelo.dormitorio.dormitorios.get(i).getPrecio() };
+								ventana.hotel.modeloTabla.addRow(dormi);
+							}
+							ventana.hotel.habitaciones.setModel(ventana.hotel.modeloTabla);
+
+							controladorPago.codhotel = modelo.modeloListaAlojamiento.hoteles
+									.get(ventana.hotel.listaHoteles.getSelectedIndex()
+											- modelo.modeloListaAlojamiento.casas.size())
+									.getCod_alojamiento();
+
+						} catch (Exception e1) {
+							System.out.println("El ArrayList de dormitorios no ha sido rellenado");
+							e1.printStackTrace();
+						}
+					}
+					// si se trata de una casa/aptmn...
+					// aqui hay que meter el metodo para que rellene la lista de dormitorios con las
+					// habitaciones que tiene la casa
+					else {
+						System.out.println("holi, he funcionado");
+					}
+				}
+
+			}
+
+		});
 
 		// boton de cancelar, vacia las dos listas
 
