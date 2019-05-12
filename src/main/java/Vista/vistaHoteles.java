@@ -17,15 +17,18 @@ import java.awt.Color;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.EtchedBorder;
+import java.awt.Cursor;
 
 public class vistaHoteles extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public JList<Hotel> listaHoteles = new JList<Hotel>();
+	public JList<Hotel> listaAlojamientos = new JList<Hotel>();
+
 	JScrollPane scrollPane = new JScrollPane();
 	JScrollPane scrollPane_1 = new JScrollPane();
 	
-	JTable habitaciones = new JTable();
+	public JTable habitaciones = new JTable();
+	public DefaultTableModel modeloTabla;
 
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
@@ -36,16 +39,17 @@ public class vistaHoteles extends JPanel {
 		setLayout(null);
 		scrollPane.setBounds(43, 35, 550, 350);
 		add(scrollPane);
-		scrollPane_1.setBounds(650, 60, 500, 289);
+		scrollPane_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		scrollPane_1.setBounds(641, 60, 522, 289);
 		add(scrollPane_1);
-		scrollPane.setViewportView(listaHoteles);
+		scrollPane.setViewportView(listaAlojamientos);
 
-		listaHoteles.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
+		listaAlojamientos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
 				"Seleccione un hotel:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));
-		listaHoteles.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		listaHoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listaHoteles.setFixedCellHeight(50);
-		listaHoteles.setFixedCellWidth(100);
+		listaAlojamientos.setFont(new Font("Lucida Grande", Font.BOLD, 15));
+		listaAlojamientos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaAlojamientos.setFixedCellHeight(50);
+		listaAlojamientos.setFixedCellWidth(100);
 
 		btnCancelar.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		btnCancelar.setBounds(72, 437, 138, 61);
@@ -57,14 +61,27 @@ public class vistaHoteles extends JPanel {
 		btnHabitaciones.setBounds(602, 198, 36, 25);
 		add(btnHabitaciones);
 
+		String columna[] = {""};
+		modeloTabla = new DefaultTableModel(columna, 0) {	@Override
+		    public boolean isCellEditable(int row, int column) {
+		       //all cells false
+		       return false;
+		    }};
+		habitaciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		scrollPane_1.setViewportView(habitaciones);
 		habitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		habitaciones.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		habitaciones.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-				"Seleccione habitacion/es:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));
+		habitaciones.setRowHeight(50);
+		habitaciones.setRowMargin(20);
+		
 		
 	
 	
 
 	}
+	
+	
+	
+
 }

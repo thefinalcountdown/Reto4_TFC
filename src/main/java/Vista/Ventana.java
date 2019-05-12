@@ -19,7 +19,7 @@ public class Ventana extends JFrame {
 	public vistaRaiz raiz;
 	public vistaReserva reserva;
 	public vistaPago pago;
-	public vistaHoteles hotel;
+	public vistaHoteles alojamiento;
 
 	public Ventana() {
 		setLocationRelativeTo(null);
@@ -60,9 +60,9 @@ public class Ventana extends JFrame {
 		contentPane.add(pago);
 		pago.setLayout(null);
 
-		hotel = new vistaHoteles();
-		contentPane.add(hotel);
-		hotel.setLayout(null);
+		alojamiento = new vistaHoteles();
+		contentPane.add(alojamiento);
+		alojamiento.setLayout(null);
 	}
 
 	public void cambio_panel(JPanel ocultar, JPanel mostrar) {
