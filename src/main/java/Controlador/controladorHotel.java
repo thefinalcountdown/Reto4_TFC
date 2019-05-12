@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import Modelo.Reserva_habitacion;
 import Modelo.modelo;
@@ -31,7 +33,7 @@ public class controladorHotel {
 		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				int index = ventana.hotel.listaHoteles.getSelectedIndex();
+				int index = ventana.hotel.listaAlojamientos.getSelectedIndex();
 
 				// if para comprobar que algun hotel ha sido seleccionado
 				if (index == -1) {
@@ -179,39 +181,35 @@ public class controladorHotel {
 		ventana.hotel.btnHabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-//				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de
-//				// otros hoteles seleccionados
-//
-//				try {
-//					modelo.modeloListaHabitacion.vaciarLista();
-//				} catch (Exception e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
+				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de
+				// otros hoteles seleccionados
+				vaciarTabla();
 
 				// comprobar que hay un hotel seleccionado antes de que cargue la lista
-				if (ventana.hotel.listaHoteles.getSelectedIndex() == -1) {
+				if (ventana.hotel.listaAlojamientos.getSelectedIndex() == -1) {
 					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
 					// if para comprobar si se ha seleccionado una casa o un hotel; dentro del if es
 					// si se selecciona hotel
-					if (ventana.hotel.listaHoteles.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size()
+					if (ventana.hotel.listaAlojamientos.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size()
 							- 1) {
 
 						try {
+
 							// llena la tabla usando el cod_hotel del hotel seleccionado en la listaHoteles
 
 							modelo.dormitorio
 									.obtenerDormitorios(
 											modelo.modeloListaAlojamiento.hoteles
-													.get(ventana.hotel.listaHoteles.getSelectedIndex()
+													.get(ventana.hotel.listaAlojamientos.getSelectedIndex()
 															- modelo.modeloListaAlojamiento.casas.size())
 													.getCod_alojamiento(),
 											ventana.reserva.textField_fechaDeEntrada.getText(),
 											ventana.reserva.textField_fechaDeSalida.getText());
 
 							// rellenamos la tabla con un Array de objeto
-							// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la fecha de entrada y salida
+							// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la
+							// fecha de entrada y salida
 
 							for (int i = 0; i < modelo.dormitorio.dormitorios.size(); i++) {
 								Object[] dormi = { modelo.dormitorio.dormitorios.get(i).getDescripcion(),
@@ -224,7 +222,7 @@ public class controladorHotel {
 							ventana.hotel.habitaciones.setModel(ventana.hotel.modeloTabla);
 
 							controladorPago.codhotel = modelo.modeloListaAlojamiento.hoteles
-									.get(ventana.hotel.listaHoteles.getSelectedIndex()
+									.get(ventana.hotel.listaAlojamientos.getSelectedIndex()
 											- modelo.modeloListaAlojamiento.casas.size())
 									.getCod_alojamiento();
 
@@ -237,10 +235,40 @@ public class controladorHotel {
 					// aqui hay que meter el metodo para que rellene la lista de dormitorios con las
 					// habitaciones que tiene la casa
 					else {
-						System.out.println("holi, he funcionado");
+
+						try {
+
+							// llena la tabla usando el cod_hotel del hotel seleccionado en la
+							// listaAlojamiento
+
+							modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.hoteles
+									.get(ventana.hotel.listaAlojamientos.getSelectedIndex()).getCod_alojamiento(),
+									ventana.reserva.textField_fechaDeEntrada.getText(),
+									ventana.reserva.textField_fechaDeSalida.getText());
+
+							// rellenamos la tabla con un Array de objeto
+							// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la
+							// fecha de entrada y salida
+
+							for (int i = 0; i < modelo.habitacion.habitaciones.size(); i++) {
+								Object[] habita = { modelo.habitacion.habitaciones.get(i).getTipo(),
+										modelo.habitacion.habitaciones.get(i).getDescripcion(),
+										modelo.habitacion.habitaciones.get(i).getMetrosCuadrados(),
+										modelo.habitacion.habitaciones.get(i).getPrecio() };
+								ventana.hotel.modeloTabla.addRow(habita);
+							modelo.habitacion.habitaciones.toString();
+							}
+							ventana.hotel.habitaciones.setModel(ventana.hotel.modeloTabla);
+
+							controladorPago.codhotel = modelo.modeloListaAlojamiento.hoteles
+									.get(ventana.hotel.listaAlojamientos.getSelectedIndex()).getCod_alojamiento();
+
+						} catch (Exception e1) {
+							System.out.println("El ArrayList de habitaciones no ha sido rellenado");
+							e1.printStackTrace();
+						}
 					}
 				}
-
 			}
 
 		});
@@ -248,6 +276,7 @@ public class controladorHotel {
 		// boton de cancelar, vacia las dos listas
 
 		ventana.hotel.btnCancelar.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				ventana.cambio_panel(ventana.hotel, ventana.raiz);
 				try {
@@ -257,10 +286,23 @@ public class controladorHotel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				ventana.hotel.listaHoteles.setModel(modelo.modeloListaAlojamiento);
+				ventana.hotel.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
 			}
+
 		});
 
+	}
+
+	public void vaciarTabla() {
+		for (int index = ventana.hotel.modeloTabla.getRowCount() - 1; index >= 0; index--) {
+			ventana.hotel.modeloTabla.removeRow(index);
+		}
+		for (int index = modelo.dormitorio.dormitorios.size() - 1; index >= 0; index--) {
+			modelo.dormitorio.dormitorios.remove(index);
+		}
+		for (int index=modelo.habitacion.habitaciones.size()-1;index>=0;index --) {
+			modelo.habitacion.habitaciones.remove(index);
+		}
 	}
 
 	public String[] separarString(int index) {

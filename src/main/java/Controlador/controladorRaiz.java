@@ -399,7 +399,7 @@ public class controladorRaiz {
 
 				try {
 					modelo.modeloListaAlojamiento.llenarLista(ubicacionSeleccionada);
-					ventana.hotel.listaHoteles.setModel(modelo.modeloListaAlojamiento);
+					ventana.hotel.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
 
 				} catch (Exception e1) {
 					System.out.println("los ArrayList de alojamiento no han sido rellenados");
