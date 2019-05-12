@@ -12,6 +12,7 @@ public class Ventana extends JFrame {
 
 	public JPanel contentPane;
 
+	public vistaBienvenida bienvenida;
 	public vistaLogin login;
 	public vistaRegistro registro;
 	public vistaModificar modificar;
@@ -30,6 +31,10 @@ public class Ventana extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		getContentPane().setLayout(new CardLayout(0, 0));
+		
+		bienvenida = new vistaBienvenida();
+		contentPane.add(bienvenida);
+		bienvenida.setLayout(null);
 
 		login = new vistaLogin();
 		contentPane.add(login);

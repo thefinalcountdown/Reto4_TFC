@@ -6,7 +6,8 @@ import Modelo.modelo;
 public class Controlador {
 	public modelo modelo;
 	public Ventana ventana;
-
+	
+	public controladorBienvenida controladorBienvenida;
 	public controladorLogin controladorLogin;
 	public controladorRegistro controladorRegistro;
 	public controladorModificar controladorModificar;
@@ -18,7 +19,8 @@ public class Controlador {
 	public Controlador(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
-
+		
+		this.controladorBienvenida = new controladorBienvenida(ventana, modelo);
 		this.controladorLogin = new controladorLogin(ventana, modelo);
 		this.controladorRegistro = new controladorRegistro(ventana, modelo);
 		this.controladorModificar = new controladorModificar(ventana, modelo);
@@ -27,6 +29,14 @@ public class Controlador {
 		this.controladorReserva = new controladorReserva(ventana, modelo);
 		this.controladorPago = new controladorPago(ventana, modelo);
 
+	}
+	
+	public controladorBienvenida getControladorBienvenida() {
+		return controladorBienvenida;
+	}
+	
+	public void setControladorBienvenida(controladorBienvenida controladorBienvenida) {
+		this.controladorBienvenida = controladorBienvenida;
 	}
 
 	public controladorRegistro getControladorRegistro() {
