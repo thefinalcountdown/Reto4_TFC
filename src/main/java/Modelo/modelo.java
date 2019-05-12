@@ -9,22 +9,19 @@ public class modelo {
 	public ficheroReserva modeloFichero;
 	public funcionesLogin modeloLogin;
 	public funcionesRegistro modeloRegistro;
-	public ModeloTablaHabitacion modeloTabla;
 	public ModeloListaAlojamiento modeloListaAlojamiento;
 	public insercionReserva insercionReserva;
 	public Dormitorio dormitorio;
 	public Habitacion habitacion;
 
-	
 	public modelo() {
 		this.modeloFichero = new ficheroReserva();
 		this.modeloLogin = new funcionesLogin();
 		this.modeloRegistro = new funcionesRegistro();
-		this.modeloTabla = new ModeloTablaHabitacion();
-		this.modeloListaAlojamiento= new ModeloListaAlojamiento();
+		this.modeloListaAlojamiento = new ModeloListaAlojamiento();
 		this.insercionReserva = new insercionReserva();
-		this.dormitorio= new Dormitorio();
-		this.habitacion=new Habitacion();
+		this.dormitorio = new Dormitorio();
+		this.habitacion = new Habitacion();
 
 	}
 
@@ -91,8 +88,5 @@ public class modelo {
 	public void setHabitacion(Habitacion habitacion) {
 		this.habitacion = habitacion;
 	}
-	
-	
-	
 
 }

@@ -1,6 +1,7 @@
 
 package Controlador;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,7 +10,10 @@ import java.util.Date;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 import Modelo.Reserva_habitacion;
@@ -30,10 +34,10 @@ public class controladorHotel {
 
 		// boton continuar
 
-		ventana.hotel.btnContinuar.addActionListener(new ActionListener() {
+		ventana.alojamiento.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				int index = ventana.hotel.listaAlojamientos.getSelectedIndex();
+				int index = ventana.alojamiento.listaAlojamientos.getSelectedIndex();
 
 				// if para comprobar que algun hotel ha sido seleccionado
 				if (index == -1) {
@@ -160,7 +164,7 @@ public class controladorHotel {
 					ventana.reserva.textField_alojamientoseleccionado.setText(separarString(index)[0]);
 					ventana.reserva.textField_precio.setText(Double.toString(precio));
 
-					ventana.cambio_panel(ventana.hotel, ventana.reserva);
+					ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
 
 //					for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++) {
 //						if (ventana.hotel.listaHabitaciones.isSelectedIndex(cont)) {
@@ -178,7 +182,7 @@ public class controladorHotel {
 
 //		// boton que muestra la lista de habitaciones
 //
-		ventana.hotel.btnHabitaciones.addActionListener(new ActionListener() {
+		ventana.alojamiento.btnHabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de
@@ -186,22 +190,27 @@ public class controladorHotel {
 				vaciarTabla();
 
 				// comprobar que hay un hotel seleccionado antes de que cargue la lista
-				if (ventana.hotel.listaAlojamientos.getSelectedIndex() == -1) {
+				if (ventana.alojamiento.listaAlojamientos.getSelectedIndex() == -1) {
 					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
 					// if para comprobar si se ha seleccionado una casa o un hotel; dentro del if es
 					// si se selecciona hotel
-					if (ventana.hotel.listaAlojamientos.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size()
+					if (ventana.alojamiento.listaAlojamientos.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size()
 							- 1) {
 
 						try {
-
+							String columna[] = {"Descripci\u00f3n","C.Individual","C.Matrimonio","C.Infantil","Precio"};
+							ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {	@Override
+							    public boolean isCellEditable(int row, int column) {
+							       //all cells false
+							       return false;
+							    }};
 							// llena la tabla usando el cod_hotel del hotel seleccionado en la listaHoteles
 
 							modelo.dormitorio
 									.obtenerDormitorios(
 											modelo.modeloListaAlojamiento.hoteles
-													.get(ventana.hotel.listaAlojamientos.getSelectedIndex()
+													.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 															- modelo.modeloListaAlojamiento.casas.size())
 													.getCod_alojamiento(),
 											ventana.reserva.textField_fechaDeEntrada.getText(),
@@ -217,12 +226,12 @@ public class controladorHotel {
 										modelo.dormitorio.dormitorios.get(i).getCamaMatrimonio(),
 										modelo.dormitorio.dormitorios.get(i).getCamaInfantil(),
 										modelo.dormitorio.dormitorios.get(i).getPrecio() };
-								ventana.hotel.modeloTabla.addRow(dormi);
+								ventana.alojamiento.modeloTabla.addRow(dormi);
 							}
-							ventana.hotel.habitaciones.setModel(ventana.hotel.modeloTabla);
+							ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
 
-							controladorPago.codhotel = modelo.modeloListaAlojamiento.hoteles
-									.get(ventana.hotel.listaAlojamientos.getSelectedIndex()
+							controladorPago.codalojamiento = modelo.modeloListaAlojamiento.hoteles
+									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 											- modelo.modeloListaAlojamiento.casas.size())
 									.getCod_alojamiento();
 
@@ -237,12 +246,19 @@ public class controladorHotel {
 					else {
 
 						try {
-
+							
 							// llena la tabla usando el cod_hotel del hotel seleccionado en la
 							// listaAlojamiento
 
-							modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.hoteles
-									.get(ventana.hotel.listaAlojamientos.getSelectedIndex()).getCod_alojamiento(),
+							String columna[] = {"Tipo","Descripci\u00f3n","Superficie","Precio"};
+							ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {	@Override
+							    public boolean isCellEditable(int row, int column) {
+							       //all cells false
+							       return false;
+							    }};
+
+							modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.casas
+									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento(),
 									ventana.reserva.textField_fechaDeEntrada.getText(),
 									ventana.reserva.textField_fechaDeSalida.getText());
 
@@ -255,13 +271,18 @@ public class controladorHotel {
 										modelo.habitacion.habitaciones.get(i).getDescripcion(),
 										modelo.habitacion.habitaciones.get(i).getMetrosCuadrados(),
 										modelo.habitacion.habitaciones.get(i).getPrecio() };
-								ventana.hotel.modeloTabla.addRow(habita);
-							modelo.habitacion.habitaciones.toString();
-							}
-							ventana.hotel.habitaciones.setModel(ventana.hotel.modeloTabla);
+								ventana.alojamiento.modeloTabla.addRow(habita);
 
-							controladorPago.codhotel = modelo.modeloListaAlojamiento.hoteles
-									.get(ventana.hotel.listaAlojamientos.getSelectedIndex()).getCod_alojamiento();
+							}
+							ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
+							ventana.alojamiento.habitaciones.getColumnModel().getColumn(0).setPreferredWidth(100);
+							ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(300);
+							ventana.alojamiento.habitaciones.getColumnModel().getColumn(2).setPreferredWidth(50);
+							ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(72);
+							
+							
+							controladorPago.codalojamiento = modelo.modeloListaAlojamiento.casas
+									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento();
 
 						} catch (Exception e1) {
 							System.out.println("El ArrayList de habitaciones no ha sido rellenado");
@@ -275,10 +296,10 @@ public class controladorHotel {
 
 		// boton de cancelar, vacia las dos listas
 
-		ventana.hotel.btnCancelar.addActionListener(new ActionListener() {
+		ventana.alojamiento.btnCancelar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.hotel, ventana.raiz);
+				ventana.cambio_panel(ventana.alojamiento, ventana.raiz);
 				try {
 //					modelo.modeloListaHabitacion.vaciarLista();
 					modelo.modeloListaAlojamiento.vaciarLista();
@@ -286,7 +307,7 @@ public class controladorHotel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				ventana.hotel.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
+				ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
 			}
 
 		});
@@ -294,8 +315,8 @@ public class controladorHotel {
 	}
 
 	public void vaciarTabla() {
-		for (int index = ventana.hotel.modeloTabla.getRowCount() - 1; index >= 0; index--) {
-			ventana.hotel.modeloTabla.removeRow(index);
+		for (int index = ventana.alojamiento.modeloTabla.getRowCount() - 1; index >= 0; index--) {
+			ventana.alojamiento.modeloTabla.removeRow(index);
 		}
 		for (int index = modelo.dormitorio.dormitorios.size() - 1; index >= 0; index--) {
 			modelo.dormitorio.dormitorios.remove(index);
@@ -304,6 +325,8 @@ public class controladorHotel {
 			modelo.habitacion.habitaciones.remove(index);
 		}
 	}
+	
+
 
 	public String[] separarString(int index) {
 		String linea = (modelo.modeloListaAlojamiento.getElementAt(index)).toString();

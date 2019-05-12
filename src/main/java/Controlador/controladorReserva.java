@@ -32,7 +32,7 @@ public class controladorReserva {
 
 		ventana.reserva.Cancelar_Reserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.reserva, ventana.hotel);
+				ventana.cambio_panel(ventana.reserva, ventana.alojamiento);
 
 			}
 		});

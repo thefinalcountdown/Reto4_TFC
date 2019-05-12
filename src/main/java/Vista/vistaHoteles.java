@@ -61,8 +61,12 @@ public class vistaHoteles extends JPanel {
 		btnHabitaciones.setBounds(602, 198, 36, 25);
 		add(btnHabitaciones);
 
-		String columna[] = {"Descripci\u00f3n","C.Individual","C.Matrimonio","C.Infantil","Precio"};
-		modeloTabla = new DefaultTableModel(columna, 0);
+		String columna[] = {""};
+		modeloTabla = new DefaultTableModel(columna, 0) {	@Override
+		    public boolean isCellEditable(int row, int column) {
+		       //all cells false
+		       return false;
+		    }};
 		habitaciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		scrollPane_1.setViewportView(habitaciones);
@@ -71,8 +75,13 @@ public class vistaHoteles extends JPanel {
 		habitaciones.setRowHeight(50);
 		habitaciones.setRowMargin(20);
 		
+		
 	
 	
 
 	}
+	
+	
+	
+
 }

@@ -399,14 +399,14 @@ public class controladorRaiz {
 
 				try {
 					modelo.modeloListaAlojamiento.llenarLista(ubicacionSeleccionada);
-					ventana.hotel.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
+					ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
 
 				} catch (Exception e1) {
 					System.out.println("los ArrayList de alojamiento no han sido rellenados");
 					e1.printStackTrace();
 				}
 
-				ventana.cambio_panel(ventana.raiz, ventana.hotel);
+				ventana.cambio_panel(ventana.raiz, ventana.alojamiento);
 
 				ventana.reserva.textField_numpersonas.setText(ventana.raiz.txthuesped.getText());
 				ventana.reserva.textField_ubicacion

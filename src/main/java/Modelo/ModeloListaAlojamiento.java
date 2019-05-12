@@ -63,7 +63,6 @@ public class ModeloListaAlojamiento implements ListModel {
 			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
 					result.getInt("Cod_Alojamiento"), result.getInt("Num_banos"), result.getInt("Superficie"),
 					result.getInt("Piso")));
-			System.out.println(casas.get(0));
 		}
 		return casas;
 

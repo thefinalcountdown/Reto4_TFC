@@ -43,7 +43,7 @@ public class controladorPago
 	
 	
 	//he metido aqui las variables de hotel que voy a pasar desde el controlador
-	static int codhotel;
+	static int codalojamiento;
  	int codhabitacion;
 	
 	public controladorPago() {}
@@ -272,7 +272,7 @@ public class controladorPago
 							String usuario = ventana.reserva.textField_usuario.getText();
 							
 							
-							modelo.modeloFichero = new ficheroReserva(codhotel,nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
+							modelo.modeloFichero = new ficheroReserva(codalojamiento,nombreHotel, precio, numPersonas, numHabitaciones, ubicacion, fecha_entrada,
 									fecha_salida, DNI, usuario);
 							
 							modelo.modeloFichero.imprimirTicket(DNI, nombreHotel, fecha_entrada, fecha_salida);
