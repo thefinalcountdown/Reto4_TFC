@@ -55,7 +55,7 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public static ArrayList<Casa> obtenerCasas(String ubicacion) throws Exception {
 
-		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos, count(*) as superficie, piso, Precio_casa from Alojamiento A " + 
+		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos, Superficie_casa, piso, Precio_casa from Alojamiento A " + 
 				"inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
 				"where ubicacion='%s' " + 
 				"group by nombre,ubicacion, Cod_Alojamiento, num_banos";
@@ -63,7 +63,7 @@ public class ModeloListaAlojamiento implements ListModel {
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
-					result.getInt("Cod_Alojamiento"), result.getInt("Num_banos"), result.getInt("Superficie"),
+					result.getInt("Cod_Alojamiento"), result.getInt("Num_banos"), result.getDouble("Superficie_casa"),
 					result.getInt("Piso"), result.getDouble("Precio_casa")));
 		}
 		return casas;

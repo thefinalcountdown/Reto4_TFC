@@ -3,7 +3,7 @@ package Modelo;
 public class Casa extends Alojamiento {
 
 	private int Num_banos;
-	private int Superficie;
+	private double Superficie;
 	private int Piso;
 	private double Precio;
 
@@ -12,7 +12,7 @@ public class Casa extends Alojamiento {
 		
 	}
 	
-	public Casa(String nombre, String ubicacion, int cod_alojamiento, int num_banos, int superficie, int piso, double precio) {
+	public Casa(String nombre, String ubicacion, int cod_alojamiento, int num_banos, double superficie, int piso, double precio) {
 
 		super(nombre, ubicacion, cod_alojamiento);
 		this.Num_banos = num_banos;
@@ -29,11 +29,11 @@ public class Casa extends Alojamiento {
 		Num_banos = num_banos;
 	}
 
-	public int getSuperficie() {
+	public double getSuperficie() {
 		return Superficie;
 	}
 
-	public void setSuperficie(int superficie) {
+	public void setSuperficie(double superficie) {
 		Superficie = superficie;
 	}
 

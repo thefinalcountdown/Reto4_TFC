@@ -90,10 +90,22 @@ public class controladorHotel {
 								
 						double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 
+						// manda el nombre del hotel a reserva
+						ventana.reserva.textField_alojamientoseleccionado.setText(modelo.modeloListaAlojamiento.hoteles
+								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
+										- modelo.modeloListaAlojamiento.casas.size())
+								.getNombre());
 						ventana.reserva.textField_precio.setText(Double.toString(precio));
 						System.out.println(ventana.reserva.textField_precio.getText());
 
 						ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
+						for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
+							if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
+								reserva_habitacion.add(new Reserva_habitacion(
+										modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
+										ventana.reserva.textField_fechaDeEntrada.getText(),
+										ventana.reserva.textField_fechaDeSalida.getText()));
+							}	}
 					}
 					
 					
@@ -172,14 +184,15 @@ public class controladorHotel {
 					ventana.reserva.textField_precio.setText(Double.toString(precio));
 					System.out.println(ventana.reserva.textField_precio.getText());
 
+					// manda el nombre de la casa/apt a reserva
+					ventana.reserva.textField_alojamientoseleccionado.setText(modelo.modeloListaAlojamiento.casas
+							.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getNombre());
 					ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
 			
 					
 					for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
 
-					
-					
-
+						
 						if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
 							reserva_habitacion.add(new Reserva_habitacion(
 									modelo.habitacion.habitaciones.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
@@ -268,11 +281,7 @@ public class controladorHotel {
 							System.out.println("El ArrayList de dormitorios no ha sido rellenado");
 							e1.printStackTrace();
 						}
-						// manda el nombre del hotel a reserva
-						ventana.reserva.textField_alojamientoseleccionado.setText(modelo.modeloListaAlojamiento.hoteles
-								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
-										- modelo.modeloListaAlojamiento.casas.size())
-								.getNombre());
+
 					}
 					// si se trata de una casa/aptmn...
 					// aqui hay que meter el metodo para que rellene la lista de dormitorios con las
@@ -357,9 +366,7 @@ public class controladorHotel {
 							System.out.println("El ArrayList de habitaciones no ha sido rellenado");
 							e1.printStackTrace();
 						}
-						// manda el nombre de la casa/apt a reserva
-						ventana.reserva.textField_alojamientoseleccionado.setText(modelo.modeloListaAlojamiento.casas
-								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getNombre());
+						
 					}
 				}
 			}
