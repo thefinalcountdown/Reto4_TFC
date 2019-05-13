@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
+import Modelo.Habitacion;
 import Modelo.Reserva_habitacion;
 import Modelo.modelo;
 import Vista.Ventana;
@@ -24,6 +25,8 @@ public class controladorHotel {
 	private Ventana ventana;
 	private modelo modelo;
 	public static ArrayList<Reserva_habitacion> reserva_habitacion = new ArrayList<Reserva_habitacion>();
+	double precioBase;
+	double precioBasecasa;
 
 	public controladorHotel() {
 	}
@@ -45,14 +48,30 @@ public class controladorHotel {
 				if (index == -1) {
 					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
+					if (ventana.alojamiento.listaAlojamientos
+							.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size() - 1) {
 
-//					// una vez un hotel ha sido seleccionado, coge el num de habitaciones y
-//					// comprueba que se hayan seleccionado
-//
-//					if (ventana.hotel.listaHabitaciones.getSelectedIndex() < controladorRaiz.num_Hab) {
-//						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion.");
-//					} else {
-					System.out.println("Hola" + modelo.modeloListaAlojamiento.getElementAt(index));
+					//PARA HOTEL
+					// una vez un hotel ha sido seleccionado, coge el num de habitaciones y
+					// comprueba que se hayan seleccionado
+
+					if (ventana.alojamiento.habitaciones.getSelectedRowCount() < controladorRaiz.num_Hab) {
+						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion/es.");
+						
+					}
+
+					
+					} else {
+						if (ventana.alojamiento.listaAlojamientos
+								.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size() - 1) {
+
+						precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();
+						}else {
+							//SI ES UNA CASA-APARTAMENTO
+							//precio de la casa!!!!!!!
+	
+							precioBase = 90;	
+						}
 
 					// añade en la vista de reserva los parametros del nombre del hotel y el precio
 
@@ -82,7 +101,7 @@ public class controladorHotel {
 					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
 																
-					double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio(); 
+					 
 					// multiplica el precioBase * numero de noche elegidas
 					long dias = (fechaOut.getTime() - fechaIn.getTime())/86400000;
 					long difdias = dias / (1000 * 60 * 60 * 24);
@@ -145,7 +164,7 @@ public class controladorHotel {
 					         ventana.reserva.textField_fechaDeSalida.getText()));
 					      }
 					     }
-//					}
+					}
 
 				}
 			}
@@ -164,6 +183,7 @@ public class controladorHotel {
 				if (ventana.alojamiento.listaAlojamientos.getSelectedIndex() == -1) {
 					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
+					
 					// if para comprobar si se ha seleccionado una casa o un hotel; dentro del if es
 					// si se selecciona hotel
 					if (ventana.alojamiento.listaAlojamientos
@@ -229,14 +249,7 @@ public class controladorHotel {
 							// llena la tabla usando el cod_hotel del hotel seleccionado en la
 							// listaAlojamiento
 
-							String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Precio" };
-							ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {
-								@Override
-								public boolean isCellEditable(int row, int column) {
-									// all cells false
-									return false;
-								}
-							};
+
 
 							modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.casas
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento(),
@@ -247,22 +260,67 @@ public class controladorHotel {
 							// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la
 							// fecha de entrada y salida
 
-							for (int i = 0; i < modelo.habitacion.habitaciones.size(); i++) {
-								Object[] habita = { modelo.habitacion.habitaciones.get(i).getTipo(),
+							for (Habitacion h:modelo.habitacion.habitaciones) {
+							if(	modelo.modeloListaAlojamiento.casas
+								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
+								.getPiso()!=0) {
+								
+								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Precio", "Piso" };
+								ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {
+									@Override
+									public boolean isCellEditable(int row, int column) {
+										// all cells false
+										return false;
+									}
+								};
+								for (int j = 0; j < modelo.habitacion.habitaciones.size(); j++) {
+									Object[] habita = { 
+											modelo.habitacion.habitaciones.get(j).getTipo(),
+											modelo.habitacion.habitaciones.get(j).getDescripcion(),
+											modelo.habitacion.habitaciones.get(j).getMetrosCuadrados(),
+											modelo.habitacion.habitaciones.get(j).getPrecio(),
+											modelo.modeloListaAlojamiento.casas
+											.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
+											.getPiso()};
+									ventana.alojamiento.modeloTabla.addRow(habita);
+
+								
+									ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
+									ventana.alojamiento.habitaciones.getColumnModel().getColumn(0).setPreferredWidth(100);
+									ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(180);
+									ventana.alojamiento.habitaciones.getColumnModel().getColumn(2).setPreferredWidth(70);
+									ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(72);
+									ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(60);
+									}
+							}else {
+								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Precio"};
+								ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {
+									@Override
+									public boolean isCellEditable(int row, int column) {
+										// all cells false
+										return false;
+									}
+								};
+							for (int j = 0; j < modelo.habitacion.habitaciones.size(); j++) {
+								Object[] habita = { modelo.habitacion.habitaciones.get(j).getTipo(),
 //										modelo.modeloListaAlojamiento.casas
 //												.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
 //												.getPiso(),
-										modelo.habitacion.habitaciones.get(i).getDescripcion(),
-										modelo.habitacion.habitaciones.get(i).getMetrosCuadrados(),
-										modelo.habitacion.habitaciones.get(i).getPrecio() };
+										modelo.habitacion.habitaciones.get(j).getDescripcion(),
+										modelo.habitacion.habitaciones.get(j).getMetrosCuadrados(),
+										modelo.habitacion.habitaciones.get(j).getPrecio() };
 								ventana.alojamiento.modeloTabla.addRow(habita);
 
 							}
+							
 							ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
 							ventana.alojamiento.habitaciones.getColumnModel().getColumn(0).setPreferredWidth(100);
 							ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(280);
 							ventana.alojamiento.habitaciones.getColumnModel().getColumn(2).setPreferredWidth(70);
 							ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(72);
+							}
+							}
+							
 
 							controladorPago.codalojamiento = modelo.modeloListaAlojamiento.casas
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento();
@@ -284,19 +342,19 @@ public class controladorHotel {
 
 		ventana.alojamiento.btnCancelar.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.alojamiento, ventana.raiz);
-				try {
+	public void actionPerformed(ActionEvent e) {
+		ventana.cambio_panel(ventana.alojamiento, ventana.raiz);
+		try {
 //					modelo.modeloListaHabitacion.vaciarLista();
-					modelo.modeloListaAlojamiento.vaciarLista();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
-			}
+			modelo.modeloListaAlojamiento.vaciarLista();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
+	}
 
-		});
+	});
 
 	}
 
