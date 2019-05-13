@@ -127,16 +127,17 @@ public class controladorHotel {
 					System.out.println(ventana.reserva.textField_precio.getText());
 
 					ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
-
+			
+					
 					for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
-					      if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
-					       reserva_habitacion.add(new Reserva_habitacion(
-					         modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
-					         ventana.reserva.textField_fechaDeEntrada.getText(),
-					         ventana.reserva.textField_fechaDeSalida.getText()));
-					      }
-					     }
-//					}
+						if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
+							reserva_habitacion.add(new Reserva_habitacion(
+									modelo.habitacion.habitaciones.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
+									ventana.reserva.textField_fechaDeEntrada.getText(),
+									ventana.reserva.textField_fechaDeSalida.getText()));
+						}
+					}
+
 
 				}
 			}
