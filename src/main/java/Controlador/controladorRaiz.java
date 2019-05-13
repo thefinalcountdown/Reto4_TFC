@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.swing.JOptionPane;
 
@@ -26,7 +25,6 @@ public class controladorRaiz {
 	public static int num_kids = 0;
 	public static int num_Hab = 1;
 	Calendar calendar = Calendar.getInstance();
-	private int i = 0;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 
 	public controladorRaiz(Ventana ventana, modelo modelo){
@@ -435,7 +433,6 @@ public class controladorRaiz {
 				ventana.reserva.textField_fechaDeEntrada.setText(fechaEntrada);
 				ventana.reserva.textField_fechaDeSalida.setText(fechaSalida);
 				ventana.reserva.textField_NumeroHabitaciones.setText(ventana.raiz.txtHab.getText());
-
 			}
 		});
 
