@@ -55,7 +55,6 @@ public class controladorHotel {
 
 //						ventana.reserva.textField_alojamientoseleccionado
 //								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
-
 					Date fechaIn = ventana.raiz.fechaIn.getDate();
 					Date fechaOut = ventana.raiz.fechaOut.getDate();
 					long Enero_1_I = ventana.raiz.Enero1.getTime() - fechaIn.getTime();
@@ -165,17 +164,21 @@ public class controladorHotel {
 					ventana.reserva.textField_precio.setText(Double.toString(precio));
 
 					ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
+					
+					
+					
+					for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
+						if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
+							reserva_habitacion.add(new Reserva_habitacion(
+									modelo.habitacion.habitaciones.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
+									ventana.reserva.textField_fechaDeEntrada.getText(),
+									ventana.reserva.textField_fechaDeSalida.getText()));
+						}
+					}
 
-//					for (int cont = 0; cont < modelo.modeloListaHabitacion.dormitorios.size(); cont++) {
-//						if (ventana.hotel.listaHabitaciones.isSelectedIndex(cont)) {
-//							reserva_habitacion.add(new Reserva_habitacion(
-//									modelo.modeloListaHabitacion.dormitorios.get(cont).getNum_habitacion(),
-//									ventana.reserva.textField_fechaDeEntrada.getText(),
-//									ventana.reserva.textField_fechaDeSalida.getText()));
-//						}
-//					}
-
-//					}
+					
+					
+					
 				}
 			}
 		});
