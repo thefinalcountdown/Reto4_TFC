@@ -29,7 +29,7 @@ public class controladorRaiz {
 	private int i = 0;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 
-	public controladorRaiz(Ventana ventana, modelo modelo) {
+	public controladorRaiz(Ventana ventana, modelo modelo){
 		this.ventana = ventana;
 		this.modelo = modelo;
 
