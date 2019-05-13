@@ -435,7 +435,7 @@ public class controladorRaiz {
 				ventana.reserva.textField_fechaDeEntrada.setText(fechaEntrada);
 				ventana.reserva.textField_fechaDeSalida.setText(fechaSalida);
 				ventana.reserva.textField_NumeroHabitaciones.setText(ventana.raiz.txtHab.getText());
-
+				
 			}
 		});
 

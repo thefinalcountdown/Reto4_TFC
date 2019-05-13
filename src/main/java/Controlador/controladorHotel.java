@@ -24,7 +24,8 @@ public class controladorHotel {
 	private Ventana ventana;
 	private modelo modelo;
 	public static ArrayList<Reserva_habitacion> reserva_habitacion = new ArrayList<Reserva_habitacion>();
-
+	
+	
 	public controladorHotel() {
 	}
 
@@ -81,21 +82,11 @@ public class controladorHotel {
 					long Diciembre_8_O = ventana.raiz.Diciembre8.getTime() - fechaOut.getTime();
 					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
-																
-					double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio(); 
-					// multiplica el precioBase * numero de noche elegidas
-					long dias = (fechaOut.getTime() - fechaIn.getTime())/86400000;
-					long difdias = dias / (1000 * 60 * 60 * 24);
-					double precio = precioBase;
+					double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio(); 				
+					double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 					
 					// multimplica el precioBase * numero de noche elegidas
 					
-
-					
-					if(dias >= 2)
-					{
-						precio *= difdias;
-					}
 
 					// incrementa el precio al elegir en temporada alta
 					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
@@ -339,6 +330,16 @@ public class controladorHotel {
 		}
 
 		return nomPrecio;
+	}
+	
+	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut)
+	{
+		
+		// multiplica el precioBase * numero de noche elegidas
+		long dias = fechaOut.getDate() - fechaIn.getDate();
+		
+		
+		return precioBase*dias;
 	}
 
 }
