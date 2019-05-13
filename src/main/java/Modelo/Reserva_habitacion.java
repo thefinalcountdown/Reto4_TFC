@@ -2,7 +2,7 @@ package Modelo;
 
 public class Reserva_habitacion
 {
-	private int num_habitacion;
+	private String num_habitacion;
 	private String fecha_entrada;
 	private String fecha_salida;
 	
@@ -11,18 +11,18 @@ public class Reserva_habitacion
 		
 	}
 	
-	public Reserva_habitacion(int num_habitacion, String fecha_entrada, String fecha_salida)
+	public Reserva_habitacion(String num_habitacion, String fecha_entrada, String fecha_salida)
 	{
 		this.num_habitacion = num_habitacion;
 		this.fecha_entrada = fecha_entrada;
 		this.fecha_salida = fecha_salida;
 	}
 
-	public int getNum_habitacion() {
+	public String getNum_habitacion() {
 		return num_habitacion;
 	}
 
-	public void setNum_habitacion(int num_habitacion) {
+	public void setNum_habitacion(String num_habitacion) {
 		this.num_habitacion = num_habitacion;
 	}
 
