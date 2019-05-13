@@ -57,6 +57,7 @@ public class controladorHotel {
 //								.setText(modelo.modeloListaHotel.hoteles.get(index).getNombre());
 					Date fechaIn = ventana.raiz.fechaIn.getDate();
 					Date fechaOut = ventana.raiz.fechaOut.getDate();
+					
 					long Enero_1_I = ventana.raiz.Enero1.getTime() - fechaIn.getTime();
 					long Enero_6_I = ventana.raiz.Enero6.getTime() - fechaIn.getTime();
 					long Abril_19_I = ventana.raiz.Abril19.getTime() - fechaIn.getTime();
@@ -79,15 +80,23 @@ public class controladorHotel {
 					long Diciembre_8_O = ventana.raiz.Diciembre8.getTime() - fechaOut.getTime();
 					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
-					double precioBase = 32; // <- esto es para que no de error
-					// esto lo que hay que
-					// poner->modelo.modeloListaAlojamiento.alojamiento.get(index).getPrecio();--
-					// no! habitaciones, precio de la hab selecc
-
+					double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio(); // <- esto es para que no de error
+					
+					
+					double precio = precioBase;
 					// multimplica el precioBase * numero de noche elegidas
-					long dias = fechaOut.getTime() - fechaIn.getTime();
+					
+					long dias = (fechaOut.getTime() - fechaIn.getTime())/86400000;
 					long difdias = dias / (1000 * 60 * 60 * 24);
-					double precio = precioBase * difdias;
+					
+					if(dias >= 2)
+					{
+						precio *= difdias;
+					}
+
+					
+					
+					
 					// incrementa el precio al elegir en temporada alta
 					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
 							|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
@@ -122,50 +131,8 @@ public class controladorHotel {
 					}
 
 					ventana.reserva.textField_precio.setText(Double.toString(precio));
-					// ventana.reserva.textField_precio.setText(Float.toString(modelo.modeloListaHotel.hoteles.get(index).getPrecio()));
-
-					// pasa parametros a reserva
-//						ventana.reserva.textField_alojamientoseleccionado
-//								.setText(modelo.modeloListaAlojamiento.hoteles.get(index).getNombre());
-//						ventana.reserva.textField_precio
-//								.setText(Float.toString(modelo.modeloListaAlojamiento.hoteles.get(index).getPrecio()));
-
-					precioBase = 30;// aqui tendra que ir lo que coja de
-									// habitacionDouble.parseDouble(separarString(index)[1]);
-
-					// multimplica el precioBase * numero de noche elegidas
-					dias = fechaOut.getTime() - fechaIn.getTime();
-					difdias = dias / (1000 * 60 * 60 * 24);
-					precio = precioBase * difdias;
-					// incrementa el precio al elegir en temporada alta
-					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
-							|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
-									&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
-						precio = precio + (precio * 0.20);
-					}
-					// incrementa el precio al elegir festivo en el fechaIn
-					if (fechaIn.equals(ventana.raiz.Enero1) || fechaIn.equals(ventana.raiz.Enero6)
-							|| fechaIn.equals(ventana.raiz.Abril19) || fechaIn.equals(ventana.raiz.Abril21)
-							|| fechaIn.equals(ventana.raiz.Mayo1) || fechaIn.equals(ventana.raiz.Octubre12)
-							|| fechaIn.equals(ventana.raiz.Noviembre1) || fechaIn.equals(ventana.raiz.Diciembre6)
-							|| fechaIn.equals(ventana.raiz.Diciembre8) || fechaIn.equals(ventana.raiz.Diciembre25)) {
-						precio = precio + (precio * 0.10);
-					}
-					// incrementa el precio al elegir festivo en el fechaOut
-					if (fechaOut.equals(ventana.raiz.Enero1) || fechaOut.equals(ventana.raiz.Enero6)
-							|| fechaOut.equals(ventana.raiz.Abril19) || fechaOut.equals(ventana.raiz.Abril21)
-							|| fechaOut.equals(ventana.raiz.Mayo1) || fechaOut.equals(ventana.raiz.Octubre12)
-							|| fechaOut.equals(ventana.raiz.Noviembre1) || fechaOut.equals(ventana.raiz.Diciembre6)
-							|| fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
-						precio = precio + (precio * 0.10);
-					}
-					// pasa parametros a reserva
-					ventana.reserva.textField_alojamientoseleccionado.setText(separarString(index)[0]);
-					ventana.reserva.textField_precio.setText(Double.toString(precio));
-
 					ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
-					
-					
+			
 					
 					for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
 						if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
@@ -176,9 +143,6 @@ public class controladorHotel {
 						}
 					}
 
-					
-					
-					
 				}
 			}
 		});
