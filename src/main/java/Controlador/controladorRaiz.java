@@ -54,7 +54,24 @@ public class controladorRaiz {
 				} else {
 					ventana.raiz.btnBuscar.setEnabled(false);
 				}
-
+				
+				try
+				{
+					Calendar calendario = ventana.raiz.fechaIn.getCalendar();
+					calendario.add(Calendar.DATE, 1);
+					ventana.raiz.fechaOut.setMinSelectableDate(calendario.getTime());
+					
+					if(ventana.raiz.fechaOut.getDate() == null || 
+							ventana.raiz.fechaOut.getDate().before(ventana.raiz.fechaIn.getDate()))
+					{
+						ventana.raiz.fechaOut.setDate(calendario.getTime());
+					}
+				}
+				catch (NullPointerException e)
+				{
+					
+				}
+				
 			}
 
 		});
