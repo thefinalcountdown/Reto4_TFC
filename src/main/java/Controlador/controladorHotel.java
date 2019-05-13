@@ -58,6 +58,7 @@ public class controladorHotel {
 
 					Date fechaIn = ventana.raiz.fechaIn.getDate();
 					Date fechaOut = ventana.raiz.fechaOut.getDate();
+					
 					long Enero_1_I = ventana.raiz.Enero1.getTime() - fechaIn.getTime();
 					long Enero_6_I = ventana.raiz.Enero6.getTime() - fechaIn.getTime();
 					long Abril_19_I = ventana.raiz.Abril19.getTime() - fechaIn.getTime();
@@ -80,16 +81,21 @@ public class controladorHotel {
 					long Diciembre_8_O = ventana.raiz.Diciembre8.getTime() - fechaOut.getTime();
 					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
-//					double precioBase=80;
-
-					double precioBase = modelo.dormitorio.dormitorios
-							.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();
-//						System.out.println(precioBase);																			
-
+																
+					double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio(); 
 					// multiplica el precioBase * numero de noche elegidas
-					long dias = fechaOut.getTime() - fechaIn.getTime();
+					long dias = (fechaOut.getTime() - fechaIn.getTime())/86400000;
 					long difdias = dias / (1000 * 60 * 60 * 24);
-					double precio = precioBase * difdias;
+					double precio = precioBase;
+					
+					// multimplica el precioBase * numero de noche elegidas
+					
+
+					
+					if(dias >= 2)
+					{
+						precio *= difdias;
+					}
 
 					// incrementa el precio al elegir en temporada alta
 					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
@@ -124,6 +130,7 @@ public class controladorHotel {
 						precio = precio + (precio * 0.10);
 					}
 
+
 					// pasa parametros a reserva
 					ventana.reserva.textField_precio.setText(Double.toString(precio));
 					System.out.println(ventana.reserva.textField_precio.getText());
@@ -133,14 +140,13 @@ public class controladorHotel {
 					for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
 					      if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
 					       reserva_habitacion.add(new Reserva_habitacion(
-					         modelo.habitacion.habitaciones.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
+					         modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
 					         ventana.reserva.textField_fechaDeEntrada.getText(),
 					         ventana.reserva.textField_fechaDeSalida.getText()));
 					      }
 					     }
-					System.out.println(modelo.habitacion.habitaciones.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion());
-
 //					}
+
 				}
 			}
 		});
