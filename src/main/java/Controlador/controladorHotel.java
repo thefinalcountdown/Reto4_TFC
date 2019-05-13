@@ -129,7 +129,7 @@ public class controladorHotel {
 					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
 					//AQUI VA PRECIO CASA
-					double precioBase=100;
+					double precioBase=modelo.modeloListaAlojamiento.casas.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getPrecio();
 					double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 
 					
@@ -300,7 +300,7 @@ public class controladorHotel {
 								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
 								.getPiso()!=0) {
 								
-								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Precio", "Piso" };
+								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Piso" };
 								ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {
 									@Override
 									public boolean isCellEditable(int row, int column) {
@@ -312,8 +312,7 @@ public class controladorHotel {
 									Object[] habita = { 
 											modelo.habitacion.habitaciones.get(j).getTipo(),
 											modelo.habitacion.habitaciones.get(j).getDescripcion(),
-											modelo.habitacion.habitaciones.get(j).getMetrosCuadrados(),
-											modelo.habitacion.habitaciones.get(j).getPrecio(),
+											(modelo.habitacion.habitaciones.get(j).getMetrosCuadrados()+"m2"),
 											modelo.modeloListaAlojamiento.casas
 											.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
 											.getPiso()};
@@ -325,10 +324,9 @@ public class controladorHotel {
 									ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(180);
 									ventana.alojamiento.habitaciones.getColumnModel().getColumn(2).setPreferredWidth(70);
 									ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(72);
-									ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(60);
 									}
 							}else {
-								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Precio"};
+								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie"};
 								ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {
 									@Override
 									public boolean isCellEditable(int row, int column) {
@@ -338,12 +336,8 @@ public class controladorHotel {
 								};
 							for (int j = 0; j < modelo.habitacion.habitaciones.size(); j++) {
 								Object[] habita = { modelo.habitacion.habitaciones.get(j).getTipo(),
-//										modelo.modeloListaAlojamiento.casas
-//												.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
-//												.getPiso(),
 										modelo.habitacion.habitaciones.get(j).getDescripcion(),
-										modelo.habitacion.habitaciones.get(j).getMetrosCuadrados(),
-										modelo.habitacion.habitaciones.get(j).getPrecio() };
+										modelo.habitacion.habitaciones.get(j).getMetrosCuadrados()};
 								ventana.alojamiento.modeloTabla.addRow(habita);
 
 							}
@@ -352,7 +346,6 @@ public class controladorHotel {
 							ventana.alojamiento.habitaciones.getColumnModel().getColumn(0).setPreferredWidth(100);
 							ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(280);
 							ventana.alojamiento.habitaciones.getColumnModel().getColumn(2).setPreferredWidth(70);
-							ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(72);
 							}
 							}
 							

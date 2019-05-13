@@ -20,8 +20,8 @@ public class ModeloListaAlojamiento implements ListModel {
 
 		for (int index = 0; index < casas.size(); index++) {
 			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
-			arrayString.add("Nombre: " + casas.get(index).getNombre() + " Numero de ba\u00f1os: "
-					+ casas.get(index).getNum_banos()+" Precio: "+casas.get(index).getPrecio()+"\u20ac");
+			arrayString.add("Nombre: " + casas.get(index).getNombre() + "; Numero de ba\u00f1os: "
+					+ casas.get(index).getNum_banos()+"; Precio: "+casas.get(index).getPrecio()+"\u20ac");
 		}
 
 		hoteles = obtenerHoteles(ubicacion);
@@ -29,7 +29,7 @@ public class ModeloListaAlojamiento implements ListModel {
 		for (int index = 0; index < hoteles.size(); index++) {
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getEstrellas());
 			arrayString.add(
-					"Nombre: " + hoteles.get(index).getNombre() + " Estrellas: " + hoteles.get(index).getEstrellas());
+					"Nombre: " + hoteles.get(index).getNombre() + "; Estrellas: " + hoteles.get(index).getEstrellas());
 
 		}
 
