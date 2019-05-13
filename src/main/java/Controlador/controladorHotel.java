@@ -82,7 +82,7 @@ public class controladorHotel {
 					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
 					double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio(); // <- esto es para que no de error
-					System.out.println(precioBase);
+					
 					
 					double precio = precioBase;
 					// multimplica el precioBase * numero de noche elegidas
@@ -96,7 +96,7 @@ public class controladorHotel {
 					}
 
 					
-					System.out.println(precio);
+					
 					
 					// incrementa el precio al elegir en temporada alta
 					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
