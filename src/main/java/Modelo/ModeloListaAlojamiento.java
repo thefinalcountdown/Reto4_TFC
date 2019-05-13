@@ -21,7 +21,7 @@ public class ModeloListaAlojamiento implements ListModel {
 		for (int index = 0; index < casas.size(); index++) {
 			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
 			arrayString.add("Nombre: " + casas.get(index).getNombre() + " Numero de ba\u00f1os: "
-					+ casas.get(index).getNum_banos());
+					+ casas.get(index).getNum_banos()+" Precio: "+casas.get(index).getPrecio()+"\u20ac");
 		}
 
 		hoteles = obtenerHoteles(ubicacion);
@@ -55,14 +55,16 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public static ArrayList<Casa> obtenerCasas(String ubicacion) throws Exception {
 
-		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos,count(*)as superficie, piso from Alojamiento A "
-				+ "inner join Casa_apartamento CA on A.Cod_alojamiento=CA.Cod_Casa where ubicacion='%s'group by nombre,ubicacion, Cod_Alojamiento, num_banos";
+		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos, count(*) as superficie, piso, Precio_casa from Alojamiento A " + 
+				"inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
+				"where ubicacion='%s' " + 
+				"group by nombre,ubicacion, Cod_Alojamiento, num_banos";
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
 					result.getInt("Cod_Alojamiento"), result.getInt("Num_banos"), result.getInt("Superficie"),
-					result.getInt("Piso")));
+					result.getInt("Piso"), result.getDouble("Precio_casa")));
 		}
 		return casas;
 
