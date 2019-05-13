@@ -25,7 +25,7 @@ public class vistaHoteles extends JPanel {
 	public JList<Hotel> listaAlojamientos = new JList<Hotel>();
 
 	JScrollPane scrollPane = new JScrollPane();
-	JScrollPane scrollPane_1 = new JScrollPane();
+	public JScrollPane scrollPane_1 = new JScrollPane();
 	
 	public JTable habitaciones = new JTable();
 	public DefaultTableModel modeloTabla;
@@ -68,8 +68,8 @@ public class vistaHoteles extends JPanel {
 		       return false;
 		    }};
 		habitaciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
 		scrollPane_1.setViewportView(habitaciones);
+		
 		habitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		habitaciones.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		habitaciones.setRowHeight(50);
