@@ -46,6 +46,9 @@ public class controladorHotel {
 				if (index == -1) {
 					JOptionPane.showMessageDialog(null, "Seleccione alg\u00fan alojamiento.");
 				} else {
+					
+					//COMPROBAR QUE ES UN HOTEL:
+					
 					if (ventana.alojamiento.listaAlojamientos
 							.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size() - 1) {
 
@@ -56,13 +59,7 @@ public class controladorHotel {
 					if (ventana.alojamiento.habitaciones.getSelectedRowCount() < controladorRaiz.num_Hab) {
 						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion/es.");
 						
-					}
-					ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
-					
-					} else {
-						if (ventana.alojamiento.listaAlojamientos
-								.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size() - 1) {
-
+					}else {
 						double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();
 						Date fechaIn = ventana.raiz.fechaIn.getDate();
 						Date fechaOut = ventana.raiz.fechaOut.getDate();
@@ -93,52 +90,17 @@ public class controladorHotel {
 								
 						double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 
-						
-						// multimplica el precioBase * numero de noche elegidas
-						
-
-						// incrementa el precio al elegir en temporada alta
-						if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
-								|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
-										&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
-							precio = precio + (precio * 0.20);
-						}
-						// incrementa el precio al elegir festivo en el fechaIn
-						if ((Enero_1_I <= 0 && Enero_1_I >= -24 * 60 * 60 * 1000)
-								|| (Enero_6_I <= 0 && Enero_6_I >= -24 * 60 * 60 * 1000)
-								|| (Abril_19_I <= 0 && Abril_19_I >= -24 * 60 * 60 * 1000)
-								|| (Abril_21_I <= 0 && Abril_21_I >= -24 * 60 * 60 * 1000)
-								|| (Mayo_1_I <= 0 && Mayo_1_I >= -24 * 60 * 60 * 1000)
-								|| (Octubre_12_I <= 0 && Octubre_12_I >= -24 * 60 * 60 * 1000)
-								|| (Noviembre_1_I <= 0 && Noviembre_1_I >= -24 * 60 * 60 * 1000)
-								|| (Diciembre_6_I <= 0 && Diciembre_6_I >= -24 * 60 * 60 * 1000)
-								|| (Diciembre_8_I <= 0 && Diciembre_8_I >= -24 * 60 * 60 * 1000)
-								|| (Diciembre_25_I <= 0 && Diciembre_25_I >= -24 * 60 * 60 * 1000)) {
-							precio = precio + (precio * 0.10);
-						}
-						// incrementa el precio al elegir festivo en el fechaOut
-						if ((Enero_1_O <= 0 && Enero_1_O >= -24 * 60 * 60 * 1000)
-								|| (Enero_6_O <= 0 && Enero_6_O >= -24 * 60 * 60 * 1000)
-								|| (Abril_19_O <= 0 && Abril_19_O >= -24 * 60 * 60 * 1000)
-								|| (Abril_21_O <= 0 && Abril_21_O >= -24 * 60 * 60 * 1000)
-								|| (Mayo_1_O <= 0 && Mayo_1_O >= -24 * 60 * 60 * 1000)
-								|| (Octubre_12_O <= 0 && Octubre_12_O >= -24 * 60 * 60 * 1000)
-								|| (Noviembre_1_O <= 0 && Noviembre_1_O >= -24 * 60 * 60 * 1000)
-								|| (Diciembre_6_O <= 0 && Diciembre_6_O >= -24 * 60 * 60 * 1000)
-								|| (Diciembre_8_O <= 0 && Diciembre_8_O >= -24 * 60 * 60 * 1000)
-								|| (Diciembre_25_O <= 0 && Diciembre_25_O >= -24 * 60 * 60 * 1000)) {
-							precio = precio + (precio * 0.10);
-						}
-
-
-						// pasa parametros a reserva
 						ventana.reserva.textField_precio.setText(Double.toString(precio));
 						System.out.println(ventana.reserva.textField_precio.getText());
 
 						ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
+					}
+					
+					
+					} else {
+					
 						
-						} else {
-
+						
 					// añade en la vista de reserva los parametros del nombre del hotel y el precio
 
 					Date fechaIn = ventana.raiz.fechaIn.getDate();
@@ -166,12 +128,10 @@ public class controladorHotel {
 					long Diciembre_8_O = ventana.raiz.Diciembre8.getTime() - fechaOut.getTime();
 					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
-
-							double precioBase=100;
+					//AQUI VA PRECIO CASA
+					double precioBase=100;
 					double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 
-					
-					// multimplica el precioBase * numero de noche elegidas
 					
 
 					// incrementa el precio al elegir en temporada alta
@@ -225,13 +185,25 @@ public class controladorHotel {
 									modelo.habitacion.habitaciones.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
 									ventana.reserva.textField_fechaDeEntrada.getText(),
 									ventana.reserva.textField_fechaDeSalida.getText()));
-						}
+						}	}}
 					}
-					}
-					}
-				}
 			}
 		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 //		// boton que muestra la lista de habitaciones
 //
