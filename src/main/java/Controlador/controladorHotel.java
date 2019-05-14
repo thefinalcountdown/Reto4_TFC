@@ -61,9 +61,31 @@ public class controladorHotel {
 						JOptionPane.showMessageDialog(null, "Seleccione " + controladorRaiz.num_Hab + " habitacion/es.");
 						
 					}else {
-						double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();
+						
+						// HACER IF SI MAS DE UNA ROW SELECCIONADA COGER Y SUMAR HASTA LAS 3 HABITACIONES QUE PERMITE
+						//SWITCH CASE???
 						Date fechaIn = ventana.raiz.fechaIn.getDate();
 						Date fechaOut = ventana.raiz.fechaOut.getDate();
+						if (ventana.alojamiento.habitaciones.getSelectedRowCount()==1) {
+							double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();	
+							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
+							ventana.reserva.textField_precio.setText(Double.toString(precio));
+
+						}
+						else if(ventana.alojamiento.habitaciones.getSelectedRowCount()==2) {
+							double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();
+							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
+							ventana.reserva.textField_precio.setText(Double.toString(precio));
+
+						}
+						else if(ventana.alojamiento.habitaciones.getSelectedRowCount()==3) {
+							double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();
+							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
+							ventana.reserva.textField_precio.setText(Double.toString(precio));
+
+						}
+						
+						
 						
 						long Enero_1_I = ventana.raiz.Enero1.getTime() - fechaIn.getTime();
 						long Enero_6_I = ventana.raiz.Enero6.getTime() - fechaIn.getTime();
@@ -89,14 +111,13 @@ public class controladorHotel {
 
 
 								
-						double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 
 						// manda el nombre del hotel a reserva
 						ventana.reserva.textField_alojamientoseleccionado.setText(modelo.modeloListaAlojamiento.hoteles
 								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 										- modelo.modeloListaAlojamiento.casas.size())
 								.getNombre());
-						ventana.reserva.textField_precio.setText(Double.toString(precio));
+						
 						System.out.println(ventana.reserva.textField_precio.getText());
 
 						ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
@@ -148,6 +169,7 @@ public class controladorHotel {
 					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
 					//AQUI VA PRECIO CASA
+					
 					double precioBase=modelo.modeloListaAlojamiento.casas.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getPrecio();
 					double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 
@@ -256,14 +278,18 @@ public class controladorHotel {
 							};
 							// llena la tabla usando el cod_hotel del hotel seleccionado en la listaHoteles
 
-							modelo.dormitorio
+							if(modelo.dormitorio
 									.obtenerDormitorios(
 											modelo.modeloListaAlojamiento.hoteles
 													.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 															- modelo.modeloListaAlojamiento.casas.size())
 													.getCod_alojamiento(),
 											ventana.reserva.textField_fechaDeEntrada.getText(),
-											ventana.reserva.textField_fechaDeSalida.getText());
+											ventana.reserva.textField_fechaDeSalida.getText())==null) {
+								
+								JOptionPane.showMessageDialog(null, "No quedan habitaciones disponibles para estas fechas.");
+							}else
+							
 
 							// rellenamos la tabla con un Array de objeto
 							// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la
@@ -274,7 +300,7 @@ public class controladorHotel {
 										modelo.dormitorio.dormitorios.get(i).getCamaIndividual(),
 										modelo.dormitorio.dormitorios.get(i).getCamaMatrimonio(),
 										modelo.dormitorio.dormitorios.get(i).getCamaInfantil(),
-										modelo.dormitorio.dormitorios.get(i).getPrecio() };
+										modelo.dormitorio.dormitorios.get(i).getPrecio()+"\u20ac" };
 								ventana.alojamiento.modeloTabla.addRow(dormi);
 							}
 							ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
@@ -288,8 +314,11 @@ public class controladorHotel {
 							System.out.println("El ArrayList de dormitorios no ha sido rellenado");
 							e1.printStackTrace();
 						}
+						
+						
 
-					}
+						}
+					
 					// si se trata de una casa/aptmn...
 					// aqui hay que meter el metodo para que rellene la lista de dormitorios con las
 					// habitaciones que tiene la casa
@@ -297,26 +326,25 @@ public class controladorHotel {
 
 						try {
 
-							// llena la tabla usando el cod_hotel del hotel seleccionado en la
+							// llena la tabla usando el cod_casa de la casa seleccionada en la
 							// listaAlojamiento
 
-
-
-							modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.casas
+							if(modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.casas
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento(),
 									ventana.reserva.textField_fechaDeEntrada.getText(),
-									ventana.reserva.textField_fechaDeSalida.getText());
+									ventana.reserva.textField_fechaDeSalida.getText())==null) {
+								
+								JOptionPane.showMessageDialog(null, "La casa no está disponible para estas fechas");
+							}else
 
-							// rellenamos la tabla con un Array de objeto
-							// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la
-							// fecha de entrada y salida
-
+							
 							for (Habitacion h:modelo.habitacion.habitaciones) {
 							if(	modelo.modeloListaAlojamiento.casas
 								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
 								.getPiso()!=0) {
 								
-								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Piso" };
+								String columna[] = { "Tipo", "Superficie", "Piso" };
+							//	String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Piso" };
 								ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {
 									@Override
 									public boolean isCellEditable(int row, int column) {
@@ -327,7 +355,7 @@ public class controladorHotel {
 								for (int j = 0; j < modelo.habitacion.habitaciones.size(); j++) {
 									Object[] habita = { 
 											modelo.habitacion.habitaciones.get(j).getTipo(),
-											modelo.habitacion.habitaciones.get(j).getDescripcion(),
+//											modelo.habitacion.habitaciones.get(j).getDescripcion(),
 											(modelo.habitacion.habitaciones.get(j).getMetrosCuadrados()+"m2"),
 											modelo.modeloListaAlojamiento.casas
 											.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
@@ -337,12 +365,14 @@ public class controladorHotel {
 								
 									ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
 									ventana.alojamiento.habitaciones.getColumnModel().getColumn(0).setPreferredWidth(100);
-									ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(180);
+									ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(70);
 									ventana.alojamiento.habitaciones.getColumnModel().getColumn(2).setPreferredWidth(70);
-									ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(72);
+//									ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(100);
+									
 									}
 							}else {
-								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie"};
+								String columna[] = { "Tipo", "Superficie"};
+//								String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie"};
 								ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {
 									@Override
 									public boolean isCellEditable(int row, int column) {
@@ -352,16 +382,16 @@ public class controladorHotel {
 								};
 							for (int j = 0; j < modelo.habitacion.habitaciones.size(); j++) {
 								Object[] habita = { modelo.habitacion.habitaciones.get(j).getTipo(),
-										modelo.habitacion.habitaciones.get(j).getDescripcion(),
-										modelo.habitacion.habitaciones.get(j).getMetrosCuadrados()};
+//										modelo.habitacion.habitaciones.get(j).getDescripcion(),
+										modelo.habitacion.habitaciones.get(j).getMetrosCuadrados()+"m2"};
 								ventana.alojamiento.modeloTabla.addRow(habita);
 
 							}
 							
 							ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
 							ventana.alojamiento.habitaciones.getColumnModel().getColumn(0).setPreferredWidth(100);
-							ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(280);
-							ventana.alojamiento.habitaciones.getColumnModel().getColumn(2).setPreferredWidth(70);
+//							ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(280);
+							ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(70);
 							}
 							}
 							
