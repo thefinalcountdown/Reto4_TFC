@@ -6,8 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.util.Date;
-
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -99,6 +100,10 @@ public class controladorHotel {
 						System.out.println(ventana.reserva.textField_precio.getText());
 
 						ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
+						
+						
+						
+						
 						for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
 							if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
 								reserva_habitacion.add(new Reserva_habitacion(
@@ -107,6 +112,8 @@ public class controladorHotel {
 										ventana.reserva.textField_fechaDeSalida.getText()));
 							}	}
 					}
+					
+					
 					
 					
 					} else {
@@ -438,8 +445,18 @@ public class controladorHotel {
 	{
 		
 		// multiplica el precioBase * numero de noche elegidas
-		long dias = fechaOut.getDate() - fechaIn.getDate();
+		long dias = 0;
+		int mes_fechaIn = ventana.raiz.fechaIn.getCalendar().get(Calendar.MONTH);
+		int dia_fechaIn = ventana.raiz.fechaIn.getCalendar().get(Calendar.DATE);
+		int mes_fechaOut = ventana.raiz.fechaOut.getCalendar().get(Calendar.MONTH);
+		int dia_fechaOut = ventana.raiz.fechaOut.getCalendar().get(Calendar.DATE);
 		
+		while(mes_fechaIn != mes_fechaOut && dia_fechaIn != dia_fechaOut)
+		{
+			dias += 1;
+			if (mes_fechaIn == 0 || mes_fechaIn == 2 || mes_fechaIn == 4 || mes_fechaIn == 6 || mes_fechaIn == 7)
+			dia_fechaIn += 1;
+		}
 		
 		return precioBase*dias;
 	}
