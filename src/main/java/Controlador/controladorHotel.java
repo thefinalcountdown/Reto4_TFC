@@ -508,5 +508,10 @@ public class controladorHotel {
 
 		return diasTemporadaAlta;
 	}
+	
+	public JTextArea insertar_texto (JTextArea texto)
+	{
+		return texto;
+	}
 
 }

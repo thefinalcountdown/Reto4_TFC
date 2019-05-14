@@ -376,6 +376,10 @@ public class controladorPago
 				}
 				
 			}
+			else
+			{
+				texto.append("\t   -  No hay dinero que devolver. \t\t\n\n");
+			}
 		}
 		return texto;
 	}
