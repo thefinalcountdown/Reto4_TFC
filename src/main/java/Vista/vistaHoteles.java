@@ -3,6 +3,7 @@ package Vista;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
 import Modelo.Hotel;
@@ -33,6 +34,7 @@ public class vistaHoteles extends JPanel {
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
 	public JButton btnHabitaciones = new JButton("->");
+	public JTextArea texto_panel = new JTextArea();
 
 	public vistaHoteles() {
 
@@ -76,6 +78,7 @@ public class vistaHoteles extends JPanel {
 		habitaciones.setRowMargin(20);
 		
 		
+		texto_panel.setEditable(false);
 	
 	
 

@@ -490,5 +490,10 @@ public class controladorHotel {
 		
 		return precioBase*dias;
 	}
+	
+	public JTextArea insertar_texto (JTextArea texto)
+	{
+		return texto;
+	}
 
 }
