@@ -6,12 +6,16 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import Modelo.TemporadaAlta;
+import Modelo.fechasTarifas;
 import Modelo.modelo;
 import Vista.Ventana;
 
@@ -385,32 +389,68 @@ public class controladorRaiz {
 		ventana.raiz.btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
+				try{
+					Date fechaIn = ventana.raiz.fechaIn.getDate();
+					Date fechaOut = ventana.raiz.fechaOut.getDate();
+					
+					// Pasar fechaIn y fechaOut a tipo LocalDate
+					LocalDate inicio = fechaIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+					LocalDate fin = fechaOut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+					
+					// Obtener lista de todos los dias que se han seleccionado
+					ArrayList<LocalDate> diasSeleccionados = obtenerDiasEntreFechas(inicio, fin);
+					// Obtener lista de la base de datos con todos los días festivos que hay
+					ArrayList<LocalDate> diasFestivos = fechasTarifas.obtenerDiasFestivos();
+					// Obtener lista de la base de datos con todas las temporadas altas que hay
+					ArrayList<TemporadaAlta> temporadasAltas = fechasTarifas.obtenerTemporadasAltas();
+					
+					boolean diaFestivoSeleccionado = false;
+					boolean diaTempAltaSeleccionado = false;
+					
+					// Bucle para comprobar si entre los dias seleccionados hay algún festivo
+					// recorrer la lista de festivos
+					for (int i = 0; i < diasFestivos.size(); i++) {
+						LocalDate diaFestivo = diasFestivos.get(i);
+						for (int j = 0; j < diasSeleccionados.size(); j++) {
+							LocalDate diaSeleccionado = diasSeleccionados.get(j);
+							if(diaFestivo.compareTo(diaSeleccionado) == 0) {
+								diaFestivoSeleccionado = true;
+							}
+						}
+						
+					}
+					// Si el boolean esta a true (que entre los dias seleccionados hay un festivo)
+					if(diaFestivoSeleccionado == true) {
+						JOptionPane.showMessageDialog(null,
+								"Uno de los días seleccionados es un dia festivo y supone un incremento en el precio del 10%");
+					}
 
-				Date fechaIn = ventana.raiz.fechaIn.getDate();
-				Date fechaOut = ventana.raiz.fechaOut.getDate();
+					// Bucle para comprobar si los días seleccionados están en temporada alta
+					for (int i = 0; i < temporadasAltas.size(); i++) {
+						TemporadaAlta tempAlta = temporadasAltas.get(i);
+						ArrayList<LocalDate> diasTemporadaAlta = obtenerDiasEntreFechas(tempAlta.getInicio(), tempAlta.getFin());
+						for (int j = 0; j < diasTemporadaAlta.size(); j++) {
+							LocalDate diaTemporadaAlta = diasTemporadaAlta.get(j);
+							for (int k = 0; k < diasSeleccionados.size(); k++) {
+								LocalDate diaSeleccionado = diasSeleccionados.get(k);
+								if(diaTemporadaAlta.compareTo(diaSeleccionado) == 0) {
+									diaTempAltaSeleccionado = true;
+								}
+							}
 
-				if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
-						|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
-								&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
-					JOptionPane.showMessageDialog(null,
-							"Las fechas seleccionadas suponen un incremento del 20% en el precio al ser temporada alta");
+						}
+						
+					}
+					// Si el boolean esta a true (Que alguno de los dias seleccionados sea de temporada alta)
+					if(diaTempAltaSeleccionado == true) {
+						JOptionPane.showMessageDialog(null,
+								"Las fechas seleccionadas suponen un incremento del 20% en el precio al ser temporada alta");
+					}
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
 				}
-				if (fechaIn.equals(ventana.raiz.Enero1) || fechaIn.equals(ventana.raiz.Enero6)
-						|| fechaIn.equals(ventana.raiz.Abril19) || fechaIn.equals(ventana.raiz.Abril21)
-						|| fechaIn.equals(ventana.raiz.Mayo1) || fechaIn.equals(ventana.raiz.Octubre12)
-						|| fechaIn.equals(ventana.raiz.Noviembre1) || fechaIn.equals(ventana.raiz.Diciembre6)
-						|| fechaIn.equals(ventana.raiz.Diciembre8) || fechaIn.equals(ventana.raiz.Diciembre25)) {
-					JOptionPane.showMessageDialog(null,
-							"la fecha: " + fechaIn + "es un dia festivo y supone un incremento en el precio del 10%");
-				}
-				if (fechaOut.equals(ventana.raiz.Enero1) || fechaOut.equals(ventana.raiz.Enero6)
-						|| fechaOut.equals(ventana.raiz.Abril19) || fechaOut.equals(ventana.raiz.Abril21)
-						|| fechaOut.equals(ventana.raiz.Mayo1) || fechaOut.equals(ventana.raiz.Octubre12)
-						|| fechaOut.equals(ventana.raiz.Noviembre1) || fechaOut.equals(ventana.raiz.Diciembre6)
-						|| fechaOut.equals(ventana.raiz.Diciembre8) || fechaOut.equals(ventana.raiz.Diciembre25)) {
-					JOptionPane.showMessageDialog(null,
-							"la fecha: " + fechaOut + "es un dia festivo y supone un incremento en el precio del 10%");
-				}
+				
 
 				try {
 					modelo.modeloListaAlojamiento.llenarLista(ubicacionSeleccionada);
@@ -443,6 +483,19 @@ public class controladorRaiz {
 		for (int i = 0; i < ubicaciones.size(); i++) {
 			ventana.raiz.comboBoxUbicacion.addItem(ubicaciones.get(i));
 		}
+	}
+	
+	public ArrayList<LocalDate> obtenerDiasEntreFechas(LocalDate inicio, LocalDate fin){
+		LocalDate incrementingDate = inicio;
+
+		ArrayList<LocalDate> diasTemporadaAlta = new ArrayList<LocalDate>();
+
+		while (!incrementingDate.isAfter(fin)) {
+		    diasTemporadaAlta.add(incrementingDate);
+		    incrementingDate = incrementingDate.plusDays(1);
+		}
+
+		return diasTemporadaAlta;
 	}
 
 }

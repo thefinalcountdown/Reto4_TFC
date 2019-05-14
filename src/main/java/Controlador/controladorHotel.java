@@ -4,7 +4,8 @@ package Controlador;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ import javax.swing.table.TableModel;
 
 import Modelo.Habitacion;
 import Modelo.Reserva_habitacion;
+import Modelo.TemporadaAlta;
+import Modelo.fechasTarifas;
 import Modelo.modelo;
 import Vista.Ventana;
 
@@ -70,24 +73,27 @@ public class controladorHotel {
 							double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();	
 							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 							ventana.reserva.textField_precio.setText(Double.toString(precio));
+							
 
 						}
 						else if(ventana.alojamiento.habitaciones.getSelectedRowCount()==2) {
 							double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();
 							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 							ventana.reserva.textField_precio.setText(Double.toString(precio));
+							
 
 						}
 						else if(ventana.alojamiento.habitaciones.getSelectedRowCount()==3) {
 							double precioBase = modelo.dormitorio.dormitorios.get(ventana.alojamiento.habitaciones.getSelectedRow()).getPrecio();
 							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 							ventana.reserva.textField_precio.setText(Double.toString(precio));
+							
 
 						}
 						
 						
 						
-						long Enero_1_I = ventana.raiz.Enero1.getTime() - fechaIn.getTime();
+						/*long Enero_1_I = ventana.raiz.Enero1.getTime() - fechaIn.getTime();
 						long Enero_6_I = ventana.raiz.Enero6.getTime() - fechaIn.getTime();
 						long Abril_19_I = ventana.raiz.Abril19.getTime() - fechaIn.getTime();
 						long Abril_21_I = ventana.raiz.Abril21.getTime() - fechaIn.getTime();
@@ -107,7 +113,7 @@ public class controladorHotel {
 						long Noviembre_1_O = ventana.raiz.Noviembre1.getTime() - fechaOut.getTime();
 						long Diciembre_6_O = ventana.raiz.Diciembre6.getTime() - fechaOut.getTime();
 						long Diciembre_8_O = ventana.raiz.Diciembre8.getTime() - fechaOut.getTime();
-						long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
+						long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();*/
 
 
 								
@@ -146,27 +152,6 @@ public class controladorHotel {
 					Date fechaIn = ventana.raiz.fechaIn.getDate();
 					Date fechaOut = ventana.raiz.fechaOut.getDate();
 					
-					long Enero_1_I = ventana.raiz.Enero1.getTime() - fechaIn.getTime();
-					long Enero_6_I = ventana.raiz.Enero6.getTime() - fechaIn.getTime();
-					long Abril_19_I = ventana.raiz.Abril19.getTime() - fechaIn.getTime();
-					long Abril_21_I = ventana.raiz.Abril21.getTime() - fechaIn.getTime();
-					long Mayo_1_I = ventana.raiz.Mayo1.getTime() - fechaIn.getTime();
-					long Octubre_12_I = ventana.raiz.Octubre12.getTime() - fechaIn.getTime();
-					long Noviembre_1_I = ventana.raiz.Noviembre1.getTime() - fechaIn.getTime();
-					long Diciembre_6_I = ventana.raiz.Diciembre6.getTime() - fechaIn.getTime();
-					long Diciembre_8_I = ventana.raiz.Diciembre8.getTime() - fechaIn.getTime();
-					long Diciembre_25_I = ventana.raiz.Diciembre25.getTime() - fechaIn.getTime();
-
-					long Enero_1_O = ventana.raiz.Enero1.getTime() - fechaOut.getTime();
-					long Enero_6_O = ventana.raiz.Enero6.getTime() - fechaOut.getTime();
-					long Abril_19_O = ventana.raiz.Abril19.getTime() - fechaOut.getTime();
-					long Abril_21_O = ventana.raiz.Abril21.getTime() - fechaOut.getTime();
-					long Mayo_1_O = ventana.raiz.Mayo1.getTime() - fechaOut.getTime();
-					long Octubre_12_O = ventana.raiz.Octubre12.getTime() - fechaOut.getTime();
-					long Noviembre_1_O = ventana.raiz.Noviembre1.getTime() - fechaOut.getTime();
-					long Diciembre_6_O = ventana.raiz.Diciembre6.getTime() - fechaOut.getTime();
-					long Diciembre_8_O = ventana.raiz.Diciembre8.getTime() - fechaOut.getTime();
-					long Diciembre_25_O = ventana.raiz.Diciembre25.getTime() - fechaOut.getTime();
 
 					//AQUI VA PRECIO CASA
 					
@@ -176,37 +161,7 @@ public class controladorHotel {
 					
 
 					// incrementa el precio al elegir en temporada alta
-					if (fechaIn.after(ventana.raiz.temporadaAltaInicio) && fechaIn.before(ventana.raiz.temporadaAltaFin)
-							|| fechaOut.after(ventana.raiz.temporadaAltaInicio)
-									&& fechaOut.before(ventana.raiz.temporadaAltaFin)) {
-						precio = precio + (precio * 0.20);
-					}
-					// incrementa el precio al elegir festivo en el fechaIn
-					if ((Enero_1_I <= 0 && Enero_1_I >= -24 * 60 * 60 * 1000)
-							|| (Enero_6_I <= 0 && Enero_6_I >= -24 * 60 * 60 * 1000)
-							|| (Abril_19_I <= 0 && Abril_19_I >= -24 * 60 * 60 * 1000)
-							|| (Abril_21_I <= 0 && Abril_21_I >= -24 * 60 * 60 * 1000)
-							|| (Mayo_1_I <= 0 && Mayo_1_I >= -24 * 60 * 60 * 1000)
-							|| (Octubre_12_I <= 0 && Octubre_12_I >= -24 * 60 * 60 * 1000)
-							|| (Noviembre_1_I <= 0 && Noviembre_1_I >= -24 * 60 * 60 * 1000)
-							|| (Diciembre_6_I <= 0 && Diciembre_6_I >= -24 * 60 * 60 * 1000)
-							|| (Diciembre_8_I <= 0 && Diciembre_8_I >= -24 * 60 * 60 * 1000)
-							|| (Diciembre_25_I <= 0 && Diciembre_25_I >= -24 * 60 * 60 * 1000)) {
-						precio = precio + (precio * 0.10);
-					}
-					// incrementa el precio al elegir festivo en el fechaOut
-					if ((Enero_1_O <= 0 && Enero_1_O >= -24 * 60 * 60 * 1000)
-							|| (Enero_6_O <= 0 && Enero_6_O >= -24 * 60 * 60 * 1000)
-							|| (Abril_19_O <= 0 && Abril_19_O >= -24 * 60 * 60 * 1000)
-							|| (Abril_21_O <= 0 && Abril_21_O >= -24 * 60 * 60 * 1000)
-							|| (Mayo_1_O <= 0 && Mayo_1_O >= -24 * 60 * 60 * 1000)
-							|| (Octubre_12_O <= 0 && Octubre_12_O >= -24 * 60 * 60 * 1000)
-							|| (Noviembre_1_O <= 0 && Noviembre_1_O >= -24 * 60 * 60 * 1000)
-							|| (Diciembre_6_O <= 0 && Diciembre_6_O >= -24 * 60 * 60 * 1000)
-							|| (Diciembre_8_O <= 0 && Diciembre_8_O >= -24 * 60 * 60 * 1000)
-							|| (Diciembre_25_O <= 0 && Diciembre_25_O >= -24 * 60 * 60 * 1000)) {
-						precio = precio + (precio * 0.10);
-					}
+	
 
 
 					// pasa parametros a reserva
@@ -234,18 +189,7 @@ public class controladorHotel {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				
 
 //		// boton que muestra la lista de habitaciones
 //
@@ -473,7 +417,7 @@ public class controladorHotel {
 	
 	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut)
 	{
-		
+		/*
 		// multiplica el precioBase * numero de noche elegidas
 		long dias = 0;
 		int mes_fechaIn = ventana.raiz.fechaIn.getCalendar().get(Calendar.MONTH);
@@ -486,9 +430,83 @@ public class controladorHotel {
 			dias += 1;
 			if (mes_fechaIn == 0 || mes_fechaIn == 2 || mes_fechaIn == 4 || mes_fechaIn == 6 || mes_fechaIn == 7)
 			dia_fechaIn += 1;
+		}*/
+		double precioFinal = 0.0; 
+		int numeroDiasSeleccionados = 0;
+		
+		try{
+			
+			LocalDate inicio = fechaIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate fin = fechaOut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			
+			// Obtener lista de todos los dias que se han seleccionado
+			ArrayList<LocalDate> diasSeleccionados = obtenerDiasEntreFechas(inicio, fin);
+			// Obtener lista de la base de datos con todos los días festivos que hay
+			ArrayList<LocalDate> diasFestivos = fechasTarifas.obtenerDiasFestivos();
+			// Obtener lista de la base de datos con todas las temporadas altas que hay
+			ArrayList<TemporadaAlta> temporadasAltas = fechasTarifas.obtenerTemporadasAltas();
+			
+			numeroDiasSeleccionados = diasSeleccionados.size();
+			
+			boolean diaFestivoSeleccionado = false;
+			boolean diaTempAltaSeleccionado = false;
+			
+			// Bucle para comprobar si entre los dias seleccionados hay algún festivo
+			// recorrer la lista de festivos
+			for (int i = 0; i < diasFestivos.size(); i++) {
+				LocalDate diaFestivo = diasFestivos.get(i);
+				for (int j = 0; j < diasSeleccionados.size(); j++) {
+					LocalDate diaSeleccionado = diasSeleccionados.get(j);
+					if(diaFestivo.compareTo(diaSeleccionado) == 0) {
+						diaFestivoSeleccionado = true;
+					}
+				}
+				
+			}
+			// Si el boolean esta a true (que entre los dias seleccionados hay un festivo)
+			if(diaFestivoSeleccionado == true) {
+				precioFinal = precioBase + precioBase * 0.1;
+			}
+
+			
+			for (int i = 0; i < temporadasAltas.size(); i++) {
+				TemporadaAlta tempAlta = temporadasAltas.get(i);
+				ArrayList<LocalDate> diasTemporadaAlta = obtenerDiasEntreFechas(tempAlta.getInicio(), tempAlta.getFin());
+				for (int j = 0; j < diasTemporadaAlta.size(); j++) {
+					LocalDate diaTemporadaAlta = diasTemporadaAlta.get(j);
+					for (int k = 0; k < diasSeleccionados.size(); k++) {
+						LocalDate diaSeleccionado = diasSeleccionados.get(k);
+						if(diaTemporadaAlta.compareTo(diaSeleccionado) == 0) {
+							diaTempAltaSeleccionado = true;
+						}
+					}
+
+				}
+				
+			}
+			// Si el boolean esta a true (Que alguno de los dias seleccionados sea de temporada alta)
+			if(diaTempAltaSeleccionado == true) {
+				precioFinal = precioBase + precioBase * 0.2;
+			}
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
 		}
 		
-		return precioBase*dias;
+		return precioFinal * numeroDiasSeleccionados;
+	}
+	
+	public ArrayList<LocalDate> obtenerDiasEntreFechas(LocalDate inicio, LocalDate fin){
+		LocalDate incrementingDate = inicio;
+
+		ArrayList<LocalDate> diasTemporadaAlta = new ArrayList<LocalDate>();
+
+		while (!incrementingDate.isAfter(fin)) {
+		    diasTemporadaAlta.add(incrementingDate);
+		    incrementingDate = incrementingDate.plusDays(1);
+		}
+
+		return diasTemporadaAlta;
 	}
 
 }

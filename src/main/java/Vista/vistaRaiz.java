@@ -39,19 +39,7 @@ public class vistaRaiz extends JPanel {
 	public JDateChooser fechaIn;
 	public JDateChooser fechaOut;
 	public Date fechaEntrada = new Date();
-	public Date temporadaAltaInicio = new GregorianCalendar(2019, Calendar.JUNE, 22).getTime();
-	public Date temporadaAltaFin = new GregorianCalendar(2019, Calendar.AUGUST, 30).getTime();
-	
-	public Date Enero1 = new GregorianCalendar(2019, Calendar.JANUARY, 1).getTime();
-	public Date Enero6 = new GregorianCalendar(2019, Calendar.JANUARY, 6).getTime();
-	public Date Abril19 = new GregorianCalendar(2019, Calendar.APRIL, 19).getTime();
-	public Date Abril21 = new GregorianCalendar(2019, Calendar.APRIL, 21).getTime();
-	public Date Mayo1 = new GregorianCalendar(2019, Calendar.MAY, 1).getTime();
-	public Date Octubre12 = new GregorianCalendar(2019, Calendar.OCTOBER, 12).getTime();
-	public Date Noviembre1 = new GregorianCalendar(2019, Calendar.NOVEMBER, 1).getTime();
-	public Date Diciembre6 = new GregorianCalendar(2019, Calendar.DECEMBER, 6).getTime();
-	public Date Diciembre8 = new GregorianCalendar(2019, Calendar.DECEMBER, 8).getTime();
-	public Date Diciembre25 = new GregorianCalendar(2019, Calendar.DECEMBER, 25).getTime();
+
 	/**
 	 * Create the panel.
 	 */
