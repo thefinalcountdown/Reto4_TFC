@@ -34,6 +34,9 @@ public class vistaHoteles extends JPanel {
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
 	public JButton btnHabitaciones = new JButton("->");
+	
+	public JButton btn_habitacion_duda;
+	public JPanel panel = new JPanel();
 	public JTextArea texto_panel = new JTextArea();
 
 	public vistaHoteles() {
@@ -76,6 +79,11 @@ public class vistaHoteles extends JPanel {
 		habitaciones.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		habitaciones.setRowHeight(50);
 		habitaciones.setRowMargin(20);
+		
+		btn_habitacion_duda = new JButton("?");
+		btn_habitacion_duda.setBounds(1128, 361, 36, 37);
+		
+		add(btn_habitacion_duda);
 		
 		
 		texto_panel.setEditable(false);

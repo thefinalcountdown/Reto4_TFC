@@ -32,9 +32,9 @@ public class controladorAceptarCondiciones {
 								modelo.modeloRegistro.fechaRegistro())) == true) {
 					JOptionPane.showMessageDialog(null, "Usuario creado con exito.");
 
-					String nombre_apellidos = ventana.registro.formattedTextFieldNombre.getText() + " "
-							+ ventana.registro.formattedTextFieldApellido.getText();
-					ventana.reserva.textField_DNI.setText(ventana.registro.formattedTextFieldDNI.getText());
+					String nombre_apellidos = ventana.registro.formattedTextFieldNombre.getText().toUpperCase() + " "
+							+ ventana.registro.formattedTextFieldApellido.getText().toUpperCase();
+					ventana.reserva.textField_DNI.setText(ventana.registro.formattedTextFieldDNI.getText().toUpperCase());
 					ventana.reserva.textField_usuario.setText(nombre_apellidos);
 					ventana.cambio_panel(ventana.condiciones, ventana.raiz);
 					JOptionPane.showMessageDialog(ventana.raiz, "Bienvenid@ " + nombre_apellidos);

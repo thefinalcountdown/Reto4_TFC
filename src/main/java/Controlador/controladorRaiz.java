@@ -462,8 +462,9 @@ public class controladorRaiz {
 				}
 
 				ventana.cambio_panel(ventana.raiz, ventana.alojamiento);
-
-				ventana.reserva.textField_numpersonas.setText(ventana.raiz.txthuesped.getText());
+				
+				int numeroPersonas = num_huespedes + num_kids;
+				ventana.reserva.textField_numpersonas.setText(Integer.toString(numeroPersonas));
 				ventana.reserva.textField_ubicacion
 						.setText(ventana.raiz.comboBoxUbicacion.getSelectedItem().toString());
 				String patronFecha = "yyyy/MM/dd";

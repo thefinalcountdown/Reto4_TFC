@@ -65,7 +65,7 @@ public class Dormitorio extends Habitacion {
 		while (result.next()) {
 			dormitorios.add(new Dormitorio(result.getString("Cod_habitacion"), result.getFloat("Superficie"),
 					result.getString("Tipo_habitacion"), result.getString("Descripcion"), result.getFloat("Precio"),
-					result.getInt("Individual"), result.getInt("Matrimonio"), result.getInt("Infantil")));
+					result.getInt("Individual"), result.getInt("Infantil"), result.getInt("Matrimonio")));
 		}
 		return dormitorios;
 	}
