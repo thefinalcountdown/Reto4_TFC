@@ -20,7 +20,7 @@ public class controladorPago
 	
 	private double total_introducido=0;
 	public static double total_faltante;
-	private double total_devolucion=0;
+	private double total_devolucion = 0;
 	private double valorBoton=0;
 	public static double precio;
 	public int numPersonas;
@@ -346,41 +346,59 @@ public class controladorPago
 	
 	public JTextArea insertar_texto (JTextArea texto)
 	{
-		for (int posicion=0; posicion<contador_monedas.length;posicion++)
+		boolean vacio = false;
+		for(int cont = 0; cont < contador_monedas.length; cont++)
 		{
-			if (contador_monedas[posicion] > 0)
+			if (contador_monedas[cont] == 0)
 			{
-				if(contador_monedas[posicion] == 1)
-				{
-					
-					if (posicion < 6)
-					{	
-						texto.append("\t   -  "+contador_monedas[posicion]+" x Billete de "+monedas[posicion]+"\t\t\n\n");
-					}
-					else
-					{
-						texto.append("\t   -  "+contador_monedas[posicion]+" x Moneda de "+monedas[posicion]+"\t\t\n\n");
-					}
-					
-				}
-				else 
-				{
-					if (posicion < 6)
-					{
-						texto.append("\t   -  "+contador_monedas[posicion]+" x Billetes de "+monedas[posicion]+"\t\t\n\n");
-					}
-					else
-					{
-						texto.append("\t   -  "+contador_monedas[posicion]+" x Monedas de "+monedas[posicion]+"\t\t\n\n");
-					}
-				}
-				
+				vacio = true;
 			}
 			else
 			{
-				texto.append("\t   -  No hay dinero que devolver. \t\t\n\n");
+				vacio = false;
+				break;
 			}
 		}
+		
+		if(vacio == false)
+		{
+			for (int posicion=0; posicion<contador_monedas.length;posicion++)
+			{
+				if (contador_monedas[posicion] > 0)
+				{
+					if(contador_monedas[posicion] == 1)
+					{
+						
+						if (posicion < 6)
+						{	
+							texto.append("\t   -  "+contador_monedas[posicion]+" x Billete de "+monedas[posicion]+"\t\t\n\n");
+						}
+						else
+						{
+							texto.append("\t   -  "+contador_monedas[posicion]+" x Moneda de "+monedas[posicion]+"\t\t\n\n");
+						}
+						
+					}
+					else 
+					{
+						if (posicion < 6)
+						{
+							texto.append("\t   -  "+contador_monedas[posicion]+" x Billetes de "+monedas[posicion]+"\t\t\n\n");
+						}
+						else
+						{
+							texto.append("\t   -  "+contador_monedas[posicion]+" x Monedas de "+monedas[posicion]+"\t\t\n\n");
+						}
+					}
+					
+				}
+			}
+		}
+		else
+		{
+			texto.setText("\t   -  No hay dinero que devolver.");
+		}
+		
 		return texto;
 	}
 	
