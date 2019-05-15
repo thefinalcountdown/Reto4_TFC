@@ -327,15 +327,28 @@ public class controladorHotel {
 			{
 				int[] selection = ventana.alojamiento.habitaciones.getSelectedRows();
 				
-				;
+				String descripcion = modelo.habitacion.habitaciones.get(selection[0]).getDescripcion();
+				String descripcion_convertida = "";
+
 				
-				ventana.pago.texto_panel.setText(modelo.habitacion.habitaciones.get(selection[0]).getDescripcion());
-				
-				if (JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, 
-						JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
+				for(int cont = 0; cont < descripcion.length(); cont++)
 				{
+					descripcion_convertida+= descripcion.charAt(cont);
+							
+					if (descripcion_convertida.length() == (descripcion.length()/2)-2)
+					{
+						descripcion_convertida += "\n\t";
+					}
 					
 				}
+				
+				
+				ventana.alojamiento.texto_panel.setText("\n\t   -  "+descripcion_convertida+"\t\t\n\n");
+				ventana.alojamiento.panel.add(ventana.alojamiento.texto_panel);
+				
+				
+				JOptionPane.showMessageDialog(ventana, ventana.alojamiento.panel, "Informaci\u00f3n "+modelo.habitacion.habitaciones.get(selection[0]).getTipo()
+						, JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 

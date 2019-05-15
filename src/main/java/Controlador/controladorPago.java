@@ -253,7 +253,7 @@ public class controladorPago
 					 
 					
 					 ventana.pago.panel.add(ventana.pago.texto_panel);
-					 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devolución", JOptionPane.PLAIN_MESSAGE,
+					 if(JOptionPane.showOptionDialog(ventana, ventana.pago.panel, "Devoluci\u00f3n", JOptionPane.PLAIN_MESSAGE,
 							 JOptionPane.PLAIN_MESSAGE, null, null, null)== 0)
 					 {
 						 
