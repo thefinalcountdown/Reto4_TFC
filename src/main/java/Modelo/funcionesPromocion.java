@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 
 public class funcionesPromocion {
 
-	public String sentenciaCodigoPromocional(String codigo) {
-		return "select Descuento from Promocion where Cod_Promocion = \""+ codigo +"\"";
+	public String sentenciaCodigoPromocional(String codigo, int codAlojamiento) {
+		return "select Descuento from Promocion where Cod_Promocion = \""+ codigo +"\" and Cod_Alojamiento = \""+ codAlojamiento +"\"";
 	}
 	
 	public int consultarPromocion(ResultSet result) {

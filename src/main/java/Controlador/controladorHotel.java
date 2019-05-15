@@ -207,7 +207,12 @@ public class controladorHotel {
 									ventana.alojamiento.modeloTabla.addRow(dormi);
 								}
 							ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
-
+							
+							controladorReserva.alojamiento = modelo.modeloListaAlojamiento.hoteles
+									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
+											- modelo.modeloListaAlojamiento.casas.size())
+									.getCod_alojamiento();
+							
 							controladorPago.codalojamiento = modelo.modeloListaAlojamiento.hoteles
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 											- modelo.modeloListaAlojamiento.casas.size())
@@ -299,6 +304,9 @@ public class controladorHotel {
 												.setPreferredWidth(70);
 									}
 								}
+							
+							controladorReserva.alojamiento = modelo.modeloListaAlojamiento.casas
+									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento();
 
 							controladorPago.codalojamiento = modelo.modeloListaAlojamiento.casas
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento();

@@ -2,9 +2,11 @@ package Controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import Modelo.Hotel;
 import Modelo.modelo;
 import Vista.Ventana;
 import metodos.GestorBD;
@@ -14,6 +16,7 @@ public class controladorReserva {
 	private modelo modelo;
 	
 	private static int descuento = 0;
+	static int alojamiento;
 
 	public controladorReserva(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
@@ -36,21 +39,22 @@ public class controladorReserva {
 
 		
 		ventana.reserva.btnCodigo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {				
+				System.out.println(controladorPago.codalojamiento);
 				if(modelo.modeloPromocion.consultarPromocion(GestorBD.consulta
 						(modelo.modeloPromocion.sentenciaCodigoPromocional
-								(ventana.reserva.formattedTextFieldCodigo.getText())))==0) {
+								(ventana.reserva.formattedTextFieldCodigo.getText(), alojamiento)))==0) {
 					JOptionPane.showMessageDialog(null, "No has introducido un codigo valido.");
 					
 				}
 				else if(modelo.modeloPromocion.consultarPromocion(GestorBD.consulta
 						(modelo.modeloPromocion.sentenciaCodigoPromocional
-								(ventana.reserva.formattedTextFieldCodigo.getText())))==5) {
+								(ventana.reserva.formattedTextFieldCodigo.getText(), alojamiento)))==5) {
 					JOptionPane.showMessageDialog(null, "Se te aplicara un descuento de 5 euros a tu reserva.");
 					ventana.reserva.btnCodigo.setEnabled(false);
 					descuento = 5;
 				}
-				else if(modelo.modeloPromocion.consultarPromocion(GestorBD.consulta
+				/*else if(modelo.modeloPromocion.consultarPromocion(GestorBD.consulta
 						(modelo.modeloPromocion.sentenciaCodigoPromocional
 								(ventana.reserva.formattedTextFieldCodigo.getText())))==10) {
 					JOptionPane.showMessageDialog(null, "Se te aplicara un descuento de 10 euros a tu reserva.");
@@ -63,7 +67,7 @@ public class controladorReserva {
 					JOptionPane.showMessageDialog(null, "Se te aplicara un descuento de 15 euros a tu reserva.");
 					ventana.reserva.btnCodigo.setEnabled(false);
 					descuento = 15;
-				}
+				}*/
 				
 			}
 		});
