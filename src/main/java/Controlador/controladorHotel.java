@@ -348,18 +348,8 @@ public class controladorHotel {
 	}
 
 	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut) {
-		/*
-		 * // multiplica el precioBase * numero de noche elegidas long dias = 0; int
-		 * mes_fechaIn = ventana.raiz.fechaIn.getCalendar().get(Calendar.MONTH); int
-		 * dia_fechaIn = ventana.raiz.fechaIn.getCalendar().get(Calendar.DATE); int
-		 * mes_fechaOut = ventana.raiz.fechaOut.getCalendar().get(Calendar.MONTH); int
-		 * dia_fechaOut = ventana.raiz.fechaOut.getCalendar().get(Calendar.DATE);
-		 * 
-		 * while(mes_fechaIn != mes_fechaOut && dia_fechaIn != dia_fechaOut) { dias +=
-		 * 1; if (mes_fechaIn == 0 || mes_fechaIn == 2 || mes_fechaIn == 4 ||
-		 * mes_fechaIn == 6 || mes_fechaIn == 7) dia_fechaIn += 1; }
-		 */
-		double precioFinal = 0.0;
+
+		double precioFinal = precioBase; 
 		int numeroDiasSeleccionados = 0;
 
 		try {
@@ -392,8 +382,10 @@ public class controladorHotel {
 
 			}
 			// Si el boolean esta a true (que entre los dias seleccionados hay un festivo)
-			if (diaFestivoSeleccionado == true) {
-				precioFinal = precioBase + precioBase * 0.1;
+
+			if(diaFestivoSeleccionado == true) {
+				precioFinal = precioFinal + precioBase * 0.1;
+
 			}
 
 			for (int i = 0; i < temporadasAltas.size(); i++) {
@@ -412,10 +404,11 @@ public class controladorHotel {
 				}
 
 			}
-			// Si el boolean esta a true (Que alguno de los dias seleccionados sea de
-			// temporada alta)
-			if (diaTempAltaSeleccionado == true) {
-				precioFinal = precioBase + precioBase * 0.2;
+
+			// Si el boolean esta a true (Que alguno de los dias seleccionados sea de temporada alta)
+			if(diaTempAltaSeleccionado == true) {
+				precioFinal = precioFinal + precioBase * 0.2;
+
 			}
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
