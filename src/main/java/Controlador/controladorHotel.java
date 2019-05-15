@@ -7,16 +7,12 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableModel;
+
 
 import Modelo.Habitacion;
 import Modelo.Reserva_habitacion;
@@ -93,10 +89,10 @@ public class controladorHotel {
 
 							ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
 
-							for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
+							for (int cont = 0; cont < selection.length; cont++) {
 								if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
 									reserva_habitacion.add(new Reserva_habitacion(modelo.dormitorio.dormitorios
-											.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
+											.get(selection[cont]).getCod_habitacion(),
 											ventana.reserva.textField_fechaDeEntrada.getText(),
 											ventana.reserva.textField_fechaDeSalida.getText()));
 								}
