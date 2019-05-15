@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
-
 import Modelo.Habitacion;
 import Modelo.Reserva_habitacion;
 import Modelo.TemporadaAlta;
@@ -122,14 +121,14 @@ public class controladorHotel {
 								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getNombre());
 						ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
 
-						for (int cont = 0; cont < ventana.alojamiento.habitaciones.getRowCount(); cont++) {
+						for (int cont = 0; cont < modelo.habitacion.habitaciones.size(); cont++) {
 
-							if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
+		
 								reserva_habitacion.add(new Reserva_habitacion(modelo.habitacion.habitaciones
-										.get(ventana.alojamiento.habitaciones.getSelectedRow()).getCod_habitacion(),
+										.get(cont).getCod_habitacion(),
 										ventana.reserva.textField_fechaDeEntrada.getText(),
 										ventana.reserva.textField_fechaDeSalida.getText()));
-							}
+							
 						}
 					}
 				}
@@ -167,23 +166,24 @@ public class controladorHotel {
 							};
 							// llena la tabla usando el cod_hotel del hotel seleccionado en la listaHoteles
 
-							if (modelo.dormitorio
+							modelo.dormitorio
 									.obtenerDormitorios(
 											modelo.modeloListaAlojamiento.hoteles
 													.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 															- modelo.modeloListaAlojamiento.casas.size())
 													.getCod_alojamiento(),
 											ventana.reserva.textField_fechaDeEntrada.getText(),
-											ventana.reserva.textField_fechaDeSalida.getText()) == null) {
-
-								JOptionPane.showMessageDialog(null,
-										"No quedan habitaciones disponibles para estas fechas.");
-							} else
+											ventana.reserva.textField_fechaDeSalida.getText());
+									
 
 								// rellenamos la tabla con un Array de objeto
 								// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la
 								// fecha de entrada y salida
 
+							if(modelo.dormitorio.dormitorios.size()==0) {
+								JOptionPane.showMessageDialog(null,
+										"No quedan habitaciones disponibles para las fechas seleccionadas");
+							}else
 								for (int i = 0; i < modelo.dormitorio.dormitorios.size(); i++) {
 									Object[] dormi = { modelo.dormitorio.dormitorios.get(i).getDescripcion(),
 											modelo.dormitorio.dormitorios.get(i).getCamaIndividual(),
@@ -216,13 +216,15 @@ public class controladorHotel {
 							// llena la tabla usando el cod_casa de la casa seleccionada en la
 							// listaAlojamiento
 
-							if (modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.casas
+							modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.casas
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento(),
 									ventana.reserva.textField_fechaDeEntrada.getText(),
-									ventana.reserva.textField_fechaDeSalida.getText()) == null) {
+									ventana.reserva.textField_fechaDeSalida.getText());
 
-								JOptionPane.showMessageDialog(null, "La casa no está disponible para estas fechas");
-							} else
+						if(modelo.habitacion.habitaciones.size()==0) {
+								JOptionPane.showMessageDialog(null,
+										"El alojamiento no esta disponible para las fechas seleccionadas");
+							}else
 
 								for (Habitacion h : modelo.habitacion.habitaciones) {
 									if (modelo.modeloListaAlojamiento.casas
@@ -302,17 +304,18 @@ public class controladorHotel {
 
 		ventana.alojamiento.btnCancelar.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e) {
-				ventana.cambio_panel(ventana.alojamiento, ventana.raiz);
-				try {
-					modelo.modeloListaAlojamiento.vaciarLista();
-					modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
-			}
+	public void actionPerformed(ActionEvent e) {
+		ventana.cambio_panel(ventana.alojamiento, ventana.raiz);
+		try {
+			modelo.modeloListaAlojamiento.vaciarLista();
+			modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
+	}
+
 
 		});
 		
@@ -322,7 +325,17 @@ public class controladorHotel {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
+				int[] selection = ventana.alojamiento.habitaciones.getSelectedRows();
 				
+				;
+				
+				ventana.pago.texto_panel.setText(modelo.habitacion.habitaciones.get(selection[0]).getDescripcion());
+				
+				if (JOptionPane.showOptionDialog(ventana, "Fichero creado con exito", "Fichero", JOptionPane.PLAIN_MESSAGE, 
+						JOptionPane.PLAIN_MESSAGE, null, null, null) == 0)
+				{
+					
+				}
 			}
 		});
 
@@ -374,7 +387,7 @@ public class controladorHotel {
 
 	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut) {
 
-		double precioFinal = precioBase; 
+		double precioFinal = precioBase;
 		int numeroDiasSeleccionados = 0;
 
 		try {
@@ -408,7 +421,7 @@ public class controladorHotel {
 			}
 			// Si el boolean esta a true (que entre los dias seleccionados hay un festivo)
 
-			if(diaFestivoSeleccionado == true) {
+			if (diaFestivoSeleccionado == true) {
 				precioFinal = precioFinal + precioBase * 0.1;
 
 			}
@@ -430,8 +443,9 @@ public class controladorHotel {
 
 			}
 
-			// Si el boolean esta a true (Que alguno de los dias seleccionados sea de temporada alta)
-			if(diaTempAltaSeleccionado == true) {
+			// Si el boolean esta a true (Que alguno de los dias seleccionados sea de
+			// temporada alta)
+			if (diaTempAltaSeleccionado == true) {
 				precioFinal = precioFinal + precioBase * 0.2;
 
 			}
