@@ -34,8 +34,10 @@ public class vistaHoteles extends JPanel {
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnContinuar = new JButton("Continuar");
 	public JButton btnHabitaciones = new JButton("->");
-	public JTextArea texto_panel = new JTextArea();
+	
 	public JButton btn_habitacion_duda;
+	public JPanel panel = new JPanel();
+	public JTextArea texto_panel = new JTextArea();
 
 	public vistaHoteles() {
 
