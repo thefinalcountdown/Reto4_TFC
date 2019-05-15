@@ -72,6 +72,7 @@ public class controladorReserva {
 		ventana.reserva.Cancelar_Reserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				descuento = 0;
+				ventana.reserva.formattedTextFieldCodigo.setText("");
 				ventana.reserva.btnCodigo.setEnabled(true);
 				ventana.cambio_panel(ventana.reserva, ventana.alojamiento);
 				modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
