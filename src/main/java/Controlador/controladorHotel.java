@@ -335,34 +335,50 @@ public class controladorHotel {
 		ventana.alojamiento.btn_habitacion_duda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int[] selection = ventana.alojamiento.habitaciones.getSelectedRows();
-		
-				String descripcion = modelo.habitacion.habitaciones.get(selection[0]).getDescripcion();
-				String descripcion_convertida = "";
-
 				
-				for(int cont = 0; cont < descripcion.length(); cont++)
+				
+				if (selection.length != 0)
 				{
-					descripcion_convertida+= descripcion.charAt(cont);
-							
-					if (descripcion_convertida.length() == (descripcion.length()/2)-2)
+					String descripcion = modelo.habitacion.habitaciones.get(selection[0]).getDescripcion();
+					String descripcion_convertida = "";
+
+					
+					for(int cont = 0; cont < descripcion.length(); cont++)
 					{
-						descripcion_convertida += "\n\t";
+						descripcion_convertida+= descripcion.charAt(cont);
+								
+						if (descripcion_convertida.length() == (descripcion.length()/2)-2)
+						{
+							descripcion_convertida += "\n\t";
+						}
+						
+
 					}
 					
-
+					
+					ventana.alojamiento.texto_panel.setText("\n\t   -  "+descripcion_convertida+"\t\t\n\n");
+					ventana.alojamiento.panel.add(ventana.alojamiento.texto_panel);
+					
+					
+					JOptionPane.showMessageDialog(ventana, ventana.alojamiento.panel, "Informaci\u00f3n "+modelo.habitacion.habitaciones.get(selection[0]).getTipo()
+							, JOptionPane.INFORMATION_MESSAGE);
 				}
 				
+				else
+				{
+					JOptionPane.showMessageDialog(ventana, "Seleccione una habitaci\u00f3n si necesita informaci\u00f3n.");
+				}
 				
-				ventana.alojamiento.texto_panel.setText("\n\t   -  "+descripcion_convertida+"\t\t\n\n");
-				ventana.alojamiento.panel.add(ventana.alojamiento.texto_panel);
-				
-				
-				JOptionPane.showMessageDialog(ventana, ventana.alojamiento.panel, "Informaci\u00f3n "+modelo.habitacion.habitaciones.get(selection[0]).getTipo()
-						, JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 
 	}
+	
+	
+	
+	
+	
+	
 
 	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut) {
 
@@ -448,9 +464,4 @@ public class controladorHotel {
 
 		return diasTemporadaAlta;
 	}
-
-	public JTextArea insertar_texto(JTextArea texto) {
-		return texto;
-	}
-
 }
