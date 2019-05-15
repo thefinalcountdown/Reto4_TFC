@@ -1,0 +1,10 @@
+ Codigo Hotel: 20
+ Hotel: Hotel Gran Sol
+ Precio: 120.0
+ Numero de personas: 1
+ Numero de habitaciones: 1
+ Ubicacion: Alicante
+ Fecha de entrada: 2019/05/16
+ Fecha de salida: 2019/05/17
+ DNI del usuario: 12345678Z
+ Nombre del usuario: sergio ledesma
