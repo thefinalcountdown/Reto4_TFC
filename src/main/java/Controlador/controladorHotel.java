@@ -345,7 +345,7 @@ public class controladorHotel {
 				int[] selection = ventana.alojamiento.habitaciones.getSelectedRows();
 				
 				
-				if (selection.length != 0)
+				if (selection.length > 0)
 				{
 					String descripcion = modelo.habitacion.habitaciones.get(selection[0]).getDescripcion();
 					String descripcion_convertida = "";

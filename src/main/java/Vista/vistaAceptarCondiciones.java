@@ -26,7 +26,7 @@ public class vistaAceptarCondiciones extends JPanel {
 		add(lblNewLabel);
 		
 		chckbxAceptarCondiciones = new JCheckBox("Acepto las Condiciones y Terminos de Uso");
-		chckbxAceptarCondiciones.setBounds(163, 401, 244, 23);
+		chckbxAceptarCondiciones.setBounds(163, 401, 301, 23);
 		add(chckbxAceptarCondiciones);
 		
 		btnAceptar = new JButton("Aceptar");
