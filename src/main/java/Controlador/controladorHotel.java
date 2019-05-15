@@ -315,37 +315,62 @@ public class controladorHotel {
 			}
 
 		});
-
-	}
-
-	public String[] separarString(int index) {
-		String linea = (modelo.modeloListaAlojamiento.getElementAt(index)).toString();
-		int contador = 0;
-		int contador2 = 0;
-		String campo = "";
-		String[] nomPrecio = new String[2];
-
-		while (contador < linea.length() - 1) {
-			if (linea.charAt(contador) == ':' && linea.charAt(contador + 1) == ' ' && contador2 < 2) {
-				contador++;
-
-				while (linea.charAt(contador + 1) != ' ' && (contador + 1) < linea.length() - 1) {
-					campo += linea.charAt(contador + 1);
-					contador++;
-//					System.out.println(contador);
-				}
-				nomPrecio[contador2] = campo;
-				campo = "";
-				contador2++;
-//				System.out.println("paso1 " + campo);
-
+		
+		
+		
+		ventana.alojamiento.btn_habitacion_duda.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				
 			}
+		});
 
-			contador++;
-		}
-
-		return nomPrecio;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+//	public String[] separarString(int index) {
+//		String linea = (modelo.modeloListaAlojamiento.getElementAt(index)).toString();
+//		int contador = 0;
+//		int contador2 = 0;
+//		String campo = "";
+//		String[] nomPrecio = new String[2];
+//
+//		while (contador < linea.length() - 1) {
+//			if (linea.charAt(contador) == ':' && linea.charAt(contador + 1) == ' ' && contador2 < 2) {
+//				contador++;
+//
+//				while (linea.charAt(contador + 1) != ' ' && (contador + 1) < linea.length() - 1) {
+//					campo += linea.charAt(contador + 1);
+//					contador++;
+////					System.out.println(contador);
+//				}
+//				nomPrecio[contador2] = campo;
+//				campo = "";
+//				contador2++;
+////				System.out.println("paso1 " + campo);
+//
+//			}
+//
+//			contador++;
+//		}
+//
+//		return nomPrecio;
+//	}
 
 	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut) {
 
