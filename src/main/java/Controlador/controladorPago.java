@@ -396,7 +396,7 @@ public class controladorPago
 		}
 		else
 		{
-			texto.setText("\t   -  No hay dinero que devolver.");
+			texto.setText("\n\t  -  No hay dinero que devolver.\t\n");
 		}
 		
 		return texto;
