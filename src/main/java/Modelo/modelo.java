@@ -9,8 +9,6 @@ public class modelo {
 	public ficheroReserva modeloFichero;
 	public funcionesLogin modeloLogin;
 	public funcionesRegistro modeloRegistro;
-	public funcionesPromocion modeloPromocion;
-	public funcionesModificar modeloModificar;
 	public ModeloListaAlojamiento modeloListaAlojamiento;
 	public insercionReserva insercionReserva;
 	public Dormitorio dormitorio;
@@ -20,8 +18,6 @@ public class modelo {
 		this.modeloFichero = new ficheroReserva();
 		this.modeloLogin = new funcionesLogin();
 		this.modeloRegistro = new funcionesRegistro();
-		this.modeloPromocion = new funcionesPromocion();
-		this.modeloModificar = new funcionesModificar();
 		this.modeloListaAlojamiento = new ModeloListaAlojamiento();
 		this.insercionReserva = new insercionReserva();
 		this.dormitorio = new Dormitorio();

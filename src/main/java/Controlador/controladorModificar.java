@@ -30,7 +30,7 @@ public class controladorModificar {
 						ventana.modificar.formattedTextFieldActualizarDNI.getText(),
 						String.valueOf(ventana.modificar.passwordFieldActualizarClave.getPassword())))) == false) {
 					JOptionPane.showMessageDialog(null, "Clave incorrecta.");
-				} else if (GestorBD.insertarDatos(modelo.modeloModificar.sentenciaActualizarUsuario(
+				} else if (GestorBD.insertarDatos(modelo.modeloLogin.sentenciaActualizarUsuario(
 						ventana.modificar.formattedTextFieldActualizarDNI.getText(),
 						String.valueOf(ventana.modificar.passwordFieldActualizarClave.getPassword()),
 						String.valueOf(ventana.modificar.passwordFieldNuevaClave.getPassword()))) == true) {
@@ -53,7 +53,7 @@ public class controladorModificar {
 						modelo.modeloLogin.sentenciaLogin(ventana.modificar.formattedTextFieldBorrarDni.getText(),
 								String.valueOf(ventana.modificar.passwordFieldBorrarDni.getPassword())))) == false) {
 					JOptionPane.showMessageDialog(null, "Clave incorrecta...");
-				} else if (GestorBD.insertarDatos(modelo.modeloModificar.sentenciaBorrarUsuario(
+				} else if (GestorBD.insertarDatos(modelo.modeloLogin.sentenciaBorrarUsuario(
 						ventana.modificar.formattedTextFieldBorrarDni.getText(),
 						String.valueOf(ventana.modificar.passwordFieldBorrarDni.getPassword()))) == true) {
 					JOptionPane.showMessageDialog(null, "Usuario borrado correctamente.");

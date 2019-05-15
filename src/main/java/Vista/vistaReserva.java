@@ -5,10 +5,10 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JFormattedTextField;
 
 public class vistaReserva extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	public JButton Cancelar_Reserva = new JButton("Cancelar");
 	public  JButton Continuar_Reserva = new JButton("Continuar");
 	private JLabel lblDni;
@@ -29,9 +29,6 @@ public class vistaReserva extends JPanel
 	public JTextField textField_fechaDeEntrada;
 	public JTextField textField_fechaDeSalida;
 	public JTextField textField_NumeroHabitaciones;
-	public JFormattedTextField formattedTextFieldCodigo;
-	private JLabel lblCodigo;
-	public JButton btnCodigo;
 	
 	
 	public vistaReserva()
@@ -142,17 +139,5 @@ public class vistaReserva extends JPanel
 		lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setBounds(313, 65, 52, 16);
 		add(lblUsuario);
-		
-		formattedTextFieldCodigo = new JFormattedTextField();
-		formattedTextFieldCodigo.setBounds(44, 60, 132, 26);
-		add(formattedTextFieldCodigo);
-		
-		lblCodigo = new JLabel("Codigo Promocional:");
-		lblCodigo.setBounds(44, 35, 124, 14);
-		add(lblCodigo);
-		
-		btnCodigo = new JButton("Comprobar");
-		btnCodigo.setBounds(64, 105, 89, 23);
-		add(btnCodigo);
 	}
 }

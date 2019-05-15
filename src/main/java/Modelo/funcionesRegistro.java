@@ -1,15 +1,9 @@
 package Modelo;
 
-import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class funcionesRegistro {
-	
-	public LocalDate fechaRegistro() {
-		LocalDate fechaActual = LocalDate.now();
-		return fechaActual;
-	}
 
 	public boolean comprobarCampos(String dni, String nombre, String apellido, String clave) {
 		// String sentencia = "insert into Usuario(DNI, Nombre, Apellido, Clave)" +
@@ -25,10 +19,10 @@ public class funcionesRegistro {
 
 	}
 
-	public String sentenciaInsertarUsuario(String dni, String nombre, String apellido, String clave, LocalDate fechaRegistro) {
-		return "insert into Usuario(DNI, Nombre, Apellido, Clave, Fecha_Registro) values(\"" + dni.toUpperCase() + "\", \""
-				+ nombre.toUpperCase() + "\", \"" + apellido.toUpperCase() + "\", \"" + AES.encrypt(clave, "llave")
-				+ "\", \""+ fechaRegistro +"\")";
+	public String sentenciaInsertarUsuario(String dni, String nombre, String apellido, String clave) {
+		return "insert into Usuario(DNI, Nombre, Apellido, Clave) values(\"" + dni.toUpperCase() + "\", \""
+				+ nombre.toUpperCase() + "\", \"" + apellido.toUpperCase() + "\", \"" + clave
+				+ "\")";
 	}
 
 	public boolean validarNIF(String nif) {

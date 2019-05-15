@@ -41,11 +41,19 @@ public class controladorRegistro {
 					JOptionPane.showMessageDialog(null, "El usuario ya existe.");
 				//inserta el usuario en la base de datos, manda los datos a la reserva y cambia de panel
 				}
-				else 
+				else if (GestorBD.insertarDatos(
+						modelo.modeloRegistro.sentenciaInsertarUsuario(ventana.registro.formattedTextFieldDNI.getText().toUpperCase(),
+								ventana.registro.formattedTextFieldNombre.getText().toUpperCase(),
+								ventana.registro.formattedTextFieldApellido.getText().toUpperCase(),
+								String.valueOf(ventana.registro.passwordFieldClave.getPassword()))) == true) 
 				{
-					
-					ventana.cambio_panel(ventana.registro, ventana.condiciones);
-			
+					JOptionPane.showMessageDialog(null, "Usuario creado con exito.");
+					String nombre_apellidos = ventana.registro.formattedTextFieldNombre.getText().toUpperCase() + " "
+							+ ventana.registro.formattedTextFieldApellido.getText().toUpperCase();
+					ventana.reserva.textField_DNI.setText(ventana.registro.formattedTextFieldDNI.getText().toUpperCase());
+					ventana.reserva.textField_usuario.setText(nombre_apellidos);
+					ventana.cambio_panel(ventana.registro, ventana.raiz);
+					JOptionPane.showMessageDialog(ventana.raiz, "Bienvenid@ " + nombre_apellidos);
 				}
 			}
 		});
