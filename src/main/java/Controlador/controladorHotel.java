@@ -431,7 +431,7 @@ public class controladorHotel {
 			if (mes_fechaIn == 0 || mes_fechaIn == 2 || mes_fechaIn == 4 || mes_fechaIn == 6 || mes_fechaIn == 7)
 			dia_fechaIn += 1;
 		}*/
-		double precioFinal = 0.0; 
+		double precioFinal = precioBase; 
 		int numeroDiasSeleccionados = 0;
 		
 		try{
@@ -465,7 +465,7 @@ public class controladorHotel {
 			}
 			// Si el boolean esta a true (que entre los dias seleccionados hay un festivo)
 			if(diaFestivoSeleccionado == true) {
-				precioFinal = precioBase + precioBase * 0.1;
+				precioFinal = precioFinal + precioBase * 0.1;
 			}
 
 			
@@ -486,7 +486,7 @@ public class controladorHotel {
 			}
 			// Si el boolean esta a true (Que alguno de los dias seleccionados sea de temporada alta)
 			if(diaTempAltaSeleccionado == true) {
-				precioFinal = precioBase + precioBase * 0.2;
+				precioFinal = precioFinal + precioBase * 0.2;
 			}
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
