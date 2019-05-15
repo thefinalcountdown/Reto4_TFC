@@ -472,7 +472,7 @@ public class controladorRaiz {
 				String fechaSalida = formatoFecha.format(ventana.raiz.fechaOut.getDate());
 				ventana.reserva.textField_fechaDeEntrada.setText(fechaEntrada);
 				ventana.reserva.textField_fechaDeSalida.setText(fechaSalida);
-				ventana.reserva.textField_NumeroHabitaciones.setText(ventana.raiz.txtHab.getText());
+				
 
 			}
 		});

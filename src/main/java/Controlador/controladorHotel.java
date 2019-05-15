@@ -64,9 +64,9 @@ public class controladorHotel {
 
 						} else {
 
-							// HACER IF SI MAS DE UNA ROW SELECCIONADA COGER Y SUMAR HASTA LAS 3
-							// HABITACIONES QUE PERMITE
-							// SWITCH CASE???
+							//FOR QUE COGE EL NUMERO DE FILAS SELECCIONADO Y DE CADA UNA COGE EL PRECIO DE DORMITORIO USANDO EL INDEX DE LA 
+							//FILA SELECCIONADA
+							
 							int[] selection = ventana.alojamiento.habitaciones.getSelectedRows();
 							double precioBase=0;
 							Date fechaIn = ventana.raiz.fechaIn.getDate();
@@ -80,7 +80,8 @@ public class controladorHotel {
 							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 							ventana.reserva.textField_precio.setText(Double.toString(precio));
 
-							// manda el nombre del hotel a reserva
+							// MANDA NOMBRE DE HOTEL Y EL NUMERO DE HABITACIONES QUE SE HAN SELECCIONADO A RESERVA
+							ventana.reserva.textField_NumeroHabitaciones.setText(selection.length+"");
 							ventana.reserva.textField_alojamientoseleccionado
 									.setText(modelo.modeloListaAlojamiento.hoteles
 											.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
