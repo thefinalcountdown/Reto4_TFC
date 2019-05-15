@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
+import Modelo.Dormitorio;
 import Modelo.Habitacion;
 import Modelo.Reserva_habitacion;
 import Modelo.TemporadaAlta;
@@ -36,7 +37,6 @@ public class controladorHotel {
 
 		ventana.alojamiento.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 
 				int index = ventana.alojamiento.listaAlojamientos.getSelectedIndex();
 
@@ -60,24 +60,40 @@ public class controladorHotel {
 
 						} else {
 
-							//FOR QUE COGE EL NUMERO DE FILAS SELECCIONADO Y DE CADA UNA COGE EL PRECIO DE DORMITORIO USANDO EL INDEX DE LA 
-							//FILA SELECCIONADA
-							
+							// FOR QUE COGE EL NUMERO DE FILAS SELECCIONADO Y DE CADA UNA COGE EL PRECIO DE
+							// DORMITORIO USANDO EL INDEX DE LA
+							// FILA SELECCIONADA
+
 							int[] selection = ventana.alojamiento.habitaciones.getSelectedRows();
-							double precioBase=0;
+
+							// IF PARA COMPROBAR QUE EL NUMERO DE PERSONAS COINCIDE CON LAS HABITACIONES
+							// SELECCIONADAS
+
+							for (int i = 0; i < selection.length; i++) {
+								if (controladorRaiz.num_huespedes > (modelo.dormitorio.dormitorios.get(selection[i])
+										.getCamaMatrimonio()+1
+										+ modelo.dormitorio.dormitorios.get(selection[i]).getCamaIndividual())) {
+
+									JOptionPane.showMessageDialog(null,
+											"No somos un servicio de pateras");
+								}else break;
+							}
+
+							double precioBase = 0;
 							Date fechaIn = ventana.raiz.fechaIn.getDate();
 							Date fechaOut = ventana.raiz.fechaOut.getDate();
 
-							for (int i = 0; i <selection.length; i++) {
+							for (int i = 0; i < selection.length; i++) {
 								precioBase += modelo.dormitorio.dormitorios.get(selection[i]).getPrecio();
-								System.out.println(precioBase+" "+i);
+								System.out.println(precioBase + " " + i);
 							}
 							System.out.println(precioBase);
 							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 							ventana.reserva.textField_precio.setText(Double.toString(precio));
 
-							// MANDA NOMBRE DE HOTEL Y EL NUMERO DE HABITACIONES QUE SE HAN SELECCIONADO A RESERVA
-							ventana.reserva.textField_NumeroHabitaciones.setText(selection.length+"");
+							// MANDA NOMBRE DE HOTEL Y EL NUMERO DE HABITACIONES QUE SE HAN SELECCIONADO A
+							// RESERVA
+							ventana.reserva.textField_NumeroHabitaciones.setText(selection.length + "");
 							ventana.reserva.textField_alojamientoseleccionado
 									.setText(modelo.modeloListaAlojamiento.hoteles
 											.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
@@ -90,8 +106,8 @@ public class controladorHotel {
 
 							for (int cont = 0; cont < selection.length; cont++) {
 								if (ventana.alojamiento.habitaciones.isRowSelected(cont)) {
-									reserva_habitacion.add(new Reserva_habitacion(modelo.dormitorio.dormitorios
-											.get(selection[cont]).getCod_habitacion(),
+									reserva_habitacion.add(new Reserva_habitacion(
+											modelo.dormitorio.dormitorios.get(selection[cont]).getCod_habitacion(),
 											ventana.reserva.textField_fechaDeEntrada.getText(),
 											ventana.reserva.textField_fechaDeSalida.getText()));
 								}
@@ -123,12 +139,11 @@ public class controladorHotel {
 
 						for (int cont = 0; cont < modelo.habitacion.habitaciones.size(); cont++) {
 
-		
-								reserva_habitacion.add(new Reserva_habitacion(modelo.habitacion.habitaciones
-										.get(cont).getCod_habitacion(),
-										ventana.reserva.textField_fechaDeEntrada.getText(),
-										ventana.reserva.textField_fechaDeSalida.getText()));
-							
+							reserva_habitacion.add(
+									new Reserva_habitacion(modelo.habitacion.habitaciones.get(cont).getCod_habitacion(),
+											ventana.reserva.textField_fechaDeEntrada.getText(),
+											ventana.reserva.textField_fechaDeSalida.getText()));
+
 						}
 					}
 				}
@@ -174,16 +189,15 @@ public class controladorHotel {
 													.getCod_alojamiento(),
 											ventana.reserva.textField_fechaDeEntrada.getText(),
 											ventana.reserva.textField_fechaDeSalida.getText());
-									
 
-								// rellenamos la tabla con un Array de objeto
-								// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la
-								// fecha de entrada y salida
+							// rellenamos la tabla con un Array de objeto
+							// usando el arraylist<Dormitorio> q creamos arriba con el cod_alojamiento y la
+							// fecha de entrada y salida
 
-							if(modelo.dormitorio.dormitorios.size()==0) {
+							if (modelo.dormitorio.dormitorios.size() == 0) {
 								JOptionPane.showMessageDialog(null,
 										"No quedan habitaciones disponibles para las fechas seleccionadas");
-							}else
+							} else
 								for (int i = 0; i < modelo.dormitorio.dormitorios.size(); i++) {
 									Object[] dormi = { modelo.dormitorio.dormitorios.get(i).getDescripcion(),
 											modelo.dormitorio.dormitorios.get(i).getCamaIndividual(),
@@ -221,10 +235,10 @@ public class controladorHotel {
 									ventana.reserva.textField_fechaDeEntrada.getText(),
 									ventana.reserva.textField_fechaDeSalida.getText());
 
-						if(modelo.habitacion.habitaciones.size()==0) {
+							if (modelo.habitacion.habitaciones.size() == 0) {
 								JOptionPane.showMessageDialog(null,
 										"El alojamiento no esta disponible para las fechas seleccionadas");
-							}else
+							} else
 
 								for (Habitacion h : modelo.habitacion.habitaciones) {
 									if (modelo.modeloListaAlojamiento.casas
@@ -304,49 +318,50 @@ public class controladorHotel {
 
 		ventana.alojamiento.btnCancelar.addActionListener(new ActionListener() {
 
-	public void actionPerformed(ActionEvent e) {
-		ventana.cambio_panel(ventana.alojamiento, ventana.raiz);
-		try {
-			modelo.modeloListaAlojamiento.vaciarLista();
-			modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
-	}
-
-	});
-
-	}
-
-	public String[] separarString(int index) {
-		String linea = (modelo.modeloListaAlojamiento.getElementAt(index)).toString();
-		int contador = 0;
-		int contador2 = 0;
-		String campo = "";
-		String[] nomPrecio = new String[2];
-
-		while (contador < linea.length() - 1) {
-			if (linea.charAt(contador) == ':' && linea.charAt(contador + 1) == ' ' && contador2 < 2) {
-				contador++;
-
-				while (linea.charAt(contador + 1) != ' ' && (contador + 1) < linea.length() - 1) {
-					campo += linea.charAt(contador + 1);
-					contador++;
-//					System.out.println(contador);
+			public void actionPerformed(ActionEvent e) {
+				ventana.cambio_panel(ventana.alojamiento, ventana.raiz);
+				try {
+					modelo.modeloListaAlojamiento.vaciarLista();
+					modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-				nomPrecio[contador2] = campo;
-				campo = "";
-				contador2++;
-//				System.out.println("paso1 " + campo);
-
+				ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
 			}
 
-			contador++;
-		}
+		});
 
-		return nomPrecio;
+		ventana.alojamiento.btn_habitacion_duda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int[] selection = ventana.alojamiento.habitaciones.getSelectedRows();
+		
+				String descripcion = modelo.habitacion.habitaciones.get(selection[0]).getDescripcion();
+				String descripcion_convertida = "";
+
+				
+				for(int cont = 0; cont < descripcion.length(); cont++)
+				{
+					descripcion_convertida+= descripcion.charAt(cont);
+							
+					if (descripcion_convertida.length() == (descripcion.length()/2)-2)
+					{
+						descripcion_convertida += "\n\t";
+					}
+					
+
+				}
+				
+				
+				ventana.alojamiento.texto_panel.setText("\n\t   -  "+descripcion_convertida+"\t\t\n\n");
+				ventana.alojamiento.panel.add(ventana.alojamiento.texto_panel);
+				
+				
+				JOptionPane.showMessageDialog(ventana, ventana.alojamiento.panel, "Informaci\u00f3n "+modelo.habitacion.habitaciones.get(selection[0]).getTipo()
+						, JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+
 	}
 
 	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut) {
