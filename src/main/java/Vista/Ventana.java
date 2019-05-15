@@ -17,6 +17,7 @@ public class Ventana extends JFrame {
 	public vistaLogin login;
 	public vistaRegistro registro;
 	public vistaModificar modificar;
+	public vistaAceptarCondiciones condiciones;
 	public vistaRaiz raiz;
 	public vistaReserva reserva;
 	public vistaPago pago;
@@ -48,6 +49,10 @@ public class Ventana extends JFrame {
 		modificar = new vistaModificar();
 		contentPane.add(modificar);
 		modificar.setLayout(null);
+		
+		condiciones = new vistaAceptarCondiciones();
+		contentPane.add(condiciones);
+		condiciones.setLayout(null);
 
 		raiz = new vistaRaiz();
 		contentPane.add(raiz);

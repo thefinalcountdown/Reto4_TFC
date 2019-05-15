@@ -2,12 +2,13 @@ package Modelo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class funcionesLogin {
 
 	// Sentencia para comprobar usuario login, si es falso, clave incorrecta
 	public String sentenciaLogin(String dni, String clave) {
-		return "select * from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""+ clave + "\"";
+		return "select * from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""+ AES.encrypt(clave, "llave") + "\"";
 	}
 
 	public boolean comprobarLogin(ResultSet result) {
@@ -48,21 +49,7 @@ public class funcionesLogin {
 		return false;
 	}
 
-	// sentencia para borrar usuario
-	public String sentenciaBorrarUsuario(String dni, String clave) 
-	{
-		return "delete from Usuario where DNI=\"" + dni.toUpperCase() + "\" and Clave=\""+clave+ "\"";
-	}
 
-	// sentencia actualizar usuario
-	public String sentenciaActualizarUsuario(String dni, String clave, String nuevaclave) 
-	{
-		return "update Usuario set Clave=\"" + AES.encrypt(nuevaclave, "llave") + "\" where DNI=\"" + dni.toUpperCase()
-				+ "\" and Clave=\"" + clave + "\"";
-
-	}
-
-	// Comprobar que los campos de vistalogin no esten vacios.
 
 //
 //	// rellena el usuario con los datos de la BD
