@@ -41,6 +41,7 @@ public class controladorHotel {
 
 		ventana.alojamiento.btnContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 
 				int index = ventana.alojamiento.listaAlojamientos.getSelectedIndex();
 
