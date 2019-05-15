@@ -3,6 +3,8 @@ package Modelo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.swing.table.DefaultTableModel;
+
 import metodos.GestorBD;
 
 public class Habitacion {
@@ -84,6 +86,18 @@ public class Habitacion {
 					));
 		}
 		return habitaciones;
+	}
+	
+	public void vaciarTabla(DefaultTableModel tabla) {
+		for (int index = tabla.getRowCount() - 1; index >= 0; index--) {
+			tabla.removeRow(index);
+		}
+		for (int index = Dormitorio.dormitorios.size() - 1; index >= 0; index--) {
+			Dormitorio.dormitorios.remove(index);
+		}
+		for (int index = Habitacion.habitaciones.size() - 1; index >= 0; index--) {
+			Habitacion.habitaciones.remove(index);
+		}
 	}
 
 	@Override
