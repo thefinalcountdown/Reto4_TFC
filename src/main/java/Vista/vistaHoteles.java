@@ -82,6 +82,7 @@ public class vistaHoteles extends JPanel {
 		
 		btn_habitacion_duda = new JButton("?");
 		btn_habitacion_duda.setBounds(1128, 361, 36, 37);
+		btn_habitacion_duda.setVisible(false);
 		
 		add(btn_habitacion_duda);
 		
