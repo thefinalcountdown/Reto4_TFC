@@ -1,13 +1,13 @@
 package Modelo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class funcionesRegistro {
 	
-	public LocalDate fechaRegistro() {
-		LocalDate fechaActual = LocalDate.now();
+	public LocalDateTime fechaRegistro() {
+		LocalDateTime fechaActual = LocalDateTime.now();
 		return fechaActual;
 	}
 
@@ -25,7 +25,7 @@ public class funcionesRegistro {
 
 	}
 
-	public String sentenciaInsertarUsuario(String dni, String nombre, String apellido, String clave, LocalDate fechaRegistro) {
+	public String sentenciaInsertarUsuario(String dni, String nombre, String apellido, String clave, LocalDateTime fechaRegistro) {
 		return "insert into Usuario(DNI, Nombre, Apellido, Clave, Fecha_Registro) values(\"" + dni.toUpperCase() + "\", \""
 				+ nombre.toUpperCase() + "\", \"" + apellido.toUpperCase() + "\", \"" + AES.encrypt(clave, "llave")
 				+ "\", \""+ fechaRegistro +"\")";
