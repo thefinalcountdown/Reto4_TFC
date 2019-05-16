@@ -148,11 +148,11 @@ public class vistaReserva extends JPanel
 		add(formattedTextFieldCodigo);
 		
 		lblCodigo = new JLabel("Codigo Promocional:");
-		lblCodigo.setBounds(44, 35, 124, 14);
+		lblCodigo.setBounds(44, 35, 143, 14);
 		add(lblCodigo);
 		
 		btnCodigo = new JButton("Comprobar");
-		btnCodigo.setBounds(64, 105, 89, 23);
+		btnCodigo.setBounds(54, 106, 112, 23);
 		add(btnCodigo);
 	}
 }
