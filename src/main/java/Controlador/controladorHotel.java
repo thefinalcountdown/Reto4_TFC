@@ -154,7 +154,7 @@ public class controladorHotel {
 
 		ventana.alojamiento.btnHabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de
 				// otros hoteles seleccionados
 				modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
@@ -168,6 +168,8 @@ public class controladorHotel {
 					// si se selecciona hotel
 					if (ventana.alojamiento.listaAlojamientos
 							.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size() - 1) {
+						
+						ventana.alojamiento.btn_habitacion_duda.setVisible(false);
 
 						try {
 							String columna[] = { "Descripci\u00f3n", "C.Individual", "C.Matrimonio", "C.Infantil",
@@ -229,7 +231,9 @@ public class controladorHotel {
 					// aqui hay que meter el metodo para que rellene la lista de dormitorios con las
 					// habitaciones que tiene la casa
 					else {
-
+						
+						ventana.alojamiento.btn_habitacion_duda.setVisible(true);
+						
 						try {
 
 							// llena la tabla usando el cod_casa de la casa seleccionada en la
@@ -318,6 +322,8 @@ public class controladorHotel {
 
 					}
 				}
+				
+				
 			}
 
 		});
@@ -355,9 +361,15 @@ public class controladorHotel {
 					{
 						descripcion_convertida+= descripcion.charAt(cont);
 								
-						if (descripcion_convertida.length() == (descripcion.length()/2)-2)
+						if (cont == (descripcion.length()/2)-2)
 						{
-							descripcion_convertida += "\n\t";
+							while (descripcion_convertida.charAt(cont) != ' ')	
+							{
+								cont += 1;
+								descripcion_convertida += descripcion.charAt(cont);
+							}
+		
+							descripcion_convertida += "\t\n\t";
 						}
 						
 
