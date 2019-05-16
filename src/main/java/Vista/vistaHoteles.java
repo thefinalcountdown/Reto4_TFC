@@ -75,7 +75,7 @@ public class vistaHoteles extends JPanel {
 		habitaciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		scrollPane_1.setViewportView(habitaciones);
 		
-		habitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		habitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		habitaciones.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		habitaciones.setRowHeight(50);
 		habitaciones.setRowMargin(20);

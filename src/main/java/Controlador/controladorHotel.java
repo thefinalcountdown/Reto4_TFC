@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import Modelo.Dormitorio;
@@ -207,7 +208,7 @@ public class controladorHotel {
 									ventana.alojamiento.modeloTabla.addRow(dormi);
 								}
 							ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
-							
+							ventana.alojamiento.habitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 							controladorReserva.alojamiento = modelo.modeloListaAlojamiento.hoteles
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 											- modelo.modeloListaAlojamiento.casas.size())
@@ -259,6 +260,7 @@ public class controladorHotel {
 												return false;
 											}
 										};
+										
 										for (int j = 0; j < modelo.habitacion.habitaciones.size(); j++) {
 											Object[] habita = { modelo.habitacion.habitaciones.get(j).getTipo(),
 //											modelo.habitacion.habitaciones.get(j).getDescripcion(),
@@ -269,6 +271,7 @@ public class controladorHotel {
 											ventana.alojamiento.modeloTabla.addRow(habita);
 
 											ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
+											ventana.alojamiento.habitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 											ventana.alojamiento.habitaciones.getColumnModel().getColumn(0)
 													.setPreferredWidth(100);
 											ventana.alojamiento.habitaciones.getColumnModel().getColumn(1)
@@ -297,6 +300,7 @@ public class controladorHotel {
 										}
 
 										ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
+										ventana.alojamiento.habitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 										ventana.alojamiento.habitaciones.getColumnModel().getColumn(0)
 												.setPreferredWidth(100);
 //							ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(280);
