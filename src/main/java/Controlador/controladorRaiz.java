@@ -14,6 +14,7 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import Modelo.Servicios;
 import Modelo.TemporadaAlta;
 import Modelo.fechasTarifas;
 import Modelo.modelo;
@@ -474,10 +475,85 @@ public class controladorRaiz {
 				ventana.reserva.textField_fechaDeEntrada.setText(fechaEntrada);
 				ventana.reserva.textField_fechaDeSalida.setText(fechaSalida);
 				
-
+				
+				
+				// SELECCION DE SERVICIOS
+				servicios_elegidos();
+				
+			
+				
+				
 			}
 		});
 
+	}
+	
+	public void servicios_elegidos ()
+	{
+		if(ventana.raiz.chckbxWifi.isSelected())
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Wifi", true));
+		}
+		else
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Wifi", false));
+		}
+		if(ventana.raiz.chckbxPiscina.isSelected())
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Piscina", true));
+		}
+		else
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Piscina", false));
+		}
+		if(ventana.raiz.chckbxSpa.isSelected())
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Spa", true));
+		}
+		else
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Spa", false));
+		}
+		if(ventana.raiz.chckbxParking.isSelected())
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Parking", true));
+		}
+		else
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Parking", false));
+		}
+		if(ventana.raiz.chckbxAireAcondicionado.isSelected())
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("AireAcondicionado", true));
+		}
+		else
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("AireAcondicionado", false));
+		}
+		if(ventana.raiz.chckbxRestaurante.isSelected())
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Restaurante", true));
+		}
+		else
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Restaurante", false));
+		}
+		if(ventana.raiz.chckbxBar.isSelected())
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Bar", true));
+		}
+		else
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Bar", false));
+		}
+		if(ventana.raiz.chckbxGimnasio.isSelected())
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Gimnasio", true));
+		}
+		else
+		{
+			modelo.modeloListaAlojamiento.servicios.add(new Servicios("Gimnasio", false));
+		}
 	}
 
 	public void llenarUbicaciones(ArrayList<String> ubicaciones) {
