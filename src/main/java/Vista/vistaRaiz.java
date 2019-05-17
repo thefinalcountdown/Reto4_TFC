@@ -16,6 +16,7 @@ import com.toedter.calendar.JDateChooser;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JCheckBox;
 
 public class vistaRaiz extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -39,6 +40,14 @@ public class vistaRaiz extends JPanel {
 	public JDateChooser fechaIn;
 	public JDateChooser fechaOut;
 	public Date fechaEntrada = new Date();
+	public JCheckBox chckbxWifi;
+	public JCheckBox chckbxPiscina;
+	public JCheckBox chckbxSpa;
+	public JCheckBox chckbxParking;
+	public JCheckBox chckbxAireAcondicionado;
+	public JCheckBox chckbxRestaurante;
+	public JCheckBox chckbxBar;
+	public JCheckBox chckbxGimnasio;
 
 	/**
 	 * Create the panel.
@@ -161,9 +170,45 @@ public class vistaRaiz extends JPanel {
 		add(btnSumHab);
 		
 		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.setBounds(686, 514, 198, 48);
+		btnBuscar.setBounds(736, 567, 198, 48);
 		add(btnBuscar);
 		btnBuscar.setEnabled(false);
+		
+		JLabel lblServiciosDeseados = new JLabel("SELECCIONE LOS SERVICIOS DESEADOS: ");
+		lblServiciosDeseados.setBounds(33, 465, 252, 16);
+		add(lblServiciosDeseados);
+		
+		chckbxWifi = new JCheckBox("WI-FI");
+		chckbxWifi.setBounds(33, 493, 69, 23);
+		add(chckbxWifi);
+		
+		chckbxPiscina = new JCheckBox("Piscina");
+		chckbxPiscina.setBounds(114, 493, 76, 23);
+		add(chckbxPiscina);
+		
+		chckbxSpa = new JCheckBox("Spa");
+		chckbxSpa.setBounds(200, 493, 54, 23);
+		add(chckbxSpa);
+		
+		chckbxParking = new JCheckBox("Parking");
+		chckbxParking.setBounds(264, 493, 79, 23);
+		add(chckbxParking);
+		
+		chckbxAireAcondicionado = new JCheckBox("Aire acondicionado");
+		chckbxAireAcondicionado.setBounds(355, 493, 153, 23);
+		add(chckbxAireAcondicionado);
+		
+		chckbxRestaurante = new JCheckBox("Restaurante");
+		chckbxRestaurante.setBounds(520, 493, 106, 23);
+		add(chckbxRestaurante);
+		
+		chckbxBar = new JCheckBox("Bar");
+		chckbxBar.setBounds(638, 493, 51, 23);
+		add(chckbxBar);
+		
+		chckbxGimnasio = new JCheckBox("Gimnasio");
+		chckbxGimnasio.setBounds(701, 493, 91, 23);
+		add(chckbxGimnasio);
 			
 		
 	}
