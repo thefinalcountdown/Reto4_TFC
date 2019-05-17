@@ -17,7 +17,7 @@ public class controladorFiltros {
 		this.ventana = ventana;
 		this.modelo = modelo;
 
-		ventana.alojamiento.btnTipo.addActionListener(new ActionListener() {
+		ventana.alojamiento.comboTipo.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();

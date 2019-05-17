@@ -87,6 +87,10 @@ public class ModeloListaAlojamiento implements ListModel {
 
 			casas.remove(index);
 		}
+		for (int index = apartamentos.size() - 1; index >= 0; index--) {
+
+			apartamentos.remove(index);
+		}
 
 	}
 	public static ArrayList<Casa> obtenerCasasyApt(String ubicacion) throws Exception {
