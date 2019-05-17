@@ -40,7 +40,7 @@ public class vistaHoteles extends JPanel {
 	public JLabel lblTipo = new JLabel("<html>Seleccione el tipo de alojamiento:</html>");
 	private String[] tipoAloj= {"Todos", "Apartamento", "Casa", "Hotel"};
 	public JComboBox<String> comboTipo = new JComboBox<>(tipoAloj);
-	public JButton btnTipo = new JButton("Filtrar");
+//	public JButton btnTipo = new JButton("Filtrar");
 	public JButton btn_habitacion_duda;
 	public JPanel panel = new JPanel();
 	public JTextArea texto_panel = new JTextArea();
@@ -52,7 +52,7 @@ public class vistaHoteles extends JPanel {
 		scrollPane.setBounds(20, 45, 550, 350);
 		add(scrollPane);
 		scrollPane_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		scrollPane_1.setBounds(674, 59, 522, 289);
+		scrollPane_1.setBounds(653, 59, 522, 289);
 		add(scrollPane_1);
 		scrollPane.setViewportView(listaAlojamientos);
 
@@ -67,10 +67,10 @@ public class vistaHoteles extends JPanel {
 		btnCancelar.setBounds(48, 446, 138, 61);
 		add(btnCancelar);
 
-		btnContinuar.setBounds(1058, 437, 138, 61);
+		btnContinuar.setBounds(1037, 409, 138, 61);
 		add(btnContinuar);
 
-		btnHabitaciones.setBounds(626, 199, 36, 25);
+		btnHabitaciones.setBounds(582, 184, 36, 25);
 		add(btnHabitaciones);
 
 		String columna[] = {""};
@@ -88,7 +88,7 @@ public class vistaHoteles extends JPanel {
 		habitaciones.setRowMargin(20);
 		
 		btn_habitacion_duda = new JButton("?");
-		btn_habitacion_duda.setBounds(1161, 360, 36, 37);
+		btn_habitacion_duda.setBounds(1140, 360, 36, 37);
 		btn_habitacion_duda.setVisible(false);
 		
 		add(btn_habitacion_duda);
@@ -103,15 +103,13 @@ public class vistaHoteles extends JPanel {
 		lblHabitaciones.setBounds(574, 103, 95, 84);
 		
 		add(lblHabitaciones);
-		
-		
-		btnTipo.setBounds(453, 5, 117, 29);
-		add(btnTipo);
+			
+//		btnTipo.setBounds(453, 5, 117, 29);
+//		add(btnTipo);
 		
 		
 		texto_panel.setEditable(false);
-	
-	
+
 
 	}
 }

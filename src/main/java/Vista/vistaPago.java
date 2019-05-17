@@ -29,8 +29,8 @@ public class vistaPago extends JPanel
 	public JButton moneda2cent = new JButton();
 	public JButton moneda1cent = new JButton();
 	public JTextField DineroFaltante = new JTextField();
-	private JLabel lblDineroIntroducido = new JLabel("Dinero Introducido");
-	private JLabel lblDineroFaltante = new JLabel("Dinero A Pagar");
+	public JLabel lblDineroIntroducido = new JLabel("Dinero Introducido");
+	public JLabel lblDineroFaltante = new JLabel("Dinero A Pagar");
 	public JTextField DineroIntroducido = new JTextField();
 	public JPanel panel = new JPanel();
 	public JTextArea texto_panel = new JTextArea();
