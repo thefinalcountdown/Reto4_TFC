@@ -404,6 +404,7 @@ public class controladorHotel {
 				ventana.cambio_panel(ventana.alojamiento, ventana.raiz);
 				try {
 					modelo.modeloListaAlojamiento.vaciarLista();
+					modelo.modeloListaAlojamiento.vaciarLista_Servicios();
 					modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -411,6 +412,7 @@ public class controladorHotel {
 				}
 				ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
 			}
+			
 
 		});
 

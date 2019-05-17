@@ -454,6 +454,9 @@ public class controladorRaiz {
 				
 
 				try {
+					
+					// SELECCION DE SERVICIOS
+					servicios_elegidos();
 					modelo.modeloListaAlojamiento.llenarLista(ubicacionSeleccionada);
 					ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
 
@@ -474,15 +477,6 @@ public class controladorRaiz {
 				String fechaSalida = formatoFecha.format(ventana.raiz.fechaOut.getDate());
 				ventana.reserva.textField_fechaDeEntrada.setText(fechaEntrada);
 				ventana.reserva.textField_fechaDeSalida.setText(fechaSalida);
-				
-				
-				
-				// SELECCION DE SERVICIOS
-				servicios_elegidos();
-				
-			
-				
-				
 			}
 		});
 

@@ -26,8 +26,6 @@ public class ModeloListaAlojamiento implements ListModel {
 			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
 			arrayString.add("Nombre: " + casas.get(index).getNombre() + "; Numero de ba\u00f1os: "
 					+ casas.get(index).getNum_banos() + "; Precio: " + casas.get(index).getPrecio() + "\u20ac");
-			
-			System.out.println(casas.get(index));
 		}
 
 		hoteles = obtenerHoteles(ubicacion);
@@ -36,8 +34,6 @@ public class ModeloListaAlojamiento implements ListModel {
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getEstrellas());
 			arrayString.add(
 					"Nombre: " + hoteles.get(index).getNombre() + "; Estrellas: " + hoteles.get(index).getEstrellas());
-			System.out.println("\n"+hoteles.get(index));
-
 		}
 
 	}
@@ -98,6 +94,16 @@ public class ModeloListaAlojamiento implements ListModel {
 		}
 
 	}
+	
+	public void vaciarLista_Servicios() 
+	{
+		for (int index = servicios.size() - 1; index >= 0; index--) 
+		{
+			servicios.remove(index);
+		}
+	}
+	
+	
 	public static ArrayList<Casa> obtenerCasasyApt(String ubicacion) throws Exception {
 
 		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, S.* " + 
