@@ -18,6 +18,7 @@ public class controladorPago
 	private Ventana ventana;
 	private modelo modelo;
 	
+
 	private double total_introducido=0;
 	public static double total_faltante;
 	private double total_devolucion = 0;
@@ -230,6 +231,8 @@ public class controladorPago
 		ventana.pago.Cancelar_Pago.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				ventana.reserva.formattedTextFieldCodigo.setText("");
+				ventana.reserva.btnCodigo.setEnabled(true);
 				ventana.cambio_panel(ventana.pago, ventana.reserva);
 				restablecer_datos();
 			}
