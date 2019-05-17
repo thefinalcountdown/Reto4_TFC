@@ -20,10 +20,14 @@ public class ModeloListaAlojamiento implements ListModel {
 	public void llenarLista(String ubicacion) throws Exception {
 		casas = obtenerCasasyApt(ubicacion);
 
+		
+		
 		for (int index = 0; index < casas.size(); index++) {
 			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
 			arrayString.add("Nombre: " + casas.get(index).getNombre() + "; Numero de ba\u00f1os: "
 					+ casas.get(index).getNum_banos() + "; Precio: " + casas.get(index).getPrecio() + "\u20ac");
+			
+			System.out.println(casas.get(index));
 		}
 
 		hoteles = obtenerHoteles(ubicacion);
@@ -32,6 +36,7 @@ public class ModeloListaAlojamiento implements ListModel {
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getEstrellas());
 			arrayString.add(
 					"Nombre: " + hoteles.get(index).getNombre() + "; Estrellas: " + hoteles.get(index).getEstrellas());
+			System.out.println("\n"+hoteles.get(index));
 
 		}
 
@@ -45,7 +50,6 @@ public class ModeloListaAlojamiento implements ListModel {
 			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getEstrellas());
 			arrayString.add(
 					"Nombre: " + hoteles.get(index).getNombre() + "; Estrellas: " + hoteles.get(index).getEstrellas());
-
 		}
 
 	}
@@ -96,9 +100,19 @@ public class ModeloListaAlojamiento implements ListModel {
 	}
 	public static ArrayList<Casa> obtenerCasasyApt(String ubicacion) throws Exception {
 
-		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos, Superficie_casa, piso, Precio_casa from Alojamiento A "
-				+ "inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa "
-				+ "where ubicacion='%s' group by nombre,ubicacion, Cod_Alojamiento, num_banos";
+		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, S.* " + 
+				"from Alojamiento A inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
+				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento " + 
+				"where ubicacion='"+ubicacion+"' \n";
+		
+		for (int cont = 0; cont < servicios.size(); cont++)
+		{
+			if(servicios.get(cont).isServicio_elegido())
+			{
+				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" = "+1+"\n";
+			}		
+		}
+		
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
@@ -115,19 +129,16 @@ public class ModeloListaAlojamiento implements ListModel {
 		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, S.* " + 
 				"from Alojamiento A inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
 				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento " + 
-				"where ubicacion='"+ubicacion+"' and piso is null";
+				"where ubicacion='"+ubicacion+"' and piso is null \n";
 		
 		for (int cont = 0; cont < servicios.size(); cont++)
 		{
 			if(servicios.get(cont).isServicio_elegido())
 			{
 				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" = "+1+"\n";
-			}
-			else
-			{
-				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" is null\n";
 			}		
 		}
+		
 		
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
@@ -145,7 +156,7 @@ public class ModeloListaAlojamiento implements ListModel {
 		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, S.* " + 
 				"from Alojamiento A inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
 				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento " + 
-				"where ubicacion='"+ubicacion+"' and piso is not null ";
+				"where ubicacion='"+ubicacion+"' and piso is not null \n";
 		
 		for (int cont = 0; cont < servicios.size(); cont++)
 		{
@@ -153,12 +164,8 @@ public class ModeloListaAlojamiento implements ListModel {
 			{
 				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" = "+1+"\n";
 			}
-			else
-			{
-				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" is null\n";
-			}
-			
 		}
+		
 		
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
@@ -173,14 +180,12 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public static ArrayList<Hotel> obtenerHoteles(String ubicacion) throws Exception {
 		
-		System.out.println(servicios.size());
-		
 		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, H.estrellas, S.* "
 				+ "from Alojamiento A inner join Hotel H "
 				+ "on A.Cod_alojamiento=H.Cod_Hotel "
 				+ "inner join Servicios S "
 				+ "on A.Cod_Alojamiento = S.Cod_Alojamiento "
-				+ "where A.ubicacion = '"+ubicacion+"'";
+				+ "where A.ubicacion = '"+ubicacion+"' \n";
 		
 		for (int cont = 0; cont < servicios.size(); cont++)
 		{
@@ -188,14 +193,10 @@ public class ModeloListaAlojamiento implements ListModel {
 			{
 				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" = "+1+"\n";
 			}
-			else
-			{
-				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" is null\n";
-			}
-			
 		}
 		
 		sentencia = String.format(sentencia, ubicacion);
+		int cont = 0;
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			hoteles.add(new Hotel(result.getString("nombre"), result.getString("ubicacion"),
