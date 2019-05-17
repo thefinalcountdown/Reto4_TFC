@@ -106,10 +106,10 @@ public class ModeloListaAlojamiento implements ListModel {
 	
 	public static ArrayList<Casa> obtenerCasasyApt(String ubicacion) throws Exception {
 
-		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, S.* " + 
-				"from Alojamiento A inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
-				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento " + 
-				"where ubicacion='"+ubicacion+"' \n";
+		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, COUNT(R.Cod_reserva) as codigoReserva \n" + 
+				"from  Alojamiento A LEFT JOIN Reserva R ON A.Cod_Alojamiento = R.Cod_Alojamiento inner join vista_casa CA \n" + 
+				"on A.Cod_Alojamiento=CA.Cod_Casa \n" + 
+				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento where A.ubicacion='"+ubicacion+"'";
 		
 		for (int cont = 0; cont < servicios.size(); cont++)
 		{
@@ -119,7 +119,9 @@ public class ModeloListaAlojamiento implements ListModel {
 			}		
 		}
 		
-		sentencia = String.format(sentencia, ubicacion);
+		sentencia += "GROUP BY A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa \n" + 
+				"order by codigoReserva desc";
+		
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
@@ -132,10 +134,10 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public static ArrayList<Casa> obtenerCasas(String ubicacion) throws Exception {
 
-		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, S.* " + 
-				"from Alojamiento A inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
-				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento " + 
-				"where ubicacion='"+ubicacion+"' and piso is null \n";
+		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, COUNT(R.Cod_reserva) as codigoReserva \n" + 
+				"from  Alojamiento A LEFT JOIN Reserva R ON A.Cod_Alojamiento = R.Cod_Alojamiento inner join vista_casa CA \n" + 
+				"on A.Cod_Alojamiento=CA.Cod_Casa \n" + 
+				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento where A.ubicacion='"+ubicacion+"' and piso is null \n";
 		
 		for (int cont = 0; cont < servicios.size(); cont++)
 		{
@@ -144,9 +146,10 @@ public class ModeloListaAlojamiento implements ListModel {
 				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" = "+1+"\n";
 			}		
 		}
+		sentencia += "GROUP BY A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa \n" + 
+				"order by codigoReserva desc";
 		
 		
-		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
@@ -159,10 +162,10 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public static ArrayList<Casa> obtenerApartamentos(String ubicacion) throws Exception {
 
-		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, S.* " + 
-				"from Alojamiento A inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
-				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento " + 
-				"where ubicacion='"+ubicacion+"' and piso is not null \n";
+		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa, COUNT(R.Cod_reserva) as codigoReserva \n" + 
+				"from  Alojamiento A LEFT JOIN Reserva R ON A.Cod_Alojamiento = R.Cod_Alojamiento inner join vista_casa CA \n" + 
+				"on A.Cod_Alojamiento=CA.Cod_Casa \n" + 
+				"inner join Servicios S on A.Cod_Alojamiento = S.Cod_Alojamiento where A.ubicacion='"+ubicacion+"' and piso is not null \n";
 		
 		for (int cont = 0; cont < servicios.size(); cont++)
 		{
@@ -172,8 +175,10 @@ public class ModeloListaAlojamiento implements ListModel {
 			}
 		}
 		
+		sentencia += "GROUP BY A.Nombre, A.Ubicacion, A.Cod_Alojamiento, CA.Num_banos, CA.Superficie_casa, CA.Piso, CA.Precio_casa \n" + 
+				"order by codigoReserva desc";
 		
-		sentencia = String.format(sentencia, ubicacion);
+		
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			apartamentos.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
@@ -186,12 +191,13 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public static ArrayList<Hotel> obtenerHoteles(String ubicacion) throws Exception {
 		
-		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, H.estrellas, S.* "
-				+ "from Alojamiento A inner join Hotel H "
-				+ "on A.Cod_alojamiento=H.Cod_Hotel "
-				+ "inner join Servicios S "
-				+ "on A.Cod_Alojamiento = S.Cod_Alojamiento "
-				+ "where A.ubicacion = '"+ubicacion+"' \n";
+		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, H.estrellas, COUNT(R.Cod_reserva) as codigoReserva \n" + 
+				"from Alojamiento A LEFT JOIN Reserva R ON A.Cod_Alojamiento = R.Cod_Alojamiento \n" + 
+				"inner join Hotel H \n" + 
+				"on A.Cod_alojamiento=H.Cod_Hotel \n" + 
+				"inner join Servicios S \n" + 
+				"on A.Cod_Alojamiento = S.Cod_Alojamiento \n" + 
+				"where A.ubicacion= '"+ubicacion+"' \n";
 		
 		for (int cont = 0; cont < servicios.size(); cont++)
 		{
@@ -201,7 +207,8 @@ public class ModeloListaAlojamiento implements ListModel {
 			}
 		}
 		
-		sentencia = String.format(sentencia, ubicacion);
+		sentencia +="GROUP BY A.Nombre, A.Ubicacion, A.Cod_Alojamiento, H.estrellas \n"+
+				"order by codigoReserva desc";
 		int cont = 0;
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {

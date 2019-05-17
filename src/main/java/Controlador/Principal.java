@@ -22,6 +22,7 @@ public class Principal {
 
 	public void iniciar()
 	{
+		
 		Ventana ventana = new Ventana();
 		modelo modelo = new modelo();
 		Controlador controlador = new Controlador(ventana, modelo);
@@ -30,4 +31,6 @@ public class Principal {
 		
 		ventana.setVisible(true);
 	}
+	
+	
 }
