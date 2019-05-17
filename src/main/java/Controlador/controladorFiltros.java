@@ -21,12 +21,10 @@ public class controladorFiltros {
 
 			public void actionPerformed(ActionEvent e) {
 				String ubicacionSeleccionada = ventana.raiz.comboBoxUbicacion.getSelectedItem().toString();
-				System.out.println("Holi");
 				// vaciamos la lista y la tabla
 				modelo.modeloListaAlojamiento.vaciarLista();
 				modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
 
-				System.out.println(ventana.alojamiento.comboTipo.getSelectedItem().toString());
 				// diferentes listas dependiendo del alojamiento seleccionado
 
 				if (ventana.alojamiento.comboTipo.getSelectedItem().toString() == "Todos") {

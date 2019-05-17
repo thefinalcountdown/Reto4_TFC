@@ -86,9 +86,7 @@ public class controladorHotel {
 
 							for (int i = 0; i < selection.length; i++) {
 								precioBase += modelo.dormitorio.dormitorios.get(selection[i]).getPrecio();
-								System.out.println(precioBase + " " + i);
 							}
-							System.out.println(precioBase);
 							double precio = calculo_precio(precioBase, fechaIn, fechaOut);
 							ventana.reserva.textField_precio.setText(Double.toString(precio));
 
@@ -100,8 +98,6 @@ public class controladorHotel {
 											.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 													- modelo.modeloListaAlojamiento.casas.size())
 											.getNombre());
-
-							System.out.println(ventana.reserva.textField_precio.getText());
 
 							ventana.cambio_panel(ventana.alojamiento, ventana.reserva);
 
@@ -126,12 +122,9 @@ public class controladorHotel {
 
 						double precioBase = modelo.modeloListaAlojamiento.casas
 								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getPrecio();
-						System.out.println(precioBase);
 						double precio = calculo_precio(precioBase, fechaIn, fechaOut);
-						System.out.println(precioBase + " " + fechaIn + " " + fechaOut);
 						// pasa parametros a reserva
 						ventana.reserva.textField_precio.setText(Double.toString(precio));
-						System.out.println(ventana.reserva.textField_precio.getText());
 
 						// manda el nombre de la casa/apt a reserva
 						ventana.reserva.textField_alojamientoseleccionado.setText(modelo.modeloListaAlojamiento.casas
@@ -168,7 +161,7 @@ public class controladorHotel {
 					// if para comprobar si se ha seleccionado una casa o un hotel; dentro del if es
 					// si se selecciona hotel
 					if (ventana.alojamiento.listaAlojamientos
-							.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size() - 1) {
+							.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size()+modelo.modeloListaAlojamiento.apartamentos.size() - 1) {
 
 						ventana.alojamiento.btn_habitacion_duda.setVisible(false);
 
@@ -188,7 +181,7 @@ public class controladorHotel {
 									.obtenerDormitorios(
 											modelo.modeloListaAlojamiento.hoteles
 													.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
-															- modelo.modeloListaAlojamiento.casas.size())
+															- modelo.modeloListaAlojamiento.casas.size()-modelo.modeloListaAlojamiento.apartamentos.size())
 													.getCod_alojamiento(),
 											ventana.reserva.textField_fechaDeEntrada.getText(),
 											ventana.reserva.textField_fechaDeSalida.getText());
@@ -230,11 +223,80 @@ public class controladorHotel {
 					}
 
 					// si se trata de una casa/aptmn...
-					// aqui hay que meter el metodo para que rellene la lista de dormitorios con las
+					// aqui va el metodo para que rellene la lista de dormitorios con las
 					// habitaciones que tiene la casa
+					
+					//APARTAMENTOS
+					else if(ventana.alojamiento.listaAlojamientos
+							.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size()- 1) {
+						ventana.alojamiento.btn_habitacion_duda.setVisible(true);
+						try {
+
+							// llena la tabla usando el cod_casa de la casa seleccionada en la
+							// listaAlojamiento
+
+							modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.apartamentos
+									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento(),
+									ventana.reserva.textField_fechaDeEntrada.getText(),
+									ventana.reserva.textField_fechaDeSalida.getText());
+
+							if (modelo.habitacion.habitaciones.size() == 0) {
+								JOptionPane.showMessageDialog(null,
+										"El alojamiento no esta disponible para las fechas seleccionadas");
+							} else
+
+								for (Habitacion h : modelo.habitacion.habitaciones) {
+									if (modelo.modeloListaAlojamiento.apartamentos
+											.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex())
+											.getPiso() != 0) {
+
+										String columna[] = { "Tipo", "Superficie", "Piso" };
+										// String columna[] = { "Tipo", "Descripci\u00f3n", "Superficie", "Piso" };
+										ventana.alojamiento.modeloTabla = new DefaultTableModel(columna, 0) {
+											@Override
+											public boolean isCellEditable(int row, int column) {
+												// all cells false
+												return false;
+											}
+										};
+
+										for (int j = 0; j < modelo.habitacion.habitaciones.size(); j++) {
+											Object[] habita = { modelo.habitacion.habitaciones.get(j).getTipo(),
+//											modelo.habitacion.habitaciones.get(j).getDescripcion(),
+													(modelo.habitacion.habitaciones.get(j).getMetrosCuadrados() + "m2"),
+													modelo.modeloListaAlojamiento.apartamentos.get(
+															ventana.alojamiento.listaAlojamientos.getSelectedIndex())
+															.getPiso() };
+											ventana.alojamiento.modeloTabla.addRow(habita);
+
+											ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
+											ventana.alojamiento.habitaciones
+													.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+											ventana.alojamiento.habitaciones.getColumnModel().getColumn(0)
+													.setPreferredWidth(100);
+											ventana.alojamiento.habitaciones.getColumnModel().getColumn(1)
+													.setPreferredWidth(70);
+											ventana.alojamiento.habitaciones.getColumnModel().getColumn(2)
+													.setPreferredWidth(70);
+//									ventana.alojamiento.habitaciones.getColumnModel().getColumn(3).setPreferredWidth(100);
+
+										}
+									}
+								}}
+										catch (Exception e1) {
+											System.out.println("El ArrayList de habitaciones no ha sido rellenado");
+											e1.printStackTrace();
+										
+									
+									
+					}
+					}
+					
+					//CASA
 					else {
 
 						ventana.alojamiento.btn_habitacion_duda.setVisible(true);
+						
 
 						try {
 
