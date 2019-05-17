@@ -19,6 +19,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.EtchedBorder;
 import java.awt.Cursor;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 
 public class vistaHoteles extends JPanel {
 
@@ -35,35 +37,40 @@ public class vistaHoteles extends JPanel {
 	public JButton btnContinuar = new JButton("Continuar");
 	public JButton btnHabitaciones = new JButton("->");
 	
+	public JLabel lblTipo = new JLabel("<html>Seleccione el tipo de alojamiento:</html>");
+	private String[] tipoAloj= {"Todos", "Apartamento", "Casa", "Hotel"};
+	public JComboBox<String> comboTipo = new JComboBox<>(tipoAloj);
+	public JButton btnTipo = new JButton("Filtrar");
 	public JButton btn_habitacion_duda;
 	public JPanel panel = new JPanel();
 	public JTextArea texto_panel = new JTextArea();
+	private final JLabel lblHabitaciones = new JLabel("<html>Seleccione tipo de habitaci\u00f3n:</html>");
 
 	public vistaHoteles() {
 
 		setLayout(null);
-		scrollPane.setBounds(43, 35, 550, 350);
+		scrollPane.setBounds(20, 45, 550, 350);
 		add(scrollPane);
 		scrollPane_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		scrollPane_1.setBounds(641, 60, 522, 289);
+		scrollPane_1.setBounds(674, 59, 522, 289);
 		add(scrollPane_1);
 		scrollPane.setViewportView(listaAlojamientos);
 
 		listaAlojamientos.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null),
-				"Seleccione un hotel:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));
+				"Seleccione un alojamiento:", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(235, 145, 168)));
 		listaAlojamientos.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		listaAlojamientos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaAlojamientos.setFixedCellHeight(50);
 		listaAlojamientos.setFixedCellWidth(100);
 
 		btnCancelar.setFont(new Font("Lucida Grande", Font.BOLD, 15));
-		btnCancelar.setBounds(72, 437, 138, 61);
+		btnCancelar.setBounds(48, 446, 138, 61);
 		add(btnCancelar);
 
-		btnContinuar.setBounds(612, 437, 138, 61);
+		btnContinuar.setBounds(1058, 437, 138, 61);
 		add(btnContinuar);
 
-		btnHabitaciones.setBounds(602, 198, 36, 25);
+		btnHabitaciones.setBounds(626, 199, 36, 25);
 		add(btnHabitaciones);
 
 		String columna[] = {""};
@@ -81,10 +88,25 @@ public class vistaHoteles extends JPanel {
 		habitaciones.setRowMargin(20);
 		
 		btn_habitacion_duda = new JButton("?");
-		btn_habitacion_duda.setBounds(1128, 361, 36, 37);
+		btn_habitacion_duda.setBounds(1161, 360, 36, 37);
 		btn_habitacion_duda.setVisible(false);
 		
 		add(btn_habitacion_duda);
+		
+		
+		comboTipo.setBounds(273, 6, 167, 27);
+		add(comboTipo);
+		
+		
+		lblTipo.setBounds(43, 6, 199, 27);
+		add(lblTipo);
+		lblHabitaciones.setBounds(574, 103, 95, 84);
+		
+		add(lblHabitaciones);
+		
+		
+		btnTipo.setBounds(453, 5, 117, 29);
+		add(btnTipo);
 		
 		
 		texto_panel.setEditable(false);
@@ -92,8 +114,4 @@ public class vistaHoteles extends JPanel {
 	
 
 	}
-	
-	
-	
-
 }

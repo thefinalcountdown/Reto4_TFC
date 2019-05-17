@@ -14,14 +14,15 @@ public class ModeloListaAlojamiento implements ListModel {
 	public ArrayList<String> arrayString = new ArrayList<String>();
 	public static ArrayList<Casa> casas = new ArrayList<Casa>();
 	public static ArrayList<Hotel> hoteles = new ArrayList<Hotel>();
+	public static ArrayList<Casa> apartamentos = new ArrayList<Casa>();
 
 	public void llenarLista(String ubicacion) throws Exception {
-		casas = obtenerCasas(ubicacion);
+		casas = obtenerCasasyApt(ubicacion);
 
 		for (int index = 0; index < casas.size(); index++) {
 			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
 			arrayString.add("Nombre: " + casas.get(index).getNombre() + "; Numero de ba\u00f1os: "
-					+ casas.get(index).getNum_banos()+"; Precio: "+casas.get(index).getPrecio()+"\u20ac");
+					+ casas.get(index).getNum_banos() + "; Precio: " + casas.get(index).getPrecio() + "\u20ac");
 		}
 
 		hoteles = obtenerHoteles(ubicacion);
@@ -31,6 +32,42 @@ public class ModeloListaAlojamiento implements ListModel {
 			arrayString.add(
 					"Nombre: " + hoteles.get(index).getNombre() + "; Estrellas: " + hoteles.get(index).getEstrellas());
 
+		}
+
+	}
+
+	public void llenarListaHoteles(String ubicacion) throws Exception {
+
+		hoteles = obtenerHoteles(ubicacion);
+
+		for (int index = 0; index < hoteles.size(); index++) {
+			makeObj(hoteles.get(index).getNombre(), hoteles.get(index).getEstrellas());
+			arrayString.add(
+					"Nombre: " + hoteles.get(index).getNombre() + "; Estrellas: " + hoteles.get(index).getEstrellas());
+
+		}
+
+	}
+
+	public void llenarListaCasas(String ubicacion) throws Exception {
+		casas = obtenerCasas(ubicacion);
+
+		for (int index = 0; index < casas.size(); index++) {
+			makeObj(casas.get(index).getNombre(), casas.get(index).getNum_banos());
+			arrayString.add("Nombre: " + casas.get(index).getNombre() + "; Numero de ba\u00f1os: "
+					+ casas.get(index).getNum_banos() + "; Precio: " + casas.get(index).getPrecio() + "\u20ac");
+		}
+
+	}
+
+	public void llenarListaApartamentos(String ubicacion) throws Exception {
+		apartamentos = obtenerApartamentos(ubicacion);
+
+		for (int index = 0; index < apartamentos.size(); index++) {
+			makeObj(apartamentos.get(index).getNombre(), apartamentos.get(index).getNum_banos());
+			arrayString.add("Nombre: " + apartamentos.get(index).getNombre() + "; Numero de ba\u00f1os: "
+					+ apartamentos.get(index).getNum_banos() + "; Precio: " + apartamentos.get(index).getPrecio()
+					+ "\u20ac");
 		}
 
 	}
@@ -52,13 +89,11 @@ public class ModeloListaAlojamiento implements ListModel {
 		}
 
 	}
+	public static ArrayList<Casa> obtenerCasasyApt(String ubicacion) throws Exception {
 
-	public static ArrayList<Casa> obtenerCasas(String ubicacion) throws Exception {
-
-		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos, Superficie_casa, piso, Precio_casa from Alojamiento A " + 
-				"inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa " + 
-				"where ubicacion='%s' " + 
-				"group by nombre,ubicacion, Cod_Alojamiento, num_banos";
+		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos, Superficie_casa, piso, Precio_casa from Alojamiento A "
+				+ "inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa "
+				+ "where ubicacion='%s' group by nombre,ubicacion, Cod_Alojamiento, num_banos";
 		sentencia = String.format(sentencia, ubicacion);
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
@@ -67,6 +102,38 @@ public class ModeloListaAlojamiento implements ListModel {
 					result.getInt("Piso"), result.getDouble("Precio_casa")));
 		}
 		return casas;
+
+	}
+
+	public static ArrayList<Casa> obtenerCasas(String ubicacion) throws Exception {
+
+		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos, Superficie_casa, piso, Precio_casa from Alojamiento A "
+				+ "inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa "
+				+ "where ubicacion='%s' and piso is null group by nombre,ubicacion, Cod_Alojamiento, num_banos";
+		sentencia = String.format(sentencia, ubicacion);
+		ResultSet result = GestorBD.consulta(sentencia);
+		while (result.next()) {
+			casas.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
+					result.getInt("Cod_Alojamiento"), result.getInt("Num_banos"), result.getDouble("Superficie_casa"),
+					result.getInt("Piso"), result.getDouble("Precio_casa")));
+		}
+		return casas;
+
+	}
+
+	public static ArrayList<Casa> obtenerApartamentos(String ubicacion) throws Exception {
+
+		String sentencia = "select nombre, ubicacion, Cod_Alojamiento, num_banos, Superficie_casa, piso, Precio_casa from Alojamiento A "
+				+ "inner join vista_casa CA on A.Cod_Alojamiento=CA.Cod_Casa where ubicacion='%s' and piso is not null"
+				+ " group by nombre,ubicacion, Cod_Alojamiento, num_banos";
+		sentencia = String.format(sentencia, ubicacion);
+		ResultSet result = GestorBD.consulta(sentencia);
+		while (result.next()) {
+			apartamentos.add(new Casa(result.getString("Nombre"), result.getString("Ubicacion"),
+					result.getInt("Cod_Alojamiento"), result.getInt("Num_banos"), result.getDouble("Superficie_casa"),
+					result.getInt("Piso"), result.getDouble("Precio_casa")));
+		}
+		return apartamentos;
 
 	}
 

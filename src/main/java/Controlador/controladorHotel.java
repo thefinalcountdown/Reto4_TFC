@@ -72,12 +72,12 @@ public class controladorHotel {
 
 							for (int i = 0; i < selection.length; i++) {
 								if (controladorRaiz.num_huespedes > (modelo.dormitorio.dormitorios.get(selection[i])
-										.getCamaMatrimonio()+1
+										.getCamaMatrimonio() + 1
 										+ modelo.dormitorio.dormitorios.get(selection[i]).getCamaIndividual())) {
 
-									JOptionPane.showMessageDialog(null,
-											"No somos un servicio de pateras");
-								}else break;
+									JOptionPane.showMessageDialog(null, "No somos un servicio de pateras");
+								} else
+									break;
 							}
 
 							double precioBase = 0;
@@ -155,7 +155,7 @@ public class controladorHotel {
 
 		ventana.alojamiento.btnHabitaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				// vaciamos la lista cada vez que se le da al boton para que no conserve lo de
 				// otros hoteles seleccionados
 				modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
@@ -169,7 +169,7 @@ public class controladorHotel {
 					// si se selecciona hotel
 					if (ventana.alojamiento.listaAlojamientos
 							.getSelectedIndex() > modelo.modeloListaAlojamiento.casas.size() - 1) {
-						
+
 						ventana.alojamiento.btn_habitacion_duda.setVisible(false);
 
 						try {
@@ -210,12 +210,13 @@ public class controladorHotel {
 									ventana.alojamiento.modeloTabla.addRow(dormi);
 								}
 							ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
-							ventana.alojamiento.habitaciones.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+							ventana.alojamiento.habitaciones
+									.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 							controladorReserva.alojamiento = modelo.modeloListaAlojamiento.hoteles
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 											- modelo.modeloListaAlojamiento.casas.size())
 									.getCod_alojamiento();
-							
+
 							controladorPago.codalojamiento = modelo.modeloListaAlojamiento.hoteles
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()
 											- modelo.modeloListaAlojamiento.casas.size())
@@ -232,9 +233,9 @@ public class controladorHotel {
 					// aqui hay que meter el metodo para que rellene la lista de dormitorios con las
 					// habitaciones que tiene la casa
 					else {
-						
+
 						ventana.alojamiento.btn_habitacion_duda.setVisible(true);
-						
+
 						try {
 
 							// llena la tabla usando el cod_casa de la casa seleccionada en la
@@ -264,7 +265,7 @@ public class controladorHotel {
 												return false;
 											}
 										};
-										
+
 										for (int j = 0; j < modelo.habitacion.habitaciones.size(); j++) {
 											Object[] habita = { modelo.habitacion.habitaciones.get(j).getTipo(),
 //											modelo.habitacion.habitaciones.get(j).getDescripcion(),
@@ -275,7 +276,8 @@ public class controladorHotel {
 											ventana.alojamiento.modeloTabla.addRow(habita);
 
 											ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
-											ventana.alojamiento.habitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+											ventana.alojamiento.habitaciones
+													.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 											ventana.alojamiento.habitaciones.getColumnModel().getColumn(0)
 													.setPreferredWidth(100);
 											ventana.alojamiento.habitaciones.getColumnModel().getColumn(1)
@@ -304,7 +306,8 @@ public class controladorHotel {
 										}
 
 										ventana.alojamiento.habitaciones.setModel(ventana.alojamiento.modeloTabla);
-										ventana.alojamiento.habitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+										ventana.alojamiento.habitaciones
+												.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 										ventana.alojamiento.habitaciones.getColumnModel().getColumn(0)
 												.setPreferredWidth(100);
 //							ventana.alojamiento.habitaciones.getColumnModel().getColumn(1).setPreferredWidth(280);
@@ -312,7 +315,7 @@ public class controladorHotel {
 												.setPreferredWidth(70);
 									}
 								}
-							
+
 							controladorReserva.alojamiento = modelo.modeloListaAlojamiento.casas
 									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento();
 
@@ -326,8 +329,7 @@ public class controladorHotel {
 
 					}
 				}
-				
-				
+
 			}
 
 		});
@@ -353,56 +355,42 @@ public class controladorHotel {
 		ventana.alojamiento.btn_habitacion_duda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int[] selection = ventana.alojamiento.habitaciones.getSelectedRows();
-				
-				
-				if (selection.length > 0)
-				{
+
+				if (selection.length > 0) {
 					String descripcion = modelo.habitacion.habitaciones.get(selection[0]).getDescripcion();
 					String descripcion_convertida = "";
 
-					
-					for(int cont = 0; cont < descripcion.length(); cont++)
-					{
-						descripcion_convertida+= descripcion.charAt(cont);
-								
-						if (cont == (descripcion.length()/2)-2)
-						{
-							while (descripcion_convertida.charAt(cont) != ' ')	
-							{
+					for (int cont = 0; cont < descripcion.length(); cont++) {
+						descripcion_convertida += descripcion.charAt(cont);
+
+						if (cont == (descripcion.length() / 2) - 2) {
+							while (descripcion_convertida.charAt(cont) != ' ') {
 								cont += 1;
 								descripcion_convertida += descripcion.charAt(cont);
 							}
-		
+
 							descripcion_convertida += "\t\n\t";
 						}
-						
 
 					}
-					
-					
-					ventana.alojamiento.texto_panel.setText("\n\t   -  "+descripcion_convertida+"\t\t\n\n");
+
+					ventana.alojamiento.texto_panel.setText("\n\t   -  " + descripcion_convertida + "\t\t\n\n");
 					ventana.alojamiento.panel.add(ventana.alojamiento.texto_panel);
-					
-					
-					JOptionPane.showMessageDialog(ventana, ventana.alojamiento.panel, "Informaci\u00f3n "+modelo.habitacion.habitaciones.get(selection[0]).getTipo()
-							, JOptionPane.INFORMATION_MESSAGE);
+
+					JOptionPane.showMessageDialog(ventana, ventana.alojamiento.panel,
+							"Informaci\u00f3n " + modelo.habitacion.habitaciones.get(selection[0]).getTipo(),
+							JOptionPane.INFORMATION_MESSAGE);
 				}
-				
-				else
-				{
-					JOptionPane.showMessageDialog(ventana, "Seleccione una habitaci\u00f3n si necesita informaci\u00f3n.");
+
+				else {
+					JOptionPane.showMessageDialog(ventana,
+							"Seleccione una habitaci\u00f3n si necesita informaci\u00f3n.");
 				}
-				
+
 			}
 		});
 
 	}
-	
-	
-	
-	
-	
-	
 
 	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut) {
 

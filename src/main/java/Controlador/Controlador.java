@@ -16,6 +16,7 @@ public class Controlador {
 	public controladorPago controladorPago;
 	public controladorReserva controladorReserva;
 	public controladorHotel controladorHotel;
+	public controladorFiltros controladorFiltro;
 
 	public Controlador(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
@@ -28,6 +29,7 @@ public class Controlador {
 		this.controladorAceptarCondiciones = new controladorAceptarCondiciones(ventana, modelo);
 		this.controladorRaiz = new controladorRaiz(ventana, modelo);
 		this.controladorHotel = new controladorHotel(ventana, modelo);
+		this.controladorFiltro= new controladorFiltros(ventana,modelo);
 		this.controladorReserva = new controladorReserva(ventana, modelo);
 		this.controladorPago = new controladorPago(ventana, modelo);
 
