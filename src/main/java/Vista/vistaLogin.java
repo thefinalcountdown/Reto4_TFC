@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JFormattedTextField;
+import javax.swing.JSeparator;
+import java.awt.Color;
 
 public class vistaLogin extends JPanel {
 
@@ -19,24 +21,28 @@ public class vistaLogin extends JPanel {
 	private JLabel lblLoginDni;
 	private JLabel lblLoginClave;
 	private JLabel lblLoginUsuario;
+	private JSeparator separator;
 
 	public vistaLogin() {
 
 		setLayout(null);
 
-		btnLogin = new JButton("Login");
+		btnLogin = new JButton("");
+		btnLogin.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/login.png"));
 		btnLogin.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnLogin.setBounds(537, 354, 125, 37);
+		btnLogin.setBounds(519, 354, 134, 37);
 		add(btnLogin);
 		
-		btnRegistro = new JButton("Nuevo Registro");
+		btnRegistro = new JButton("");
+		btnRegistro.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/nuevoRegistro.png"));
 		btnRegistro.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnRegistro.setBounds(411, 530, 163, 29);
+		btnRegistro.setBounds(411, 526, 172, 37);
 		add(btnRegistro);
 		
-		btnModificar = new JButton("Modificar Usuario");
+		btnModificar = new JButton("");
+		btnModificar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/modificarUsuario.png"));
 		btnModificar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		btnModificar.setBounds(637, 530, 183, 29);
+		btnModificar.setBounds(637, 530, 172, 29);
 		add(btnModificar);
 
 		formattedTextFieldLoginDNI = new JFormattedTextField();
@@ -66,6 +72,11 @@ public class vistaLogin extends JPanel {
 		background.setIcon(new ImageIcon("Imagenes/bg.jpg"));
 		background.setBounds(6, 6, 1279, 700);
 		add(background);
+		
+		separator = new JSeparator();
+		separator.setForeground(Color.BLACK);
+		separator.setBounds(237, 154, 750, 12);
+		add(separator);
 		
 
 	}

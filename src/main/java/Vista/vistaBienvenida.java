@@ -15,13 +15,13 @@ public class vistaBienvenida extends JPanel {
 		setLayout(null);
 		
 		JLabel lblPulseParaComenzar = new JLabel("PULSE PARA COMENZAR SU RESERVA");
-		lblPulseParaComenzar.setFont(new Font("Apple Color Emoji", Font.BOLD, 18));
-		lblPulseParaComenzar.setBounds(452, 503, 385, 16);
+		lblPulseParaComenzar.setFont(new Font("Apple Color Emoji", Font.BOLD, 28));
+		lblPulseParaComenzar.setBounds(365, 153, 578, 58);
 		add(lblPulseParaComenzar);
 		
 		
 		btnBienvenida.setIcon(new javax.swing.ImageIcon("Imagenes/gif-aviao.gif"));
-		btnBienvenida.setBounds(6, 6, 1279, 600);
+		btnBienvenida.setBounds(-13, -21, 1296, 800);
 		add(btnBienvenida);
 		
 	}

@@ -51,6 +51,7 @@ public class vistaRaiz extends JPanel {
 	public JCheckBox chckbxBar;
 	public JCheckBox chckbxGimnasio;
 	private JSeparator separator_1;
+	private JSeparator separator_2;
 
 	/**
 	 * Create the panel.
@@ -64,7 +65,7 @@ public class vistaRaiz extends JPanel {
 		lblNewLabel.setBounds(419, 54, 420, 31);
 		add(lblNewLabel);
 		
-		lblDnde = new JLabel("DONDE");
+		lblDnde = new JLabel("DÓNDE");
 		lblDnde.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDnde.setBounds(573, 121, 69, 31);
 		add(lblDnde);
@@ -75,7 +76,7 @@ public class vistaRaiz extends JPanel {
 		add(comboBoxUbicacion);
 		
 		//Fecha Entrada
-		lblFecha = new JLabel("FECHA ENTRADA");
+		lblFecha = new JLabel("LLEGADA");
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblFecha.setBounds(415, 331, 138, 31);
 		add(lblFecha);
@@ -94,7 +95,7 @@ public class vistaRaiz extends JPanel {
 		add(fechaIn);
 		
 		//Fecha Salida
-		lblFecha = new JLabel("FECHA SALIDA");
+		lblFecha = new JLabel("SALIDA");
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblFecha.setBounds(697, 334, 130, 31);
 		add(lblFecha);
@@ -172,8 +173,9 @@ public class vistaRaiz extends JPanel {
 		btnSumHab.setBounds(794, 250, 43, 29);
 		add(btnSumHab);
 		
-		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.setBounds(513, 583, 198, 48);
+		btnBuscar = new JButton("");
+		btnBuscar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/buscar.png"));
+		btnBuscar.setBounds(513, 583, 184, 62);
 		add(btnBuscar);
 		btnBuscar.setEnabled(false);
 		
@@ -227,6 +229,11 @@ public class vistaRaiz extends JPanel {
 		background.setIcon(new ImageIcon("Imagenes/bg.jpg"));
 		background.setBounds(6, 6, 1279, 700);
 		add(background);
+		
+		separator_2 = new JSeparator();
+		separator_2.setForeground(Color.BLACK);
+		separator_2.setBounds(238, 97, 750, 12);
+		add(separator_2);
 		
 		
 		

@@ -9,6 +9,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.text.ParseException;
+import javax.swing.JSeparator;
+import java.awt.Color;
 
 public class vistaRegistro extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -23,16 +25,19 @@ public class vistaRegistro extends JPanel {
 	private JLabel lblApellido;
 	private JLabel lblClave;
 	private JLabel lblNewLabel;
+	private JSeparator separator;
 
 	public vistaRegistro() {
 		setLayout(null);
 
-		btnRegistro = new JButton("Registrar");
+		btnRegistro = new JButton("");
+		btnRegistro.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/registrar.png"));
 		btnRegistro.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnRegistro.setBounds(893, 461, 184, 62);
 		add(btnRegistro);
 
-		btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("");
+		btnCancelar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/cancelar.png"));
 		btnCancelar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnCancelar.setBounds(80, 455, 184, 62);
 		add(btnCancelar);
@@ -90,5 +95,10 @@ public class vistaRegistro extends JPanel {
 		background.setIcon(new ImageIcon("Imagenes/bg.jpg"));
 		background.setBounds(6, 6, 1279, 700);
 		add(background);
+		
+		separator = new JSeparator();
+		separator.setForeground(Color.BLACK);
+		separator.setBounds(244, 137, 750, 12);
+		add(separator);
 	}
 }
