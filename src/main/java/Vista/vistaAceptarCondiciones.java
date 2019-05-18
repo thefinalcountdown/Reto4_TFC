@@ -27,7 +27,7 @@ public class vistaAceptarCondiciones extends JPanel {
 		add(chckbxAceptarCondiciones);
 		
 		btnAceptar = new JButton("");
-		btnAceptar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/aceptar.png"));
+		btnAceptar.setIcon(new ImageIcon("Imagenes/aceptar.png"));
 		btnAceptar.setBounds(698, 572, 110, 41);
 		add(btnAceptar);
 		
