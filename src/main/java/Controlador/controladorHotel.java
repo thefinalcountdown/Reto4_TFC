@@ -9,6 +9,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
@@ -23,6 +24,9 @@ import Modelo.modelo;
 import Vista.Ventana;
 
 public class controladorHotel {
+	public static int estrellas_elegidas;
+	
+	private Controlador controlador;
 	private Ventana ventana;
 	private modelo modelo;
 	public static ArrayList<Reserva_habitacion> reserva_habitacion = new ArrayList<Reserva_habitacion>();
@@ -33,6 +37,7 @@ public class controladorHotel {
 	public controladorHotel(Ventana ventana, modelo modelo) {
 		this.ventana = ventana;
 		this.modelo = modelo;
+		
 
 		// boton continuar
 
@@ -406,6 +411,8 @@ public class controladorHotel {
 					modelo.modeloListaAlojamiento.vaciarLista();
 					modelo.modeloListaAlojamiento.vaciarLista_Servicios();
 					modelo.habitacion.vaciarTabla(ventana.alojamiento.modeloTabla);
+					ventana.alojamiento.comboTipo.setSelectedIndex(0);
+					ventana.alojamiento.comboEstrellas.setSelectedIndex(0);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -453,8 +460,64 @@ public class controladorHotel {
 
 			}
 		});
-
+		
+		
+		ventana.alojamiento.comboEstrellas.getSelectedIndex();
+		
+		ventana.alojamiento.comboEstrellas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				Object elegidos = ventana.alojamiento.comboEstrellas.getSelectedItem();
+				
+				for (int index = modelo.modeloListaAlojamiento.hoteles.size() - 1; index >= 0; index--) 
+				{
+					modelo.modeloListaAlojamiento.hoteles.remove(index);
+					modelo.modeloListaAlojamiento.arrayString.remove(index);
+				}
+				
+				switch(elegidos.toString())
+				{
+					case "*****":
+						estrellas_elegidas = 5;
+						llenado_estrellas();
+						break;
+					case "****":
+						estrellas_elegidas = 4;
+						llenado_estrellas();
+						break;
+					case "***":
+						estrellas_elegidas = 3;
+						llenado_estrellas();
+						break;
+					case "**":
+						estrellas_elegidas = 2;
+						llenado_estrellas();
+						break;
+					case "*":
+						estrellas_elegidas = 1;
+						llenado_estrellas();
+						break;						
+					default:
+						estrellas_elegidas = 0;
+						llenado_estrellas();
+				}
+			}
+			
+		});
 	}
+	
+	
+	
+	public void llenado_estrellas()
+	{
+		try {
+			modelo.modeloListaAlojamiento.llenarListaHoteles(ventana.raiz.comboBoxUbicacion.getSelectedItem().toString());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 
 	public double calculo_precio(double precioBase, Date fechaIn, Date fechaOut) {
 

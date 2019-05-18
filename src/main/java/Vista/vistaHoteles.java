@@ -39,12 +39,14 @@ public class vistaHoteles extends JPanel {
 	
 	public JLabel lblTipo = new JLabel("<html>Seleccione el tipo de alojamiento:</html>");
 	private String[] tipoAloj= {"Todos", "Apartamento", "Casa", "Hotel"};
-	public JComboBox<String> comboTipo = new JComboBox<>(tipoAloj);
+	public JComboBox comboTipo = new JComboBox(tipoAloj);
 //	public JButton btnTipo = new JButton("Filtrar");
 	public JButton btn_habitacion_duda;
 	public JPanel panel = new JPanel();
 	public JTextArea texto_panel = new JTextArea();
 	private final JLabel lblHabitaciones = new JLabel("<html>Seleccione tipo de habitaci\u00f3n:</html>");
+	private String[] estrellas = {"Estrellas", "*****", "****", "***", "**", "*"};
+	public JComboBox comboEstrellas = new JComboBox(estrellas);
 
 	public vistaHoteles() {
 
@@ -94,7 +96,7 @@ public class vistaHoteles extends JPanel {
 		add(btn_habitacion_duda);
 		
 		
-		comboTipo.setBounds(273, 6, 167, 27);
+		comboTipo.setBounds(215, 6, 167, 27);
 		add(comboTipo);
 		
 		
@@ -103,6 +105,11 @@ public class vistaHoteles extends JPanel {
 		lblHabitaciones.setBounds(574, 103, 95, 84);
 		
 		add(lblHabitaciones);
+		
+		
+		comboEstrellas.setVisible(false);
+		comboEstrellas.setBounds(427, 6, 143, 27);
+		add(comboEstrellas);
 			
 //		btnTipo.setBounds(453, 5, 117, 29);
 //		add(btnTipo);

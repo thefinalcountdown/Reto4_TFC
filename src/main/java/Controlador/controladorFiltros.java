@@ -9,13 +9,15 @@ import Vista.Ventana;
 public class controladorFiltros {
 	private Ventana ventana;
 	private modelo modelo;
+	private Controlador controlador;
 	
 	public controladorFiltros() {
 	}
 
-	public controladorFiltros(Ventana ventana, modelo modelo) {
+	public controladorFiltros(Ventana ventana, modelo modelo, Controlador controlador) {
 		this.ventana = ventana;
 		this.modelo = modelo;
+		this.controlador = controlador;
 
 		ventana.alojamiento.comboTipo.addActionListener(new ActionListener() {
 
@@ -29,9 +31,12 @@ public class controladorFiltros {
 
 				if (ventana.alojamiento.comboTipo.getSelectedItem().toString() == "Todos") {
 					try {
+						controlador.controladorHotel.estrellas_elegidas = 0;
+						ventana.alojamiento.comboEstrellas.setSelectedIndex(0);
 						modelo.modeloListaAlojamiento.vaciarLista();
 						modelo.modeloListaAlojamiento.llenarLista(ubicacionSeleccionada);
 						ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
+						ventana.alojamiento.comboEstrellas.setVisible(false);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -39,18 +44,26 @@ public class controladorFiltros {
 
 				} else if (ventana.alojamiento.comboTipo.getSelectedItem().toString() == "Apartamento") {
 					try {
+						controlador.controladorHotel.estrellas_elegidas = 0;
+						ventana.alojamiento.comboEstrellas.setSelectedIndex(0);
 						modelo.modeloListaAlojamiento.vaciarLista();
 						modelo.modeloListaAlojamiento.llenarListaApartamentos(ubicacionSeleccionada);
 						ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
+						ventana.alojamiento.comboEstrellas.setVisible(false);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				} else if (ventana.alojamiento.comboTipo.getSelectedItem().toString() == "Casa") {
 					try {
+						controlador.controladorHotel.estrellas_elegidas = 0;
+						ventana.alojamiento.comboEstrellas.setSelectedIndex(0);
 						modelo.modeloListaAlojamiento.vaciarLista();
 						modelo.modeloListaAlojamiento.llenarListaCasas(ubicacionSeleccionada);
 						ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
+						ventana.alojamiento.comboEstrellas.setVisible(false);
+						
+						
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -60,6 +73,7 @@ public class controladorFiltros {
 						modelo.modeloListaAlojamiento.vaciarLista();
 						modelo.modeloListaAlojamiento.llenarListaHoteles(ubicacionSeleccionada);
 						ventana.alojamiento.listaAlojamientos.setModel(modelo.modeloListaAlojamiento);
+						ventana.alojamiento.comboEstrellas.setVisible(true);
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

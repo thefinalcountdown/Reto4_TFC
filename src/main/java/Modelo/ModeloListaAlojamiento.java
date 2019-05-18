@@ -16,6 +16,7 @@ public class ModeloListaAlojamiento implements ListModel {
 	public static ArrayList<Hotel> hoteles = new ArrayList<Hotel>();
 	public static ArrayList<Casa> apartamentos = new ArrayList<Casa>();
 	public static ArrayList<Servicios> servicios = new ArrayList<Servicios>();
+	public static int longitud_estrellas;
 
 	public void llenarLista(String ubicacion) throws Exception {
 		casas = obtenerCasasyApt(ubicacion);
@@ -191,7 +192,7 @@ public class ModeloListaAlojamiento implements ListModel {
 
 	public static ArrayList<Hotel> obtenerHoteles(String ubicacion) throws Exception {
 		
-		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, H.estrellas, COUNT(R.Cod_reserva) as codigoReserva \n" + 
+		String sentencia = "select A.Nombre, A.Ubicacion, A.Cod_Alojamiento, H.Estrellas, COUNT(R.Cod_reserva) as codigoReserva \n" + 
 				"from Alojamiento A LEFT JOIN Reserva R ON A.Cod_Alojamiento = R.Cod_Alojamiento \n" + 
 				"inner join Hotel H \n" + 
 				"on A.Cod_alojamiento=H.Cod_Hotel \n" + 
@@ -203,13 +204,20 @@ public class ModeloListaAlojamiento implements ListModel {
 		{
 			if(servicios.get(cont).isServicio_elegido())
 			{
-				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" = "+1+"\n";
+				sentencia += " and S."+servicios.get(cont).getTipo_servicio()+" = "+1+" \n";
 			}
 		}
 		
-		sentencia +="GROUP BY A.Nombre, A.Ubicacion, A.Cod_Alojamiento, H.estrellas \n"+
-				"order by codigoReserva desc";
-		int cont = 0;
+		if (Controlador.controladorHotel.estrellas_elegidas != 0)
+		{
+			sentencia += " and H.Estrellas ="+Controlador.controladorHotel.estrellas_elegidas+" \n";
+		}
+		
+		
+		sentencia += "GROUP BY A.Nombre, A.Ubicacion, A.Cod_Alojamiento, H.estrellas \n"+
+						"order by codigoReserva desc";
+
+		
 		ResultSet result = GestorBD.consulta(sentencia);
 		while (result.next()) {
 			hoteles.add(new Hotel(result.getString("nombre"), result.getString("ubicacion"),
