@@ -81,11 +81,11 @@ public class vistaHoteles extends JPanel {
 		separator.setBounds(244, 75, 750, 12);
 		
 		add(separator);
-		btnCancelar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/cancelar.png"));
+		btnCancelar.setIcon(new ImageIcon("Imagenes/cancelar.png"));
 		btnCancelar.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		btnCancelar.setBounds(29, 595, 184, 62);
 		add(btnCancelar);
-		btnContinuar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/continuar.png"));
+		btnContinuar.setIcon(new ImageIcon("Imagenes/continuar.png"));
 		btnContinuar.setBounds(990, 592, 189, 62);
 		add(btnContinuar);
 

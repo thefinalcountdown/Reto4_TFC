@@ -43,11 +43,11 @@ public class vistaReserva extends JPanel
 	public vistaReserva()
 	{
 		setLayout(null);
-		Continuar_Reserva.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/continuar.png"));
+		Continuar_Reserva.setIcon(new ImageIcon("Imagenes/continuar.png"));
 		
 		Continuar_Reserva.setBounds(966, 575, 184, 62);
 		add(Continuar_Reserva);
-		Cancelar_Reserva.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/cancelar.png"));
+		Cancelar_Reserva.setIcon(new ImageIcon("Imagenes/cancelar.png"));
 		
 		Cancelar_Reserva.setBounds(26, 575, 184, 62);
 		add(Cancelar_Reserva);
@@ -160,7 +160,7 @@ public class vistaReserva extends JPanel
 		add(lblCodigo);
 		
 		btnCodigo = new JButton("");
-		btnCodigo.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/comprobar.png"));
+		btnCodigo.setIcon(new ImageIcon("Imagenes/comprobar.png"));
 		btnCodigo.setBounds(51, 199, 112, 48);
 		add(btnCodigo);
 		

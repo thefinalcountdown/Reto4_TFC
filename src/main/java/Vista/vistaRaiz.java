@@ -28,12 +28,12 @@ public class vistaRaiz extends JPanel {
 	public JLabel lblKids;
 	public JLabel lblHabitaciones;
 	public JComboBox comboBoxUbicacion;
-	public JButton btnSumAdult = new JButton("+");
-	public JButton btnRestAdult = new JButton("-");
-	public JButton btnSumKids = new JButton("+");
-	public JButton btnRestKids = new JButton("-");
-	public JButton btnRestHab = new JButton("-");
-	public JButton btnSumHab = new JButton("+");
+	public JButton btnSumAdult = new JButton("");
+	public JButton btnRestAdult = new JButton("");
+	public JButton btnSumKids = new JButton("");
+	public JButton btnRestKids = new JButton("");
+	public JButton btnRestHab = new JButton("");
+	public JButton btnSumHab = new JButton("");
 	public JTextField txthuesped;
 	public JTextField txtKids;
 	public JTextField txtHab;
@@ -126,11 +126,13 @@ public class vistaRaiz extends JPanel {
 		txthuesped.setBounds(475, 217, 51, 26);
 		add(txthuesped);
 		txthuesped.setEditable(false);
+		btnSumAdult.setIcon(new ImageIcon("Imagenes/+.png"));
 		
-		btnSumAdult.setBounds(528, 216, 43, 29);
+		btnSumAdult.setBounds(528, 216, 29, 29);
 		add(btnSumAdult);
+		btnRestAdult.setIcon(new ImageIcon("Imagenes/-.png"));
 		
-		btnRestAdult.setBounds(433, 216, 43, 29);
+		btnRestAdult.setBounds(433, 216, 29, 29);
 		add(btnRestAdult);
 		btnRestAdult.setEnabled(false);
 		
@@ -140,8 +142,9 @@ public class vistaRaiz extends JPanel {
 		lblKids.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblKids.setBounds(379, 253, 59, 31);
 		add(lblKids);
+		btnRestKids.setIcon(new ImageIcon("Imagenes/-.png"));
 		
-		btnRestKids.setBounds(433, 254, 43, 29);
+		btnRestKids.setBounds(433, 254, 29, 29);
 		add(btnRestKids);
 		btnRestKids.setEnabled(false);
 		
@@ -150,8 +153,9 @@ public class vistaRaiz extends JPanel {
 		
 		txtKids.setBounds(477, 254, 51, 26);
 		add(txtKids);
+		btnSumKids.setIcon(new ImageIcon("Imagenes/+.png"));
 		
-		btnSumKids.setBounds(531, 257, 43, 29);
+		btnSumKids.setBounds(531, 257, 29, 29);
 		add(btnSumKids);
 		
 		
@@ -160,8 +164,9 @@ public class vistaRaiz extends JPanel {
 		lblHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblHabitaciones.setBounds(699, 216, 131, 31);
 		add(lblHabitaciones);
+		btnRestHab.setIcon(new ImageIcon("Imagenes/-.png"));
 		
-		btnRestHab.setBounds(699, 250, 43, 29);
+		btnRestHab.setBounds(699, 250, 29, 29);
 		add(btnRestHab);
 		btnRestHab.setEnabled(false);
 		
@@ -169,12 +174,13 @@ public class vistaRaiz extends JPanel {
 		txtHab.setEditable(false);
 		txtHab.setBounds(741, 250, 51, 26);
 		add(txtHab);
+		btnSumHab.setIcon(new ImageIcon("Imagenes/+.png"));
 		
-		btnSumHab.setBounds(794, 250, 43, 29);
+		btnSumHab.setBounds(794, 250, 29, 29);
 		add(btnSumHab);
 		
 		btnBuscar = new JButton("");
-		btnBuscar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/buscar.png"));
+		btnBuscar.setIcon(new ImageIcon("Imagenes/buscar.png"));
 		btnBuscar.setBounds(513, 583, 184, 62);
 		add(btnBuscar);
 		btnBuscar.setEnabled(false);

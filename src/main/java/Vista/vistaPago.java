@@ -101,13 +101,13 @@ public class vistaPago extends JPanel
 		moneda1cent.setIcon(new ImageIcon("Imagenes/1_Centesimo_Italia_2014_Euro_Fdc_Unc_Romacoins_m.png"));
 		moneda1cent.setBounds(767, 478, 101, 97);
 		add(moneda1cent);
-		Continuar_Pago.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/pagar.png"));
+		Continuar_Pago.setIcon(new ImageIcon("Imagenes/pagar.png"));
 		
 		Continuar_Pago.setBounds(981, 606, 184, 62);
 		add(Continuar_Pago);
 		Continuar_Pago.setEnabled(false);
 		
-		Cancelar_Pago.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/cancelar.png"));
+		Cancelar_Pago.setIcon(new ImageIcon("Imagenes/cancelar.png"));
 		Cancelar_Pago.setBounds(38, 606, 184, 62);
 		add(Cancelar_Pago);
 		

@@ -37,14 +37,14 @@ public class vistaModificar extends JPanel {
 		setLayout(null);
 
 		btnActualizar = new JButton("");
-		btnActualizar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/actualizar.png"));
+		btnActualizar.setIcon(new ImageIcon("Imagenes/actualizar.png"));
 		btnActualizar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnActualizar.setHorizontalAlignment(SwingConstants.LEADING);
 		btnActualizar.setBounds(362, 430, 135, 41);
 		add(btnActualizar);
 
 		btnBorrarUsuario = new JButton("");
-		btnBorrarUsuario.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/borrar.png"));
+		btnBorrarUsuario.setIcon(new ImageIcon("Imagenes/borrar.png"));
 		btnBorrarUsuario.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnBorrarUsuario.setBounds(812, 430, 93, 29);
 		add(btnBorrarUsuario);
@@ -105,7 +105,7 @@ public class vistaModificar extends JPanel {
 		add(lblBorrarUsuario);
 
 		btnVolver = new JButton("");
-		btnVolver.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/volver.png"));
+		btnVolver.setIcon(new ImageIcon("Imagenes/volver.png"));
 		btnVolver.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnVolver.setBounds(68, 581, 184, 62);
 		add(btnVolver);

@@ -28,19 +28,19 @@ public class vistaLogin extends JPanel {
 		setLayout(null);
 
 		btnLogin = new JButton("");
-		btnLogin.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/login.png"));
+		btnLogin.setIcon(new ImageIcon("Imagenes/login.png"));
 		btnLogin.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnLogin.setBounds(519, 354, 134, 37);
 		add(btnLogin);
 		
 		btnRegistro = new JButton("");
-		btnRegistro.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/nuevoRegistro.png"));
+		btnRegistro.setIcon(new ImageIcon("Imagenes/nuevoRegistro.png"));
 		btnRegistro.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnRegistro.setBounds(411, 526, 172, 37);
 		add(btnRegistro);
 		
 		btnModificar = new JButton("");
-		btnModificar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/modificarUsuario.png"));
+		btnModificar.setIcon(new ImageIcon("Imagenes/modificarUsuario.png"));
 		btnModificar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnModificar.setBounds(637, 530, 172, 29);
 		add(btnModificar);

@@ -31,13 +31,13 @@ public class vistaRegistro extends JPanel {
 		setLayout(null);
 
 		btnRegistro = new JButton("");
-		btnRegistro.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/registrar.png"));
+		btnRegistro.setIcon(new ImageIcon("Imagenes/registrar.png"));
 		btnRegistro.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnRegistro.setBounds(893, 461, 184, 62);
 		add(btnRegistro);
 
 		btnCancelar = new JButton("");
-		btnCancelar.setIcon(new ImageIcon("/Users/marialaburu/MARIA/DAW/workspace/Reto4_TFC/Imagenes/cancelar.png"));
+		btnCancelar.setIcon(new ImageIcon("Imagenes/cancelar.png"));
 		btnCancelar.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		btnCancelar.setBounds(80, 455, 184, 62);
 		add(btnCancelar);
