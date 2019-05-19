@@ -165,6 +165,8 @@ public class controladorHotel {
 					}
 				}
 			}
+			
+		
 		});
 
 		// boton que muestra la lista de habitaciones
