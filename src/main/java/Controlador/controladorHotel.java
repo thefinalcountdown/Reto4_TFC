@@ -125,6 +125,23 @@ public class controladorHotel {
 
 						// AQUI VA PRECIO CASA
 
+						try {
+							modelo.habitacion.obtenerHabitaciones(modelo.modeloListaAlojamiento.casas
+									.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getCod_alojamiento(),
+									ventana.reserva.textField_fechaDeEntrada.getText(),
+									ventana.reserva.textField_fechaDeSalida.getText());
+							
+
+						
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						if (modelo.habitacion.habitaciones.size() == 0) {
+							JOptionPane.showMessageDialog(null,
+									"El alojamiento no esta disponible para las fechas seleccionadas");}
+						else {
+						
 						double precioBase = modelo.modeloListaAlojamiento.casas
 								.get(ventana.alojamiento.listaAlojamientos.getSelectedIndex()).getPrecio();
 						double precio = calculo_precio(precioBase, fechaIn, fechaOut);
@@ -143,6 +160,7 @@ public class controladorHotel {
 											ventana.reserva.textField_fechaDeEntrada.getText(),
 											ventana.reserva.textField_fechaDeSalida.getText()));
 
+						}
 						}
 					}
 				}
