@@ -38,11 +38,12 @@ public class insercionReserva
 		
 		
 		String sentencia2;
-		
+
 		
 		for(int cont=0; cont < reserva_habitacion.size(); cont++)
 		{
-			sentencia2 = "insert into Reserva_Habitacion values('" + reserva_habitacion.get(cont).getNum_habitacion() 
+			sentencia2 = "insert into Reserva_Habitacion (Habitacion_Alojamiento_Num_Habitacion, FechaEntrada, FechaSalida)"
+					+ " values('" + reserva_habitacion.get(cont).getNum_habitacion() 
 					+ "', '" + reserva_habitacion.get(cont).getFecha_entrada() + "', '" 
 					+ reserva_habitacion.get(cont).getFecha_salida() + "')";
 			GestorBD.insertarDatos(sentencia2);
