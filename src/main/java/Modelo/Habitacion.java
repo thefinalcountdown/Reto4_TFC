@@ -71,7 +71,7 @@ public class Habitacion {
 	}
 	public ArrayList<Habitacion> obtenerHabitaciones(int cod_aloja, String fecha_entrada, String fecha_salida)
 			throws Exception {
-
+		habitaciones.clear();
 		String sentencia = "select H.Cod_Habitacion, H.Superficie, H.Tipo_habitacion, H.Descripcion, H.Precio, H.Cod_Alojamiento\n"
 				+ "from Habitacion H \n"
 				+ "where Cod_Alojamiento = '%s' \n"
