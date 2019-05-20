@@ -65,7 +65,7 @@ public class vistaRaiz extends JPanel {
 		lblNewLabel.setBounds(419, 54, 420, 31);
 		add(lblNewLabel);
 		
-		lblDnde = new JLabel("DÓNDE");
+		lblDnde = new JLabel("D\u00d3NDE");
 		lblDnde.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDnde.setBounds(573, 121, 69, 31);
 		add(lblDnde);
@@ -138,7 +138,7 @@ public class vistaRaiz extends JPanel {
 		
 		
 		//NUMERO NIÑOS
-		lblKids = new JLabel("NIÑOS");
+		lblKids = new JLabel("NI\u00d1OS");
 		lblKids.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblKids.setBounds(379, 253, 59, 31);
 		add(lblKids);
@@ -160,9 +160,9 @@ public class vistaRaiz extends JPanel {
 		
 		
 		//NUMERO HABITACIONES
-		lblHabitaciones = new JLabel("Nº HABITACIONES");
+		lblHabitaciones = new JLabel("NUM HABITACIONES");
 		lblHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblHabitaciones.setBounds(699, 216, 131, 31);
+		lblHabitaciones.setBounds(699, 216, 141, 19);
 		add(lblHabitaciones);
 		btnRestHab.setIcon(new ImageIcon("Imagenes/-.png"));
 		
