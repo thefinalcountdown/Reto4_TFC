@@ -22,7 +22,7 @@ public class vistaAceptarCondiciones extends JPanel {
 		lblNewLabel.setBounds(218, 174, 623, 320);
 		add(lblNewLabel);
 		
-		chckbxAceptarCondiciones = new JCheckBox("Acepto las Condiciones y Terminos de Uso");
+		chckbxAceptarCondiciones = new JCheckBox("Acepto las Condiciones y T\u00E9rminos de Uso");
 		chckbxAceptarCondiciones.setBounds(278, 512, 301, 23);
 		add(chckbxAceptarCondiciones);
 		
@@ -31,7 +31,7 @@ public class vistaAceptarCondiciones extends JPanel {
 		btnAceptar.setBounds(698, 572, 110, 41);
 		add(btnAceptar);
 		
-		JLabel lblCondicionesYTrminos = new JLabel("CONDICIONES Y TÉRMINOS DE USO");
+		JLabel lblCondicionesYTrminos = new JLabel("CONDICIONES Y TERMINOS DE USO");
 		lblCondicionesYTrminos.setFont(new Font("Apple Color Emoji", Font.BOLD, 26));
 		lblCondicionesYTrminos.setBounds(247, 59, 517, 25);
 		add(lblCondicionesYTrminos);
